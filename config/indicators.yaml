@@ -1,0 +1,48 @@
+version: 1
+
+defaults:
+  source: eurostat
+  lang: EN
+  format: JSON
+  freq: A
+  geo_level: country
+  start_year: 2015
+  end_year: 2023
+
+countries:
+  - ES
+  - FR
+  - DE
+
+indicators:
+  - name: gdp_real_growth_yoy
+    dataset: nama_10_gdp
+    unit: CLV_PCH_PRE
+    filters:
+      na_item: B1GQ
+
+  - name: hicp_inflation_yoy
+    dataset: prc_hicp_aind
+    unit: RCH_A_AVG
+    filters:
+      coicop: CP00
+
+  - name: unemployment_rate
+    dataset: une_rt_a
+    unit: PC_ACT
+    filters:
+      sex: T
+      age: Y15-74
+
+  - name: oecd_gdp_volume
+    source: oecd
+    dataset: MEI_REAL
+    query_template: "{oecd_geo}.GDPV.A"
+
+  - name: imf_cpi_index
+    source: imf
+    dataflow: IFS
+    # template: país + indicador + frecuencia (depende del dataflow)
+    key_template: "{imf_geo}.PCPI_IX.M"
+    unit: "index"
+    description: "IMF IFS CPI index (monthly)"
