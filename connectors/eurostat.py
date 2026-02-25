@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 import itertools
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional
 
 import pandas as pd
 import requests
@@ -11,7 +13,10 @@ def eurostat_get(dataset: str, params: Dict[str, Any], lang: str = "EN", fmt: st
     url = f"{BASE_URL}/{dataset}"
     params = {"format": fmt, "lang": lang, **params}
     r = requests.get(url, params=params, timeout=60)
-    r.raise_for_status()
+    try:
+        r.raise_for_status()
+    except requests.HTTPError as e:
+        raise requests.HTTPError(f"{e}\nEurostat says:\n{r.text[:500]}") from e
     return r.json()
 
 
@@ -44,51 +49,216 @@ def jsonstat_to_dataframe(js: Dict[str, Any]) -> pd.DataFrame:
     return df
 
 
-def normalize(
-    df: pd.DataFrame,
-    indicator_name: str,
-    dataset: str,
-    geo: str,
-    geo_level: str,
-) -> pd.DataFrame:
+def describe_dataset(dataset: str, sample_geo: str = "ES", overrides: Optional[Dict[str, Any]] = None) -> None:
+    """
+    Descarga un payload pequeño y te imprime:
+    - nombres de dimensiones
+    - para cada dimensión: algunos códigos y sus labels
+    """
 
-    out = pd.DataFrame({
-        "geo": df.get("geo", geo),
-        "geo_level": geo_level,
-        "indicator": indicator_name,
-        "date": df["time"].astype(str).str.extract(r"(\d{4})")[0].astype(int),
-        "value": pd.to_numeric(df["value"], errors="coerce"),
-        "unit": df.get("unit"),
-        "source": f"eurostat:{dataset}",
-    })
+    # Defaults mínimos (válidos para muchos datasets)
+    params: Dict[str, Any] = {
+        "geo": sample_geo,
+        "lastTimePeriod": 1,
+    }
 
-    return out.dropna(subset=["value"])
+    # Defaults especiales conocidos (para que no rompa lo que ya te funciona)
+    if dataset == "tps00010":
+        params.update({"freq": "A", "indic_de": "PC_Y0_14"})
+
+    # Overrides opcionales (por si un dataset requiere dims extra)
+    if overrides:
+        params.update(overrides)
+
+    js = eurostat_get(dataset, params=params, lang="EN")
+
+    dims = js.get("id", [])
+    dim_meta = js.get("dimension", {})
+
+    print(f"\n=== DATASET: {dataset} ===")
+    print("Dimensions (order):", dims)
+
+    for d in dims:
+        if d not in dim_meta:
+            continue
+        cat = dim_meta[d].get("category", {})
+        labels = cat.get("label", {})
+        idx = cat.get("index", {})
+
+        codes = [c for c, _ in sorted(idx.items(), key=lambda kv: kv[1])]
+        preview = codes[:12]
+        print(f"\n- {d} (n={len(codes)}) preview codes:", preview)
+        for c in preview[:6]:
+            lab = labels.get(c)
+            if lab:
+                print(f"    {c} -> {lab}")
+
+
+def _normalize_text(s: str) -> str:
+    return " ".join((s or "").strip().lower().split())
+
+
+def label_to_code(js: Dict[str, Any], dim: str, label: str) -> str:
+    """
+    Convierte un label humano (EN) a un código Eurostat usando la metadata del payload.
+    """
+    dim_meta = js.get("dimension", {}).get(dim, {})
+    cat = dim_meta.get("category", {})
+    labels = cat.get("label", {})  # code -> label
+
+    target = _normalize_text(label)
+    best = None
+    for code, lab in labels.items():
+        if _normalize_text(lab) == target:
+            return code
+        if best is None and target in _normalize_text(lab):
+            best = code
+
+    if best:
+        return best
+
+    raise ValueError(f"Label not found in dimension '{dim}': '{label}'")
+
+
+def normalize_to_long(df_raw: pd.DataFrame, dataset: str, indicator_name: str, geo_level: str, unit_fallback: Optional[str] = None) -> pd.DataFrame:
+    """
+    Normaliza a esquema long estándar:
+    geo, geo_level, indicator, date, value, unit, source
+    """
+    # 'time' viene como YYYY o YYYY-MM etc. extraemos año
+    years = pd.to_numeric(df_raw["time"].astype(str).str.extract(r"(\d{4})")[0], errors="coerce")
+
+    out = pd.DataFrame(
+        {
+            "geo": df_raw.get("geo"),
+            "geo_level": geo_level,
+            "indicator": indicator_name,
+            "date": years,
+            "value": pd.to_numeric(df_raw["value"], errors="coerce"),
+            "unit": df_raw.get("unit"),
+            "source": f"eurostat:{dataset}",
+        }
+    )
+    if unit_fallback:
+        out["unit"] = out["unit"].fillna(unit_fallback) if "unit" in out.columns else unit_fallback
+
+    out = out.dropna(subset=["geo", "date", "value"]).copy()
+    out["date"] = out["date"].astype(int)
+    return out
 
 
 def fetch_indicator(
     dataset: str,
-    indicator_name: str,
     geo: str,
     start_year: int,
     end_year: int,
     freq: str,
-    unit: str,
-    filters: Dict[str, Any],
     geo_level: str,
-    lang: str = "EN",
-    fmt: str = "JSON",
+    indicator_name: str,
+    filters: Dict[str, Any],
+    multi_filters: Optional[Dict[str, List[str]]] = None,
+    unit_fallback: Optional[str] = None,
 ) -> pd.DataFrame:
+    """
+    - filters: dict con dimensiones fijas (ej: unit=PC)
+    - multi_filters: dict donde cada key es una dimensi?n y su value es lista de LABELS (EN)
+      El conector traduce label->code usando metadata del payload.
+    """
+    # Probe dimensions with a tiny payload so we can drop invalid filter keys.
+    # Algunos datasets exigen dims obligatorias (ej: tps00010 exige indic_de), así que hacemos probe robusto.
+    probe_candidates: List[Dict[str, Any]] = [
+        {"geo": geo, "freq": freq, "lastTimePeriod": 1},  # normal
+        {"geo": geo, "lastTimePeriod": 1},                # fallback sin freq
+        {"geo": geo, "lastTimePeriod": 1, **(filters or {})},  # fallback con filters del YAML
+    ]
 
-    params = {
+    js_probe = None
+    last_err: Optional[Exception] = None
+    for probe_params in probe_candidates:
+        try:
+            js_probe = eurostat_get(dataset, params=probe_params, lang="EN")
+            break
+        except Exception as e:
+            last_err = e
+            continue
+
+    if js_probe is None:
+        # si ni así, devolvemos el error más informativo
+        raise last_err  # type: ignore
+
+    dataset_dims = set(js_probe.get("id", []))
+    use_freq = "freq" in dataset_dims
+
+    valid_filters = {k: v for k, v in (filters or {}).items() if k in dataset_dims}
+
+    params: Dict[str, Any] = {
         "geo": geo,
-        "freq": freq,
+        **({"freq": freq} if use_freq else {}),
         "sinceTimePeriod": start_year,
         "untilTimePeriod": end_year,
-        "unit": unit,
-        **filters,
+        **valid_filters,
     }
 
-    js = eurostat_get(dataset, params, lang, fmt)
-    df_raw = jsonstat_to_dataframe(js)
+    # Si no hay multi, fetch directo
+    if not multi_filters:
+        js = eurostat_get(dataset, params=params, lang="EN")
+        df_raw = jsonstat_to_dataframe(js)
+        return normalize_to_long(df_raw, dataset, indicator_name, geo_level)
 
-    return normalize(df_raw, indicator_name, dataset, geo, geo_level)
+    resolved_multi_filters: Dict[str, List[str]] = {}
+    for dim, label_list in multi_filters.items():
+        if dim in dataset_dims:
+            resolved_multi_filters[dim] = label_list
+            continue
+
+        candidate_dims = [
+            d
+            for d in js_probe.get("id", [])
+            if d not in {"geo", "freq", "time"} and d not in valid_filters
+        ]
+        if len(candidate_dims) == 1:
+            resolved_multi_filters[candidate_dims[0]] = label_list
+            continue
+
+        raise ValueError(
+            f"Unknown multi_filters dimension '{dim}' for dataset '{dataset}'. Available dimensions: {sorted(dataset_dims)}"
+        )
+
+    # Metadata call for label->code mapping must not include since/untilTimePeriod.
+    meta_params = {
+        k: v
+        for k, v in params.items()
+        if k not in {"TIME", "TIME_PERIOD", "time", "time_period", "sinceTimePeriod", "untilTimePeriod", "lastTimePeriod"}
+    }
+    js_meta = eurostat_get(dataset, params={**meta_params, "lastTimePeriod": 1}, lang="EN")
+
+    out_parts: List[pd.DataFrame] = []
+
+    for dim, label_list in resolved_multi_filters.items():
+        for lab in label_list:
+            code = label_to_code(js_meta, dim, lab)
+
+            js = eurostat_get(dataset, params={**params, dim: code}, lang="EN")
+            df_raw = jsonstat_to_dataframe(js)
+
+            df_norm = normalize_to_long(df_raw, dataset, indicator_name, geo_level, unit_fallback=unit_fallback)
+            #df_norm["sub_indicator_label"] = lab
+            #df_norm["sub_indicator_code"] = code
+
+            def _short_age(code: str) -> str:
+                if code == "PC_Y80_MAX":
+                    return "80+"
+                # PC_Y0_14 -> 0-14, PC_Y15_24 -> 15-24
+                if code.startswith("PC_Y"):
+                    x = code.replace("PC_Y", "")
+                    return x.replace("_", "-")
+                return code
+
+            df_norm["sub_indicator_short"] = lab
+
+            out_parts.append(df_norm)
+
+    if not out_parts:
+        return pd.DataFrame(columns=["geo", "geo_level", "indicator", "date", "value", "unit", "source"])
+
+    return pd.concat(out_parts, ignore_index=True)

@@ -1,0 +1,117 @@
+version: 1
+
+frameworks:
+  demographics:
+    title: "DEMOGRAPHICS FRAMEWORK"
+    indicators:
+
+      # 1) Population by age group (share of total population)
+      - id: "1"
+        name: population_by_age_group
+        source: eurostat
+        enabled: true
+        dataset: tps00010
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 5
+
+        # OJO: este dataset NO tiene dim "unit" (tu unit viene por fallback)
+        multi_filters:
+          indic_de:
+            - "Proportion of population aged 0-14 years"
+            - "Proportion of population aged 15-24 years"
+            - "Proportion of population aged 25-49 years"
+            - "Proportion of population aged 50-64 years"
+            - "Proportion of population aged 65-79 years"
+            - "Proportion of population aged 80 years and more"
+
+        units: "%"
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/tps00010/default/table?lang=en"
+
+      # 2) Population change, demographic balance and crude rates (national level)
+      - id: "2"
+        name: population_change_demographic_balance_and_crude_rates_at_national_level
+        source: eurostat
+        enabled: true
+        dataset: demo_gind
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 5
+
+        filters: {}
+
+        # Dim real del dataset: indic_de
+        multi_filters:
+          indic_de:
+            - "Net migration plus statistical adjustment"
+            - "Natural change of population"
+
+        units: "people"
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/demo_gind__custom_20234960/default/table"
+
+      # 3) Educational attainment (25-64), upper secondary or more — TOTAL
+      - id: "3"
+        name: persons_aged_25_-_64_with_at_least_upper_secondary_educational_attainment_level_by_sex
+        source: eurostat
+        enabled: true
+        dataset: tps00065
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 5
+
+        # Fijamos dims para que sea "total" (y no te saque M/F también)
+        filters:
+          sex: "T"
+          age: "Y25-64"
+          unit: "PC"
+          isced11: "ED3-8"
+
+        units: "%"
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/tps00065/default/table?lang=en"
+
+      # 4) Average household size
+      - id: "4"
+        name: average_household_size
+        source: eurostat
+        enabled: true
+        dataset: ilc_lvph01
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 5
+
+        # Dim real: unit=AVG (Average)
+        filters:
+          unit: "AVG"
+
+        units: "people"
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/ilc_lvph01/default/table?lang=en"
+
+      # 5) Short-term population projections 2024-2050 (baseline) — Population on 1 Jan total
+      - id: "5"
+        name: short_term_population_projections_2024_-_2050
+        source: eurostat
+        enabled: true
+        dataset: proj_stp25
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 5
+
+        filters:
+          projection: "BSL"   # Baseline projections
+
+        multi_filters:
+          indic_de:
+            - "Population on 1 January - total"
+
+        units: "people"
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/proj_stp25/default/table?lang=en"
