@@ -15,7 +15,7 @@ frameworks:
         frequency: A
         time:
           mode: past_years
-          years: 5
+          years: 10
 
         # OJO: este dataset NO tiene dim "unit" (tu unit viene por fallback)
         multi_filters:
@@ -40,7 +40,7 @@ frameworks:
         frequency: A
         time:
           mode: past_years
-          years: 5
+          years: 10
 
         filters: {}
 
@@ -63,7 +63,7 @@ frameworks:
         frequency: A
         time:
           mode: past_years
-          years: 5
+          years: 10
 
         # Fijamos dims para que sea "total" (y no te saque M/F también)
         filters:
@@ -85,7 +85,7 @@ frameworks:
         frequency: A
         time:
           mode: past_years
-          years: 5
+          years: 10
 
         # Dim real: unit=AVG (Average)
         filters:
@@ -103,8 +103,8 @@ frameworks:
         geo_level: country
         frequency: A
         time:
-          mode: past_years
-          years: 5
+          mode: future_years
+          years: 10
 
         filters:
           projection: "BSL"   # Baseline projections
@@ -115,3 +115,205 @@ frameworks:
 
         units: "people"
         reference: "https://ec.europa.eu/eurostat/databrowser/view/proj_stp25/default/table?lang=en"
+
+  tourism:
+    title: "TOURISM FRAMEWORK"
+    indicators:
+
+      - id: "1a"
+        name: arrivals_at_tourist_accommodation_establishments
+        source: eurostat
+        enabled: true
+        dataset: tour_occ_arnat
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 10
+
+        filters:
+          c_resid: "TOTAL"   # Total country of residence
+          unit: "NR"         # Number
+          nace_r2: "I551"    # Hotels and similar accommodation
+
+        units: "number"
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/tour_occ_arnat/default/table?lang=en"
+
+      - id: "1b"
+        name: arrivals_by_origin_hotels_number
+        source: eurostat
+        enabled: true
+        dataset: tour_occ_arnraw
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 5
+
+        # fijamos “hotels and similar”
+        filters:
+          nace_r2: "I551"
+          unit: "NR"      # Number  (CONFIRMAR con describe_dataset)
+
+        units: "number"
+        describe_overrides:
+          freq: "A"
+          unit: "NR"
+          nace_r2: "I551"
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/tour_occ_arnraw/default/table?lang=en"
+
+      - id: "2"
+        name: nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents
+        source: eurostat
+        enabled: true
+        dataset: tin00175
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 10
+
+        # fijamos unit + tipo alojamiento
+        filters:
+          unit: "NR"
+          nace_r2: "I551-I553"
+
+        # series dentro del indicador (DOM/FOR/TOTAL)
+        multi_filters:
+          c_resid:
+            # NO CAMBIAR LOS CODIGOS, PQ ES COMO EUROSTAT LOS LLAMA Y ASÍ TE LOS TRAE LIMPIOS (si pones "domestic" en vez de "DOM" no te lo filtra y te sale todo mezclado)
+            - "TOTAL"
+            - "DOM" # domestic_country
+            - "FOR" # foreign_country
+
+        units: "number"
+        describe_overrides:
+          freq: "A"
+          unit: "NR"
+          nace_r2: "I551-I553"
+          c_resid: "TOTAL"
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/tin00175/default/table?lang=en"
+
+      - id: "3"
+        name: nights_spent_by_duration_purpose_and_main_destination_of_the_trip
+        source: eurostat
+        enabled: true
+        dataset: tour_dem_tntot
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 10
+
+        filters:
+          c_dest: "WORLD"
+          purpose: "TOTAL"
+          unit: "NR"
+
+        multi_filters:
+          duration:
+            - "N_GE1"  # 1 night or over
+            - "N1-3"   # From 1 to 3 nights
+            - "N_GE4"  # 4 nights or over
+
+        units: "number"
+
+        # OJO: NO fijes duration aquí (si lo fijas, el describe te lo recorta)
+        describe_overrides:
+          freq: "A"
+          unit: "NR"
+          c_dest: "WORLD"
+          purpose: "TOTAL"
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/tour_dem_tntot/default/table?lang=en&category=tour.tour_dem.tour_dem_tn"
+
+      - id: "4"
+        name: trips_by_duration_purpose_and_main_destination
+        source: eurostat
+        enabled: true
+        dataset: tour_dem_tttot
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 10
+
+        filters:
+          c_dest: "WORLD"     # All countries of the world
+          duration: "N_GE1"   # 1 night or over
+          unit: "NR"          # Number
+
+        multi_filters:
+          purpose:
+            - "PER"           # Personal reasons
+            - "PROF"          # Professional, business
+
+        units: "number"
+
+        describe_overrides:
+          freq: "A"
+          c_dest: "WORLD"
+          duration: "N_GE1"
+          unit: "NR"
+          purpose: "TOTAL"    # opcional, pero ayuda a que describe sea estable
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/tour_dem_tttot/default/table?lang=en"
+
+      - id: "5"
+        name: average_expenditure_per_trip
+        source: eurostat
+        enabled: true
+        dataset: tin00195
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 5
+
+        filters:
+          purpose: "TOTAL"
+          duration: "N_GE1"
+          c_dest: "WORLD"
+          expend: "TOTXDUR"
+          statinfo: "AVG_TRP"
+          unit: "EUR"
+
+        units: "euro"
+
+        describe_overrides:
+          freq: "A"
+          purpose: "TOTAL"
+          duration: "N_GE1"
+          c_dest: "WORLD"
+          expend: "TOTXDUR"
+          statinfo: "AVG_TRP"
+          unit: "EUR"
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/tin00195/default/table?lang=en"
+
+      - id: "6"
+        name: nights_spent_monthly_hotels
+        source: eurostat
+        enabled: true
+        dataset: tour_occ_nim
+        geo_level: country
+        frequency: M
+        time:
+          mode: past_years
+          years: 5
+
+        filters:
+          c_resid: "TOTAL"
+          nace_r2: "I551"
+          unit: "NR"
+
+        units: "number"
+
+        describe_overrides:
+          freq: "M"
+          c_resid: "TOTAL"
+          nace_r2: "I551"
+          unit: "NR"
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/tour_occ_nim/default/table?lang=en"

@@ -1,6 +1,8 @@
+# connectors/eurostat.py
 from __future__ import annotations
 
 import itertools
+import re
 from typing import Any, Dict, List, Optional
 
 import pandas as pd
@@ -98,15 +100,32 @@ def _normalize_text(s: str) -> str:
     return " ".join((s or "").strip().lower().split())
 
 
+import re
+
+
 def label_to_code(js: Dict[str, Any], dim: str, label: str) -> str:
-    """
-    Convierte un label humano (EN) a un código Eurostat usando la metadata del payload.
-    """
     dim_meta = js.get("dimension", {}).get(dim, {})
     cat = dim_meta.get("category", {})
     labels = cat.get("label", {})  # code -> label
 
-    target = _normalize_text(label)
+    raw = (label or "").strip()
+
+    # ✅ 1) If user already provided a CODE and it's present in labels
+    if raw in labels:
+        return raw
+    if raw.upper() in labels:
+        return raw.upper()
+
+    # ✅ 2) CODE fallback (even if labels don't include it)
+    # Works great for Eurostat country codes like TOTAL, DE, FR, IT, US, UK/GB, etc.
+    # - no spaces
+    # - uppercase letters/digits/underscore
+    # - short-ish
+    if re.fullmatch(r"[A-Z0-9_]{2,15}", raw.upper()):
+        return raw.upper()
+
+    # ✅ 3) Otherwise treat as human label
+    target = _normalize_text(raw)
     best = None
     for code, lab in labels.items():
         if _normalize_text(lab) == target:
@@ -117,16 +136,22 @@ def label_to_code(js: Dict[str, Any], dim: str, label: str) -> str:
     if best:
         return best
 
+    if not labels:
+        raise ValueError(
+            f"Dimension '{dim}' returned no labels in metadata payload. "
+            f"For this dataset, use codes in multi_filters. Label provided: '{label}'"
+        )
+
     raise ValueError(f"Label not found in dimension '{dim}': '{label}'")
 
 
 def normalize_to_long(df_raw: pd.DataFrame, dataset: str, indicator_name: str, geo_level: str, unit_fallback: Optional[str] = None) -> pd.DataFrame:
-    """
-    Normaliza a esquema long estándar:
-    geo, geo_level, indicator, date, value, unit, source
-    """
-    # 'time' viene como YYYY o YYYY-MM etc. extraemos año
-    years = pd.to_numeric(df_raw["time"].astype(str).str.extract(r"(\d{4})")[0], errors="coerce")
+    time_str = df_raw["time"].astype(str)
+    years = pd.to_numeric(time_str.str.extract(r"(\d{4})")[0], errors="coerce")
+    months = pd.to_numeric(time_str.str.extract(r"\d{4}-(\d{2})")[0], errors="coerce")
+
+    base_cols = set(["geo", "time", "value", "unit", "freq"])
+    extra_dims = [c for c in df_raw.columns if c not in base_cols]
 
     out = pd.DataFrame(
         {
@@ -134,16 +159,30 @@ def normalize_to_long(df_raw: pd.DataFrame, dataset: str, indicator_name: str, g
             "geo_level": geo_level,
             "indicator": indicator_name,
             "date": years,
+            "month": months,
             "value": pd.to_numeric(df_raw["value"], errors="coerce"),
             "unit": df_raw.get("unit"),
             "source": f"eurostat:{dataset}",
         }
     )
+
+    # conserva dims extra por si acaso (útil para debugging/otros KPIs)
+    for c in extra_dims:
+        out[c] = df_raw[c]
+
     if unit_fallback:
         out["unit"] = out["unit"].fillna(unit_fallback) if "unit" in out.columns else unit_fallback
 
     out = out.dropna(subset=["geo", "date", "value"]).copy()
     out["date"] = out["date"].astype(int)
+
+    # ✅ elegir dim "más variable" como sub_indicator_short (ej: c_resid en 1b)
+    if extra_dims:
+        nun = {c: out[c].nunique(dropna=True) for c in extra_dims}
+        best_dim = max(nun, key=nun.get)
+        if nun[best_dim] > 1:
+            out["sub_indicator_short"] = out[best_dim]
+
     return out
 
 
@@ -239,11 +278,18 @@ def fetch_indicator(
             code = label_to_code(js_meta, dim, lab)
 
             js = eurostat_get(dataset, params={**params, dim: code}, lang="EN")
+
+            labels = (
+                js_meta.get("dimension", {})
+                .get(dim, {})
+                .get("category", {})
+                .get("label", {})
+            )
+            human_label = labels.get(code, lab)
+
             df_raw = jsonstat_to_dataframe(js)
 
             df_norm = normalize_to_long(df_raw, dataset, indicator_name, geo_level, unit_fallback=unit_fallback)
-            #df_norm["sub_indicator_label"] = lab
-            #df_norm["sub_indicator_code"] = code
 
             def _short_age(code: str) -> str:
                 if code == "PC_Y80_MAX":
@@ -254,7 +300,7 @@ def fetch_indicator(
                     return x.replace("_", "-")
                 return code
 
-            df_norm["sub_indicator_short"] = lab
+            df_norm["sub_indicator_short"] = human_label
 
             out_parts.append(df_norm)
 
