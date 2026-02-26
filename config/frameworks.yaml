@@ -129,7 +129,7 @@ frameworks:
         frequency: A
         time:
           mode: past_years
-          years: 10
+          years: 11
 
         filters:
           c_resid: "TOTAL"   # Total country of residence
@@ -148,7 +148,7 @@ frameworks:
         frequency: A
         time:
           mode: past_years
-          years: 5
+          years: 6
 
         # fijamos “hotels and similar”
         filters:
@@ -171,7 +171,7 @@ frameworks:
         frequency: A
         time:
           mode: past_years
-          years: 10
+          years: 11
 
         # fijamos unit + tipo alojamiento
         filters:
@@ -204,7 +204,7 @@ frameworks:
         frequency: A
         time:
           mode: past_years
-          years: 10
+          years: 11
 
         filters:
           c_dest: "WORLD"
@@ -237,7 +237,7 @@ frameworks:
         frequency: A
         time:
           mode: past_years
-          years: 10
+          years: 11
 
         filters:
           c_dest: "WORLD"     # All countries of the world
@@ -269,7 +269,7 @@ frameworks:
         frequency: A
         time:
           mode: past_years
-          years: 5
+          years: 6
 
         filters:
           purpose: "TOTAL"
@@ -301,7 +301,7 @@ frameworks:
         frequency: M
         time:
           mode: past_years
-          years: 5
+          years: 6
 
         filters:
           c_resid: "TOTAL"

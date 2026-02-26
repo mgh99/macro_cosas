@@ -17,7 +17,7 @@ from core.top_origins import top_origins
 
 
 def current_year() -> int:
-    return datetime.utcnow().year
+    return datetime.now().year
 
 
 def compute_time_window(time_cfg: Dict[str, Any]) -> tuple[int, int]:

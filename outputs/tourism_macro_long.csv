@@ -1,4 +1,5 @@
 geo,indicator,date,month,value,unit,sub_indicator_short
+ES,arrivals_at_tourist_accommodation_establishments,2015,,93216968.0,NR,
 ES,arrivals_at_tourist_accommodation_establishments,2016,,99840032.0,NR,
 ES,arrivals_at_tourist_accommodation_establishments,2017,,103787168.0,NR,
 ES,arrivals_at_tourist_accommodation_establishments,2018,,105311465.0,NR,
@@ -8,6 +9,7 @@ ES,arrivals_at_tourist_accommodation_establishments,2021,,60724131.0,NR,
 ES,arrivals_at_tourist_accommodation_establishments,2022,,102882568.0,NR,
 ES,arrivals_at_tourist_accommodation_establishments,2023,,111991774.0,NR,
 ES,arrivals_at_tourist_accommodation_establishments,2024,,116166159.0,NR,
+FR,arrivals_at_tourist_accommodation_establishments,2015,,113893218.0,NR,
 FR,arrivals_at_tourist_accommodation_establishments,2016,,113894796.0,NR,
 FR,arrivals_at_tourist_accommodation_establishments,2017,,119358404.0,NR,
 FR,arrivals_at_tourist_accommodation_establishments,2018,,121347730.0,NR,
@@ -17,6 +19,7 @@ FR,arrivals_at_tourist_accommodation_establishments,2021,,77227709.0,NR,
 FR,arrivals_at_tourist_accommodation_establishments,2022,,115313668.0,NR,
 FR,arrivals_at_tourist_accommodation_establishments,2023,,120732180.0,NR,
 FR,arrivals_at_tourist_accommodation_establishments,2024,,120181637.0,NR,
+DE,arrivals_at_tourist_accommodation_establishments,2015,,131674079.0,NR,
 DE,arrivals_at_tourist_accommodation_establishments,2016,,135479317.0,NR,
 DE,arrivals_at_tourist_accommodation_establishments,2017,,141138467.0,NR,
 DE,arrivals_at_tourist_accommodation_establishments,2018,,145589880.0,NR,
@@ -26,750 +29,937 @@ DE,arrivals_at_tourist_accommodation_establishments,2021,,71772542.0,NR,
 DE,arrivals_at_tourist_accommodation_establishments,2022,,124601264.0,NR,
 DE,arrivals_at_tourist_accommodation_establishments,2023,,141225234.0,NR,
 DE,arrivals_at_tourist_accommodation_establishments,2024,,146236303.0,NR,
-ES,arrivals_by_origin_hotels_number,2021,,57350475.0,NR,EUR
-ES,arrivals_by_origin_hotels_number,2022,,92903580.0,NR,EUR
-ES,arrivals_by_origin_hotels_number,2023,,98560812.0,NR,EUR
-ES,arrivals_by_origin_hotels_number,2024,,101070352.0,NR,EUR
-ES,arrivals_by_origin_hotels_number,2021,,783529.0,NR,BE
-ES,arrivals_by_origin_hotels_number,2022,,1383994.0,NR,BE
-ES,arrivals_by_origin_hotels_number,2023,,1433063.0,NR,BE
-ES,arrivals_by_origin_hotels_number,2024,,1538185.0,NR,BE
-ES,arrivals_by_origin_hotels_number,2021,,57425.0,NR,BG
-ES,arrivals_by_origin_hotels_number,2022,,115618.0,NR,BG
-ES,arrivals_by_origin_hotels_number,2023,,152373.0,NR,BG
-ES,arrivals_by_origin_hotels_number,2024,,166094.0,NR,BG
-ES,arrivals_by_origin_hotels_number,2021,,160833.0,NR,CZ
-ES,arrivals_by_origin_hotels_number,2022,,323945.0,NR,CZ
-ES,arrivals_by_origin_hotels_number,2023,,380627.0,NR,CZ
-ES,arrivals_by_origin_hotels_number,2024,,392960.0,NR,CZ
-ES,arrivals_by_origin_hotels_number,2021,,321064.0,NR,DK
-ES,arrivals_by_origin_hotels_number,2022,,595537.0,NR,DK
-ES,arrivals_by_origin_hotels_number,2023,,608568.0,NR,DK
-ES,arrivals_by_origin_hotels_number,2024,,621968.0,NR,DK
-ES,arrivals_by_origin_hotels_number,2021,,3085009.0,NR,DE
-ES,arrivals_by_origin_hotels_number,2022,,6592065.0,NR,DE
-ES,arrivals_by_origin_hotels_number,2023,,7238912.0,NR,DE
-ES,arrivals_by_origin_hotels_number,2024,,7656443.0,NR,DE
-ES,arrivals_by_origin_hotels_number,2021,,32664.0,NR,EE
-ES,arrivals_by_origin_hotels_number,2022,,72433.0,NR,EE
-ES,arrivals_by_origin_hotels_number,2023,,80120.0,NR,EE
-ES,arrivals_by_origin_hotels_number,2024,,79302.0,NR,EE
-ES,arrivals_by_origin_hotels_number,2021,,338504.0,NR,IE
-ES,arrivals_by_origin_hotels_number,2022,,1149963.0,NR,IE
-ES,arrivals_by_origin_hotels_number,2023,,1373471.0,NR,IE
-ES,arrivals_by_origin_hotels_number,2024,,1535360.0,NR,IE
-ES,arrivals_by_origin_hotels_number,2021,,53260.0,NR,EL
-ES,arrivals_by_origin_hotels_number,2022,,134287.0,NR,EL
-ES,arrivals_by_origin_hotels_number,2023,,162377.0,NR,EL
-ES,arrivals_by_origin_hotels_number,2024,,173550.0,NR,EL
-ES,arrivals_by_origin_hotels_number,2021,,40272683.0,NR,ES
-ES,arrivals_by_origin_hotels_number,2022,,53314484.0,NR,ES
-ES,arrivals_by_origin_hotels_number,2023,,54708067.0,NR,ES
-ES,arrivals_by_origin_hotels_number,2024,,54319372.0,NR,ES
-ES,arrivals_by_origin_hotels_number,2021,,3418911.0,NR,FR
-ES,arrivals_by_origin_hotels_number,2022,,6030915.0,NR,FR
-ES,arrivals_by_origin_hotels_number,2023,,6320145.0,NR,FR
-ES,arrivals_by_origin_hotels_number,2024,,6551945.0,NR,FR
-ES,arrivals_by_origin_hotels_number,2021,,24356.0,NR,HR
-ES,arrivals_by_origin_hotels_number,2022,,61664.0,NR,HR
-ES,arrivals_by_origin_hotels_number,2023,,109492.0,NR,HR
-ES,arrivals_by_origin_hotels_number,2024,,135534.0,NR,HR
-ES,arrivals_by_origin_hotels_number,2021,,1160943.0,NR,IT
-ES,arrivals_by_origin_hotels_number,2022,,2771474.0,NR,IT
-ES,arrivals_by_origin_hotels_number,2023,,3245126.0,NR,IT
-ES,arrivals_by_origin_hotels_number,2024,,3465211.0,NR,IT
-ES,arrivals_by_origin_hotels_number,2021,,5923.0,NR,CY
-ES,arrivals_by_origin_hotels_number,2022,,16921.0,NR,CY
-ES,arrivals_by_origin_hotels_number,2023,,21772.0,NR,CY
-ES,arrivals_by_origin_hotels_number,2024,,24581.0,NR,CY
-ES,arrivals_by_origin_hotels_number,2021,,31572.0,NR,LV
-ES,arrivals_by_origin_hotels_number,2022,,74681.0,NR,LV
-ES,arrivals_by_origin_hotels_number,2023,,80992.0,NR,LV
-ES,arrivals_by_origin_hotels_number,2024,,84675.0,NR,LV
-ES,arrivals_by_origin_hotels_number,2021,,59830.0,NR,LT
-ES,arrivals_by_origin_hotels_number,2022,,124767.0,NR,LT
-ES,arrivals_by_origin_hotels_number,2023,,152270.0,NR,LT
-ES,arrivals_by_origin_hotels_number,2024,,158731.0,NR,LT
-ES,arrivals_by_origin_hotels_number,2021,,68829.0,NR,LU
-ES,arrivals_by_origin_hotels_number,2022,,92980.0,NR,LU
-ES,arrivals_by_origin_hotels_number,2023,,100197.0,NR,LU
-ES,arrivals_by_origin_hotels_number,2024,,103887.0,NR,LU
-ES,arrivals_by_origin_hotels_number,2021,,74359.0,NR,HU
-ES,arrivals_by_origin_hotels_number,2022,,178069.0,NR,HU
-ES,arrivals_by_origin_hotels_number,2023,,223884.0,NR,HU
-ES,arrivals_by_origin_hotels_number,2024,,262021.0,NR,HU
-ES,arrivals_by_origin_hotels_number,2021,,12038.0,NR,MT
-ES,arrivals_by_origin_hotels_number,2022,,31694.0,NR,MT
-ES,arrivals_by_origin_hotels_number,2023,,35689.0,NR,MT
-ES,arrivals_by_origin_hotels_number,2024,,39168.0,NR,MT
-ES,arrivals_by_origin_hotels_number,2021,,1207273.0,NR,NL
-ES,arrivals_by_origin_hotels_number,2022,,2317849.0,NR,NL
-ES,arrivals_by_origin_hotels_number,2023,,2413034.0,NR,NL
-ES,arrivals_by_origin_hotels_number,2024,,2595182.0,NR,NL
-ES,arrivals_by_origin_hotels_number,2021,,193788.0,NR,AT
-ES,arrivals_by_origin_hotels_number,2022,,480992.0,NR,AT
-ES,arrivals_by_origin_hotels_number,2023,,550660.0,NR,AT
-ES,arrivals_by_origin_hotels_number,2024,,586582.0,NR,AT
-ES,arrivals_by_origin_hotels_number,2021,,472568.0,NR,PL
-ES,arrivals_by_origin_hotels_number,2022,,924753.0,NR,PL
-ES,arrivals_by_origin_hotels_number,2023,,1180598.0,NR,PL
-ES,arrivals_by_origin_hotels_number,2024,,1388241.0,NR,PL
-ES,arrivals_by_origin_hotels_number,2021,,849210.0,NR,PT
-ES,arrivals_by_origin_hotels_number,2022,,1745126.0,NR,PT
-ES,arrivals_by_origin_hotels_number,2023,,2030105.0,NR,PT
-ES,arrivals_by_origin_hotels_number,2024,,2152251.0,NR,PT
-ES,arrivals_by_origin_hotels_number,2021,,329501.0,NR,RO
-ES,arrivals_by_origin_hotels_number,2022,,551065.0,NR,RO
-ES,arrivals_by_origin_hotels_number,2023,,603075.0,NR,RO
-ES,arrivals_by_origin_hotels_number,2024,,639957.0,NR,RO
-ES,arrivals_by_origin_hotels_number,2021,,23050.0,NR,SI
-ES,arrivals_by_origin_hotels_number,2022,,58836.0,NR,SI
-ES,arrivals_by_origin_hotels_number,2023,,75999.0,NR,SI
-ES,arrivals_by_origin_hotels_number,2024,,78437.0,NR,SI
-ES,arrivals_by_origin_hotels_number,2021,,46798.0,NR,SK
-ES,arrivals_by_origin_hotels_number,2022,,110877.0,NR,SK
-ES,arrivals_by_origin_hotels_number,2023,,127035.0,NR,SK
-ES,arrivals_by_origin_hotels_number,2024,,143767.0,NR,SK
-ES,arrivals_by_origin_hotels_number,2021,,107587.0,NR,FI
-ES,arrivals_by_origin_hotels_number,2022,,310612.0,NR,FI
-ES,arrivals_by_origin_hotels_number,2023,,358541.0,NR,FI
-ES,arrivals_by_origin_hotels_number,2024,,377572.0,NR,FI
-ES,arrivals_by_origin_hotels_number,2021,,376987.0,NR,SE
-ES,arrivals_by_origin_hotels_number,2022,,773891.0,NR,SE
-ES,arrivals_by_origin_hotels_number,2023,,849899.0,NR,SE
-ES,arrivals_by_origin_hotels_number,2024,,864326.0,NR,SE
-ES,arrivals_by_origin_hotels_number,2021,,53568494.0,NR,INT_EU27_2020
-ES,arrivals_by_origin_hotels_number,2022,,80339492.0,NR,INT_EU27_2020
-ES,arrivals_by_origin_hotels_number,2023,,84616091.0,NR,INT_EU27_2020
-ES,arrivals_by_origin_hotels_number,2024,,86135302.0,NR,INT_EU27_2020
-ES,arrivals_by_origin_hotels_number,2021,,56053493.0,NR,INT_EU28
-ES,arrivals_by_origin_hotels_number,2022,,89929915.0,NR,INT_EU28
-ES,arrivals_by_origin_hotels_number,2023,,95276457.0,NR,INT_EU28
-ES,arrivals_by_origin_hotels_number,2024,,97463076.0,NR,INT_EU28
-ES,arrivals_by_origin_hotels_number,2021,,13295811.0,NR,EU27_2020_FOR
-ES,arrivals_by_origin_hotels_number,2022,,27025008.0,NR,EU27_2020_FOR
-ES,arrivals_by_origin_hotels_number,2023,,29908024.0,NR,EU27_2020_FOR
-ES,arrivals_by_origin_hotels_number,2024,,31815930.0,NR,EU27_2020_FOR
-ES,arrivals_by_origin_hotels_number,2021,,673017.0,NR,EFTA
-ES,arrivals_by_origin_hotels_number,2022,,1634034.0,NR,EFTA
-ES,arrivals_by_origin_hotels_number,2023,,1755162.0,NR,EFTA
-ES,arrivals_by_origin_hotels_number,2024,,1813580.0,NR,EFTA
-ES,arrivals_by_origin_hotels_number,2021,,42692.0,NR,IS
-ES,arrivals_by_origin_hotels_number,2022,,116241.0,NR,IS
-ES,arrivals_by_origin_hotels_number,2023,,123731.0,NR,IS
-ES,arrivals_by_origin_hotels_number,2024,,120000.0,NR,IS
-ES,arrivals_by_origin_hotels_number,2021,,505284.0,NR,CH_LI
-ES,arrivals_by_origin_hotels_number,2022,,956238.0,NR,CH_LI
-ES,arrivals_by_origin_hotels_number,2023,,1059999.0,NR,CH_LI
-ES,arrivals_by_origin_hotels_number,2024,,1118518.0,NR,CH_LI
-ES,arrivals_by_origin_hotels_number,2021,,125041.0,NR,NO
-ES,arrivals_by_origin_hotels_number,2022,,561554.0,NR,NO
-ES,arrivals_by_origin_hotels_number,2023,,571432.0,NR,NO
-ES,arrivals_by_origin_hotels_number,2024,,575061.0,NR,NO
-ES,arrivals_by_origin_hotels_number,2021,,2484999.0,NR,UK
-ES,arrivals_by_origin_hotels_number,2022,,9590423.0,NR,UK
-ES,arrivals_by_origin_hotels_number,2023,,10660366.0,NR,UK
-ES,arrivals_by_origin_hotels_number,2024,,11327774.0,NR,UK
-ES,arrivals_by_origin_hotels_number,2021,,41694.0,NR,TR
-ES,arrivals_by_origin_hotels_number,2022,,152539.0,NR,TR
-ES,arrivals_by_origin_hotels_number,2023,,231331.0,NR,TR
-ES,arrivals_by_origin_hotels_number,2024,,301285.0,NR,TR
-ES,arrivals_by_origin_hotels_number,2021,,111820.0,NR,UA
-ES,arrivals_by_origin_hotels_number,2022,,267679.0,NR,UA
-ES,arrivals_by_origin_hotels_number,2023,,322363.0,NR,UA
-ES,arrivals_by_origin_hotels_number,2024,,417655.0,NR,UA
-ES,arrivals_by_origin_hotels_number,2021,,132069.0,NR,RU
-ES,arrivals_by_origin_hotels_number,2022,,228249.0,NR,RU
-ES,arrivals_by_origin_hotels_number,2023,,267705.0,NR,RU
-ES,arrivals_by_origin_hotels_number,2024,,277336.0,NR,RU
-ES,arrivals_by_origin_hotels_number,2021,,338384.0,NR,EUR_OTH
-ES,arrivals_by_origin_hotels_number,2022,,691163.0,NR,EUR_OTH
-ES,arrivals_by_origin_hotels_number,2023,,707794.0,NR,EUR_OTH
-ES,arrivals_by_origin_hotels_number,2024,,797419.0,NR,EUR_OTH
-ES,arrivals_by_origin_hotels_number,2021,,324358.0,NR,AFR
-ES,arrivals_by_origin_hotels_number,2022,,712778.0,NR,AFR
-ES,arrivals_by_origin_hotels_number,2023,,810575.0,NR,AFR
-ES,arrivals_by_origin_hotels_number,2024,,906976.0,NR,AFR
-ES,arrivals_by_origin_hotels_number,2021,,16921.0,NR,ZA
-ES,arrivals_by_origin_hotels_number,2022,,57691.0,NR,ZA
-ES,arrivals_by_origin_hotels_number,2023,,61795.0,NR,ZA
-ES,arrivals_by_origin_hotels_number,2024,,67102.0,NR,ZA
-ES,arrivals_by_origin_hotels_number,2021,,307436.0,NR,AFR_OTH
-ES,arrivals_by_origin_hotels_number,2022,,655087.0,NR,AFR_OTH
-ES,arrivals_by_origin_hotels_number,2023,,748780.0,NR,AFR_OTH
-ES,arrivals_by_origin_hotels_number,2024,,839874.0,NR,AFR_OTH
-ES,arrivals_by_origin_hotels_number,2021,,2165080.0,NR,AME
-ES,arrivals_by_origin_hotels_number,2022,,6670754.0,NR,AME
-ES,arrivals_by_origin_hotels_number,2023,,8396847.0,NR,AME
-ES,arrivals_by_origin_hotels_number,2024,,9248341.0,NR,AME
-ES,arrivals_by_origin_hotels_number,2021,,1190166.0,NR,AME_N
-ES,arrivals_by_origin_hotels_number,2022,,4182274.0,NR,AME_N
-ES,arrivals_by_origin_hotels_number,2023,,5497593.0,NR,AME_N
-ES,arrivals_by_origin_hotels_number,2024,,6239712.0,NR,AME_N
-ES,arrivals_by_origin_hotels_number,2021,,74767.0,NR,CA
-ES,arrivals_by_origin_hotels_number,2022,,449769.0,NR,CA
-ES,arrivals_by_origin_hotels_number,2023,,663207.0,NR,CA
-ES,arrivals_by_origin_hotels_number,2024,,770769.0,NR,CA
-ES,arrivals_by_origin_hotels_number,2021,,871844.0,NR,US
-ES,arrivals_by_origin_hotels_number,2022,,3077786.0,NR,US
-ES,arrivals_by_origin_hotels_number,2023,,3952556.0,NR,US
-ES,arrivals_by_origin_hotels_number,2024,,4523050.0,NR,US
-ES,arrivals_by_origin_hotels_number,2021,,243554.0,NR,AME_N_OTH
-ES,arrivals_by_origin_hotels_number,2022,,654719.0,NR,AME_N_OTH
-ES,arrivals_by_origin_hotels_number,2023,,881830.0,NR,AME_N_OTH
-ES,arrivals_by_origin_hotels_number,2024,,945893.0,NR,AME_N_OTH
-ES,arrivals_by_origin_hotels_number,2021,,974915.0,NR,AME_C_S
-ES,arrivals_by_origin_hotels_number,2022,,2488480.0,NR,AME_C_S
-ES,arrivals_by_origin_hotels_number,2023,,2899254.0,NR,AME_C_S
-ES,arrivals_by_origin_hotels_number,2024,,3008629.0,NR,AME_C_S
-ES,arrivals_by_origin_hotels_number,2021,,153870.0,NR,BR
-ES,arrivals_by_origin_hotels_number,2022,,504698.0,NR,BR
-ES,arrivals_by_origin_hotels_number,2023,,620900.0,NR,BR
-ES,arrivals_by_origin_hotels_number,2024,,694067.0,NR,BR
-ES,arrivals_by_origin_hotels_number,2021,,821044.0,NR,AME_C_S_OTH
-ES,arrivals_by_origin_hotels_number,2022,,1983782.0,NR,AME_C_S_OTH
-ES,arrivals_by_origin_hotels_number,2023,,2278354.0,NR,AME_C_S_OTH
-ES,arrivals_by_origin_hotels_number,2024,,2314562.0,NR,AME_C_S_OTH
-ES,arrivals_by_origin_hotels_number,2021,,457427.0,NR,ASI
-ES,arrivals_by_origin_hotels_number,2022,,1536313.0,NR,ASI
-ES,arrivals_by_origin_hotels_number,2023,,2873094.0,NR,ASI
-ES,arrivals_by_origin_hotels_number,2024,,3707211.0,NR,ASI
-ES,arrivals_by_origin_hotels_number,2021,,106102.0,NR,CN
-ES,arrivals_by_origin_hotels_number,2022,,305178.0,NR,CN
-ES,arrivals_by_origin_hotels_number,2023,,763646.0,NR,CN
-ES,arrivals_by_origin_hotels_number,2024,,1252057.0,NR,CN
-ES,arrivals_by_origin_hotels_number,2021,,28472.0,NR,JP
-ES,arrivals_by_origin_hotels_number,2022,,117539.0,NR,JP
-ES,arrivals_by_origin_hotels_number,2023,,302873.0,NR,JP
-ES,arrivals_by_origin_hotels_number,2024,,399189.0,NR,JP
-ES,arrivals_by_origin_hotels_number,2021,,20073.0,NR,KR
-ES,arrivals_by_origin_hotels_number,2022,,174006.0,NR,KR
-ES,arrivals_by_origin_hotels_number,2023,,549687.0,NR,KR
-ES,arrivals_by_origin_hotels_number,2024,,655228.0,NR,KR
-ES,arrivals_by_origin_hotels_number,2021,,302780.0,NR,ASI_OTH
-ES,arrivals_by_origin_hotels_number,2022,,939589.0,NR,ASI_OTH
-ES,arrivals_by_origin_hotels_number,2023,,1256888.0,NR,ASI_OTH
-ES,arrivals_by_origin_hotels_number,2024,,1400737.0,NR,ASI_OTH
-ES,arrivals_by_origin_hotels_number,2021,,46202.0,NR,OCE
-ES,arrivals_by_origin_hotels_number,2022,,249351.0,NR,OCE
-ES,arrivals_by_origin_hotels_number,2023,,454323.0,NR,OCE
-ES,arrivals_by_origin_hotels_number,2024,,467119.0,NR,OCE
-ES,arrivals_by_origin_hotels_number,2021,,28679.0,NR,AU
-ES,arrivals_by_origin_hotels_number,2022,,212061.0,NR,AU
-ES,arrivals_by_origin_hotels_number,2023,,413058.0,NR,AU
-ES,arrivals_by_origin_hotels_number,2024,,431839.0,NR,AU
-ES,arrivals_by_origin_hotels_number,2021,,17523.0,NR,OCE_OTH
-ES,arrivals_by_origin_hotels_number,2022,,37290.0,NR,OCE_OTH
-ES,arrivals_by_origin_hotels_number,2023,,41265.0,NR,OCE_OTH
-ES,arrivals_by_origin_hotels_number,2024,,35280.0,NR,OCE_OTH
-ES,arrivals_by_origin_hotels_number,2021,,40272683.0,NR,DOM
-ES,arrivals_by_origin_hotels_number,2022,,53314484.0,NR,DOM
-ES,arrivals_by_origin_hotels_number,2023,,54708067.0,NR,DOM
-ES,arrivals_by_origin_hotels_number,2024,,54319372.0,NR,DOM
-ES,arrivals_by_origin_hotels_number,2021,,60724070.0,NR,WORLD
-ES,arrivals_by_origin_hotels_number,2022,,102882568.0,NR,WORLD
-ES,arrivals_by_origin_hotels_number,2023,,111991774.0,NR,WORLD
-ES,arrivals_by_origin_hotels_number,2024,,116166159.0,NR,WORLD
-ES,arrivals_by_origin_hotels_number,2021,,380528.0,NR,WRL_NAL
-ES,arrivals_by_origin_hotels_number,2022,,809792.0,NR,WRL_NAL
-ES,arrivals_by_origin_hotels_number,2023,,896124.0,NR,WRL_NAL
-ES,arrivals_by_origin_hotels_number,2024,,766160.0,NR,WRL_NAL
-FR,arrivals_by_origin_hotels_number,2021,,74601457.0,NR,EUR
-FR,arrivals_by_origin_hotels_number,2022,,107526614.0,NR,EUR
-FR,arrivals_by_origin_hotels_number,2023,,111209110.0,NR,EUR
-FR,arrivals_by_origin_hotels_number,2024,,109762644.0,NR,EUR
-FR,arrivals_by_origin_hotels_number,2021,,1946142.0,NR,BE
-FR,arrivals_by_origin_hotels_number,2022,,3209676.0,NR,BE
-FR,arrivals_by_origin_hotels_number,2023,,3137969.0,NR,BE
-FR,arrivals_by_origin_hotels_number,2024,,3212282.0,NR,BE
-FR,arrivals_by_origin_hotels_number,2021,,24863.0,NR,BG
-FR,arrivals_by_origin_hotels_number,2022,,57781.0,NR,BG
-FR,arrivals_by_origin_hotels_number,2023,,74899.0,NR,BG
-FR,arrivals_by_origin_hotels_number,2024,,71249.0,NR,BG
-FR,arrivals_by_origin_hotels_number,2021,,63949.0,NR,CZ
-FR,arrivals_by_origin_hotels_number,2022,,149363.0,NR,CZ
-FR,arrivals_by_origin_hotels_number,2023,,182471.0,NR,CZ
-FR,arrivals_by_origin_hotels_number,2024,,178589.0,NR,CZ
-FR,arrivals_by_origin_hotels_number,2021,,143514.0,NR,DK
-FR,arrivals_by_origin_hotels_number,2022,,310818.0,NR,DK
-FR,arrivals_by_origin_hotels_number,2023,,298869.0,NR,DK
-FR,arrivals_by_origin_hotels_number,2024,,290146.0,NR,DK
-FR,arrivals_by_origin_hotels_number,2021,,1780293.0,NR,DE
-FR,arrivals_by_origin_hotels_number,2022,,3607958.0,NR,DE
-FR,arrivals_by_origin_hotels_number,2023,,3844568.0,NR,DE
-FR,arrivals_by_origin_hotels_number,2024,,3875086.0,NR,DE
-FR,arrivals_by_origin_hotels_number,2021,,15309.0,NR,EE
-FR,arrivals_by_origin_hotels_number,2022,,37785.0,NR,EE
-FR,arrivals_by_origin_hotels_number,2023,,35845.0,NR,EE
-FR,arrivals_by_origin_hotels_number,2024,,37419.0,NR,EE
-FR,arrivals_by_origin_hotels_number,2021,,100832.0,NR,IE
-FR,arrivals_by_origin_hotels_number,2022,,343276.0,NR,IE
-FR,arrivals_by_origin_hotels_number,2023,,428712.0,NR,IE
-FR,arrivals_by_origin_hotels_number,2024,,407447.0,NR,IE
-FR,arrivals_by_origin_hotels_number,2021,,50970.0,NR,EL
-FR,arrivals_by_origin_hotels_number,2022,,139650.0,NR,EL
-FR,arrivals_by_origin_hotels_number,2023,,146901.0,NR,EL
-FR,arrivals_by_origin_hotels_number,2024,,153968.0,NR,EL
-FR,arrivals_by_origin_hotels_number,2021,,984927.0,NR,ES
-FR,arrivals_by_origin_hotels_number,2022,,2459181.0,NR,ES
-FR,arrivals_by_origin_hotels_number,2023,,2623571.0,NR,ES
-FR,arrivals_by_origin_hotels_number,2024,,2629840.0,NR,ES
-FR,arrivals_by_origin_hotels_number,2021,,63472748.0,NR,FR
-FR,arrivals_by_origin_hotels_number,2022,,82428128.0,NR,FR
-FR,arrivals_by_origin_hotels_number,2023,,83304920.0,NR,FR
-FR,arrivals_by_origin_hotels_number,2024,,82336568.0,NR,FR
-FR,arrivals_by_origin_hotels_number,2021,,13987.0,NR,HR
-FR,arrivals_by_origin_hotels_number,2022,,37697.0,NR,HR
-FR,arrivals_by_origin_hotels_number,2023,,58203.0,NR,HR
-FR,arrivals_by_origin_hotels_number,2024,,62387.0,NR,HR
-FR,arrivals_by_origin_hotels_number,2021,,882027.0,NR,IT
-FR,arrivals_by_origin_hotels_number,2022,,2271206.0,NR,IT
-FR,arrivals_by_origin_hotels_number,2023,,2462250.0,NR,IT
-FR,arrivals_by_origin_hotels_number,2024,,2425656.0,NR,IT
-FR,arrivals_by_origin_hotels_number,2021,,9478.0,NR,CY
-FR,arrivals_by_origin_hotels_number,2022,,29037.0,NR,CY
-FR,arrivals_by_origin_hotels_number,2023,,35172.0,NR,CY
-FR,arrivals_by_origin_hotels_number,2024,,33389.0,NR,CY
-FR,arrivals_by_origin_hotels_number,2021,,12483.0,NR,LV
-FR,arrivals_by_origin_hotels_number,2022,,34237.0,NR,LV
-FR,arrivals_by_origin_hotels_number,2023,,35234.0,NR,LV
-FR,arrivals_by_origin_hotels_number,2024,,37793.0,NR,LV
-FR,arrivals_by_origin_hotels_number,2021,,30848.0,NR,LT
-FR,arrivals_by_origin_hotels_number,2022,,64109.0,NR,LT
-FR,arrivals_by_origin_hotels_number,2023,,71413.0,NR,LT
-FR,arrivals_by_origin_hotels_number,2024,,69981.0,NR,LT
-FR,arrivals_by_origin_hotels_number,2021,,164310.0,NR,LU
-FR,arrivals_by_origin_hotels_number,2022,,279348.0,NR,LU
-FR,arrivals_by_origin_hotels_number,2023,,284723.0,NR,LU
-FR,arrivals_by_origin_hotels_number,2024,,297370.0,NR,LU
-FR,arrivals_by_origin_hotels_number,2021,,30557.0,NR,HU
-FR,arrivals_by_origin_hotels_number,2022,,76506.0,NR,HU
-FR,arrivals_by_origin_hotels_number,2023,,84295.0,NR,HU
-FR,arrivals_by_origin_hotels_number,2024,,85903.0,NR,HU
-FR,arrivals_by_origin_hotels_number,2021,,9861.0,NR,MT
-FR,arrivals_by_origin_hotels_number,2022,,29064.0,NR,MT
-FR,arrivals_by_origin_hotels_number,2023,,33212.0,NR,MT
-FR,arrivals_by_origin_hotels_number,2024,,35119.0,NR,MT
-FR,arrivals_by_origin_hotels_number,2021,,1317108.0,NR,NL
-FR,arrivals_by_origin_hotels_number,2022,,2535866.0,NR,NL
-FR,arrivals_by_origin_hotels_number,2023,,2393736.0,NR,NL
-FR,arrivals_by_origin_hotels_number,2024,,2495789.0,NR,NL
-FR,arrivals_by_origin_hotels_number,2021,,122512.0,NR,AT
-FR,arrivals_by_origin_hotels_number,2022,,266828.0,NR,AT
-FR,arrivals_by_origin_hotels_number,2023,,287456.0,NR,AT
-FR,arrivals_by_origin_hotels_number,2024,,296202.0,NR,AT
-FR,arrivals_by_origin_hotels_number,2021,,242003.0,NR,PL
-FR,arrivals_by_origin_hotels_number,2022,,487329.0,NR,PL
-FR,arrivals_by_origin_hotels_number,2023,,558150.0,NR,PL
-FR,arrivals_by_origin_hotels_number,2024,,544664.0,NR,PL
-FR,arrivals_by_origin_hotels_number,2021,,181248.0,NR,PT
-FR,arrivals_by_origin_hotels_number,2022,,453881.0,NR,PT
-FR,arrivals_by_origin_hotels_number,2023,,490790.0,NR,PT
-FR,arrivals_by_origin_hotels_number,2024,,481259.0,NR,PT
-FR,arrivals_by_origin_hotels_number,2021,,115948.0,NR,RO
-FR,arrivals_by_origin_hotels_number,2022,,232195.0,NR,RO
-FR,arrivals_by_origin_hotels_number,2023,,249225.0,NR,RO
-FR,arrivals_by_origin_hotels_number,2024,,243859.0,NR,RO
-FR,arrivals_by_origin_hotels_number,2021,,14614.0,NR,SI
-FR,arrivals_by_origin_hotels_number,2022,,33998.0,NR,SI
-FR,arrivals_by_origin_hotels_number,2023,,38193.0,NR,SI
-FR,arrivals_by_origin_hotels_number,2024,,37657.0,NR,SI
-FR,arrivals_by_origin_hotels_number,2021,,15590.0,NR,SK
-FR,arrivals_by_origin_hotels_number,2022,,41916.0,NR,SK
-FR,arrivals_by_origin_hotels_number,2023,,52857.0,NR,SK
-FR,arrivals_by_origin_hotels_number,2024,,55473.0,NR,SK
-FR,arrivals_by_origin_hotels_number,2021,,37902.0,NR,FI
-FR,arrivals_by_origin_hotels_number,2022,,114206.0,NR,FI
-FR,arrivals_by_origin_hotels_number,2023,,121729.0,NR,FI
-FR,arrivals_by_origin_hotels_number,2024,,120851.0,NR,FI
-FR,arrivals_by_origin_hotels_number,2021,,118041.0,NR,SE
-FR,arrivals_by_origin_hotels_number,2022,,302250.0,NR,SE
-FR,arrivals_by_origin_hotels_number,2023,,337534.0,NR,SE
-FR,arrivals_by_origin_hotels_number,2024,,345094.0,NR,SE
-FR,arrivals_by_origin_hotels_number,2021,,71902064.0,NR,INT_EU27_2020
-FR,arrivals_by_origin_hotels_number,2022,,100033289.0,NR,INT_EU27_2020
-FR,arrivals_by_origin_hotels_number,2023,,101672897.0,NR,INT_EU27_2020
-FR,arrivals_by_origin_hotels_number,2024,,100861040.0,NR,INT_EU27_2020
-FR,arrivals_by_origin_hotels_number,2021,,73100752.0,NR,INT_EU28
-FR,arrivals_by_origin_hotels_number,2022,,104364591.0,NR,INT_EU28
-FR,arrivals_by_origin_hotels_number,2023,,107854014.0,NR,INT_EU28
-FR,arrivals_by_origin_hotels_number,2024,,106085555.0,NR,INT_EU28
-FR,arrivals_by_origin_hotels_number,2021,,8429316.0,NR,EU27_2020_FOR
-FR,arrivals_by_origin_hotels_number,2022,,17605161.0,NR,EU27_2020_FOR
-FR,arrivals_by_origin_hotels_number,2023,,18367977.0,NR,EU27_2020_FOR
-FR,arrivals_by_origin_hotels_number,2024,,18524472.0,NR,EU27_2020_FOR
-FR,arrivals_by_origin_hotels_number,2021,,1061955.0,NR,EFTA
-FR,arrivals_by_origin_hotels_number,2022,,2164157.0,NR,EFTA
-FR,arrivals_by_origin_hotels_number,2023,,2149399.0,NR,EFTA
-FR,arrivals_by_origin_hotels_number,2024,,2327560.0,NR,EFTA
-FR,arrivals_by_origin_hotels_number,2021,,8799.0,NR,IS
-FR,arrivals_by_origin_hotels_number,2022,,22336.0,NR,IS
-FR,arrivals_by_origin_hotels_number,2023,,21333.0,NR,IS
-FR,arrivals_by_origin_hotels_number,2024,,20812.0,NR,IS
-FR,arrivals_by_origin_hotels_number,2021,,1001607.0,NR,CH_LI
-FR,arrivals_by_origin_hotels_number,2022,,1940134.0,NR,CH_LI
-FR,arrivals_by_origin_hotels_number,2023,,1891196.0,NR,CH_LI
-FR,arrivals_by_origin_hotels_number,2024,,2050827.0,NR,CH_LI
-FR,arrivals_by_origin_hotels_number,2021,,51550.0,NR,NO
-FR,arrivals_by_origin_hotels_number,2022,,201687.0,NR,NO
-FR,arrivals_by_origin_hotels_number,2023,,236869.0,NR,NO
-FR,arrivals_by_origin_hotels_number,2024,,255921.0,NR,NO
-FR,arrivals_by_origin_hotels_number,2021,,1198688.0,NR,UK
-FR,arrivals_by_origin_hotels_number,2022,,4331302.0,NR,UK
-FR,arrivals_by_origin_hotels_number,2023,,6181117.0,NR,UK
-FR,arrivals_by_origin_hotels_number,2024,,5224515.0,NR,UK
-FR,arrivals_by_origin_hotels_number,2021,,48642.0,NR,TR
-FR,arrivals_by_origin_hotels_number,2022,,153964.0,NR,TR
-FR,arrivals_by_origin_hotels_number,2023,,238931.0,NR,TR
-FR,arrivals_by_origin_hotels_number,2024,,305987.0,NR,TR
-FR,arrivals_by_origin_hotels_number,2021,,0.0,NR,UA
-FR,arrivals_by_origin_hotels_number,2022,,0.0,NR,UA
-FR,arrivals_by_origin_hotels_number,2023,,0.0,NR,UA
-FR,arrivals_by_origin_hotels_number,2024,,0.0,NR,UA
-FR,arrivals_by_origin_hotels_number,2021,,85984.0,NR,RU
-FR,arrivals_by_origin_hotels_number,2022,,122840.0,NR,RU
-FR,arrivals_by_origin_hotels_number,2023,,163377.0,NR,RU
-FR,arrivals_by_origin_hotels_number,2024,,181684.0,NR,RU
-FR,arrivals_by_origin_hotels_number,2021,,304125.0,NR,EUR_OTH
-FR,arrivals_by_origin_hotels_number,2022,,721061.0,NR,EUR_OTH
-FR,arrivals_by_origin_hotels_number,2023,,803388.0,NR,EUR_OTH
-FR,arrivals_by_origin_hotels_number,2024,,861861.0,NR,EUR_OTH
-FR,arrivals_by_origin_hotels_number,2021,,240290.0,NR,AFR
-FR,arrivals_by_origin_hotels_number,2022,,574183.0,NR,AFR
-FR,arrivals_by_origin_hotels_number,2023,,637151.0,NR,AFR
-FR,arrivals_by_origin_hotels_number,2024,,644727.0,NR,AFR
-FR,arrivals_by_origin_hotels_number,2021,,20042.0,NR,ZA
-FR,arrivals_by_origin_hotels_number,2022,,46427.0,NR,ZA
-FR,arrivals_by_origin_hotels_number,2023,,77608.0,NR,ZA
-FR,arrivals_by_origin_hotels_number,2024,,52391.0,NR,ZA
-FR,arrivals_by_origin_hotels_number,2021,,220248.0,NR,AFR_OTH
-FR,arrivals_by_origin_hotels_number,2022,,527756.0,NR,AFR_OTH
-FR,arrivals_by_origin_hotels_number,2023,,559543.0,NR,AFR_OTH
-FR,arrivals_by_origin_hotels_number,2024,,592336.0,NR,AFR_OTH
-FR,arrivals_by_origin_hotels_number,2021,,1599126.0,NR,AME
-FR,arrivals_by_origin_hotels_number,2022,,4923450.0,NR,AME
-FR,arrivals_by_origin_hotels_number,2023,,5245644.0,NR,AME
-FR,arrivals_by_origin_hotels_number,2024,,6134823.0,NR,AME
-FR,arrivals_by_origin_hotels_number,2021,,1323588.0,NR,AME_N
-FR,arrivals_by_origin_hotels_number,2022,,3955456.0,NR,AME_N
-FR,arrivals_by_origin_hotels_number,2023,,4097985.0,NR,AME_N
-FR,arrivals_by_origin_hotels_number,2024,,4936633.0,NR,AME_N
-FR,arrivals_by_origin_hotels_number,2021,,109941.0,NR,CA
-FR,arrivals_by_origin_hotels_number,2022,,434816.0,NR,CA
-FR,arrivals_by_origin_hotels_number,2023,,558477.0,NR,CA
-FR,arrivals_by_origin_hotels_number,2024,,569791.0,NR,CA
-FR,arrivals_by_origin_hotels_number,2021,,1213647.0,NR,US
-FR,arrivals_by_origin_hotels_number,2022,,3520640.0,NR,US
-FR,arrivals_by_origin_hotels_number,2023,,3539509.0,NR,US
-FR,arrivals_by_origin_hotels_number,2024,,4366842.0,NR,US
-FR,arrivals_by_origin_hotels_number,2021,,0.0,NR,AME_N_OTH
-FR,arrivals_by_origin_hotels_number,2022,,0.0,NR,AME_N_OTH
-FR,arrivals_by_origin_hotels_number,2023,,0.0,NR,AME_N_OTH
-FR,arrivals_by_origin_hotels_number,2024,,0.0,NR,AME_N_OTH
-FR,arrivals_by_origin_hotels_number,2021,,275538.0,NR,AME_C_S
-FR,arrivals_by_origin_hotels_number,2022,,967995.0,NR,AME_C_S
-FR,arrivals_by_origin_hotels_number,2023,,1147659.0,NR,AME_C_S
-FR,arrivals_by_origin_hotels_number,2024,,1198191.0,NR,AME_C_S
-FR,arrivals_by_origin_hotels_number,2021,,99427.0,NR,BR
-FR,arrivals_by_origin_hotels_number,2022,,375275.0,NR,BR
-FR,arrivals_by_origin_hotels_number,2023,,455142.0,NR,BR
-FR,arrivals_by_origin_hotels_number,2024,,472145.0,NR,BR
-FR,arrivals_by_origin_hotels_number,2021,,176111.0,NR,AME_C_S_OTH
-FR,arrivals_by_origin_hotels_number,2022,,592720.0,NR,AME_C_S_OTH
-FR,arrivals_by_origin_hotels_number,2023,,692517.0,NR,AME_C_S_OTH
-FR,arrivals_by_origin_hotels_number,2024,,726046.0,NR,AME_C_S_OTH
-FR,arrivals_by_origin_hotels_number,2021,,749498.0,NR,ASI
-FR,arrivals_by_origin_hotels_number,2022,,2023427.0,NR,ASI
-FR,arrivals_by_origin_hotels_number,2023,,3071915.0,NR,ASI
-FR,arrivals_by_origin_hotels_number,2024,,3168183.0,NR,ASI
-FR,arrivals_by_origin_hotels_number,2021,,146058.0,NR,CN
-FR,arrivals_by_origin_hotels_number,2022,,224073.0,NR,CN
-FR,arrivals_by_origin_hotels_number,2023,,534737.0,NR,CN
-FR,arrivals_by_origin_hotels_number,2024,,732932.0,NR,CN
-FR,arrivals_by_origin_hotels_number,2021,,63972.0,NR,JP
-FR,arrivals_by_origin_hotels_number,2022,,119407.0,NR,JP
-FR,arrivals_by_origin_hotels_number,2023,,339113.0,NR,JP
-FR,arrivals_by_origin_hotels_number,2024,,392903.0,NR,JP
-FR,arrivals_by_origin_hotels_number,2021,,31633.0,NR,KR
-FR,arrivals_by_origin_hotels_number,2022,,163450.0,NR,KR
-FR,arrivals_by_origin_hotels_number,2023,,315807.0,NR,KR
-FR,arrivals_by_origin_hotels_number,2024,,283771.0,NR,KR
-FR,arrivals_by_origin_hotels_number,2021,,507834.0,NR,ASI_OTH
-FR,arrivals_by_origin_hotels_number,2022,,1516498.0,NR,ASI_OTH
-FR,arrivals_by_origin_hotels_number,2023,,1882258.0,NR,ASI_OTH
-FR,arrivals_by_origin_hotels_number,2024,,1758577.0,NR,ASI_OTH
-FR,arrivals_by_origin_hotels_number,2021,,37338.0,NR,OCE
-FR,arrivals_by_origin_hotels_number,2022,,265992.0,NR,OCE
-FR,arrivals_by_origin_hotels_number,2023,,568360.0,NR,OCE
-FR,arrivals_by_origin_hotels_number,2024,,471259.0,NR,OCE
-FR,arrivals_by_origin_hotels_number,2021,,37338.0,NR,AU
-FR,arrivals_by_origin_hotels_number,2022,,265992.0,NR,AU
-FR,arrivals_by_origin_hotels_number,2023,,568360.0,NR,AU
-FR,arrivals_by_origin_hotels_number,2024,,471259.0,NR,AU
-FR,arrivals_by_origin_hotels_number,2021,,0.0,NR,OCE_OTH
-FR,arrivals_by_origin_hotels_number,2022,,0.0,NR,OCE_OTH
-FR,arrivals_by_origin_hotels_number,2023,,0.0,NR,OCE_OTH
-FR,arrivals_by_origin_hotels_number,2024,,0.0,NR,OCE_OTH
-FR,arrivals_by_origin_hotels_number,2021,,63472748.0,NR,DOM
-FR,arrivals_by_origin_hotels_number,2022,,82428128.0,NR,DOM
-FR,arrivals_by_origin_hotels_number,2023,,83304920.0,NR,DOM
-FR,arrivals_by_origin_hotels_number,2024,,82336568.0,NR,DOM
-FR,arrivals_by_origin_hotels_number,2021,,77227709.0,NR,WORLD
-FR,arrivals_by_origin_hotels_number,2022,,115313668.0,NR,WORLD
-FR,arrivals_by_origin_hotels_number,2023,,120732180.0,NR,WORLD
-FR,arrivals_by_origin_hotels_number,2024,,120181637.0,NR,WORLD
-FR,arrivals_by_origin_hotels_number,2021,,0.0,NR,WRL_NAL
-FR,arrivals_by_origin_hotels_number,2022,,1.0,NR,WRL_NAL
-FR,arrivals_by_origin_hotels_number,2023,,0.0,NR,WRL_NAL
-FR,arrivals_by_origin_hotels_number,2024,,0.0,NR,WRL_NAL
-DE,arrivals_by_origin_hotels_number,2021,,70157831.0,NR,EUR
-DE,arrivals_by_origin_hotels_number,2022,,119325095.0,NR,EUR
-DE,arrivals_by_origin_hotels_number,2023,,133831926.0,NR,EUR
-DE,arrivals_by_origin_hotels_number,2024,,137854964.0,NR,EUR
-DE,arrivals_by_origin_hotels_number,2021,,514316.0,NR,BE
-DE,arrivals_by_origin_hotels_number,2022,,995939.0,NR,BE
-DE,arrivals_by_origin_hotels_number,2023,,1149304.0,NR,BE
-DE,arrivals_by_origin_hotels_number,2024,,1214403.0,NR,BE
-DE,arrivals_by_origin_hotels_number,2021,,51580.0,NR,BG
-DE,arrivals_by_origin_hotels_number,2022,,95122.0,NR,BG
-DE,arrivals_by_origin_hotels_number,2023,,124571.0,NR,BG
-DE,arrivals_by_origin_hotels_number,2024,,133415.0,NR,BG
-DE,arrivals_by_origin_hotels_number,2021,,192119.0,NR,CZ
-DE,arrivals_by_origin_hotels_number,2022,,421978.0,NR,CZ
-DE,arrivals_by_origin_hotels_number,2023,,513932.0,NR,CZ
-DE,arrivals_by_origin_hotels_number,2024,,530388.0,NR,CZ
-DE,arrivals_by_origin_hotels_number,2021,,610074.0,NR,DK
-DE,arrivals_by_origin_hotels_number,2022,,1132264.0,NR,DK
-DE,arrivals_by_origin_hotels_number,2023,,1236198.0,NR,DK
-DE,arrivals_by_origin_hotels_number,2024,,1271529.0,NR,DK
-DE,arrivals_by_origin_hotels_number,2021,,61620107.0,NR,DE
-DE,arrivals_by_origin_hotels_number,2022,,100062034.0,NR,DE
-DE,arrivals_by_origin_hotels_number,2023,,111203933.0,NR,DE
-DE,arrivals_by_origin_hotels_number,2024,,113894811.0,NR,DE
-DE,arrivals_by_origin_hotels_number,2021,,22748.0,NR,EE
-DE,arrivals_by_origin_hotels_number,2022,,50038.0,NR,EE
-DE,arrivals_by_origin_hotels_number,2023,,60330.0,NR,EE
-DE,arrivals_by_origin_hotels_number,2024,,67144.0,NR,EE
-DE,arrivals_by_origin_hotels_number,2021,,48192.0,NR,IE
-DE,arrivals_by_origin_hotels_number,2022,,167249.0,NR,IE
-DE,arrivals_by_origin_hotels_number,2023,,195063.0,NR,IE
-DE,arrivals_by_origin_hotels_number,2024,,204762.0,NR,IE
-DE,arrivals_by_origin_hotels_number,2021,,57259.0,NR,EL
-DE,arrivals_by_origin_hotels_number,2022,,123986.0,NR,EL
-DE,arrivals_by_origin_hotels_number,2023,,156577.0,NR,EL
-DE,arrivals_by_origin_hotels_number,2024,,183789.0,NR,EL
-DE,arrivals_by_origin_hotels_number,2021,,312331.0,NR,ES
-DE,arrivals_by_origin_hotels_number,2022,,802411.0,NR,ES
-DE,arrivals_by_origin_hotels_number,2023,,934579.0,NR,ES
-DE,arrivals_by_origin_hotels_number,2024,,989197.0,NR,ES
-DE,arrivals_by_origin_hotels_number,2021,,621147.0,NR,FR
-DE,arrivals_by_origin_hotels_number,2022,,1322409.0,NR,FR
-DE,arrivals_by_origin_hotels_number,2023,,1524189.0,NR,FR
-DE,arrivals_by_origin_hotels_number,2024,,1590854.0,NR,FR
-DE,arrivals_by_origin_hotels_number,2021,,52081.0,NR,HR
-DE,arrivals_by_origin_hotels_number,2022,,98962.0,NR,HR
-DE,arrivals_by_origin_hotels_number,2023,,131684.0,NR,HR
-DE,arrivals_by_origin_hotels_number,2024,,147406.0,NR,HR
-DE,arrivals_by_origin_hotels_number,2021,,445572.0,NR,IT
-DE,arrivals_by_origin_hotels_number,2022,,1120323.0,NR,IT
-DE,arrivals_by_origin_hotels_number,2023,,1349533.0,NR,IT
-DE,arrivals_by_origin_hotels_number,2024,,1407305.0,NR,IT
-DE,arrivals_by_origin_hotels_number,2021,,8501.0,NR,CY
-DE,arrivals_by_origin_hotels_number,2022,,20759.0,NR,CY
-DE,arrivals_by_origin_hotels_number,2023,,28284.0,NR,CY
-DE,arrivals_by_origin_hotels_number,2024,,33682.0,NR,CY
-DE,arrivals_by_origin_hotels_number,2021,,30956.0,NR,LV
-DE,arrivals_by_origin_hotels_number,2022,,62896.0,NR,LV
-DE,arrivals_by_origin_hotels_number,2023,,74546.0,NR,LV
-DE,arrivals_by_origin_hotels_number,2024,,79579.0,NR,LV
-DE,arrivals_by_origin_hotels_number,2021,,46883.0,NR,LT
-DE,arrivals_by_origin_hotels_number,2022,,99758.0,NR,LT
-DE,arrivals_by_origin_hotels_number,2023,,113715.0,NR,LT
-DE,arrivals_by_origin_hotels_number,2024,,127404.0,NR,LT
-DE,arrivals_by_origin_hotels_number,2021,,116742.0,NR,LU
-DE,arrivals_by_origin_hotels_number,2022,,227300.0,NR,LU
-DE,arrivals_by_origin_hotels_number,2023,,258432.0,NR,LU
-DE,arrivals_by_origin_hotels_number,2024,,266080.0,NR,LU
-DE,arrivals_by_origin_hotels_number,2021,,86566.0,NR,HU
-DE,arrivals_by_origin_hotels_number,2022,,181664.0,NR,HU
-DE,arrivals_by_origin_hotels_number,2023,,228553.0,NR,HU
-DE,arrivals_by_origin_hotels_number,2024,,256334.0,NR,HU
-DE,arrivals_by_origin_hotels_number,2021,,8425.0,NR,MT
-DE,arrivals_by_origin_hotels_number,2022,,18984.0,NR,MT
-DE,arrivals_by_origin_hotels_number,2023,,23774.0,NR,MT
-DE,arrivals_by_origin_hotels_number,2024,,27787.0,NR,MT
-DE,arrivals_by_origin_hotels_number,2021,,1521276.0,NR,NL
-DE,arrivals_by_origin_hotels_number,2022,,3262011.0,NR,NL
-DE,arrivals_by_origin_hotels_number,2023,,3628869.0,NR,NL
-DE,arrivals_by_origin_hotels_number,2024,,3809499.0,NR,NL
-DE,arrivals_by_origin_hotels_number,2021,,768015.0,NR,AT
-DE,arrivals_by_origin_hotels_number,2022,,1553230.0,NR,AT
-DE,arrivals_by_origin_hotels_number,2023,,1808448.0,NR,AT
-DE,arrivals_by_origin_hotels_number,2024,,1914604.0,NR,AT
-DE,arrivals_by_origin_hotels_number,2021,,520773.0,NR,PL
-DE,arrivals_by_origin_hotels_number,2022,,915622.0,NR,PL
-DE,arrivals_by_origin_hotels_number,2023,,1154363.0,NR,PL
-DE,arrivals_by_origin_hotels_number,2024,,1241170.0,NR,PL
-DE,arrivals_by_origin_hotels_number,2021,,61422.0,NR,PT
-DE,arrivals_by_origin_hotels_number,2022,,147695.0,NR,PT
-DE,arrivals_by_origin_hotels_number,2023,,177036.0,NR,PT
-DE,arrivals_by_origin_hotels_number,2024,,190091.0,NR,PT
-DE,arrivals_by_origin_hotels_number,2021,,160182.0,NR,RO
-DE,arrivals_by_origin_hotels_number,2022,,261763.0,NR,RO
-DE,arrivals_by_origin_hotels_number,2023,,313656.0,NR,RO
-DE,arrivals_by_origin_hotels_number,2024,,358758.0,NR,RO
-DE,arrivals_by_origin_hotels_number,2021,,46654.0,NR,SI
-DE,arrivals_by_origin_hotels_number,2022,,91635.0,NR,SI
-DE,arrivals_by_origin_hotels_number,2023,,111465.0,NR,SI
-DE,arrivals_by_origin_hotels_number,2024,,122574.0,NR,SI
-DE,arrivals_by_origin_hotels_number,2021,,61103.0,NR,SK
-DE,arrivals_by_origin_hotels_number,2022,,117179.0,NR,SK
-DE,arrivals_by_origin_hotels_number,2023,,141738.0,NR,SK
-DE,arrivals_by_origin_hotels_number,2024,,158683.0,NR,SK
-DE,arrivals_by_origin_hotels_number,2021,,58682.0,NR,FI
-DE,arrivals_by_origin_hotels_number,2022,,202214.0,NR,FI
-DE,arrivals_by_origin_hotels_number,2023,,231309.0,NR,FI
-DE,arrivals_by_origin_hotels_number,2024,,235040.0,NR,FI
-DE,arrivals_by_origin_hotels_number,2021,,215285.0,NR,SE
-DE,arrivals_by_origin_hotels_number,2022,,622106.0,NR,SE
-DE,arrivals_by_origin_hotels_number,2023,,683951.0,NR,SE
-DE,arrivals_by_origin_hotels_number,2024,,703323.0,NR,SE
-DE,arrivals_by_origin_hotels_number,2021,,68258991.0,NR,INT_EU27_2020
-DE,arrivals_by_origin_hotels_number,2022,,114177531.0,NR,INT_EU27_2020
-DE,arrivals_by_origin_hotels_number,2023,,127558032.0,NR,INT_EU27_2020
-DE,arrivals_by_origin_hotels_number,2024,,131159611.0,NR,INT_EU27_2020
-DE,arrivals_by_origin_hotels_number,2021,,68595025.0,NR,INT_EU28
-DE,arrivals_by_origin_hotels_number,2022,,115601689.0,NR,INT_EU28
-DE,arrivals_by_origin_hotels_number,2023,,129504190.0,NR,INT_EU28
-DE,arrivals_by_origin_hotels_number,2024,,133279089.0,NR,INT_EU28
-DE,arrivals_by_origin_hotels_number,2021,,6638884.0,NR,EU27_2020_FOR
-DE,arrivals_by_origin_hotels_number,2022,,14115497.0,NR,EU27_2020_FOR
-DE,arrivals_by_origin_hotels_number,2023,,16354099.0,NR,EU27_2020_FOR
-DE,arrivals_by_origin_hotels_number,2024,,17264800.0,NR,EU27_2020_FOR
-DE,arrivals_by_origin_hotels_number,2021,,1123527.0,NR,EFTA
-DE,arrivals_by_origin_hotels_number,2022,,2647337.0,NR,EFTA
-DE,arrivals_by_origin_hotels_number,2023,,3038844.0,NR,EFTA
-DE,arrivals_by_origin_hotels_number,2024,,3121904.0,NR,EFTA
-DE,arrivals_by_origin_hotels_number,2021,,13543.0,NR,IS
-DE,arrivals_by_origin_hotels_number,2022,,36473.0,NR,IS
-DE,arrivals_by_origin_hotels_number,2023,,36171.0,NR,IS
-DE,arrivals_by_origin_hotels_number,2024,,38562.0,NR,IS
-DE,arrivals_by_origin_hotels_number,2021,,1037436.0,NR,CH_LI
-DE,arrivals_by_origin_hotels_number,2022,,2333054.0,NR,CH_LI
-DE,arrivals_by_origin_hotels_number,2023,,2710198.0,NR,CH_LI
-DE,arrivals_by_origin_hotels_number,2024,,2785975.0,NR,CH_LI
-DE,arrivals_by_origin_hotels_number,2021,,72548.0,NR,NO
-DE,arrivals_by_origin_hotels_number,2022,,277810.0,NR,NO
-DE,arrivals_by_origin_hotels_number,2023,,292475.0,NR,NO
-DE,arrivals_by_origin_hotels_number,2024,,297367.0,NR,NO
-DE,arrivals_by_origin_hotels_number,2021,,336034.0,NR,UK
-DE,arrivals_by_origin_hotels_number,2022,,1424158.0,NR,UK
-DE,arrivals_by_origin_hotels_number,2023,,1946158.0,NR,UK
-DE,arrivals_by_origin_hotels_number,2024,,2119478.0,NR,UK
-DE,arrivals_by_origin_hotels_number,2021,,85338.0,NR,TR
-DE,arrivals_by_origin_hotels_number,2022,,258463.0,NR,TR
-DE,arrivals_by_origin_hotels_number,2023,,373595.0,NR,TR
-DE,arrivals_by_origin_hotels_number,2024,,450987.0,NR,TR
-DE,arrivals_by_origin_hotels_number,2021,,75379.0,NR,UA
-DE,arrivals_by_origin_hotels_number,2022,,252819.0,NR,UA
-DE,arrivals_by_origin_hotels_number,2023,,229265.0,NR,UA
-DE,arrivals_by_origin_hotels_number,2024,,230915.0,NR,UA
-DE,arrivals_by_origin_hotels_number,2021,,68611.0,NR,RU
-DE,arrivals_by_origin_hotels_number,2022,,115260.0,NR,RU
-DE,arrivals_by_origin_hotels_number,2023,,106678.0,NR,RU
-DE,arrivals_by_origin_hotels_number,2024,,98049.0,NR,RU
-DE,arrivals_by_origin_hotels_number,2021,,209951.0,NR,EUR_OTH
-DE,arrivals_by_origin_hotels_number,2022,,449527.0,NR,EUR_OTH
-DE,arrivals_by_origin_hotels_number,2023,,579354.0,NR,EUR_OTH
-DE,arrivals_by_origin_hotels_number,2024,,674020.0,NR,EUR_OTH
-DE,arrivals_by_origin_hotels_number,2021,,56454.0,NR,AFR
-DE,arrivals_by_origin_hotels_number,2022,,178585.0,NR,AFR
-DE,arrivals_by_origin_hotels_number,2023,,211797.0,NR,AFR
-DE,arrivals_by_origin_hotels_number,2024,,228564.0,NR,AFR
-DE,arrivals_by_origin_hotels_number,2021,,7566.0,NR,ZA
-DE,arrivals_by_origin_hotels_number,2022,,41331.0,NR,ZA
-DE,arrivals_by_origin_hotels_number,2023,,47618.0,NR,ZA
-DE,arrivals_by_origin_hotels_number,2024,,46435.0,NR,ZA
-DE,arrivals_by_origin_hotels_number,2021,,48888.0,NR,AFR_OTH
-DE,arrivals_by_origin_hotels_number,2022,,137254.0,NR,AFR_OTH
-DE,arrivals_by_origin_hotels_number,2023,,164179.0,NR,AFR_OTH
-DE,arrivals_by_origin_hotels_number,2024,,182129.0,NR,AFR_OTH
-DE,arrivals_by_origin_hotels_number,2021,,829600.0,NR,AME
-DE,arrivals_by_origin_hotels_number,2022,,2855684.0,NR,AME
-DE,arrivals_by_origin_hotels_number,2023,,3568735.0,NR,AME
-DE,arrivals_by_origin_hotels_number,2024,,3997581.0,NR,AME
-DE,arrivals_by_origin_hotels_number,2021,,733586.0,NR,AME_N
-DE,arrivals_by_origin_hotels_number,2022,,2411013.0,NR,AME_N
-DE,arrivals_by_origin_hotels_number,2023,,3007559.0,NR,AME_N
-DE,arrivals_by_origin_hotels_number,2024,,3385378.0,NR,AME_N
-DE,arrivals_by_origin_hotels_number,2021,,55613.0,NR,CA
-DE,arrivals_by_origin_hotels_number,2022,,188936.0,NR,CA
-DE,arrivals_by_origin_hotels_number,2023,,250090.0,NR,CA
-DE,arrivals_by_origin_hotels_number,2024,,275564.0,NR,CA
-DE,arrivals_by_origin_hotels_number,2021,,673752.0,NR,US
-DE,arrivals_by_origin_hotels_number,2022,,2202334.0,NR,US
-DE,arrivals_by_origin_hotels_number,2023,,2729197.0,NR,US
-DE,arrivals_by_origin_hotels_number,2024,,3077771.0,NR,US
-DE,arrivals_by_origin_hotels_number,2021,,4221.0,NR,AME_N_OTH
-DE,arrivals_by_origin_hotels_number,2022,,19743.0,NR,AME_N_OTH
-DE,arrivals_by_origin_hotels_number,2023,,28272.0,NR,AME_N_OTH
-DE,arrivals_by_origin_hotels_number,2024,,32043.0,NR,AME_N_OTH
-DE,arrivals_by_origin_hotels_number,2021,,96014.0,NR,AME_C_S
-DE,arrivals_by_origin_hotels_number,2022,,444671.0,NR,AME_C_S
-DE,arrivals_by_origin_hotels_number,2023,,561176.0,NR,AME_C_S
-DE,arrivals_by_origin_hotels_number,2024,,612203.0,NR,AME_C_S
-DE,arrivals_by_origin_hotels_number,2021,,27650.0,NR,BR
-DE,arrivals_by_origin_hotels_number,2022,,169218.0,NR,BR
-DE,arrivals_by_origin_hotels_number,2023,,214573.0,NR,BR
-DE,arrivals_by_origin_hotels_number,2024,,232974.0,NR,BR
-DE,arrivals_by_origin_hotels_number,2021,,68364.0,NR,AME_C_S_OTH
-DE,arrivals_by_origin_hotels_number,2022,,275453.0,NR,AME_C_S_OTH
-DE,arrivals_by_origin_hotels_number,2023,,346603.0,NR,AME_C_S_OTH
-DE,arrivals_by_origin_hotels_number,2024,,379229.0,NR,AME_C_S_OTH
-DE,arrivals_by_origin_hotels_number,2021,,534055.0,NR,ASI
-DE,arrivals_by_origin_hotels_number,2022,,1672195.0,NR,ASI
-DE,arrivals_by_origin_hotels_number,2023,,2708963.0,NR,ASI
-DE,arrivals_by_origin_hotels_number,2024,,3100658.0,NR,ASI
-DE,arrivals_by_origin_hotels_number,2021,,51770.0,NR,CN
-DE,arrivals_by_origin_hotels_number,2022,,168311.0,NR,CN
-DE,arrivals_by_origin_hotels_number,2023,,557123.0,NR,CN
-DE,arrivals_by_origin_hotels_number,2024,,808113.0,NR,CN
-DE,arrivals_by_origin_hotels_number,2021,,26464.0,NR,JP
-DE,arrivals_by_origin_hotels_number,2022,,126239.0,NR,JP
-DE,arrivals_by_origin_hotels_number,2023,,263825.0,NR,JP
-DE,arrivals_by_origin_hotels_number,2024,,319214.0,NR,JP
-DE,arrivals_by_origin_hotels_number,2021,,25310.0,NR,KR
-DE,arrivals_by_origin_hotels_number,2022,,110254.0,NR,KR
-DE,arrivals_by_origin_hotels_number,2023,,208646.0,NR,KR
-DE,arrivals_by_origin_hotels_number,2024,,210038.0,NR,KR
-DE,arrivals_by_origin_hotels_number,2021,,430511.0,NR,ASI_OTH
-DE,arrivals_by_origin_hotels_number,2022,,1267391.0,NR,ASI_OTH
-DE,arrivals_by_origin_hotels_number,2023,,1679369.0,NR,ASI_OTH
-DE,arrivals_by_origin_hotels_number,2024,,1763293.0,NR,ASI_OTH
-DE,arrivals_by_origin_hotels_number,2021,,21060.0,NR,OCE
-DE,arrivals_by_origin_hotels_number,2022,,189691.0,NR,OCE
-DE,arrivals_by_origin_hotels_number,2023,,341277.0,NR,OCE
-DE,arrivals_by_origin_hotels_number,2024,,346838.0,NR,OCE
-DE,arrivals_by_origin_hotels_number,2021,,16220.0,NR,AU
-DE,arrivals_by_origin_hotels_number,2022,,161126.0,NR,AU
-DE,arrivals_by_origin_hotels_number,2023,,290258.0,NR,AU
-DE,arrivals_by_origin_hotels_number,2024,,292028.0,NR,AU
-DE,arrivals_by_origin_hotels_number,2021,,4840.0,NR,OCE_OTH
-DE,arrivals_by_origin_hotels_number,2022,,28565.0,NR,OCE_OTH
-DE,arrivals_by_origin_hotels_number,2023,,51019.0,NR,OCE_OTH
-DE,arrivals_by_origin_hotels_number,2024,,54810.0,NR,OCE_OTH
-DE,arrivals_by_origin_hotels_number,2021,,61620107.0,NR,DOM
-DE,arrivals_by_origin_hotels_number,2022,,100062034.0,NR,DOM
-DE,arrivals_by_origin_hotels_number,2023,,111203933.0,NR,DOM
-DE,arrivals_by_origin_hotels_number,2024,,113894811.0,NR,DOM
-DE,arrivals_by_origin_hotels_number,2021,,71772542.0,NR,WORLD
-DE,arrivals_by_origin_hotels_number,2022,,124601264.0,NR,WORLD
-DE,arrivals_by_origin_hotels_number,2023,,141225234.0,NR,WORLD
-DE,arrivals_by_origin_hotels_number,2024,,146236303.0,NR,WORLD
-DE,arrivals_by_origin_hotels_number,2021,,173542.0,NR,WRL_NAL
-DE,arrivals_by_origin_hotels_number,2022,,380014.0,NR,WRL_NAL
-DE,arrivals_by_origin_hotels_number,2023,,562536.0,NR,WRL_NAL
-DE,arrivals_by_origin_hotels_number,2024,,707698.0,NR,WRL_NAL
+ES,arrivals_by_origin_hotels_number,2020,,32145443.0,NR,Europe
+ES,arrivals_by_origin_hotels_number,2021,,57350475.0,NR,Europe
+ES,arrivals_by_origin_hotels_number,2022,,92903580.0,NR,Europe
+ES,arrivals_by_origin_hotels_number,2023,,98560812.0,NR,Europe
+ES,arrivals_by_origin_hotels_number,2024,,101070352.0,NR,Europe
+ES,arrivals_by_origin_hotels_number,2020,,336608.0,NR,Belgium
+ES,arrivals_by_origin_hotels_number,2021,,783529.0,NR,Belgium
+ES,arrivals_by_origin_hotels_number,2022,,1383994.0,NR,Belgium
+ES,arrivals_by_origin_hotels_number,2023,,1433063.0,NR,Belgium
+ES,arrivals_by_origin_hotels_number,2024,,1538185.0,NR,Belgium
+ES,arrivals_by_origin_hotels_number,2020,,41720.0,NR,Bulgaria
+ES,arrivals_by_origin_hotels_number,2021,,57425.0,NR,Bulgaria
+ES,arrivals_by_origin_hotels_number,2022,,115618.0,NR,Bulgaria
+ES,arrivals_by_origin_hotels_number,2023,,152373.0,NR,Bulgaria
+ES,arrivals_by_origin_hotels_number,2024,,166094.0,NR,Bulgaria
+ES,arrivals_by_origin_hotels_number,2020,,49531.0,NR,Czechia
+ES,arrivals_by_origin_hotels_number,2021,,160833.0,NR,Czechia
+ES,arrivals_by_origin_hotels_number,2022,,323945.0,NR,Czechia
+ES,arrivals_by_origin_hotels_number,2023,,380627.0,NR,Czechia
+ES,arrivals_by_origin_hotels_number,2024,,392960.0,NR,Czechia
+ES,arrivals_by_origin_hotels_number,2020,,127966.0,NR,Denmark
+ES,arrivals_by_origin_hotels_number,2021,,321064.0,NR,Denmark
+ES,arrivals_by_origin_hotels_number,2022,,595537.0,NR,Denmark
+ES,arrivals_by_origin_hotels_number,2023,,608568.0,NR,Denmark
+ES,arrivals_by_origin_hotels_number,2024,,621968.0,NR,Denmark
+ES,arrivals_by_origin_hotels_number,2020,,1251116.0,NR,Germany
+ES,arrivals_by_origin_hotels_number,2021,,3085009.0,NR,Germany
+ES,arrivals_by_origin_hotels_number,2022,,6592065.0,NR,Germany
+ES,arrivals_by_origin_hotels_number,2023,,7238912.0,NR,Germany
+ES,arrivals_by_origin_hotels_number,2024,,7656443.0,NR,Germany
+ES,arrivals_by_origin_hotels_number,2020,,14576.0,NR,Estonia
+ES,arrivals_by_origin_hotels_number,2021,,32664.0,NR,Estonia
+ES,arrivals_by_origin_hotels_number,2022,,72433.0,NR,Estonia
+ES,arrivals_by_origin_hotels_number,2023,,80120.0,NR,Estonia
+ES,arrivals_by_origin_hotels_number,2024,,79302.0,NR,Estonia
+ES,arrivals_by_origin_hotels_number,2020,,156240.0,NR,Ireland
+ES,arrivals_by_origin_hotels_number,2021,,338504.0,NR,Ireland
+ES,arrivals_by_origin_hotels_number,2022,,1149963.0,NR,Ireland
+ES,arrivals_by_origin_hotels_number,2023,,1373471.0,NR,Ireland
+ES,arrivals_by_origin_hotels_number,2024,,1535360.0,NR,Ireland
+ES,arrivals_by_origin_hotels_number,2020,,28377.0,NR,Greece
+ES,arrivals_by_origin_hotels_number,2021,,53260.0,NR,Greece
+ES,arrivals_by_origin_hotels_number,2022,,134287.0,NR,Greece
+ES,arrivals_by_origin_hotels_number,2023,,162377.0,NR,Greece
+ES,arrivals_by_origin_hotels_number,2024,,173550.0,NR,Greece
+ES,arrivals_by_origin_hotels_number,2020,,23694815.0,NR,Spain
+ES,arrivals_by_origin_hotels_number,2021,,40272683.0,NR,Spain
+ES,arrivals_by_origin_hotels_number,2022,,53314484.0,NR,Spain
+ES,arrivals_by_origin_hotels_number,2023,,54708067.0,NR,Spain
+ES,arrivals_by_origin_hotels_number,2024,,54319372.0,NR,Spain
+ES,arrivals_by_origin_hotels_number,2020,,1664214.0,NR,France
+ES,arrivals_by_origin_hotels_number,2021,,3418911.0,NR,France
+ES,arrivals_by_origin_hotels_number,2022,,6030915.0,NR,France
+ES,arrivals_by_origin_hotels_number,2023,,6320145.0,NR,France
+ES,arrivals_by_origin_hotels_number,2024,,6551945.0,NR,France
+ES,arrivals_by_origin_hotels_number,2020,,16190.0,NR,Croatia
+ES,arrivals_by_origin_hotels_number,2021,,24356.0,NR,Croatia
+ES,arrivals_by_origin_hotels_number,2022,,61664.0,NR,Croatia
+ES,arrivals_by_origin_hotels_number,2023,,109492.0,NR,Croatia
+ES,arrivals_by_origin_hotels_number,2024,,135534.0,NR,Croatia
+ES,arrivals_by_origin_hotels_number,2020,,606293.0,NR,Italy
+ES,arrivals_by_origin_hotels_number,2021,,1160943.0,NR,Italy
+ES,arrivals_by_origin_hotels_number,2022,,2771474.0,NR,Italy
+ES,arrivals_by_origin_hotels_number,2023,,3245126.0,NR,Italy
+ES,arrivals_by_origin_hotels_number,2024,,3465211.0,NR,Italy
+ES,arrivals_by_origin_hotels_number,2020,,3804.0,NR,Cyprus
+ES,arrivals_by_origin_hotels_number,2021,,5923.0,NR,Cyprus
+ES,arrivals_by_origin_hotels_number,2022,,16921.0,NR,Cyprus
+ES,arrivals_by_origin_hotels_number,2023,,21772.0,NR,Cyprus
+ES,arrivals_by_origin_hotels_number,2024,,24581.0,NR,Cyprus
+ES,arrivals_by_origin_hotels_number,2020,,13765.0,NR,Latvia
+ES,arrivals_by_origin_hotels_number,2021,,31572.0,NR,Latvia
+ES,arrivals_by_origin_hotels_number,2022,,74681.0,NR,Latvia
+ES,arrivals_by_origin_hotels_number,2023,,80992.0,NR,Latvia
+ES,arrivals_by_origin_hotels_number,2024,,84675.0,NR,Latvia
+ES,arrivals_by_origin_hotels_number,2020,,24806.0,NR,Lithuania
+ES,arrivals_by_origin_hotels_number,2021,,59830.0,NR,Lithuania
+ES,arrivals_by_origin_hotels_number,2022,,124767.0,NR,Lithuania
+ES,arrivals_by_origin_hotels_number,2023,,152270.0,NR,Lithuania
+ES,arrivals_by_origin_hotels_number,2024,,158731.0,NR,Lithuania
+ES,arrivals_by_origin_hotels_number,2020,,26431.0,NR,Luxembourg
+ES,arrivals_by_origin_hotels_number,2021,,68829.0,NR,Luxembourg
+ES,arrivals_by_origin_hotels_number,2022,,92980.0,NR,Luxembourg
+ES,arrivals_by_origin_hotels_number,2023,,100197.0,NR,Luxembourg
+ES,arrivals_by_origin_hotels_number,2024,,103887.0,NR,Luxembourg
+ES,arrivals_by_origin_hotels_number,2020,,35555.0,NR,Hungary
+ES,arrivals_by_origin_hotels_number,2021,,74359.0,NR,Hungary
+ES,arrivals_by_origin_hotels_number,2022,,178069.0,NR,Hungary
+ES,arrivals_by_origin_hotels_number,2023,,223884.0,NR,Hungary
+ES,arrivals_by_origin_hotels_number,2024,,262021.0,NR,Hungary
+ES,arrivals_by_origin_hotels_number,2020,,5435.0,NR,Malta
+ES,arrivals_by_origin_hotels_number,2021,,12038.0,NR,Malta
+ES,arrivals_by_origin_hotels_number,2022,,31694.0,NR,Malta
+ES,arrivals_by_origin_hotels_number,2023,,35689.0,NR,Malta
+ES,arrivals_by_origin_hotels_number,2024,,39168.0,NR,Malta
+ES,arrivals_by_origin_hotels_number,2020,,457189.0,NR,Netherlands
+ES,arrivals_by_origin_hotels_number,2021,,1207273.0,NR,Netherlands
+ES,arrivals_by_origin_hotels_number,2022,,2317849.0,NR,Netherlands
+ES,arrivals_by_origin_hotels_number,2023,,2413034.0,NR,Netherlands
+ES,arrivals_by_origin_hotels_number,2024,,2595182.0,NR,Netherlands
+ES,arrivals_by_origin_hotels_number,2020,,76792.0,NR,Austria
+ES,arrivals_by_origin_hotels_number,2021,,193788.0,NR,Austria
+ES,arrivals_by_origin_hotels_number,2022,,480992.0,NR,Austria
+ES,arrivals_by_origin_hotels_number,2023,,550660.0,NR,Austria
+ES,arrivals_by_origin_hotels_number,2024,,586582.0,NR,Austria
+ES,arrivals_by_origin_hotels_number,2020,,212498.0,NR,Poland
+ES,arrivals_by_origin_hotels_number,2021,,472568.0,NR,Poland
+ES,arrivals_by_origin_hotels_number,2022,,924753.0,NR,Poland
+ES,arrivals_by_origin_hotels_number,2023,,1180598.0,NR,Poland
+ES,arrivals_by_origin_hotels_number,2024,,1388241.0,NR,Poland
+ES,arrivals_by_origin_hotels_number,2020,,409541.0,NR,Portugal
+ES,arrivals_by_origin_hotels_number,2021,,849210.0,NR,Portugal
+ES,arrivals_by_origin_hotels_number,2022,,1745126.0,NR,Portugal
+ES,arrivals_by_origin_hotels_number,2023,,2030105.0,NR,Portugal
+ES,arrivals_by_origin_hotels_number,2024,,2152251.0,NR,Portugal
+ES,arrivals_by_origin_hotels_number,2020,,203707.0,NR,Romania
+ES,arrivals_by_origin_hotels_number,2021,,329501.0,NR,Romania
+ES,arrivals_by_origin_hotels_number,2022,,551065.0,NR,Romania
+ES,arrivals_by_origin_hotels_number,2023,,603075.0,NR,Romania
+ES,arrivals_by_origin_hotels_number,2024,,639957.0,NR,Romania
+ES,arrivals_by_origin_hotels_number,2020,,11048.0,NR,Slovenia
+ES,arrivals_by_origin_hotels_number,2021,,23050.0,NR,Slovenia
+ES,arrivals_by_origin_hotels_number,2022,,58836.0,NR,Slovenia
+ES,arrivals_by_origin_hotels_number,2023,,75999.0,NR,Slovenia
+ES,arrivals_by_origin_hotels_number,2024,,78437.0,NR,Slovenia
+ES,arrivals_by_origin_hotels_number,2020,,14662.0,NR,Slovakia
+ES,arrivals_by_origin_hotels_number,2021,,46798.0,NR,Slovakia
+ES,arrivals_by_origin_hotels_number,2022,,110877.0,NR,Slovakia
+ES,arrivals_by_origin_hotels_number,2023,,127035.0,NR,Slovakia
+ES,arrivals_by_origin_hotels_number,2024,,143767.0,NR,Slovakia
+ES,arrivals_by_origin_hotels_number,2020,,101513.0,NR,Finland
+ES,arrivals_by_origin_hotels_number,2021,,107587.0,NR,Finland
+ES,arrivals_by_origin_hotels_number,2022,,310612.0,NR,Finland
+ES,arrivals_by_origin_hotels_number,2023,,358541.0,NR,Finland
+ES,arrivals_by_origin_hotels_number,2024,,377572.0,NR,Finland
+ES,arrivals_by_origin_hotels_number,2020,,227014.0,NR,Sweden
+ES,arrivals_by_origin_hotels_number,2021,,376987.0,NR,Sweden
+ES,arrivals_by_origin_hotels_number,2022,,773891.0,NR,Sweden
+ES,arrivals_by_origin_hotels_number,2023,,849899.0,NR,Sweden
+ES,arrivals_by_origin_hotels_number,2024,,864326.0,NR,Sweden
+ES,arrivals_by_origin_hotels_number,2020,,29811406.0,NR,Intra-EU27 (from 2020)
+ES,arrivals_by_origin_hotels_number,2021,,53568494.0,NR,Intra-EU27 (from 2020)
+ES,arrivals_by_origin_hotels_number,2022,,80339492.0,NR,Intra-EU27 (from 2020)
+ES,arrivals_by_origin_hotels_number,2023,,84616091.0,NR,Intra-EU27 (from 2020)
+ES,arrivals_by_origin_hotels_number,2024,,86135302.0,NR,Intra-EU27 (from 2020)
+ES,arrivals_by_origin_hotels_number,2020,,31408843.0,NR,Intra-EU28 (2013-2020)
+ES,arrivals_by_origin_hotels_number,2021,,56053493.0,NR,Intra-EU28 (2013-2020)
+ES,arrivals_by_origin_hotels_number,2022,,89929915.0,NR,Intra-EU28 (2013-2020)
+ES,arrivals_by_origin_hotels_number,2023,,95276457.0,NR,Intra-EU28 (2013-2020)
+ES,arrivals_by_origin_hotels_number,2024,,97463076.0,NR,Intra-EU28 (2013-2020)
+ES,arrivals_by_origin_hotels_number,2020,,6116591.0,NR,EU27 countries (from 2020) except reporting country
+ES,arrivals_by_origin_hotels_number,2021,,13295811.0,NR,EU27 countries (from 2020) except reporting country
+ES,arrivals_by_origin_hotels_number,2022,,27025008.0,NR,EU27 countries (from 2020) except reporting country
+ES,arrivals_by_origin_hotels_number,2023,,29908024.0,NR,EU27 countries (from 2020) except reporting country
+ES,arrivals_by_origin_hotels_number,2024,,31815930.0,NR,EU27 countries (from 2020) except reporting country
+ES,arrivals_by_origin_hotels_number,2020,,292430.0,NR,European Free Trade Association
+ES,arrivals_by_origin_hotels_number,2021,,673017.0,NR,European Free Trade Association
+ES,arrivals_by_origin_hotels_number,2022,,1634034.0,NR,European Free Trade Association
+ES,arrivals_by_origin_hotels_number,2023,,1755162.0,NR,European Free Trade Association
+ES,arrivals_by_origin_hotels_number,2024,,1813580.0,NR,European Free Trade Association
+ES,arrivals_by_origin_hotels_number,2020,,19399.0,NR,Iceland
+ES,arrivals_by_origin_hotels_number,2021,,42692.0,NR,Iceland
+ES,arrivals_by_origin_hotels_number,2022,,116241.0,NR,Iceland
+ES,arrivals_by_origin_hotels_number,2023,,123731.0,NR,Iceland
+ES,arrivals_by_origin_hotels_number,2024,,120000.0,NR,Iceland
+ES,arrivals_by_origin_hotels_number,2020,,112203.0,NR,Switzerland and Liechtenstein
+ES,arrivals_by_origin_hotels_number,2021,,505284.0,NR,Switzerland and Liechtenstein
+ES,arrivals_by_origin_hotels_number,2022,,956238.0,NR,Switzerland and Liechtenstein
+ES,arrivals_by_origin_hotels_number,2023,,1059999.0,NR,Switzerland and Liechtenstein
+ES,arrivals_by_origin_hotels_number,2024,,1118518.0,NR,Switzerland and Liechtenstein
+ES,arrivals_by_origin_hotels_number,2020,,160828.0,NR,Norway
+ES,arrivals_by_origin_hotels_number,2021,,125041.0,NR,Norway
+ES,arrivals_by_origin_hotels_number,2022,,561554.0,NR,Norway
+ES,arrivals_by_origin_hotels_number,2023,,571432.0,NR,Norway
+ES,arrivals_by_origin_hotels_number,2024,,575061.0,NR,Norway
+ES,arrivals_by_origin_hotels_number,2020,,1597437.0,NR,United Kingdom
+ES,arrivals_by_origin_hotels_number,2021,,2484999.0,NR,United Kingdom
+ES,arrivals_by_origin_hotels_number,2022,,9590423.0,NR,United Kingdom
+ES,arrivals_by_origin_hotels_number,2023,,10660366.0,NR,United Kingdom
+ES,arrivals_by_origin_hotels_number,2024,,11327774.0,NR,United Kingdom
+ES,arrivals_by_origin_hotels_number,2020,,38836.0,NR,Türkiye
+ES,arrivals_by_origin_hotels_number,2021,,41694.0,NR,Türkiye
+ES,arrivals_by_origin_hotels_number,2022,,152539.0,NR,Türkiye
+ES,arrivals_by_origin_hotels_number,2023,,231331.0,NR,Türkiye
+ES,arrivals_by_origin_hotels_number,2024,,301285.0,NR,Türkiye
+ES,arrivals_by_origin_hotels_number,2020,,53579.0,NR,Ukraine
+ES,arrivals_by_origin_hotels_number,2021,,111820.0,NR,Ukraine
+ES,arrivals_by_origin_hotels_number,2022,,267679.0,NR,Ukraine
+ES,arrivals_by_origin_hotels_number,2023,,322363.0,NR,Ukraine
+ES,arrivals_by_origin_hotels_number,2024,,417655.0,NR,Ukraine
+ES,arrivals_by_origin_hotels_number,2020,,144289.0,NR,Russia
+ES,arrivals_by_origin_hotels_number,2021,,132069.0,NR,Russia
+ES,arrivals_by_origin_hotels_number,2022,,228249.0,NR,Russia
+ES,arrivals_by_origin_hotels_number,2023,,267705.0,NR,Russia
+ES,arrivals_by_origin_hotels_number,2024,,277336.0,NR,Russia
+ES,arrivals_by_origin_hotels_number,2020,,207464.0,NR,Other European countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2021,,338384.0,NR,Other European countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2022,,691163.0,NR,Other European countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2023,,707794.0,NR,Other European countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2024,,797419.0,NR,Other European countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2020,,262141.0,NR,Africa
+ES,arrivals_by_origin_hotels_number,2021,,324358.0,NR,Africa
+ES,arrivals_by_origin_hotels_number,2022,,712778.0,NR,Africa
+ES,arrivals_by_origin_hotels_number,2023,,810575.0,NR,Africa
+ES,arrivals_by_origin_hotels_number,2024,,906976.0,NR,Africa
+ES,arrivals_by_origin_hotels_number,2020,,11598.0,NR,South Africa
+ES,arrivals_by_origin_hotels_number,2021,,16921.0,NR,South Africa
+ES,arrivals_by_origin_hotels_number,2022,,57691.0,NR,South Africa
+ES,arrivals_by_origin_hotels_number,2023,,61795.0,NR,South Africa
+ES,arrivals_by_origin_hotels_number,2024,,67102.0,NR,South Africa
+ES,arrivals_by_origin_hotels_number,2020,,250543.0,NR,Other African countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2021,,307436.0,NR,Other African countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2022,,655087.0,NR,Other African countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2023,,748780.0,NR,Other African countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2024,,839874.0,NR,Other African countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2020,,1194081.0,NR,America
+ES,arrivals_by_origin_hotels_number,2021,,2165080.0,NR,America
+ES,arrivals_by_origin_hotels_number,2022,,6670754.0,NR,America
+ES,arrivals_by_origin_hotels_number,2023,,8396847.0,NR,America
+ES,arrivals_by_origin_hotels_number,2024,,9248341.0,NR,America
+ES,arrivals_by_origin_hotels_number,2020,,552185.0,NR,Northern America
+ES,arrivals_by_origin_hotels_number,2021,,1190166.0,NR,Northern America
+ES,arrivals_by_origin_hotels_number,2022,,4182274.0,NR,Northern America
+ES,arrivals_by_origin_hotels_number,2023,,5497593.0,NR,Northern America
+ES,arrivals_by_origin_hotels_number,2024,,6239712.0,NR,Northern America
+ES,arrivals_by_origin_hotels_number,2020,,72933.0,NR,Canada
+ES,arrivals_by_origin_hotels_number,2021,,74767.0,NR,Canada
+ES,arrivals_by_origin_hotels_number,2022,,449769.0,NR,Canada
+ES,arrivals_by_origin_hotels_number,2023,,663207.0,NR,Canada
+ES,arrivals_by_origin_hotels_number,2024,,770769.0,NR,Canada
+ES,arrivals_by_origin_hotels_number,2020,,382161.0,NR,United States
+ES,arrivals_by_origin_hotels_number,2021,,871844.0,NR,United States
+ES,arrivals_by_origin_hotels_number,2022,,3077786.0,NR,United States
+ES,arrivals_by_origin_hotels_number,2023,,3952556.0,NR,United States
+ES,arrivals_by_origin_hotels_number,2024,,4523050.0,NR,United States
+ES,arrivals_by_origin_hotels_number,2020,,97091.0,NR,Other Northern American countries
+ES,arrivals_by_origin_hotels_number,2021,,243554.0,NR,Other Northern American countries
+ES,arrivals_by_origin_hotels_number,2022,,654719.0,NR,Other Northern American countries
+ES,arrivals_by_origin_hotels_number,2023,,881830.0,NR,Other Northern American countries
+ES,arrivals_by_origin_hotels_number,2024,,945893.0,NR,Other Northern American countries
+ES,arrivals_by_origin_hotels_number,2020,,641896.0,NR,Central and South America
+ES,arrivals_by_origin_hotels_number,2021,,974915.0,NR,Central and South America
+ES,arrivals_by_origin_hotels_number,2022,,2488480.0,NR,Central and South America
+ES,arrivals_by_origin_hotels_number,2023,,2899254.0,NR,Central and South America
+ES,arrivals_by_origin_hotels_number,2024,,3008629.0,NR,Central and South America
+ES,arrivals_by_origin_hotels_number,2020,,147624.0,NR,Brazil
+ES,arrivals_by_origin_hotels_number,2021,,153870.0,NR,Brazil
+ES,arrivals_by_origin_hotels_number,2022,,504698.0,NR,Brazil
+ES,arrivals_by_origin_hotels_number,2023,,620900.0,NR,Brazil
+ES,arrivals_by_origin_hotels_number,2024,,694067.0,NR,Brazil
+ES,arrivals_by_origin_hotels_number,2020,,494272.0,NR,Other Central or South American countries
+ES,arrivals_by_origin_hotels_number,2021,,821044.0,NR,Other Central or South American countries
+ES,arrivals_by_origin_hotels_number,2022,,1983782.0,NR,Other Central or South American countries
+ES,arrivals_by_origin_hotels_number,2023,,2278354.0,NR,Other Central or South American countries
+ES,arrivals_by_origin_hotels_number,2024,,2314562.0,NR,Other Central or South American countries
+ES,arrivals_by_origin_hotels_number,2020,,744415.0,NR,Asia
+ES,arrivals_by_origin_hotels_number,2021,,457427.0,NR,Asia
+ES,arrivals_by_origin_hotels_number,2022,,1536313.0,NR,Asia
+ES,arrivals_by_origin_hotels_number,2023,,2873094.0,NR,Asia
+ES,arrivals_by_origin_hotels_number,2024,,3707211.0,NR,Asia
+ES,arrivals_by_origin_hotels_number,2020,,239985.0,NR,China
+ES,arrivals_by_origin_hotels_number,2021,,106102.0,NR,China
+ES,arrivals_by_origin_hotels_number,2022,,305178.0,NR,China
+ES,arrivals_by_origin_hotels_number,2023,,763646.0,NR,China
+ES,arrivals_by_origin_hotels_number,2024,,1252057.0,NR,China
+ES,arrivals_by_origin_hotels_number,2020,,126256.0,NR,Japan
+ES,arrivals_by_origin_hotels_number,2021,,28472.0,NR,Japan
+ES,arrivals_by_origin_hotels_number,2022,,117539.0,NR,Japan
+ES,arrivals_by_origin_hotels_number,2023,,302873.0,NR,Japan
+ES,arrivals_by_origin_hotels_number,2024,,399189.0,NR,Japan
+ES,arrivals_by_origin_hotels_number,2020,,166131.0,NR,South Korea
+ES,arrivals_by_origin_hotels_number,2021,,20073.0,NR,South Korea
+ES,arrivals_by_origin_hotels_number,2022,,174006.0,NR,South Korea
+ES,arrivals_by_origin_hotels_number,2023,,549687.0,NR,South Korea
+ES,arrivals_by_origin_hotels_number,2024,,655228.0,NR,South Korea
+ES,arrivals_by_origin_hotels_number,2020,,212044.0,NR,Other Asian countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2021,,302780.0,NR,Other Asian countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2022,,939589.0,NR,Other Asian countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2023,,1256888.0,NR,Other Asian countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2024,,1400737.0,NR,Other Asian countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2020,,41658.0,NR,Oceania
+ES,arrivals_by_origin_hotels_number,2021,,46202.0,NR,Oceania
+ES,arrivals_by_origin_hotels_number,2022,,249351.0,NR,Oceania
+ES,arrivals_by_origin_hotels_number,2023,,454323.0,NR,Oceania
+ES,arrivals_by_origin_hotels_number,2024,,467119.0,NR,Oceania
+ES,arrivals_by_origin_hotels_number,2020,,32387.0,NR,Australia
+ES,arrivals_by_origin_hotels_number,2021,,28679.0,NR,Australia
+ES,arrivals_by_origin_hotels_number,2022,,212061.0,NR,Australia
+ES,arrivals_by_origin_hotels_number,2023,,413058.0,NR,Australia
+ES,arrivals_by_origin_hotels_number,2024,,431839.0,NR,Australia
+ES,arrivals_by_origin_hotels_number,2020,,9271.0,NR,Other Oceanian countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2021,,17523.0,NR,Other Oceanian countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2022,,37290.0,NR,Other Oceanian countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2023,,41265.0,NR,Other Oceanian countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2024,,35280.0,NR,Other Oceanian countries (aggregate changing according to the context)
+ES,arrivals_by_origin_hotels_number,2020,,23694815.0,NR,Domestic country
+ES,arrivals_by_origin_hotels_number,2021,,40272683.0,NR,Domestic country
+ES,arrivals_by_origin_hotels_number,2022,,53314484.0,NR,Domestic country
+ES,arrivals_by_origin_hotels_number,2023,,54708067.0,NR,Domestic country
+ES,arrivals_by_origin_hotels_number,2024,,54319372.0,NR,Domestic country
+ES,arrivals_by_origin_hotels_number,2020,,34589072.0,NR,All countries of the world
+ES,arrivals_by_origin_hotels_number,2021,,60724070.0,NR,All countries of the world
+ES,arrivals_by_origin_hotels_number,2022,,102882568.0,NR,All countries of the world
+ES,arrivals_by_origin_hotels_number,2023,,111991774.0,NR,All countries of the world
+ES,arrivals_by_origin_hotels_number,2024,,116166159.0,NR,All countries of the world
+ES,arrivals_by_origin_hotels_number,2020,,201333.0,NR,World - not allocated
+ES,arrivals_by_origin_hotels_number,2021,,380528.0,NR,World - not allocated
+ES,arrivals_by_origin_hotels_number,2022,,809792.0,NR,World - not allocated
+ES,arrivals_by_origin_hotels_number,2023,,896124.0,NR,World - not allocated
+ES,arrivals_by_origin_hotels_number,2024,,766160.0,NR,World - not allocated
+FR,arrivals_by_origin_hotels_number,2020,,57761267.0,NR,Europe
+FR,arrivals_by_origin_hotels_number,2021,,74601457.0,NR,Europe
+FR,arrivals_by_origin_hotels_number,2022,,107526614.0,NR,Europe
+FR,arrivals_by_origin_hotels_number,2023,,111209110.0,NR,Europe
+FR,arrivals_by_origin_hotels_number,2024,,109762644.0,NR,Europe
+FR,arrivals_by_origin_hotels_number,2020,,1401872.0,NR,Belgium
+FR,arrivals_by_origin_hotels_number,2021,,1946142.0,NR,Belgium
+FR,arrivals_by_origin_hotels_number,2022,,3209676.0,NR,Belgium
+FR,arrivals_by_origin_hotels_number,2023,,3137969.0,NR,Belgium
+FR,arrivals_by_origin_hotels_number,2024,,3212282.0,NR,Belgium
+FR,arrivals_by_origin_hotels_number,2020,,19313.0,NR,Bulgaria
+FR,arrivals_by_origin_hotels_number,2021,,24863.0,NR,Bulgaria
+FR,arrivals_by_origin_hotels_number,2022,,57781.0,NR,Bulgaria
+FR,arrivals_by_origin_hotels_number,2023,,74899.0,NR,Bulgaria
+FR,arrivals_by_origin_hotels_number,2024,,71249.0,NR,Bulgaria
+FR,arrivals_by_origin_hotels_number,2020,,40247.0,NR,Czechia
+FR,arrivals_by_origin_hotels_number,2021,,63949.0,NR,Czechia
+FR,arrivals_by_origin_hotels_number,2022,,149363.0,NR,Czechia
+FR,arrivals_by_origin_hotels_number,2023,,182471.0,NR,Czechia
+FR,arrivals_by_origin_hotels_number,2024,,178589.0,NR,Czechia
+FR,arrivals_by_origin_hotels_number,2020,,62078.0,NR,Denmark
+FR,arrivals_by_origin_hotels_number,2021,,143514.0,NR,Denmark
+FR,arrivals_by_origin_hotels_number,2022,,310818.0,NR,Denmark
+FR,arrivals_by_origin_hotels_number,2023,,298869.0,NR,Denmark
+FR,arrivals_by_origin_hotels_number,2024,,290146.0,NR,Denmark
+FR,arrivals_by_origin_hotels_number,2020,,1163543.0,NR,Germany
+FR,arrivals_by_origin_hotels_number,2021,,1780293.0,NR,Germany
+FR,arrivals_by_origin_hotels_number,2022,,3607958.0,NR,Germany
+FR,arrivals_by_origin_hotels_number,2023,,3844568.0,NR,Germany
+FR,arrivals_by_origin_hotels_number,2024,,3875086.0,NR,Germany
+FR,arrivals_by_origin_hotels_number,2020,,7122.0,NR,Estonia
+FR,arrivals_by_origin_hotels_number,2021,,15309.0,NR,Estonia
+FR,arrivals_by_origin_hotels_number,2022,,37785.0,NR,Estonia
+FR,arrivals_by_origin_hotels_number,2023,,35845.0,NR,Estonia
+FR,arrivals_by_origin_hotels_number,2024,,37419.0,NR,Estonia
+FR,arrivals_by_origin_hotels_number,2020,,54840.0,NR,Ireland
+FR,arrivals_by_origin_hotels_number,2021,,100832.0,NR,Ireland
+FR,arrivals_by_origin_hotels_number,2022,,343276.0,NR,Ireland
+FR,arrivals_by_origin_hotels_number,2023,,428712.0,NR,Ireland
+FR,arrivals_by_origin_hotels_number,2024,,407447.0,NR,Ireland
+FR,arrivals_by_origin_hotels_number,2020,,28118.0,NR,Greece
+FR,arrivals_by_origin_hotels_number,2021,,50970.0,NR,Greece
+FR,arrivals_by_origin_hotels_number,2022,,139650.0,NR,Greece
+FR,arrivals_by_origin_hotels_number,2023,,146901.0,NR,Greece
+FR,arrivals_by_origin_hotels_number,2024,,153968.0,NR,Greece
+FR,arrivals_by_origin_hotels_number,2020,,663005.0,NR,Spain
+FR,arrivals_by_origin_hotels_number,2021,,984927.0,NR,Spain
+FR,arrivals_by_origin_hotels_number,2022,,2459181.0,NR,Spain
+FR,arrivals_by_origin_hotels_number,2023,,2623571.0,NR,Spain
+FR,arrivals_by_origin_hotels_number,2024,,2629840.0,NR,Spain
+FR,arrivals_by_origin_hotels_number,2020,,49686164.0,NR,France
+FR,arrivals_by_origin_hotels_number,2021,,63472748.0,NR,France
+FR,arrivals_by_origin_hotels_number,2022,,82428128.0,NR,France
+FR,arrivals_by_origin_hotels_number,2023,,83304920.0,NR,France
+FR,arrivals_by_origin_hotels_number,2024,,82336568.0,NR,France
+FR,arrivals_by_origin_hotels_number,2020,,8075.0,NR,Croatia
+FR,arrivals_by_origin_hotels_number,2021,,13987.0,NR,Croatia
+FR,arrivals_by_origin_hotels_number,2022,,37697.0,NR,Croatia
+FR,arrivals_by_origin_hotels_number,2023,,58203.0,NR,Croatia
+FR,arrivals_by_origin_hotels_number,2024,,62387.0,NR,Croatia
+FR,arrivals_by_origin_hotels_number,2020,,652337.0,NR,Italy
+FR,arrivals_by_origin_hotels_number,2021,,882027.0,NR,Italy
+FR,arrivals_by_origin_hotels_number,2022,,2271206.0,NR,Italy
+FR,arrivals_by_origin_hotels_number,2023,,2462250.0,NR,Italy
+FR,arrivals_by_origin_hotels_number,2024,,2425656.0,NR,Italy
+FR,arrivals_by_origin_hotels_number,2020,,3606.0,NR,Cyprus
+FR,arrivals_by_origin_hotels_number,2021,,9478.0,NR,Cyprus
+FR,arrivals_by_origin_hotels_number,2022,,29037.0,NR,Cyprus
+FR,arrivals_by_origin_hotels_number,2023,,35172.0,NR,Cyprus
+FR,arrivals_by_origin_hotels_number,2024,,33389.0,NR,Cyprus
+FR,arrivals_by_origin_hotels_number,2020,,7762.0,NR,Latvia
+FR,arrivals_by_origin_hotels_number,2021,,12483.0,NR,Latvia
+FR,arrivals_by_origin_hotels_number,2022,,34237.0,NR,Latvia
+FR,arrivals_by_origin_hotels_number,2023,,35234.0,NR,Latvia
+FR,arrivals_by_origin_hotels_number,2024,,37793.0,NR,Latvia
+FR,arrivals_by_origin_hotels_number,2020,,23484.0,NR,Lithuania
+FR,arrivals_by_origin_hotels_number,2021,,30848.0,NR,Lithuania
+FR,arrivals_by_origin_hotels_number,2022,,64109.0,NR,Lithuania
+FR,arrivals_by_origin_hotels_number,2023,,71413.0,NR,Lithuania
+FR,arrivals_by_origin_hotels_number,2024,,69981.0,NR,Lithuania
+FR,arrivals_by_origin_hotels_number,2020,,133908.0,NR,Luxembourg
+FR,arrivals_by_origin_hotels_number,2021,,164310.0,NR,Luxembourg
+FR,arrivals_by_origin_hotels_number,2022,,279348.0,NR,Luxembourg
+FR,arrivals_by_origin_hotels_number,2023,,284723.0,NR,Luxembourg
+FR,arrivals_by_origin_hotels_number,2024,,297370.0,NR,Luxembourg
+FR,arrivals_by_origin_hotels_number,2020,,19046.0,NR,Hungary
+FR,arrivals_by_origin_hotels_number,2021,,30557.0,NR,Hungary
+FR,arrivals_by_origin_hotels_number,2022,,76506.0,NR,Hungary
+FR,arrivals_by_origin_hotels_number,2023,,84295.0,NR,Hungary
+FR,arrivals_by_origin_hotels_number,2024,,85903.0,NR,Hungary
+FR,arrivals_by_origin_hotels_number,2020,,5102.0,NR,Malta
+FR,arrivals_by_origin_hotels_number,2021,,9861.0,NR,Malta
+FR,arrivals_by_origin_hotels_number,2022,,29064.0,NR,Malta
+FR,arrivals_by_origin_hotels_number,2023,,33212.0,NR,Malta
+FR,arrivals_by_origin_hotels_number,2024,,35119.0,NR,Malta
+FR,arrivals_by_origin_hotels_number,2020,,816398.0,NR,Netherlands
+FR,arrivals_by_origin_hotels_number,2021,,1317108.0,NR,Netherlands
+FR,arrivals_by_origin_hotels_number,2022,,2535866.0,NR,Netherlands
+FR,arrivals_by_origin_hotels_number,2023,,2393736.0,NR,Netherlands
+FR,arrivals_by_origin_hotels_number,2024,,2495789.0,NR,Netherlands
+FR,arrivals_by_origin_hotels_number,2020,,59308.0,NR,Austria
+FR,arrivals_by_origin_hotels_number,2021,,122512.0,NR,Austria
+FR,arrivals_by_origin_hotels_number,2022,,266828.0,NR,Austria
+FR,arrivals_by_origin_hotels_number,2023,,287456.0,NR,Austria
+FR,arrivals_by_origin_hotels_number,2024,,296202.0,NR,Austria
+FR,arrivals_by_origin_hotels_number,2020,,118942.0,NR,Poland
+FR,arrivals_by_origin_hotels_number,2021,,242003.0,NR,Poland
+FR,arrivals_by_origin_hotels_number,2022,,487329.0,NR,Poland
+FR,arrivals_by_origin_hotels_number,2023,,558150.0,NR,Poland
+FR,arrivals_by_origin_hotels_number,2024,,544664.0,NR,Poland
+FR,arrivals_by_origin_hotels_number,2020,,135816.0,NR,Portugal
+FR,arrivals_by_origin_hotels_number,2021,,181248.0,NR,Portugal
+FR,arrivals_by_origin_hotels_number,2022,,453881.0,NR,Portugal
+FR,arrivals_by_origin_hotels_number,2023,,490790.0,NR,Portugal
+FR,arrivals_by_origin_hotels_number,2024,,481259.0,NR,Portugal
+FR,arrivals_by_origin_hotels_number,2020,,88512.0,NR,Romania
+FR,arrivals_by_origin_hotels_number,2021,,115948.0,NR,Romania
+FR,arrivals_by_origin_hotels_number,2022,,232195.0,NR,Romania
+FR,arrivals_by_origin_hotels_number,2023,,249225.0,NR,Romania
+FR,arrivals_by_origin_hotels_number,2024,,243859.0,NR,Romania
+FR,arrivals_by_origin_hotels_number,2020,,7492.0,NR,Slovenia
+FR,arrivals_by_origin_hotels_number,2021,,14614.0,NR,Slovenia
+FR,arrivals_by_origin_hotels_number,2022,,33998.0,NR,Slovenia
+FR,arrivals_by_origin_hotels_number,2023,,38193.0,NR,Slovenia
+FR,arrivals_by_origin_hotels_number,2024,,37657.0,NR,Slovenia
+FR,arrivals_by_origin_hotels_number,2020,,10245.0,NR,Slovakia
+FR,arrivals_by_origin_hotels_number,2021,,15590.0,NR,Slovakia
+FR,arrivals_by_origin_hotels_number,2022,,41916.0,NR,Slovakia
+FR,arrivals_by_origin_hotels_number,2023,,52857.0,NR,Slovakia
+FR,arrivals_by_origin_hotels_number,2024,,55473.0,NR,Slovakia
+FR,arrivals_by_origin_hotels_number,2020,,25839.0,NR,Finland
+FR,arrivals_by_origin_hotels_number,2021,,37902.0,NR,Finland
+FR,arrivals_by_origin_hotels_number,2022,,114206.0,NR,Finland
+FR,arrivals_by_origin_hotels_number,2023,,121729.0,NR,Finland
+FR,arrivals_by_origin_hotels_number,2024,,120851.0,NR,Finland
+FR,arrivals_by_origin_hotels_number,2020,,66205.0,NR,Sweden
+FR,arrivals_by_origin_hotels_number,2021,,118041.0,NR,Sweden
+FR,arrivals_by_origin_hotels_number,2022,,302250.0,NR,Sweden
+FR,arrivals_by_origin_hotels_number,2023,,337534.0,NR,Sweden
+FR,arrivals_by_origin_hotels_number,2024,,345094.0,NR,Sweden
+FR,arrivals_by_origin_hotels_number,2020,,55308379.0,NR,Intra-EU27 (from 2020)
+FR,arrivals_by_origin_hotels_number,2021,,71902064.0,NR,Intra-EU27 (from 2020)
+FR,arrivals_by_origin_hotels_number,2022,,100033289.0,NR,Intra-EU27 (from 2020)
+FR,arrivals_by_origin_hotels_number,2023,,101672897.0,NR,Intra-EU27 (from 2020)
+FR,arrivals_by_origin_hotels_number,2024,,100861040.0,NR,Intra-EU27 (from 2020)
+FR,arrivals_by_origin_hotels_number,2020,,56629718.0,NR,Intra-EU28 (2013-2020)
+FR,arrivals_by_origin_hotels_number,2021,,73100752.0,NR,Intra-EU28 (2013-2020)
+FR,arrivals_by_origin_hotels_number,2022,,104364591.0,NR,Intra-EU28 (2013-2020)
+FR,arrivals_by_origin_hotels_number,2023,,107854014.0,NR,Intra-EU28 (2013-2020)
+FR,arrivals_by_origin_hotels_number,2024,,106085555.0,NR,Intra-EU28 (2013-2020)
+FR,arrivals_by_origin_hotels_number,2020,,5622215.0,NR,EU27 countries (from 2020) except reporting country
+FR,arrivals_by_origin_hotels_number,2021,,8429316.0,NR,EU27 countries (from 2020) except reporting country
+FR,arrivals_by_origin_hotels_number,2022,,17605161.0,NR,EU27 countries (from 2020) except reporting country
+FR,arrivals_by_origin_hotels_number,2023,,18367977.0,NR,EU27 countries (from 2020) except reporting country
+FR,arrivals_by_origin_hotels_number,2024,,18524472.0,NR,EU27 countries (from 2020) except reporting country
+FR,arrivals_by_origin_hotels_number,2020,,778208.0,NR,European Free Trade Association
+FR,arrivals_by_origin_hotels_number,2021,,1061955.0,NR,European Free Trade Association
+FR,arrivals_by_origin_hotels_number,2022,,2164157.0,NR,European Free Trade Association
+FR,arrivals_by_origin_hotels_number,2023,,2149399.0,NR,European Free Trade Association
+FR,arrivals_by_origin_hotels_number,2024,,2327560.0,NR,European Free Trade Association
+FR,arrivals_by_origin_hotels_number,2020,,4610.0,NR,Iceland
+FR,arrivals_by_origin_hotels_number,2021,,8799.0,NR,Iceland
+FR,arrivals_by_origin_hotels_number,2022,,22336.0,NR,Iceland
+FR,arrivals_by_origin_hotels_number,2023,,21333.0,NR,Iceland
+FR,arrivals_by_origin_hotels_number,2024,,20812.0,NR,Iceland
+FR,arrivals_by_origin_hotels_number,2020,,744583.0,NR,Switzerland and Liechtenstein
+FR,arrivals_by_origin_hotels_number,2021,,1001607.0,NR,Switzerland and Liechtenstein
+FR,arrivals_by_origin_hotels_number,2022,,1940134.0,NR,Switzerland and Liechtenstein
+FR,arrivals_by_origin_hotels_number,2023,,1891196.0,NR,Switzerland and Liechtenstein
+FR,arrivals_by_origin_hotels_number,2024,,2050827.0,NR,Switzerland and Liechtenstein
+FR,arrivals_by_origin_hotels_number,2020,,29016.0,NR,Norway
+FR,arrivals_by_origin_hotels_number,2021,,51550.0,NR,Norway
+FR,arrivals_by_origin_hotels_number,2022,,201687.0,NR,Norway
+FR,arrivals_by_origin_hotels_number,2023,,236869.0,NR,Norway
+FR,arrivals_by_origin_hotels_number,2024,,255921.0,NR,Norway
+FR,arrivals_by_origin_hotels_number,2020,,1321339.0,NR,United Kingdom
+FR,arrivals_by_origin_hotels_number,2021,,1198688.0,NR,United Kingdom
+FR,arrivals_by_origin_hotels_number,2022,,4331302.0,NR,United Kingdom
+FR,arrivals_by_origin_hotels_number,2023,,6181117.0,NR,United Kingdom
+FR,arrivals_by_origin_hotels_number,2024,,5224515.0,NR,United Kingdom
+FR,arrivals_by_origin_hotels_number,2020,,42510.0,NR,Türkiye
+FR,arrivals_by_origin_hotels_number,2021,,48642.0,NR,Türkiye
+FR,arrivals_by_origin_hotels_number,2022,,153964.0,NR,Türkiye
+FR,arrivals_by_origin_hotels_number,2023,,238931.0,NR,Türkiye
+FR,arrivals_by_origin_hotels_number,2024,,305987.0,NR,Türkiye
+FR,arrivals_by_origin_hotels_number,2020,,0.0,NR,Ukraine
+FR,arrivals_by_origin_hotels_number,2021,,0.0,NR,Ukraine
+FR,arrivals_by_origin_hotels_number,2022,,0.0,NR,Ukraine
+FR,arrivals_by_origin_hotels_number,2023,,0.0,NR,Ukraine
+FR,arrivals_by_origin_hotels_number,2024,,0.0,NR,Ukraine
+FR,arrivals_by_origin_hotels_number,2020,,112529.0,NR,Russia
+FR,arrivals_by_origin_hotels_number,2021,,85984.0,NR,Russia
+FR,arrivals_by_origin_hotels_number,2022,,122840.0,NR,Russia
+FR,arrivals_by_origin_hotels_number,2023,,163377.0,NR,Russia
+FR,arrivals_by_origin_hotels_number,2024,,181684.0,NR,Russia
+FR,arrivals_by_origin_hotels_number,2020,,198301.0,NR,Other European countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2021,,304125.0,NR,Other European countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2022,,721061.0,NR,Other European countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2023,,803388.0,NR,Other European countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2024,,861861.0,NR,Other European countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2020,,185032.0,NR,Africa
+FR,arrivals_by_origin_hotels_number,2021,,240290.0,NR,Africa
+FR,arrivals_by_origin_hotels_number,2022,,574183.0,NR,Africa
+FR,arrivals_by_origin_hotels_number,2023,,637151.0,NR,Africa
+FR,arrivals_by_origin_hotels_number,2024,,644727.0,NR,Africa
+FR,arrivals_by_origin_hotels_number,2020,,19044.0,NR,South Africa
+FR,arrivals_by_origin_hotels_number,2021,,20042.0,NR,South Africa
+FR,arrivals_by_origin_hotels_number,2022,,46427.0,NR,South Africa
+FR,arrivals_by_origin_hotels_number,2023,,77608.0,NR,South Africa
+FR,arrivals_by_origin_hotels_number,2024,,52391.0,NR,South Africa
+FR,arrivals_by_origin_hotels_number,2020,,165988.0,NR,Other African countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2021,,220248.0,NR,Other African countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2022,,527756.0,NR,Other African countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2023,,559543.0,NR,Other African countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2024,,592336.0,NR,Other African countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2020,,949176.0,NR,America
+FR,arrivals_by_origin_hotels_number,2021,,1599126.0,NR,America
+FR,arrivals_by_origin_hotels_number,2022,,4923450.0,NR,America
+FR,arrivals_by_origin_hotels_number,2023,,5245644.0,NR,America
+FR,arrivals_by_origin_hotels_number,2024,,6134823.0,NR,America
+FR,arrivals_by_origin_hotels_number,2020,,771495.0,NR,Northern America
+FR,arrivals_by_origin_hotels_number,2021,,1323588.0,NR,Northern America
+FR,arrivals_by_origin_hotels_number,2022,,3955456.0,NR,Northern America
+FR,arrivals_by_origin_hotels_number,2023,,4097985.0,NR,Northern America
+FR,arrivals_by_origin_hotels_number,2024,,4936633.0,NR,Northern America
+FR,arrivals_by_origin_hotels_number,2020,,77938.0,NR,Canada
+FR,arrivals_by_origin_hotels_number,2021,,109941.0,NR,Canada
+FR,arrivals_by_origin_hotels_number,2022,,434816.0,NR,Canada
+FR,arrivals_by_origin_hotels_number,2023,,558477.0,NR,Canada
+FR,arrivals_by_origin_hotels_number,2024,,569791.0,NR,Canada
+FR,arrivals_by_origin_hotels_number,2020,,693557.0,NR,United States
+FR,arrivals_by_origin_hotels_number,2021,,1213647.0,NR,United States
+FR,arrivals_by_origin_hotels_number,2022,,3520640.0,NR,United States
+FR,arrivals_by_origin_hotels_number,2023,,3539509.0,NR,United States
+FR,arrivals_by_origin_hotels_number,2024,,4366842.0,NR,United States
+FR,arrivals_by_origin_hotels_number,2020,,0.0,NR,Other Northern American countries
+FR,arrivals_by_origin_hotels_number,2021,,0.0,NR,Other Northern American countries
+FR,arrivals_by_origin_hotels_number,2022,,0.0,NR,Other Northern American countries
+FR,arrivals_by_origin_hotels_number,2023,,0.0,NR,Other Northern American countries
+FR,arrivals_by_origin_hotels_number,2024,,0.0,NR,Other Northern American countries
+FR,arrivals_by_origin_hotels_number,2020,,177681.0,NR,Central and South America
+FR,arrivals_by_origin_hotels_number,2021,,275538.0,NR,Central and South America
+FR,arrivals_by_origin_hotels_number,2022,,967995.0,NR,Central and South America
+FR,arrivals_by_origin_hotels_number,2023,,1147659.0,NR,Central and South America
+FR,arrivals_by_origin_hotels_number,2024,,1198191.0,NR,Central and South America
+FR,arrivals_by_origin_hotels_number,2020,,76787.0,NR,Brazil
+FR,arrivals_by_origin_hotels_number,2021,,99427.0,NR,Brazil
+FR,arrivals_by_origin_hotels_number,2022,,375275.0,NR,Brazil
+FR,arrivals_by_origin_hotels_number,2023,,455142.0,NR,Brazil
+FR,arrivals_by_origin_hotels_number,2024,,472145.0,NR,Brazil
+FR,arrivals_by_origin_hotels_number,2020,,100894.0,NR,Other Central or South American countries
+FR,arrivals_by_origin_hotels_number,2021,,176111.0,NR,Other Central or South American countries
+FR,arrivals_by_origin_hotels_number,2022,,592720.0,NR,Other Central or South American countries
+FR,arrivals_by_origin_hotels_number,2023,,692517.0,NR,Other Central or South American countries
+FR,arrivals_by_origin_hotels_number,2024,,726046.0,NR,Other Central or South American countries
+FR,arrivals_by_origin_hotels_number,2020,,725276.0,NR,Asia
+FR,arrivals_by_origin_hotels_number,2021,,749498.0,NR,Asia
+FR,arrivals_by_origin_hotels_number,2022,,2023427.0,NR,Asia
+FR,arrivals_by_origin_hotels_number,2023,,3071915.0,NR,Asia
+FR,arrivals_by_origin_hotels_number,2024,,3168183.0,NR,Asia
+FR,arrivals_by_origin_hotels_number,2020,,270520.0,NR,China
+FR,arrivals_by_origin_hotels_number,2021,,146058.0,NR,China
+FR,arrivals_by_origin_hotels_number,2022,,224073.0,NR,China
+FR,arrivals_by_origin_hotels_number,2023,,534737.0,NR,China
+FR,arrivals_by_origin_hotels_number,2024,,732932.0,NR,China
+FR,arrivals_by_origin_hotels_number,2020,,128985.0,NR,Japan
+FR,arrivals_by_origin_hotels_number,2021,,63972.0,NR,Japan
+FR,arrivals_by_origin_hotels_number,2022,,119407.0,NR,Japan
+FR,arrivals_by_origin_hotels_number,2023,,339113.0,NR,Japan
+FR,arrivals_by_origin_hotels_number,2024,,392903.0,NR,Japan
+FR,arrivals_by_origin_hotels_number,2020,,50222.0,NR,South Korea
+FR,arrivals_by_origin_hotels_number,2021,,31633.0,NR,South Korea
+FR,arrivals_by_origin_hotels_number,2022,,163450.0,NR,South Korea
+FR,arrivals_by_origin_hotels_number,2023,,315807.0,NR,South Korea
+FR,arrivals_by_origin_hotels_number,2024,,283771.0,NR,South Korea
+FR,arrivals_by_origin_hotels_number,2020,,275548.0,NR,Other Asian countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2021,,507834.0,NR,Other Asian countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2022,,1516498.0,NR,Other Asian countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2023,,1882258.0,NR,Other Asian countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2024,,1758577.0,NR,Other Asian countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2020,,47488.0,NR,Oceania
+FR,arrivals_by_origin_hotels_number,2021,,37338.0,NR,Oceania
+FR,arrivals_by_origin_hotels_number,2022,,265992.0,NR,Oceania
+FR,arrivals_by_origin_hotels_number,2023,,568360.0,NR,Oceania
+FR,arrivals_by_origin_hotels_number,2024,,471259.0,NR,Oceania
+FR,arrivals_by_origin_hotels_number,2020,,47488.0,NR,Australia
+FR,arrivals_by_origin_hotels_number,2021,,37338.0,NR,Australia
+FR,arrivals_by_origin_hotels_number,2022,,265992.0,NR,Australia
+FR,arrivals_by_origin_hotels_number,2023,,568360.0,NR,Australia
+FR,arrivals_by_origin_hotels_number,2024,,471259.0,NR,Australia
+FR,arrivals_by_origin_hotels_number,2020,,0.0,NR,Other Oceanian countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2021,,0.0,NR,Other Oceanian countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2022,,0.0,NR,Other Oceanian countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2023,,0.0,NR,Other Oceanian countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2024,,0.0,NR,Other Oceanian countries (aggregate changing according to the context)
+FR,arrivals_by_origin_hotels_number,2020,,49686164.0,NR,Domestic country
+FR,arrivals_by_origin_hotels_number,2021,,63472748.0,NR,Domestic country
+FR,arrivals_by_origin_hotels_number,2022,,82428128.0,NR,Domestic country
+FR,arrivals_by_origin_hotels_number,2023,,83304920.0,NR,Domestic country
+FR,arrivals_by_origin_hotels_number,2024,,82336568.0,NR,Domestic country
+FR,arrivals_by_origin_hotels_number,2020,,59668239.0,NR,All countries of the world
+FR,arrivals_by_origin_hotels_number,2021,,77227709.0,NR,All countries of the world
+FR,arrivals_by_origin_hotels_number,2022,,115313668.0,NR,All countries of the world
+FR,arrivals_by_origin_hotels_number,2023,,120732180.0,NR,All countries of the world
+FR,arrivals_by_origin_hotels_number,2024,,120181637.0,NR,All countries of the world
+FR,arrivals_by_origin_hotels_number,2020,,0.0,NR,World - not allocated
+FR,arrivals_by_origin_hotels_number,2021,,0.0,NR,World - not allocated
+FR,arrivals_by_origin_hotels_number,2022,,1.0,NR,World - not allocated
+FR,arrivals_by_origin_hotels_number,2023,,0.0,NR,World - not allocated
+FR,arrivals_by_origin_hotels_number,2024,,0.0,NR,World - not allocated
+DE,arrivals_by_origin_hotels_number,2020,,70754047.0,NR,Europe
+DE,arrivals_by_origin_hotels_number,2021,,70157831.0,NR,Europe
+DE,arrivals_by_origin_hotels_number,2022,,119325095.0,NR,Europe
+DE,arrivals_by_origin_hotels_number,2023,,133831926.0,NR,Europe
+DE,arrivals_by_origin_hotels_number,2024,,137854964.0,NR,Europe
+DE,arrivals_by_origin_hotels_number,2020,,467762.0,NR,Belgium
+DE,arrivals_by_origin_hotels_number,2021,,514316.0,NR,Belgium
+DE,arrivals_by_origin_hotels_number,2022,,995939.0,NR,Belgium
+DE,arrivals_by_origin_hotels_number,2023,,1149304.0,NR,Belgium
+DE,arrivals_by_origin_hotels_number,2024,,1214403.0,NR,Belgium
+DE,arrivals_by_origin_hotels_number,2020,,49949.0,NR,Bulgaria
+DE,arrivals_by_origin_hotels_number,2021,,51580.0,NR,Bulgaria
+DE,arrivals_by_origin_hotels_number,2022,,95122.0,NR,Bulgaria
+DE,arrivals_by_origin_hotels_number,2023,,124571.0,NR,Bulgaria
+DE,arrivals_by_origin_hotels_number,2024,,133415.0,NR,Bulgaria
+DE,arrivals_by_origin_hotels_number,2020,,180860.0,NR,Czechia
+DE,arrivals_by_origin_hotels_number,2021,,192119.0,NR,Czechia
+DE,arrivals_by_origin_hotels_number,2022,,421978.0,NR,Czechia
+DE,arrivals_by_origin_hotels_number,2023,,513932.0,NR,Czechia
+DE,arrivals_by_origin_hotels_number,2024,,530388.0,NR,Czechia
+DE,arrivals_by_origin_hotels_number,2020,,577700.0,NR,Denmark
+DE,arrivals_by_origin_hotels_number,2021,,610074.0,NR,Denmark
+DE,arrivals_by_origin_hotels_number,2022,,1132264.0,NR,Denmark
+DE,arrivals_by_origin_hotels_number,2023,,1236198.0,NR,Denmark
+DE,arrivals_by_origin_hotels_number,2024,,1271529.0,NR,Denmark
+DE,arrivals_by_origin_hotels_number,2020,,61923485.0,NR,Germany
+DE,arrivals_by_origin_hotels_number,2021,,61620107.0,NR,Germany
+DE,arrivals_by_origin_hotels_number,2022,,100062034.0,NR,Germany
+DE,arrivals_by_origin_hotels_number,2023,,111203933.0,NR,Germany
+DE,arrivals_by_origin_hotels_number,2024,,113894811.0,NR,Germany
+DE,arrivals_by_origin_hotels_number,2020,,20736.0,NR,Estonia
+DE,arrivals_by_origin_hotels_number,2021,,22748.0,NR,Estonia
+DE,arrivals_by_origin_hotels_number,2022,,50038.0,NR,Estonia
+DE,arrivals_by_origin_hotels_number,2023,,60330.0,NR,Estonia
+DE,arrivals_by_origin_hotels_number,2024,,67144.0,NR,Estonia
+DE,arrivals_by_origin_hotels_number,2020,,48172.0,NR,Ireland
+DE,arrivals_by_origin_hotels_number,2021,,48192.0,NR,Ireland
+DE,arrivals_by_origin_hotels_number,2022,,167249.0,NR,Ireland
+DE,arrivals_by_origin_hotels_number,2023,,195063.0,NR,Ireland
+DE,arrivals_by_origin_hotels_number,2024,,204762.0,NR,Ireland
+DE,arrivals_by_origin_hotels_number,2020,,55359.0,NR,Greece
+DE,arrivals_by_origin_hotels_number,2021,,57259.0,NR,Greece
+DE,arrivals_by_origin_hotels_number,2022,,123986.0,NR,Greece
+DE,arrivals_by_origin_hotels_number,2023,,156577.0,NR,Greece
+DE,arrivals_by_origin_hotels_number,2024,,183789.0,NR,Greece
+DE,arrivals_by_origin_hotels_number,2020,,288281.0,NR,Spain
+DE,arrivals_by_origin_hotels_number,2021,,312331.0,NR,Spain
+DE,arrivals_by_origin_hotels_number,2022,,802411.0,NR,Spain
+DE,arrivals_by_origin_hotels_number,2023,,934579.0,NR,Spain
+DE,arrivals_by_origin_hotels_number,2024,,989197.0,NR,Spain
+DE,arrivals_by_origin_hotels_number,2020,,583949.0,NR,France
+DE,arrivals_by_origin_hotels_number,2021,,621147.0,NR,France
+DE,arrivals_by_origin_hotels_number,2022,,1322409.0,NR,France
+DE,arrivals_by_origin_hotels_number,2023,,1524189.0,NR,France
+DE,arrivals_by_origin_hotels_number,2024,,1590854.0,NR,France
+DE,arrivals_by_origin_hotels_number,2020,,50909.0,NR,Croatia
+DE,arrivals_by_origin_hotels_number,2021,,52081.0,NR,Croatia
+DE,arrivals_by_origin_hotels_number,2022,,98962.0,NR,Croatia
+DE,arrivals_by_origin_hotels_number,2023,,131684.0,NR,Croatia
+DE,arrivals_by_origin_hotels_number,2024,,147406.0,NR,Croatia
+DE,arrivals_by_origin_hotels_number,2020,,445850.0,NR,Italy
+DE,arrivals_by_origin_hotels_number,2021,,445572.0,NR,Italy
+DE,arrivals_by_origin_hotels_number,2022,,1120323.0,NR,Italy
+DE,arrivals_by_origin_hotels_number,2023,,1349533.0,NR,Italy
+DE,arrivals_by_origin_hotels_number,2024,,1407305.0,NR,Italy
+DE,arrivals_by_origin_hotels_number,2020,,8132.0,NR,Cyprus
+DE,arrivals_by_origin_hotels_number,2021,,8501.0,NR,Cyprus
+DE,arrivals_by_origin_hotels_number,2022,,20759.0,NR,Cyprus
+DE,arrivals_by_origin_hotels_number,2023,,28284.0,NR,Cyprus
+DE,arrivals_by_origin_hotels_number,2024,,33682.0,NR,Cyprus
+DE,arrivals_by_origin_hotels_number,2020,,25465.0,NR,Latvia
+DE,arrivals_by_origin_hotels_number,2021,,30956.0,NR,Latvia
+DE,arrivals_by_origin_hotels_number,2022,,62896.0,NR,Latvia
+DE,arrivals_by_origin_hotels_number,2023,,74546.0,NR,Latvia
+DE,arrivals_by_origin_hotels_number,2024,,79579.0,NR,Latvia
+DE,arrivals_by_origin_hotels_number,2020,,37395.0,NR,Lithuania
+DE,arrivals_by_origin_hotels_number,2021,,46883.0,NR,Lithuania
+DE,arrivals_by_origin_hotels_number,2022,,99758.0,NR,Lithuania
+DE,arrivals_by_origin_hotels_number,2023,,113715.0,NR,Lithuania
+DE,arrivals_by_origin_hotels_number,2024,,127404.0,NR,Lithuania
+DE,arrivals_by_origin_hotels_number,2020,,97844.0,NR,Luxembourg
+DE,arrivals_by_origin_hotels_number,2021,,116742.0,NR,Luxembourg
+DE,arrivals_by_origin_hotels_number,2022,,227300.0,NR,Luxembourg
+DE,arrivals_by_origin_hotels_number,2023,,258432.0,NR,Luxembourg
+DE,arrivals_by_origin_hotels_number,2024,,266080.0,NR,Luxembourg
+DE,arrivals_by_origin_hotels_number,2020,,85798.0,NR,Hungary
+DE,arrivals_by_origin_hotels_number,2021,,86566.0,NR,Hungary
+DE,arrivals_by_origin_hotels_number,2022,,181664.0,NR,Hungary
+DE,arrivals_by_origin_hotels_number,2023,,228553.0,NR,Hungary
+DE,arrivals_by_origin_hotels_number,2024,,256334.0,NR,Hungary
+DE,arrivals_by_origin_hotels_number,2020,,8166.0,NR,Malta
+DE,arrivals_by_origin_hotels_number,2021,,8425.0,NR,Malta
+DE,arrivals_by_origin_hotels_number,2022,,18984.0,NR,Malta
+DE,arrivals_by_origin_hotels_number,2023,,23774.0,NR,Malta
+DE,arrivals_by_origin_hotels_number,2024,,27787.0,NR,Malta
+DE,arrivals_by_origin_hotels_number,2020,,1585077.0,NR,Netherlands
+DE,arrivals_by_origin_hotels_number,2021,,1521276.0,NR,Netherlands
+DE,arrivals_by_origin_hotels_number,2022,,3262011.0,NR,Netherlands
+DE,arrivals_by_origin_hotels_number,2023,,3628869.0,NR,Netherlands
+DE,arrivals_by_origin_hotels_number,2024,,3809499.0,NR,Netherlands
+DE,arrivals_by_origin_hotels_number,2020,,751324.0,NR,Austria
+DE,arrivals_by_origin_hotels_number,2021,,768015.0,NR,Austria
+DE,arrivals_by_origin_hotels_number,2022,,1553230.0,NR,Austria
+DE,arrivals_by_origin_hotels_number,2023,,1808448.0,NR,Austria
+DE,arrivals_by_origin_hotels_number,2024,,1914604.0,NR,Austria
+DE,arrivals_by_origin_hotels_number,2020,,506647.0,NR,Poland
+DE,arrivals_by_origin_hotels_number,2021,,520773.0,NR,Poland
+DE,arrivals_by_origin_hotels_number,2022,,915622.0,NR,Poland
+DE,arrivals_by_origin_hotels_number,2023,,1154363.0,NR,Poland
+DE,arrivals_by_origin_hotels_number,2024,,1241170.0,NR,Poland
+DE,arrivals_by_origin_hotels_number,2020,,60541.0,NR,Portugal
+DE,arrivals_by_origin_hotels_number,2021,,61422.0,NR,Portugal
+DE,arrivals_by_origin_hotels_number,2022,,147695.0,NR,Portugal
+DE,arrivals_by_origin_hotels_number,2023,,177036.0,NR,Portugal
+DE,arrivals_by_origin_hotels_number,2024,,190091.0,NR,Portugal
+DE,arrivals_by_origin_hotels_number,2020,,153050.0,NR,Romania
+DE,arrivals_by_origin_hotels_number,2021,,160182.0,NR,Romania
+DE,arrivals_by_origin_hotels_number,2022,,261763.0,NR,Romania
+DE,arrivals_by_origin_hotels_number,2023,,313656.0,NR,Romania
+DE,arrivals_by_origin_hotels_number,2024,,358758.0,NR,Romania
+DE,arrivals_by_origin_hotels_number,2020,,42960.0,NR,Slovenia
+DE,arrivals_by_origin_hotels_number,2021,,46654.0,NR,Slovenia
+DE,arrivals_by_origin_hotels_number,2022,,91635.0,NR,Slovenia
+DE,arrivals_by_origin_hotels_number,2023,,111465.0,NR,Slovenia
+DE,arrivals_by_origin_hotels_number,2024,,122574.0,NR,Slovenia
+DE,arrivals_by_origin_hotels_number,2020,,59140.0,NR,Slovakia
+DE,arrivals_by_origin_hotels_number,2021,,61103.0,NR,Slovakia
+DE,arrivals_by_origin_hotels_number,2022,,117179.0,NR,Slovakia
+DE,arrivals_by_origin_hotels_number,2023,,141738.0,NR,Slovakia
+DE,arrivals_by_origin_hotels_number,2024,,158683.0,NR,Slovakia
+DE,arrivals_by_origin_hotels_number,2020,,64558.0,NR,Finland
+DE,arrivals_by_origin_hotels_number,2021,,58682.0,NR,Finland
+DE,arrivals_by_origin_hotels_number,2022,,202214.0,NR,Finland
+DE,arrivals_by_origin_hotels_number,2023,,231309.0,NR,Finland
+DE,arrivals_by_origin_hotels_number,2024,,235040.0,NR,Finland
+DE,arrivals_by_origin_hotels_number,2020,,178859.0,NR,Sweden
+DE,arrivals_by_origin_hotels_number,2021,,215285.0,NR,Sweden
+DE,arrivals_by_origin_hotels_number,2022,,622106.0,NR,Sweden
+DE,arrivals_by_origin_hotels_number,2023,,683951.0,NR,Sweden
+DE,arrivals_by_origin_hotels_number,2024,,703323.0,NR,Sweden
+DE,arrivals_by_origin_hotels_number,2020,,68357968.0,NR,Intra-EU27 (from 2020)
+DE,arrivals_by_origin_hotels_number,2021,,68258991.0,NR,Intra-EU27 (from 2020)
+DE,arrivals_by_origin_hotels_number,2022,,114177531.0,NR,Intra-EU27 (from 2020)
+DE,arrivals_by_origin_hotels_number,2023,,127558032.0,NR,Intra-EU27 (from 2020)
+DE,arrivals_by_origin_hotels_number,2024,,131159611.0,NR,Intra-EU27 (from 2020)
+DE,arrivals_by_origin_hotels_number,2020,,68952013.0,NR,Intra-EU28 (2013-2020)
+DE,arrivals_by_origin_hotels_number,2021,,68595025.0,NR,Intra-EU28 (2013-2020)
+DE,arrivals_by_origin_hotels_number,2022,,115601689.0,NR,Intra-EU28 (2013-2020)
+DE,arrivals_by_origin_hotels_number,2023,,129504190.0,NR,Intra-EU28 (2013-2020)
+DE,arrivals_by_origin_hotels_number,2024,,133279089.0,NR,Intra-EU28 (2013-2020)
+DE,arrivals_by_origin_hotels_number,2020,,6434483.0,NR,EU27 countries (from 2020) except reporting country
+DE,arrivals_by_origin_hotels_number,2021,,6638884.0,NR,EU27 countries (from 2020) except reporting country
+DE,arrivals_by_origin_hotels_number,2022,,14115497.0,NR,EU27 countries (from 2020) except reporting country
+DE,arrivals_by_origin_hotels_number,2023,,16354099.0,NR,EU27 countries (from 2020) except reporting country
+DE,arrivals_by_origin_hotels_number,2024,,17264800.0,NR,EU27 countries (from 2020) except reporting country
+DE,arrivals_by_origin_hotels_number,2020,,1261598.0,NR,European Free Trade Association
+DE,arrivals_by_origin_hotels_number,2021,,1123527.0,NR,European Free Trade Association
+DE,arrivals_by_origin_hotels_number,2022,,2647337.0,NR,European Free Trade Association
+DE,arrivals_by_origin_hotels_number,2023,,3038844.0,NR,European Free Trade Association
+DE,arrivals_by_origin_hotels_number,2024,,3121904.0,NR,European Free Trade Association
+DE,arrivals_by_origin_hotels_number,2020,,9818.0,NR,Iceland
+DE,arrivals_by_origin_hotels_number,2021,,13543.0,NR,Iceland
+DE,arrivals_by_origin_hotels_number,2022,,36473.0,NR,Iceland
+DE,arrivals_by_origin_hotels_number,2023,,36171.0,NR,Iceland
+DE,arrivals_by_origin_hotels_number,2024,,38562.0,NR,Iceland
+DE,arrivals_by_origin_hotels_number,2020,,1185330.0,NR,Switzerland and Liechtenstein
+DE,arrivals_by_origin_hotels_number,2021,,1037436.0,NR,Switzerland and Liechtenstein
+DE,arrivals_by_origin_hotels_number,2022,,2333054.0,NR,Switzerland and Liechtenstein
+DE,arrivals_by_origin_hotels_number,2023,,2710198.0,NR,Switzerland and Liechtenstein
+DE,arrivals_by_origin_hotels_number,2024,,2785975.0,NR,Switzerland and Liechtenstein
+DE,arrivals_by_origin_hotels_number,2020,,66450.0,NR,Norway
+DE,arrivals_by_origin_hotels_number,2021,,72548.0,NR,Norway
+DE,arrivals_by_origin_hotels_number,2022,,277810.0,NR,Norway
+DE,arrivals_by_origin_hotels_number,2023,,292475.0,NR,Norway
+DE,arrivals_by_origin_hotels_number,2024,,297367.0,NR,Norway
+DE,arrivals_by_origin_hotels_number,2020,,594045.0,NR,United Kingdom
+DE,arrivals_by_origin_hotels_number,2021,,336034.0,NR,United Kingdom
+DE,arrivals_by_origin_hotels_number,2022,,1424158.0,NR,United Kingdom
+DE,arrivals_by_origin_hotels_number,2023,,1946158.0,NR,United Kingdom
+DE,arrivals_by_origin_hotels_number,2024,,2119478.0,NR,United Kingdom
+DE,arrivals_by_origin_hotels_number,2020,,100155.0,NR,Türkiye
+DE,arrivals_by_origin_hotels_number,2021,,85338.0,NR,Türkiye
+DE,arrivals_by_origin_hotels_number,2022,,258463.0,NR,Türkiye
+DE,arrivals_by_origin_hotels_number,2023,,373595.0,NR,Türkiye
+DE,arrivals_by_origin_hotels_number,2024,,450987.0,NR,Türkiye
+DE,arrivals_by_origin_hotels_number,2020,,75558.0,NR,Ukraine
+DE,arrivals_by_origin_hotels_number,2021,,75379.0,NR,Ukraine
+DE,arrivals_by_origin_hotels_number,2022,,252819.0,NR,Ukraine
+DE,arrivals_by_origin_hotels_number,2023,,229265.0,NR,Ukraine
+DE,arrivals_by_origin_hotels_number,2024,,230915.0,NR,Ukraine
+DE,arrivals_by_origin_hotels_number,2020,,186423.0,NR,Russia
+DE,arrivals_by_origin_hotels_number,2021,,68611.0,NR,Russia
+DE,arrivals_by_origin_hotels_number,2022,,115260.0,NR,Russia
+DE,arrivals_by_origin_hotels_number,2023,,106678.0,NR,Russia
+DE,arrivals_by_origin_hotels_number,2024,,98049.0,NR,Russia
+DE,arrivals_by_origin_hotels_number,2020,,178300.0,NR,Other European countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2021,,209951.0,NR,Other European countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2022,,449527.0,NR,Other European countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2023,,579354.0,NR,Other European countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2024,,674020.0,NR,Other European countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2020,,66919.0,NR,Africa
+DE,arrivals_by_origin_hotels_number,2021,,56454.0,NR,Africa
+DE,arrivals_by_origin_hotels_number,2022,,178585.0,NR,Africa
+DE,arrivals_by_origin_hotels_number,2023,,211797.0,NR,Africa
+DE,arrivals_by_origin_hotels_number,2024,,228564.0,NR,Africa
+DE,arrivals_by_origin_hotels_number,2020,,14204.0,NR,South Africa
+DE,arrivals_by_origin_hotels_number,2021,,7566.0,NR,South Africa
+DE,arrivals_by_origin_hotels_number,2022,,41331.0,NR,South Africa
+DE,arrivals_by_origin_hotels_number,2023,,47618.0,NR,South Africa
+DE,arrivals_by_origin_hotels_number,2024,,46435.0,NR,South Africa
+DE,arrivals_by_origin_hotels_number,2020,,52715.0,NR,Other African countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2021,,48888.0,NR,Other African countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2022,,137254.0,NR,Other African countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2023,,164179.0,NR,Other African countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2024,,182129.0,NR,Other African countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2020,,747934.0,NR,America
+DE,arrivals_by_origin_hotels_number,2021,,829600.0,NR,America
+DE,arrivals_by_origin_hotels_number,2022,,2855684.0,NR,America
+DE,arrivals_by_origin_hotels_number,2023,,3568735.0,NR,America
+DE,arrivals_by_origin_hotels_number,2024,,3997581.0,NR,America
+DE,arrivals_by_origin_hotels_number,2020,,631062.0,NR,Northern America
+DE,arrivals_by_origin_hotels_number,2021,,733586.0,NR,Northern America
+DE,arrivals_by_origin_hotels_number,2022,,2411013.0,NR,Northern America
+DE,arrivals_by_origin_hotels_number,2023,,3007559.0,NR,Northern America
+DE,arrivals_by_origin_hotels_number,2024,,3385378.0,NR,Northern America
+DE,arrivals_by_origin_hotels_number,2020,,57655.0,NR,Canada
+DE,arrivals_by_origin_hotels_number,2021,,55613.0,NR,Canada
+DE,arrivals_by_origin_hotels_number,2022,,188936.0,NR,Canada
+DE,arrivals_by_origin_hotels_number,2023,,250090.0,NR,Canada
+DE,arrivals_by_origin_hotels_number,2024,,275564.0,NR,Canada
+DE,arrivals_by_origin_hotels_number,2020,,568965.0,NR,United States
+DE,arrivals_by_origin_hotels_number,2021,,673752.0,NR,United States
+DE,arrivals_by_origin_hotels_number,2022,,2202334.0,NR,United States
+DE,arrivals_by_origin_hotels_number,2023,,2729197.0,NR,United States
+DE,arrivals_by_origin_hotels_number,2024,,3077771.0,NR,United States
+DE,arrivals_by_origin_hotels_number,2020,,4442.0,NR,Other Northern American countries
+DE,arrivals_by_origin_hotels_number,2021,,4221.0,NR,Other Northern American countries
+DE,arrivals_by_origin_hotels_number,2022,,19743.0,NR,Other Northern American countries
+DE,arrivals_by_origin_hotels_number,2023,,28272.0,NR,Other Northern American countries
+DE,arrivals_by_origin_hotels_number,2024,,32043.0,NR,Other Northern American countries
+DE,arrivals_by_origin_hotels_number,2020,,116872.0,NR,Central and South America
+DE,arrivals_by_origin_hotels_number,2021,,96014.0,NR,Central and South America
+DE,arrivals_by_origin_hotels_number,2022,,444671.0,NR,Central and South America
+DE,arrivals_by_origin_hotels_number,2023,,561176.0,NR,Central and South America
+DE,arrivals_by_origin_hotels_number,2024,,612203.0,NR,Central and South America
+DE,arrivals_by_origin_hotels_number,2020,,50004.0,NR,Brazil
+DE,arrivals_by_origin_hotels_number,2021,,27650.0,NR,Brazil
+DE,arrivals_by_origin_hotels_number,2022,,169218.0,NR,Brazil
+DE,arrivals_by_origin_hotels_number,2023,,214573.0,NR,Brazil
+DE,arrivals_by_origin_hotels_number,2024,,232974.0,NR,Brazil
+DE,arrivals_by_origin_hotels_number,2020,,66868.0,NR,Other Central or South American countries
+DE,arrivals_by_origin_hotels_number,2021,,68364.0,NR,Other Central or South American countries
+DE,arrivals_by_origin_hotels_number,2022,,275453.0,NR,Other Central or South American countries
+DE,arrivals_by_origin_hotels_number,2023,,346603.0,NR,Other Central or South American countries
+DE,arrivals_by_origin_hotels_number,2024,,379229.0,NR,Other Central or South American countries
+DE,arrivals_by_origin_hotels_number,2020,,682011.0,NR,Asia
+DE,arrivals_by_origin_hotels_number,2021,,534055.0,NR,Asia
+DE,arrivals_by_origin_hotels_number,2022,,1672195.0,NR,Asia
+DE,arrivals_by_origin_hotels_number,2023,,2708963.0,NR,Asia
+DE,arrivals_by_origin_hotels_number,2024,,3100658.0,NR,Asia
+DE,arrivals_by_origin_hotels_number,2020,,151734.0,NR,China
+DE,arrivals_by_origin_hotels_number,2021,,51770.0,NR,China
+DE,arrivals_by_origin_hotels_number,2022,,168311.0,NR,China
+DE,arrivals_by_origin_hotels_number,2023,,557123.0,NR,China
+DE,arrivals_by_origin_hotels_number,2024,,808113.0,NR,China
+DE,arrivals_by_origin_hotels_number,2020,,92110.0,NR,Japan
+DE,arrivals_by_origin_hotels_number,2021,,26464.0,NR,Japan
+DE,arrivals_by_origin_hotels_number,2022,,126239.0,NR,Japan
+DE,arrivals_by_origin_hotels_number,2023,,263825.0,NR,Japan
+DE,arrivals_by_origin_hotels_number,2024,,319214.0,NR,Japan
+DE,arrivals_by_origin_hotels_number,2020,,55400.0,NR,South Korea
+DE,arrivals_by_origin_hotels_number,2021,,25310.0,NR,South Korea
+DE,arrivals_by_origin_hotels_number,2022,,110254.0,NR,South Korea
+DE,arrivals_by_origin_hotels_number,2023,,208646.0,NR,South Korea
+DE,arrivals_by_origin_hotels_number,2024,,210038.0,NR,South Korea
+DE,arrivals_by_origin_hotels_number,2020,,382767.0,NR,Other Asian countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2021,,430511.0,NR,Other Asian countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2022,,1267391.0,NR,Other Asian countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2023,,1679369.0,NR,Other Asian countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2024,,1763293.0,NR,Other Asian countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2020,,49334.0,NR,Oceania
+DE,arrivals_by_origin_hotels_number,2021,,21060.0,NR,Oceania
+DE,arrivals_by_origin_hotels_number,2022,,189691.0,NR,Oceania
+DE,arrivals_by_origin_hotels_number,2023,,341277.0,NR,Oceania
+DE,arrivals_by_origin_hotels_number,2024,,346838.0,NR,Oceania
+DE,arrivals_by_origin_hotels_number,2020,,40852.0,NR,Australia
+DE,arrivals_by_origin_hotels_number,2021,,16220.0,NR,Australia
+DE,arrivals_by_origin_hotels_number,2022,,161126.0,NR,Australia
+DE,arrivals_by_origin_hotels_number,2023,,290258.0,NR,Australia
+DE,arrivals_by_origin_hotels_number,2024,,292028.0,NR,Australia
+DE,arrivals_by_origin_hotels_number,2020,,8482.0,NR,Other Oceanian countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2021,,4840.0,NR,Other Oceanian countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2022,,28565.0,NR,Other Oceanian countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2023,,51019.0,NR,Other Oceanian countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2024,,54810.0,NR,Other Oceanian countries (aggregate changing according to the context)
+DE,arrivals_by_origin_hotels_number,2020,,61923485.0,NR,Domestic country
+DE,arrivals_by_origin_hotels_number,2021,,61620107.0,NR,Domestic country
+DE,arrivals_by_origin_hotels_number,2022,,100062034.0,NR,Domestic country
+DE,arrivals_by_origin_hotels_number,2023,,111203933.0,NR,Domestic country
+DE,arrivals_by_origin_hotels_number,2024,,113894811.0,NR,Domestic country
+DE,arrivals_by_origin_hotels_number,2020,,72541993.0,NR,All countries of the world
+DE,arrivals_by_origin_hotels_number,2021,,71772542.0,NR,All countries of the world
+DE,arrivals_by_origin_hotels_number,2022,,124601264.0,NR,All countries of the world
+DE,arrivals_by_origin_hotels_number,2023,,141225234.0,NR,All countries of the world
+DE,arrivals_by_origin_hotels_number,2024,,146236303.0,NR,All countries of the world
+DE,arrivals_by_origin_hotels_number,2020,,241748.0,NR,World - not allocated
+DE,arrivals_by_origin_hotels_number,2021,,173542.0,NR,World - not allocated
+DE,arrivals_by_origin_hotels_number,2022,,380014.0,NR,World - not allocated
+DE,arrivals_by_origin_hotels_number,2023,,562536.0,NR,World - not allocated
+DE,arrivals_by_origin_hotels_number,2024,,707698.0,NR,World - not allocated
+ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2015,,422226376.0,NR,Total
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2016,,454957250.0,NR,Total
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2017,,471199729.0,NR,Total
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2018,,466940717.0,NR,Total
@@ -779,6 +969,7 @@ ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residen
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2022,,451624940.0,NR,Total
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2023,,484987485.0,NR,Total
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2024,,505166012.0,NR,Total
+ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2015,,152808273.0,NR,Domestic country
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2016,,160400822.0,NR,Domestic country
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2017,,165292267.0,NR,Domestic country
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2018,,165918083.0,NR,Domestic country
@@ -788,6 +979,7 @@ ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residen
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2022,,180184036.0,NR,Domestic country
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2023,,183129528.0,NR,Domestic country
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2024,,182936205.0,NR,Domestic country
+ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2015,,269418103.0,NR,Foreign country
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2016,,294556428.0,NR,Foreign country
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2017,,305907462.0,NR,Foreign country
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2018,,301022634.0,NR,Foreign country
@@ -797,6 +989,7 @@ ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residen
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2022,,271440904.0,NR,Foreign country
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2023,,301857957.0,NR,Foreign country
 ES,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2024,,322229807.0,NR,Foreign country
+FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2015,,410052887.0,NR,Total
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2016,,404763426.0,NR,Total
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2017,,433058728.0,NR,Total
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2018,,442760050.0,NR,Total
@@ -806,6 +999,7 @@ FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residen
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2022,,449792261.0,NR,Total
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2023,,460271796.0,NR,Total
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2024,,457644262.0,NR,Total
+FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2015,,279587890.0,NR,Domestic country
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2016,,280850016.0,NR,Domestic country
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2017,,299558737.0,NR,Domestic country
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2018,,302038667.0,NR,Domestic country
@@ -815,6 +1009,7 @@ FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residen
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2022,,324342680.0,NR,Domestic country
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2023,,321903813.0,NR,Domestic country
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2024,,317036065.0,NR,Domestic country
+FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2015,,130464997.0,NR,Foreign country
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2016,,123913410.0,NR,Foreign country
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2017,,133499991.0,NR,Foreign country
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2018,,140721383.0,NR,Foreign country
@@ -824,6 +1019,7 @@ FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residen
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2022,,125449581.0,NR,Foreign country
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2023,,138367983.0,NR,Foreign country
 FR,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2024,,140608197.0,NR,Foreign country
+DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2015,,378048084.0,NR,Total
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2016,,388851871.0,NR,Total
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2017,,401163218.0,NR,Total
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2018,,419556284.0,NR,Total
@@ -833,6 +1029,7 @@ DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residen
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2022,,400409055.0,NR,Total
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2023,,431439035.0,NR,Total
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2024,,439619668.0,NR,Total
+DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2015,,299220311.0,NR,Domestic country
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2016,,308904957.0,NR,Domestic country
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2017,,318051999.0,NR,Domestic country
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2018,,332594428.0,NR,Domestic country
@@ -842,6 +1039,7 @@ DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residen
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2022,,332792753.0,NR,Domestic country
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2023,,351060606.0,NR,Domestic country
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2024,,354827032.0,NR,Domestic country
+DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2015,,78827773.0,NR,Foreign country
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2016,,79946914.0,NR,Foreign country
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2017,,83111219.0,NR,Foreign country
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2018,,86961856.0,NR,Foreign country
@@ -851,6 +1049,7 @@ DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residen
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2022,,67616302.0,NR,Foreign country
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2023,,80378429.0,NR,Foreign country
 DE,nights_spent_at_tourist_accommodation_establishments_by_residents_non_residents,2024,,84792636.0,NR,Foreign country
+ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2015,,583440923.0,NR,1 night or over
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2016,,621877918.0,NR,1 night or over
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2017,,629592329.0,NR,1 night or over
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2018,,627151621.0,NR,1 night or over
@@ -860,6 +1059,7 @@ ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2021,,49740
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2022,,605192168.0,NR,1 night or over
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2023,,635376640.0,NR,1 night or over
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2024,,656113949.0,NR,1 night or over
+ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2015,,177294265.0,NR,From 1 to 3 nights
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2016,,186555651.0,NR,From 1 to 3 nights
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2017,,196661236.0,NR,From 1 to 3 nights
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2018,,198299303.0,NR,From 1 to 3 nights
@@ -869,6 +1069,7 @@ ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2021,,14287
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2022,,175343515.0,NR,From 1 to 3 nights
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2023,,184311937.0,NR,From 1 to 3 nights
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2024,,188359236.0,NR,From 1 to 3 nights
+ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2015,,406146658.0,NR,4 nights or over
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2016,,435322266.0,NR,4 nights or over
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2017,,432931093.0,NR,4 nights or over
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2018,,428852318.0,NR,4 nights or over
@@ -878,6 +1079,7 @@ ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2021,,35453
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2022,,429848653.0,NR,4 nights or over
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2023,,451064703.0,NR,4 nights or over
 ES,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2024,,467754713.0,NR,4 nights or over
+FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2015,,1113942857.0,NR,1 night or over
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2016,,1094125171.0,NR,1 night or over
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2017,,1127833720.0,NR,1 night or over
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2018,,1138617385.0,NR,1 night or over
@@ -887,6 +1089,7 @@ FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2021,,96097
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2022,,1079731907.0,NR,1 night or over
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2023,,1123634836.0,NR,1 night or over
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2024,,1117657902.0,NR,1 night or over
+FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2015,,193496931.0,NR,From 1 to 3 nights
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2016,,190248591.0,NR,From 1 to 3 nights
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2017,,222117533.0,NR,From 1 to 3 nights
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2018,,215422845.0,NR,From 1 to 3 nights
@@ -896,6 +1099,7 @@ FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2021,,21662
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2022,,252302046.0,NR,From 1 to 3 nights
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2023,,257754759.0,NR,From 1 to 3 nights
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2024,,254185122.0,NR,From 1 to 3 nights
+FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2015,,920445926.0,NR,4 nights or over
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2016,,903876580.0,NR,4 nights or over
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2017,,905716188.0,NR,4 nights or over
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2018,,923194540.0,NR,4 nights or over
@@ -905,6 +1109,7 @@ FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2021,,74435
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2022,,827429861.0,NR,4 nights or over
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2023,,865880077.0,NR,4 nights or over
 FR,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2024,,863472780.0,NR,4 nights or over
+DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2015,,1311808356.0,NR,1 night or over
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2016,,1360097876.0,NR,1 night or over
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2017,,1349363024.0,NR,1 night or over
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2018,,1498547146.0,NR,1 night or over
@@ -914,6 +1119,7 @@ DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2021,,95681
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2022,,1317453011.0,NR,1 night or over
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2023,,1413423364.0,NR,1 night or over
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2024,,1560613457.0,NR,1 night or over
+DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2015,,263420794.0,NR,From 1 to 3 nights
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2016,,259822616.0,NR,From 1 to 3 nights
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2017,,248669751.0,NR,From 1 to 3 nights
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2018,,264203777.0,NR,From 1 to 3 nights
@@ -923,6 +1129,7 @@ DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2021,,18239
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2022,,211623320.0,NR,From 1 to 3 nights
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2023,,242651269.0,NR,From 1 to 3 nights
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2024,,265651201.0,NR,From 1 to 3 nights
+DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2015,,1048387561.0,NR,4 nights or over
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2016,,1100275260.0,NR,4 nights or over
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2017,,1100693273.0,NR,4 nights or over
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2018,,1234343369.0,NR,4 nights or over
@@ -932,6 +1139,7 @@ DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2021,,77441
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2022,,1105829691.0,NR,4 nights or over
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2023,,1170772096.0,NR,4 nights or over
 DE,nights_spent_by_duration_purpose_and_main_destination_of_the_trip,2024,,1294962255.0,NR,4 nights or over
+ES,trips_by_duration_purpose_and_main_destination,2015,,129381060.0,NR,Personal reasons
 ES,trips_by_duration_purpose_and_main_destination,2016,,136718002.0,NR,Personal reasons
 ES,trips_by_duration_purpose_and_main_destination,2017,,144731444.0,NR,Personal reasons
 ES,trips_by_duration_purpose_and_main_destination,2018,,146661580.0,NR,Personal reasons
@@ -941,6 +1149,7 @@ ES,trips_by_duration_purpose_and_main_destination,2021,,109029569.0,NR,Personal 
 ES,trips_by_duration_purpose_and_main_destination,2022,,131651380.0,NR,Personal reasons
 ES,trips_by_duration_purpose_and_main_destination,2023,,138318957.0,NR,Personal reasons
 ES,trips_by_duration_purpose_and_main_destination,2024,,140856393.0,NR,Personal reasons
+ES,trips_by_duration_purpose_and_main_destination,2015,,7030098.0,NR,"Professional, business"
 ES,trips_by_duration_purpose_and_main_destination,2016,,8755302.0,NR,"Professional, business"
 ES,trips_by_duration_purpose_and_main_destination,2017,,7976367.0,NR,"Professional, business"
 ES,trips_by_duration_purpose_and_main_destination,2018,,8628594.0,NR,"Professional, business"
@@ -950,6 +1159,7 @@ ES,trips_by_duration_purpose_and_main_destination,2021,,4729230.0,NR,"Profession
 ES,trips_by_duration_purpose_and_main_destination,2022,,6540212.0,NR,"Professional, business"
 ES,trips_by_duration_purpose_and_main_destination,2023,,8501236.0,NR,"Professional, business"
 ES,trips_by_duration_purpose_and_main_destination,2024,,8633432.0,NR,"Professional, business"
+FR,trips_by_duration_purpose_and_main_destination,2015,,183110642.0,NR,Personal reasons
 FR,trips_by_duration_purpose_and_main_destination,2016,,179613679.0,NR,Personal reasons
 FR,trips_by_duration_purpose_and_main_destination,2017,,196173554.0,NR,Personal reasons
 FR,trips_by_duration_purpose_and_main_destination,2018,,196114914.0,NR,Personal reasons
@@ -959,6 +1169,7 @@ FR,trips_by_duration_purpose_and_main_destination,2021,,181771179.0,NR,Personal 
 FR,trips_by_duration_purpose_and_main_destination,2022,,206169571.0,NR,Personal reasons
 FR,trips_by_duration_purpose_and_main_destination,2023,,217636261.0,NR,Personal reasons
 FR,trips_by_duration_purpose_and_main_destination,2024,,206484954.0,NR,Personal reasons
+FR,trips_by_duration_purpose_and_main_destination,2015,,16046025.0,NR,"Professional, business"
 FR,trips_by_duration_purpose_and_main_destination,2016,,16396747.0,NR,"Professional, business"
 FR,trips_by_duration_purpose_and_main_destination,2017,,24601255.0,NR,"Professional, business"
 FR,trips_by_duration_purpose_and_main_destination,2018,,24114998.0,NR,"Professional, business"
@@ -968,6 +1179,7 @@ FR,trips_by_duration_purpose_and_main_destination,2021,,18564784.0,NR,"Professio
 FR,trips_by_duration_purpose_and_main_destination,2022,,23096113.0,NR,"Professional, business"
 FR,trips_by_duration_purpose_and_main_destination,2023,,21821377.0,NR,"Professional, business"
 FR,trips_by_duration_purpose_and_main_destination,2024,,33275982.0,NR,"Professional, business"
+DE,trips_by_duration_purpose_and_main_destination,2015,,210083293.0,NR,Personal reasons
 DE,trips_by_duration_purpose_and_main_destination,2016,,213495421.0,NR,Personal reasons
 DE,trips_by_duration_purpose_and_main_destination,2017,,202296144.0,NR,Personal reasons
 DE,trips_by_duration_purpose_and_main_destination,2018,,225708302.0,NR,Personal reasons
@@ -977,6 +1189,7 @@ DE,trips_by_duration_purpose_and_main_destination,2021,,156531167.0,NR,Personal 
 DE,trips_by_duration_purpose_and_main_destination,2022,,191695483.0,NR,Personal reasons
 DE,trips_by_duration_purpose_and_main_destination,2023,,216368017.0,NR,Personal reasons
 DE,trips_by_duration_purpose_and_main_destination,2024,,240157324.0,NR,Personal reasons
+DE,trips_by_duration_purpose_and_main_destination,2015,,37792654.0,NR,"Professional, business"
 DE,trips_by_duration_purpose_and_main_destination,2016,,42152657.0,NR,"Professional, business"
 DE,trips_by_duration_purpose_and_main_destination,2017,,41280965.0,NR,"Professional, business"
 DE,trips_by_duration_purpose_and_main_destination,2018,,42170810.0,NR,"Professional, business"
@@ -986,18 +1199,33 @@ DE,trips_by_duration_purpose_and_main_destination,2021,,21627122.0,NR,"Professio
 DE,trips_by_duration_purpose_and_main_destination,2022,,29996240.0,NR,"Professional, business"
 DE,trips_by_duration_purpose_and_main_destination,2023,,34276919.0,NR,"Professional, business"
 DE,trips_by_duration_purpose_and_main_destination,2024,,36998211.0,NR,"Professional, business"
+ES,average_expenditure_per_trip,2020,,223.79,EUR,
 ES,average_expenditure_per_trip,2021,,241.51,EUR,
 ES,average_expenditure_per_trip,2022,,314.18,EUR,
 ES,average_expenditure_per_trip,2023,,346.72,EUR,
 ES,average_expenditure_per_trip,2024,,367.6,EUR,
+FR,average_expenditure_per_trip,2020,,335.75,EUR,
 FR,average_expenditure_per_trip,2021,,324.99,EUR,
 FR,average_expenditure_per_trip,2022,,394.36,EUR,
 FR,average_expenditure_per_trip,2023,,406.75,EUR,
 FR,average_expenditure_per_trip,2024,,424.77,EUR,
+DE,average_expenditure_per_trip,2020,,416.55,EUR,
 DE,average_expenditure_per_trip,2021,,481.68,EUR,
 DE,average_expenditure_per_trip,2022,,690.59,EUR,
 DE,average_expenditure_per_trip,2023,,705.28,EUR,
 DE,average_expenditure_per_trip,2024,,729.07,EUR,
+ES,nights_spent_monthly_hotels,2020,1.0,15968171.0,NR,
+ES,nights_spent_monthly_hotels,2020,2.0,17614205.0,NR,
+ES,nights_spent_monthly_hotels,2020,3.0,8372820.0,NR,
+ES,nights_spent_monthly_hotels,2020,4.0,0.0,NR,
+ES,nights_spent_monthly_hotels,2020,5.0,271148.0,NR,
+ES,nights_spent_monthly_hotels,2020,6.0,1870057.0,NR,
+ES,nights_spent_monthly_hotels,2020,7.0,11731245.0,NR,
+ES,nights_spent_monthly_hotels,2020,8.0,16927211.0,NR,
+ES,nights_spent_monthly_hotels,2020,9.0,8219094.0,NR,
+ES,nights_spent_monthly_hotels,2020,10.0,5128825.0,NR,
+ES,nights_spent_monthly_hotels,2020,11.0,2874269.0,NR,
+ES,nights_spent_monthly_hotels,2020,12.0,3245991.0,NR,
 ES,nights_spent_monthly_hotels,2021,1.0,2459472.0,NR,
 ES,nights_spent_monthly_hotels,2021,2.0,2384740.0,NR,
 ES,nights_spent_monthly_hotels,2021,3.0,3521657.0,NR,
@@ -1058,6 +1286,18 @@ ES,nights_spent_monthly_hotels,2025,9.0,39420119.0,NR,
 ES,nights_spent_monthly_hotels,2025,10.0,34281206.0,NR,
 ES,nights_spent_monthly_hotels,2025,11.0,20301411.0,NR,
 ES,nights_spent_monthly_hotels,2025,12.0,18546462.0,NR,
+FR,nights_spent_monthly_hotels,2020,1.0,13566938.0,NR,
+FR,nights_spent_monthly_hotels,2020,2.0,14515965.0,NR,
+FR,nights_spent_monthly_hotels,2020,3.0,7212999.0,NR,
+FR,nights_spent_monthly_hotels,2020,4.0,721353.0,NR,
+FR,nights_spent_monthly_hotels,2020,5.0,1500619.0,NR,
+FR,nights_spent_monthly_hotels,2020,6.0,5939182.0,NR,
+FR,nights_spent_monthly_hotels,2020,7.0,15083194.0,NR,
+FR,nights_spent_monthly_hotels,2020,8.0,18994313.0,NR,
+FR,nights_spent_monthly_hotels,2020,9.0,11882532.0,NR,
+FR,nights_spent_monthly_hotels,2020,10.0,9334974.0,NR,
+FR,nights_spent_monthly_hotels,2020,11.0,3542593.0,NR,
+FR,nights_spent_monthly_hotels,2020,12.0,4578193.0,NR,
 FR,nights_spent_monthly_hotels,2021,1.0,4910460.0,NR,
 FR,nights_spent_monthly_hotels,2021,2.0,5170074.0,NR,
 FR,nights_spent_monthly_hotels,2021,3.0,5431070.0,NR,
@@ -1118,6 +1358,18 @@ FR,nights_spent_monthly_hotels,2025,9.0,20444876.0,NR,
 FR,nights_spent_monthly_hotels,2025,10.0,18827893.0,NR,
 FR,nights_spent_monthly_hotels,2025,11.0,14131248.0,NR,
 FR,nights_spent_monthly_hotels,2025,12.0,15784733.0,NR,
+DE,nights_spent_monthly_hotels,2020,1.0,18300414.0,NR,
+DE,nights_spent_monthly_hotels,2020,2.0,20030473.0,NR,
+DE,nights_spent_monthly_hotels,2020,3.0,9331495.0,NR,
+DE,nights_spent_monthly_hotels,2020,4.0,2313819.0,NR,
+DE,nights_spent_monthly_hotels,2020,5.0,5078500.0,NR,
+DE,nights_spent_monthly_hotels,2020,6.0,13767381.0,NR,
+DE,nights_spent_monthly_hotels,2020,7.0,21735709.0,NR,
+DE,nights_spent_monthly_hotels,2020,8.0,24341387.0,NR,
+DE,nights_spent_monthly_hotels,2020,9.0,23117196.0,NR,
+DE,nights_spent_monthly_hotels,2020,10.0,18193422.0,NR,
+DE,nights_spent_monthly_hotels,2020,11.0,4776614.0,NR,
+DE,nights_spent_monthly_hotels,2020,12.0,3343168.0,NR,
 DE,nights_spent_monthly_hotels,2021,1.0,3209294.0,NR,
 DE,nights_spent_monthly_hotels,2021,2.0,3680276.0,NR,
 DE,nights_spent_monthly_hotels,2021,3.0,4833748.0,NR,

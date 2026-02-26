@@ -50,6 +50,18 @@ def jsonstat_to_dataframe(js: Dict[str, Any]) -> pd.DataFrame:
 
     return df
 
+def add_geo_name(df_raw: pd.DataFrame, js: Dict[str, Any]) -> pd.DataFrame:
+    labels = (
+        js.get("dimension", {})
+          .get("geo", {})
+          .get("category", {})
+          .get("label", {})
+    )  # code -> human name
+    if "geo" in df_raw.columns and labels:
+        df_raw = df_raw.copy()
+        df_raw["geo_name"] = df_raw["geo"].map(labels).fillna(df_raw["geo"])
+    return df_raw
+
 
 def describe_dataset(dataset: str, sample_geo: str = "ES", overrides: Optional[Dict[str, Any]] = None) -> None:
     """
@@ -176,8 +188,8 @@ def normalize_to_long(df_raw: pd.DataFrame, dataset: str, indicator_name: str, g
     out = out.dropna(subset=["geo", "date", "value"]).copy()
     out["date"] = out["date"].astype(int)
 
-    # ✅ elegir dim "más variable" como sub_indicator_short (ej: c_resid en 1b)
-    if extra_dims:
+    # ✅ elegir dim "más variable" como sub_indicator_short SOLO si NO viene ya creado
+    if "sub_indicator_short" not in out.columns and extra_dims:
         nun = {c: out[c].nunique(dropna=True) for c in extra_dims}
         best_dim = max(nun, key=nun.get)
         if nun[best_dim] > 1:
@@ -242,7 +254,30 @@ def fetch_indicator(
     if not multi_filters:
         js = eurostat_get(dataset, params=params, lang="EN")
         df_raw = jsonstat_to_dataframe(js)
-        return normalize_to_long(df_raw, dataset, indicator_name, geo_level)
+        df_raw = add_geo_name(df_raw, js)
+
+        # Detecta la dimensión "variable" y traduce a label (AFR -> Africa)
+        base_cols = {"geo", "time", "value", "unit", "freq"}
+        extra_dims = [c for c in df_raw.columns if c not in base_cols]
+
+        if extra_dims:
+            nun = {c: df_raw[c].nunique(dropna=True) for c in extra_dims}
+            best_dim = max(nun, key=nun.get)
+
+            if nun[best_dim] > 1:
+                label_map = (
+                    js.get("dimension", {})
+                        .get(best_dim, {})
+                        .get("category", {})
+                        .get("label", {})
+                )  # code -> label
+
+                if label_map:
+                    df_raw["sub_indicator_short"] = df_raw[best_dim].map(label_map).fillna(df_raw[best_dim])
+                else:
+                    df_raw["sub_indicator_short"] = df_raw[best_dim]
+
+        return normalize_to_long(df_raw, dataset, indicator_name, geo_level, unit_fallback=unit_fallback)
 
     resolved_multi_filters: Dict[str, List[str]] = {}
     for dim, label_list in multi_filters.items():

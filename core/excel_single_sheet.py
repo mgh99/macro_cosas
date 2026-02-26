@@ -47,10 +47,12 @@ def _write_single_sheet(
             col_field = "date"
 
         # Pivot
+        geo_col = "geo_name" if "geo_name" in sub.columns and sub["geo_name"].notna().any() else "geo"
+
         if "sub_indicator_short" in sub.columns and sub["sub_indicator_short"].notna().any():
             table = (
                 sub.pivot_table(
-                    index=["geo", "sub_indicator_short"],
+                    index=[geo_col, "sub_indicator_short"],
                     columns=col_field,
                     values="value",
                     aggfunc="first",
@@ -61,7 +63,7 @@ def _write_single_sheet(
         else:
             table = (
                 sub.pivot_table(
-                    index=["geo"],
+                    index=[geo_col],
                     columns=col_field,
                     values="value",
                     aggfunc="first",
