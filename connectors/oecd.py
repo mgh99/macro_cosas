@@ -1,134 +1,94 @@
 # connectors/oecd.py
-from typing import Any, Dict
+from __future__ import annotations
+
+from io import StringIO
+from typing import Optional, Sequence
 
 import pandas as pd
 import requests
 
-BASE_URL = "https://stats.oecd.org/sdmx-json/data"
+from core.geo_mapper import to_iso2
 
-
-def oecd_get(dataset: str, query: str) -> Dict[str, Any]:
-    url = f"{BASE_URL}/{dataset}/{query}/all"
-    r = requests.get(url, timeout=60)
-    r.raise_for_status()
-
-    try:
-        js = r.json()
-    except Exception:
-        raise ValueError(f"OECD response is not JSON. First 200 chars:\n{r.text[:200]}")
-
-    errors = js.get("errors")
-    if errors:
-        raise ValueError(
-            f"OECD returned errors for URL: {url}\n"
-            f"errors: {errors}"
-        )
-
-    # SDMX-JSON v2 wraps payload under "data".
-    if "data" in js and isinstance(js["data"], dict):
-        js = js["data"]
-
-    has_datasets = "dataSets" in js
-    has_structure = "structure" in js or "structures" in js
-
-    if not has_datasets or not has_structure:
-        keys = list(js.keys()) if isinstance(js, dict) else type(js)
-        raise ValueError(
-            "OECD response is not parseable SDMX-JSON (missing dataSets/structure).\n"
-            f"URL: {url}\n"
-            f"Keys: {keys}\n"
-            f"Snippet: {str(js)[:400]}"
-        )
-
-    return js
-
-
-def parse_oecd_json(js: Dict[str, Any]) -> pd.DataFrame:
-    """
-    Basic parser for OECD SDMX-JSON.
-    Converts time series into DataFrame with columns: time, value.
-    """
-
-    data_sets = js["dataSets"]
-    if not data_sets:
-        return pd.DataFrame(columns=["time", "value"])
-
-    series_map = data_sets[0].get("series", {})
-
-    structure = js.get("structure")
-    if structure is None:
-        structures = js.get("structures", [])
-        if not structures:
-            raise ValueError("OECD payload has no structure information.")
-        structure = structures[0]
-
-    obs_dims = structure.get("dimensions", {}).get("observation", [])
-    if not obs_dims:
-        raise ValueError("OECD payload has no observation dimensions.")
-
-    time_values = obs_dims[0].get("values", [])
-
-    records = []
-    for _, series_data in series_map.items():
-        observations = series_data.get("observations", {})
-
-        for time_index, obs in observations.items():
-            idx = int(time_index)
-            if idx >= len(time_values):
-                continue
-
-            value = obs[0] if obs else None
-            time_label = time_values[idx].get("id")
-            if time_label is None:
-                continue
-
-            records.append({"time": time_label, "value": value})
-
-    return pd.DataFrame(records)
-
-
-def normalize(
-    df: pd.DataFrame,
-    indicator_name: str,
-    dataset: str,
-    geo: str,
-    geo_level: str,
-) -> pd.DataFrame:
-    years = pd.to_numeric(
-        df["time"].astype(str).str.extract(r"(\d{4})")[0],
-        errors="coerce",
-    )
-
-    out = pd.DataFrame(
-        {
-            "geo": geo,
-            "geo_level": geo_level,
-            "indicator": indicator_name,
-            "date": years,
-            "value": pd.to_numeric(df["value"], errors="coerce"),
-            "unit": None,
-            "source": f"oecd:{dataset}",
-        }
-    )
-
-    out = out.dropna(subset=["date", "value"]).copy()
-    out["date"] = out["date"].astype(int)
-    return out
-
+BASE_URL = "https://sdmx.oecd.org/public/rest/data"
 
 def fetch_indicator(
-    dataset: str,
-    query: str,
+    dataset_id: str,
+    selection_template: str,
+    geos_iso3: Sequence[str],
+    start_period: str,
+    end_period: str,
     indicator_name: str,
-    geo: str,
-    start_year: int,
-    end_year: int,
-    geo_level: str,
+    geo_level: str = "country",
+    unit_fallback: Optional[str] = None,
 ) -> pd.DataFrame:
+    """
+    dataset_id example:
+      "OECD.SDD.STES,DSD_STES@DF_CLI,"
+    selection_template example (9 dims):
+      "{geo}.M.CCICP........H"
+      (9 dims total separated by '.')
+      Use empty segments for ALL (i.e. consecutive dots)
+    """
 
-    js = oecd_get(dataset, query)
-    df_raw = parse_oecd_json(js)
+    geo_block = "+".join(geos_iso3)
 
-    df_norm = normalize(df_raw, indicator_name, dataset, geo, geo_level)
+    selection = selection_template.format(geo=geo_block).strip()
 
-    return df_norm[(df_norm["date"] >= start_year) & (df_norm["date"] <= end_year)]
+    # Ensure it starts with "/"
+    if not selection.startswith("/"):
+        selection = "/" + selection
+
+    url = f"{BASE_URL}/{dataset_id}{selection}"
+
+    params = {
+        "startPeriod": start_period,
+        "endPeriod": end_period,
+        "dimensionAtObservation": "AllDimensions",
+        "format": "csvfilewithlabels",
+    }
+
+    r = requests.get(url, params=params, timeout=60)
+    r.raise_for_status()
+
+    raw = pd.read_csv(StringIO(r.text))
+    if raw.empty:
+        return pd.DataFrame(columns=["geo","geo_level","indicator","date","month","value","unit","source"])
+
+    time_col = "TIME_PERIOD"
+    val_col = "OBS_VALUE"
+
+    # In OECD CSV it is usually REF_AREA (not LOCATION)
+    geo_col = "REF_AREA" if "REF_AREA" in raw.columns else ("LOCATION" if "LOCATION" in raw.columns else None)
+    if geo_col is None:
+        raise ValueError(f"Could not find REF_AREA/LOCATION in OECD CSV columns: {list(raw.columns)[:40]}")
+
+    
+    tp = raw[time_col].astype(str)
+
+    year = pd.to_numeric(tp.str.slice(0, 4), errors="coerce")
+
+    # Monthly si tiene "-"
+    is_monthly = tp.str.contains("-", regex=False)
+    month = pd.to_numeric(tp.str.slice(5, 7), errors="coerce")
+    month = month.where(is_monthly, pd.NA)  # annual => NA
+
+    out = pd.DataFrame({
+        "geo": raw[geo_col].astype(str),
+        "geo_level": geo_level,
+        "indicator": indicator_name,
+        "date": year,
+        "month": month,
+        "value": pd.to_numeric(raw[val_col], errors="coerce"),
+        "unit": unit_fallback,
+        "source": f"oecd:{dataset_id}",
+    })
+
+    # 👇 IMPORTANTE: no dropear por month
+    out = out.dropna(subset=["geo", "date", "value"]).copy()
+    out["date"] = out["date"].astype(int)
+    if "month" in out.columns:
+        out["month"] = pd.to_numeric(out["month"], errors="coerce")
+        
+    out["geo"] = out["geo"].apply(to_iso2)
+
+    return out

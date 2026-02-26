@@ -6,41 +6,53 @@ from typing import Any, Dict, Optional
 import pandas as pd
 import requests
 
-BASE = "https://www.imf.org/external/datamapper/api/v1"
+BASE_URL = "https://www.imf.org/external/datamapper/api/v1"
+
+def imf_get(path: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    url = f"{BASE_URL}/{path.lstrip('/')}"
+    r = requests.get(url, params=params or {}, timeout=60)
+    r.raise_for_status()
+    return r.json()
 
 def fetch_indicator(
-    indicator_id: str,
-    geo_iso3: str,
-    start_year: int,
-    end_year: int,
+    indicator_code: str,          # e.g. "LP"
+    geo_imf3: str,                # e.g. "ESP"
+    years: list[int],
     indicator_name: str,
     geo_level: str = "country",
-    unit: Optional[str] = None,
+    unit_fallback: Optional[str] = None,
 ) -> pd.DataFrame:
-    periods = ",".join(str(y) for y in range(start_year, end_year + 1))
-    url = f"{BASE}/{indicator_id}/{geo_iso3}"
-    r = requests.get(url, params={"periods": periods}, timeout=60)
-    r.raise_for_status()
-    js: Dict[str, Any] = r.json()
+    # DataMapper supports ?periods=YYYY,YYYY (comma-separated)
+    params = {"periods": ",".join(str(y) for y in years)} if years else {}
 
-    # Esperado: {"values": {"NGDP_RPCH": {"ESP": {"2019":..., "2020":...}}}}
-    values = js.get("values", {}).get(indicator_id, {}).get(geo_iso3, {})
-    if not values:
-        return pd.DataFrame(columns=["geo", "geo_level", "indicator", "date", "value", "unit", "source"])
+    js = imf_get(f"{indicator_code}/{geo_imf3}", params=params)
+
+    # Typical shape (conceptually): { "values": { "LP": { "ESP": { "2020": x, ... } } }, ... }
+    values = js.get("values", {}) or {}
+    ind_block = values.get(indicator_code, {}) or {}
+    series = ind_block.get(geo_imf3, {}) or {}
 
     rows = []
-    for year_str, val in values.items():
+    for y_str, v in series.items():
         try:
-            year = int(year_str)
-        except ValueError:
+            y = int(y_str)
+        except Exception:
             continue
-        rows.append({"date": year, "value": val})
+        rows.append({"geo": geo_imf3, "date": y, "value": v})
 
-    df = pd.DataFrame(rows).sort_values("date")
-    df["geo"] = geo_iso3
+    df = pd.DataFrame(rows)
+    if df.empty:
+        return pd.DataFrame(columns=["geo", "geo_level", "indicator", "date", "month", "value", "unit", "source"])
+
     df["geo_level"] = geo_level
     df["indicator"] = indicator_name
-    df["unit"] = unit
-    df["source"] = f"imf_datamapper:{indicator_id}"
+    df["month"] = pd.NA
+    df["unit"] = unit_fallback
+    df["source"] = f"imf_datamapper:{indicator_code}"
+
+    # coercions
     df["value"] = pd.to_numeric(df["value"], errors="coerce")
-    return df.dropna(subset=["value"])
+    df = df.dropna(subset=["date", "value"]).copy()
+    df["date"] = df["date"].astype(int)
+
+    return df[["geo", "geo_level", "indicator", "date", "month", "value", "unit", "source"]]
