@@ -189,7 +189,7 @@ No Python changes required to adjust indicators.
 
 ## 🎯 Recommended Usage Pattern
 
-For business users (e.g. Ana):
+For business users:
 
 ```bash
 1. Run cli_menu.py
