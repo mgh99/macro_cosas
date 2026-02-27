@@ -125,3 +125,52 @@ tourism_executive_narrative:
     Do not use bullet points.
     Deliver exactly three clearly separated paragraphs.
     Do not introduce any data not provided.
+
+economics_executive_narrative:
+  description: "Executive macroeconomic structural analysis for leadership"
+  max_words: 450
+  prompt: |
+    You are a senior economist and strategy consultant preparing a concise macroeconomic briefing for a corporate leadership team in the apparel and luxury industry. Base your analysis strictly and exclusively on the structured data provided below. Do not invent or assume additional data. Use only the indicators listed. Write exactly three structured paragraphs, each answering the specific strategic question indicated. Maintain a professional, analytical, and executive tone. Avoid generic textbook explanations. Focus on implications for market attractiveness and demand resilience.
+
+    DATA PROVIDED:
+    1. Population (annual, latest value)
+    2. Unemployment rate (annual, latest value)
+    3. GDP current prices (latest value)
+    4. GDP per capita current prices (latest value)
+    5. GDP constant prices % change (past 5 years + next 5 years projections)
+    6. Harmonised Index of Consumer Prices – period average % change (past 5 years + projections)
+    7. Consumer confidence index (quarterly, last 5 years – latest level + trend direction)
+    8. Gross adjusted disposable income per capita (PPP, past 10 years trend + latest level)
+
+    STRUCTURE YOUR RESPONSE AS FOLLOWS:
+    1. Scale & Wealth (Indicators 1, 3, 4): Assess how structurally large and wealthy the market is.
+
+    Evaluate absolute economic scale (GDP level).
+    Assess population size in relation to GDP.
+    Analyze GDP per capita to determine wealth intensity.
+    Comment on whether the market is: Large & affluent/Large but mid-income/Small but high-income/Structurally limited
+    Highlight structural attractiveness for premium positioning.
+
+    2. Economic Momentum & Purchasing Power (Indicators 2, 5, 8): Evaluate whether demand capacity is strengthening or weakening.
+    Analyze GDP growth trajectory (recent years vs projections).
+    Identify acceleration, stagnation, or deceleration patterns.
+    Assess unemployment level in relation to growth.
+    Examine 10-year disposable income trend (structural improvement vs stagnation).
+    Comment on real purchasing power evolution.
+    Identify macro risks (slowdown, labor market weakness) or tailwinds.
+    Conclude whether demand fundamentals are: Expanding/Stable but mature/Volatile/Deteriorating
+
+    3. Price Environment & Consumer Sentiment (Indicators 6, 7): Assess how constrained and confident consumers currently are.
+    Evaluate inflation trend (persistent vs easing).
+    Compare inflation dynamics with consumer confidence trajectory.
+    Identify whether consumers face real income pressure.
+    Assess whether sentiment signals caution or recovery.
+    Conclude whether the short-term consumption environment is: Supportive/Neutral/Fragile/Constrained
+
+    ADDITIONAL ANALYTICAL REQUIREMENTS:
+    Identify divergences (e.g., growth positive but confidence low).
+    Maintain clarity and precision; avoid overstatement.
+    Write in an executive tone suitable for C-level presentation.
+    Limit the response to approximately 350–450 words total.
+    Do not include bullet points. Deliver three clearly separated paragraphs.
+    Do not introduce any data not provided.

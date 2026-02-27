@@ -47,7 +47,17 @@ def fetch_indicator(
         "format": "csvfilewithlabels",
     }
 
-    r = requests.get(url, params=params, timeout=60)
+    headers = {
+        "Accept-Encoding": "gzip, deflate",
+        "User-Agent": "macro-cosas/1.0"
+    }
+
+    r = requests.get(
+        url,
+        params=params,
+        headers=headers,
+        timeout=(10, 180),
+    )
     r.raise_for_status()
 
     raw = pd.read_csv(StringIO(r.text))

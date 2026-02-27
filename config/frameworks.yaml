@@ -429,18 +429,59 @@ frameworks:
         geo_level: country
 
       - id: "E8"
-        name: gross_adjusted_disposable_income_per_capita_of_households_and_NPISH
+        name: household_disposable_income
         source: oecd
         enabled: true
 
         dataset_id: "OECD.SDD.NAD,DSD_NAAG@DF_NAAG_V,1.0"
-        selection_template: "{geo}.A.B7GS1M_POP.USD_PPP_PS."
+        selection_template: "A.{geo}.B6GS1M_POP.USD_PPP_PS."
 
         frequency: A
         time:
           mode: past_years
           years: 10
 
-        units: "dollars_per_person_PPP_converted_current_prices"
+        units: "usd_dollars_per_person_PPP"
         geo_level: country
-        reference: "https://data-explorer.oecd.org/vis?...(tu link)..."
+        reference: "https://www.oecd.org/en/data/indicators/household-disposable-income.html"
+
+      - id: "E9"
+        name: unemployment_rate_under_25_total
+        source: eurostat
+        enabled: true
+        dataset: teilm021
+        geo_level: country
+        frequency: M
+        time:
+          mode: past_years
+          years: 10
+
+        filters:
+          s_adj: "SA"
+          age: "Y_LT25"
+          sex: "T"
+          unit: "PC_ACT"
+
+        units: "percent_of_labour_force"
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/teilm021/default/table?lang=en"
+
+      - id: "E10"
+        name: unemployment_rate_25_74_total
+        source: eurostat
+        enabled: true
+        dataset: teilm022
+        geo_level: country
+        frequency: M
+
+        time:
+          mode: past_years
+          years: 10
+
+        filters:
+          s_adj: "SA"
+          age: "Y25-74"   # <-- CONFIRMAR en describe_dataset
+          sex: "T"
+          unit: "PC_ACT"
+
+        units: "percent_of_labour_force"
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/teilm022/default/table?lang=en"

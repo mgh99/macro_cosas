@@ -242,11 +242,22 @@ def fetch_indicator(
 
     valid_filters = {k: v for k, v in (filters or {}).items() if k in dataset_dims}
 
+    # Para monthly, Eurostat espera YYYY-MM
+    if str(freq).upper() == "M":
+        since = f"{start_year}-01"
+        until = f"{end_year}-12"
+    else:
+        since = start_year
+        until = end_year
+
+    since = f"{start_year}-01" if freq == "M" else start_year
+    until = f"{end_year}-12" if freq == "M" else end_year
+
     params: Dict[str, Any] = {
         "geo": geo,
         **({"freq": freq} if use_freq else {}),
-        "sinceTimePeriod": start_year,
-        "untilTimePeriod": end_year,
+        "sinceTimePeriod": since,
+        "untilTimePeriod": until,
         **valid_filters,
     }
 

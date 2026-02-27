@@ -6,6 +6,7 @@ from typing import Dict, List
 import pandas as pd
 
 from ai.demographics_analyzer import generate_demographics_briefing
+from ai.economics_analyzer import generate_economics_briefing
 from ai.tourism_analyzer import generate_tourism_briefing
 from connectors.eurostat import describe_dataset
 from core.config_loader import load_config
@@ -76,6 +77,7 @@ def main() -> None:
         wanted_cols = ["geo", "indicator", "date", "month", "value", "unit", "sub_indicator_short"]
         df_long = pd.concat(all_parts, ignore_index=True)
         df_out = df_long[[c for c in wanted_cols if c in df_long.columns]].copy()
+
 
         # ==========================
         # Tourism extras
@@ -208,6 +210,30 @@ def main() -> None:
 
     except Exception as e:
         print(f"⚠️ Tourism AI generation failed: {type(e).__name__}: {e}")
+
+    # ==========================
+    # AI: Economics
+    # ==========================
+    try:
+        prompts = load_prompts()
+        econ_prompt = prompts["economics_executive_narrative"]["prompt"]
+
+        ai_out_dir = out_dir / "economics_executive_briefings"
+        ai_out_dir.mkdir(exist_ok=True, parents=True)
+
+        df_econ = results_by_framework.get("economics")
+        if df_econ is None or df_econ.empty:
+            print("⚠️ Economics AI skipped (no economics data).")
+        else:
+            for geo in geos:
+                briefing = generate_economics_briefing(df_econ, geo, econ_prompt)
+                (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(
+                    briefing, encoding="utf-8"
+                )
+            print("✅ Generated economics AI executive briefings")
+
+    except Exception as e:
+        print(f"⚠️ Economics AI generation failed: {type(e).__name__}: {e}")
 
     # ==========================
     # Single-sheet workbook

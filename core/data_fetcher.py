@@ -65,8 +65,12 @@ def fetch_indicator_for_geos(ind: dict, geos: List[str]) -> pd.DataFrame:
     time_cfg = ind.get("time", {}) or {}
     start_year, end_year = compute_time_window(time_cfg)
 
-    start_period = f"{start_year}-01"
-    end_period = f"{end_year}-12"
+    if ind.get("frequency", "A") == "M":
+        start_period = f"{start_year}-01"
+        end_period = f"{end_year}-12"
+    else:
+        start_period = str(start_year)
+        end_period = str(end_year)
 
     dataset_id = ind.get("dataset_id")
     selection_template = ind.get("selection_template")
