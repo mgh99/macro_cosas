@@ -1,0 +1,32 @@
+# config/country_aliases.yaml
+# Keys should be written as "normalized tokens":
+# - UPPERCASE
+# - no accents
+# - no extra spaces
+# - you can include common shortcuts, typos, local names
+
+# Spain
+ESPANA: ES
+ESPAÑA: ES   # (aunque luego lo normalizamos, lo dejo por claridad)
+SPAIN: ES
+ESP: ES
+ES: ES
+
+# France
+FRANCIA: FR
+FRANCE: FR
+FRA: FR
+FR: FR
+
+# Germany
+ALEMANIA: DE
+GERMANY: DE
+DEUTSCHLAND: DE
+DEU: DE
+DE: DE
+
+# UK examples (si quieres forzar)
+UK: GB
+U.K.: GB
+UNITED KINGDOM: GB
+GREAT BRITAIN: GB

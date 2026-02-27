@@ -1,7 +1,8 @@
+# run.py
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import pandas as pd
 
@@ -16,35 +17,66 @@ from core.prompt_loader import load_prompts
 from core.seasonality import calculate_seasonality
 from core.top_origins import top_origins
 
+# (cuando lo hagas) from ai.economics_analyzer import generate_economics_briefing
 
-def main() -> None:
+
+
+def run_engine(
+    geos: List[str],
+    selected_frameworks: Optional[List[str]] = None,
+    output_dir: Path | str = Path("outputs"),
+    enable_ai: bool = True,
+    output_flags: Optional[Dict[str, bool]] = None,
+    debug_describe_eurostat: bool = False,
+) -> Dict[str, pd.DataFrame]:
+    """
+    Main macro engine callable from CLI.
+    - geos: ISO2 list like ["ES","FR","DE"]
+    - selected_frameworks: subset of frameworks keys (or None = all)
+    - output_dir: where to write CSV/XLSX/AI
+    - enable_ai: whether to generate AI briefings
+    - output_flags: {"csv": bool, "excel_by_indicator": bool, "single_sheet": bool, "debug_no_files": bool}
+    - debug_describe_eurostat: prints dataset dimensions (slow-ish)
+    Returns: results_by_framework dict
+    """
+    out_dir = Path(output_dir)
+    out_dir.mkdir(exist_ok=True, parents=True)
+
+    flags = output_flags or {
+        "csv": True,
+        "excel_by_indicator": True,
+        "single_sheet": True,
+        "debug_no_files": False,
+    }
+
     cfg = load_config("config/frameworks.yaml")
-    frameworks = cfg.get("frameworks", {})
+    frameworks_all = cfg.get("frameworks", {}) or {}
 
-    geos = ["ES", "FR", "DE"]
+    # Filter frameworks if user selected subset
+    if selected_frameworks:
+        frameworks = {k: v for k, v in frameworks_all.items() if k in set(selected_frameworks)}
+    else:
+        frameworks = frameworks_all
 
-    out_dir = Path("outputs")
-    out_dir.mkdir(exist_ok=True)
+    if not frameworks:
+        raise ValueError("No frameworks selected / found.")
 
     # ==========================
-    # Debug: describe EUROSTAT datasets once
+    # Optional: describe Eurostat datasets (debug)
     # ==========================
-    seen = set()
-    for fw in frameworks.values():
-        for ind in fw.get("indicators", []):
-            if not ind.get("enabled", True):
-                continue
-
-            source = (ind.get("source") or "eurostat").lower()
-            if source != "eurostat":
-                continue
-
-            ds = ind.get("dataset")
-            if not ds:
-                continue
-
-            if ds not in seen:
-                describe_dataset(ds, sample_geo="ES", overrides=ind.get("describe_overrides"))
+    if debug_describe_eurostat:
+        seen = set()
+        for fw in frameworks.values():
+            for ind in fw.get("indicators", []):
+                if not ind.get("enabled", True):
+                    continue
+                source = (ind.get("source") or "eurostat").lower()
+                if source != "eurostat":
+                    continue
+                ds = ind.get("dataset")
+                if not ds or ds in seen:
+                    continue
+                describe_dataset(ds, sample_geo=geos[0], overrides=ind.get("describe_overrides"))
                 seen.add(ds)
 
     # ==========================
@@ -78,7 +110,6 @@ def main() -> None:
         df_long = pd.concat(all_parts, ignore_index=True)
         df_out = df_long[[c for c in wanted_cols if c in df_long.columns]].copy()
 
-
         # ==========================
         # Tourism extras
         # ==========================
@@ -94,8 +125,9 @@ def main() -> None:
 
                 top10 = top_origins(df_1b, top_n=10)
                 outp = out_dir / "tourism_arrivals_top10_origins.csv"
-                top10.to_csv(outp, index=False)
-                print(f"✅ Wrote {outp}")
+                if not flags.get("debug_no_files", False) and flags.get("csv", True):
+                    top10.to_csv(outp, index=False)
+                    print(f"✅ Wrote {outp}")
 
             monthly_indicator_name = "nights_spent_monthly_hotels"
             monthly = df_out[df_out["indicator"] == monthly_indicator_name].copy()
@@ -104,143 +136,147 @@ def main() -> None:
                 print("⚠️ Seasonality skipped (monthly indicator not found).")
             else:
                 seasonality_df = calculate_seasonality(monthly)
-                seasonality_path = out_dir / "tourism_seasonality.csv"
-                seasonality_df.to_csv(seasonality_path, index=False)
-                print(f"✅ Wrote {seasonality_path}")
-
                 seasonality_by_framework["tourism"] = seasonality_df
+
+                seasonality_path = out_dir / "tourism_seasonality.csv"
+                if not flags.get("debug_no_files", False) and flags.get("csv", True):
+                    seasonality_df.to_csv(seasonality_path, index=False)
+                    print(f"✅ Wrote {seasonality_path}")
 
         results_by_framework[fw_name] = df_out
 
         # ==========================
         # CSV export
         # ==========================
-        csv_path = out_dir / f"{fw_name}_macro_long.csv"
-        df_out.to_csv(csv_path, index=False)
-        print(f"✅ Wrote {csv_path}")
+        if not flags.get("debug_no_files", False) and flags.get("csv", True):
+            csv_path = out_dir / f"{fw_name}_macro_long.csv"
+            df_out.to_csv(csv_path, index=False)
+            print(f"✅ Wrote {csv_path}")
 
         # ==========================
         # XLSX export (by indicator)
         # ==========================
-        xlsx_path = out_dir / f"{fw_name}_views_by_indicator.xlsx"
-        with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
-            df_out.to_excel(writer, sheet_name="raw_long", index=False)
+        if not flags.get("debug_no_files", False) and flags.get("excel_by_indicator", True):
+            xlsx_path = out_dir / f"{fw_name}_views_by_indicator.xlsx"
+            with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
+                df_out.to_excel(writer, sheet_name="raw_long", index=False)
 
-            for ind_name in sorted(df_out["indicator"].dropna().unique()):
-                sub = df_out[df_out["indicator"] == ind_name].copy()
-                if sub.empty:
-                    continue
+                for ind_name in sorted(df_out["indicator"].dropna().unique()):
+                    sub = df_out[df_out["indicator"] == ind_name].copy()
+                    if sub.empty:
+                        continue
 
-                if "month" in sub.columns and sub["month"].notna().any():
-                    sub["period"] = (
-                        sub["date"].astype(int).astype(str)
-                        + "-"
-                        + sub["month"].astype(int).astype(str).str.zfill(2)
-                    )
-                    col_field = "period"
-                else:
-                    col_field = "date"
-
-                if "sub_indicator_short" in sub.columns and sub["sub_indicator_short"].notna().any():
-                    table = (
-                        sub.pivot_table(
-                            index=["geo", "sub_indicator_short"],
-                            columns=col_field,
-                            values="value",
-                            aggfunc="first",
+                    if "month" in sub.columns and sub["month"].notna().any():
+                        sub["period"] = (
+                            sub["date"].astype(int).astype(str)
+                            + "-"
+                            + sub["month"].astype(int).astype(str).str.zfill(2)
                         )
-                        .reset_index()
-                    )
-                else:
-                    table = (
-                        sub.pivot_table(
-                            index=["geo"],
-                            columns=col_field,
-                            values="value",
-                            aggfunc="first",
+                        col_field = "period"
+                    else:
+                        col_field = "date"
+
+                    if "sub_indicator_short" in sub.columns and sub["sub_indicator_short"].notna().any():
+                        table = (
+                            sub.pivot_table(
+                                index=["geo", "sub_indicator_short"],
+                                columns=col_field,
+                                values="value",
+                                aggfunc="first",
+                            )
+                            .reset_index()
                         )
-                        .reset_index()
-                    )
+                    else:
+                        table = (
+                            sub.pivot_table(
+                                index=["geo"],
+                                columns=col_field,
+                                values="value",
+                                aggfunc="first",
+                            )
+                            .reset_index()
+                        )
 
-                table.to_excel(writer, sheet_name=ind_name[:31], index=False)
+                    table.to_excel(writer, sheet_name=ind_name[:31], index=False)
 
-        print(f"✅ Wrote {xlsx_path}")
+            print(f"✅ Wrote {xlsx_path}")
 
     # ==========================
-    # AI: Demographics
+    # AI generation (optional)
     # ==========================
-    try:
+    if enable_ai and not flags.get("debug_no_files", False):
         prompts = load_prompts()
-        demo_prompt = prompts["demographics_executive_narrative"]["prompt"]
 
-        ai_out_dir = out_dir / "demographics_executive_briefings"
-        ai_out_dir.mkdir(exist_ok=True, parents=True)
+        # Demographics
+        try:
+            demo_prompt = prompts["demographics_executive_narrative"]["prompt"]
+            ai_out_dir = out_dir / "demographics_executive_briefings"
+            ai_out_dir.mkdir(exist_ok=True, parents=True)
 
-        df_demo = results_by_framework.get("demographics")
-        if df_demo is None or df_demo.empty:
-            print("⚠️ Demographics AI skipped (no demographics data).")
-        else:
-            for geo in geos:
-                briefing = generate_demographics_briefing(df_demo, geo, demo_prompt)
-                (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
-            print("✅ Generated demographics AI executive briefings")
+            df_demo = results_by_framework.get("demographics")
+            if df_demo is None or df_demo.empty:
+                print("⚠️ Demographics AI skipped (no demographics data).")
+            else:
+                for geo in geos:
+                    briefing = generate_demographics_briefing(df_demo, geo, demo_prompt)
+                    (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
+                print("✅ Generated demographics AI executive briefings")
+        except Exception as e:
+            print(f"⚠️ Demographics AI generation failed: {type(e).__name__}: {e}")
 
-    except Exception as e:
-        print(f"⚠️ Demographics AI generation failed: {type(e).__name__}: {e}")
+        # Tourism
+        try:
+            tour_prompt = prompts["tourism_executive_narrative"]["prompt"]
+            ai_out_dir = out_dir / "tourism_executive_briefings"
+            ai_out_dir.mkdir(exist_ok=True, parents=True)
 
-    # ==========================
-    # AI: Tourism
-    # ==========================
-    try:
-        prompts = load_prompts()
-        tour_prompt = prompts["tourism_executive_narrative"]["prompt"]
+            df_tour = results_by_framework.get("tourism")
+            if df_tour is None or df_tour.empty:
+                print("⚠️ Tourism AI skipped (no tourism data).")
+            else:
+                seasonality_df = seasonality_by_framework.get("tourism")
+                for geo in geos:
+                    briefing = generate_tourism_briefing(df_tour, geo, tour_prompt, seasonality_df=seasonality_df)
+                    (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
+                print("✅ Generated tourism AI executive briefings")
+        except Exception as e:
+            print(f"⚠️ Tourism AI generation failed: {type(e).__name__}: {e}")
 
-        ai_out_dir = out_dir / "tourism_executive_briefings"
-        ai_out_dir.mkdir(exist_ok=True, parents=True)
-
-        df_tour = results_by_framework.get("tourism")
-        if df_tour is None or df_tour.empty:
-            print("⚠️ Tourism AI skipped (no tourism data).")
-        else:
-            seasonality_df = seasonality_by_framework.get("tourism")
-            for geo in geos:
-                briefing = generate_tourism_briefing(df_tour, geo, tour_prompt, seasonality_df=seasonality_df)
-                (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
-            print("✅ Generated tourism AI executive briefings")
-
-    except Exception as e:
-        print(f"⚠️ Tourism AI generation failed: {type(e).__name__}: {e}")
-
-    # ==========================
-    # AI: Economics
-    # ==========================
-    try:
-        prompts = load_prompts()
-        econ_prompt = prompts["economics_executive_narrative"]["prompt"]
-
-        ai_out_dir = out_dir / "economics_executive_briefings"
-        ai_out_dir.mkdir(exist_ok=True, parents=True)
-
-        df_econ = results_by_framework.get("economics")
-        if df_econ is None or df_econ.empty:
-            print("⚠️ Economics AI skipped (no economics data).")
-        else:
-            for geo in geos:
-                briefing = generate_economics_briefing(df_econ, geo, econ_prompt)
-                (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(
-                    briefing, encoding="utf-8"
-                )
-            print("✅ Generated economics AI executive briefings")
-
-    except Exception as e:
-        print(f"⚠️ Economics AI generation failed: {type(e).__name__}: {e}")
+        # Economics (cuando lo añadas)
+        try:
+            eco_prompt = prompts["economics_executive_narrative"]["prompt"]
+            ai_out_dir = out_dir / "economics_executive_briefings"
+            ai_out_dir.mkdir(exist_ok=True, parents=True)
+        
+            df_eco = results_by_framework.get("economics")
+            if df_eco is None or df_eco.empty:
+                print("⚠️ Economics AI skipped (no economics data).")
+            else:
+                for geo in geos:
+                    briefing = generate_economics_briefing(df_eco, geo, eco_prompt)
+                    (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
+                print("✅ Generated economics AI executive briefings")
+        except Exception as e:
+            print(f"⚠️ Economics AI generation failed: {type(e).__name__}: {e}")
 
     # ==========================
     # Single-sheet workbook
     # ==========================
-    single_path = out_dir / "views_single_sheet.xlsx"
-    build_views_single_sheet_workbook(results_by_framework, single_path, space_rows=3)
-    print(f"✅ Wrote {single_path}")
+    if not flags.get("debug_no_files", False) and flags.get("single_sheet", True):
+        single_path = out_dir / "views_single_sheet.xlsx"
+        build_views_single_sheet_workbook(results_by_framework, single_path, space_rows=3)
+        print(f"✅ Wrote {single_path}")
+
+    return results_by_framework
+
+
+def main() -> None:
+    """
+    Non-interactive default run (kept for dev use).
+    For Ana-friendly usage: run `python cli_menu.py`.
+    """
+    geos = ["ES", "FR", "DE"]
+    run_engine(geos=geos, selected_frameworks=None, output_dir=Path("outputs"), enable_ai=True)
 
 
 if __name__ == "__main__":
