@@ -115,10 +115,23 @@ def run_engine(
         df_long = pd.concat(all_parts, ignore_index=True)
         df_out = df_long[[c for c in wanted_cols if c in df_long.columns]].copy()
 
+        # check debug
+        #print(f"DEBUG {fw_name}: df_out rows={len(df_out)} cols={list(df_out.columns)}")
+        #print(df_out.head(10))
+        #print(df_out["indicator"].value_counts(dropna=False).head(20))
+
+        # IMPORTANT: store results for AI + single-sheet
+        results_by_framework[fw_name] = df_out
+
         # ==========================
         # Tourism extras
         # ==========================
-        if fw_name == "tourism":
+
+        # Tourism extras: Top origins (only if indicator exists)
+        if fw_name == "tourism" and any(
+            i.get("name") == "arrivals_by_origin_hotels_number"
+            for i in fw.get("indicators", [])
+        ):
             ind_1b = "arrivals_by_origin_hotels_number"
             df_1b = df_out[df_out["indicator"] == ind_1b].copy()
 
@@ -134,21 +147,24 @@ def run_engine(
                     top10.to_csv(outp, index=False)
                     print(f"✅ Wrote {outp}")
 
-            monthly_indicator_name = "nights_spent_monthly_hotels"
-            monthly = df_out[df_out["indicator"] == monthly_indicator_name].copy()
+            # Tourism extras: Seasonality (only if monthly indicator exists)
+            if fw_name == "tourism" and any(
+                i.get("name") == "nights_spent_monthly_hotels"
+                for i in fw.get("indicators", [])
+            ):
+                monthly_indicator_name = "nights_spent_monthly_hotels"
+                monthly = df_out[df_out["indicator"] == monthly_indicator_name].copy()
 
-            if monthly.empty:
-                print("⚠️ Seasonality skipped (monthly indicator not found).")
-            else:
-                seasonality_df = calculate_seasonality(monthly)
-                seasonality_by_framework["tourism"] = seasonality_df
+                if monthly.empty:
+                    print("⚠️ Seasonality skipped (monthly indicator not found).")
+                else:
+                    seasonality_df = calculate_seasonality(monthly)
+                    seasonality_by_framework["tourism"] = seasonality_df
 
-                seasonality_path = out_dir / "tourism_seasonality.csv"
-                if not flags.get("debug_no_files", False) and flags.get("csv", True):
-                    seasonality_df.to_csv(seasonality_path, index=False)
-                    print(f"✅ Wrote {seasonality_path}")
-
-        results_by_framework[fw_name] = df_out
+                    seasonality_path = out_dir / "tourism_seasonality.csv"
+                    if not flags.get("debug_no_files", False) and flags.get("csv", True):
+                        seasonality_df.to_csv(seasonality_path, index=False)
+                        print(f"✅ Wrote {seasonality_path}")
 
         # ==========================
         # CSV export

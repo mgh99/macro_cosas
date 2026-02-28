@@ -162,3 +162,26 @@ frameworks:
 
         units: "percent"
         reference: "https://data.worldbank.org/indicator/SL.UEM.1524.ZS"
+
+  tourism:
+    title: "TOURISM FRAMEWORK"
+    indicators:
+
+      - id: "T1"
+        name: UN_Tourism_8_9_1_TDGDP_04_2025
+        source: un_tourism_zip
+        enabled: true
+
+        zip_path: "data/un_tourism_zips/UN_Tourism_8_9_1_TDGDP_04_2025.zip"
+        xlsx_glob: "*.xlsx"
+        sheet: "SDG 8.9.1"
+
+        series_code: "ST_GDP_ZS"
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "percent"

@@ -8,6 +8,7 @@ import pandas as pd
 from connectors.eurostat import fetch_indicator as fetch_eurostat
 from connectors.imf_datamapper import fetch_indicator as fetch_imf
 from connectors.oecd import fetch_indicator as fetch_oecd
+from connectors.un_tourism_zip import fetch_indicator as fetch_un_tourism_zip
 from connectors.worldbank import fetch_indicator as fetch_worldbank
 from core.geo_mapper import to_imf_geo, to_iso2, to_oecd_geo, to_wb_geo
 from core.time_utils import (compute_time_window, compute_years_list,
@@ -16,11 +17,14 @@ from core.time_utils import (compute_time_window, compute_years_list,
 
 def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
     """
-    Per-geo fetcher (1 country per call). Ideal for Eurostat + IMF.
+    Per-geo fetcher (1 country per call). Ideal for Eurostat + IMF + World Bank + UN Tourism ZIP.
     """
     source = (ind.get("source") or "eurostat").lower()
     time_cfg = ind.get("time", {}) or {}
 
+    # ==========================
+    # Eurostat
+    # ==========================
     if source == "eurostat":
         start_year, end_year = compute_time_window(time_cfg)
         return fetch_eurostat(
@@ -36,6 +40,9 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
             multi_filters=ind.get("multi_filters"),
         )
 
+    # ==========================
+    # IMF DataMapper
+    # ==========================
     if source in {"imf", "imf_datamapper", "imf-datamapper"}:
         years = compute_years_list(time_cfg, current_year())
         indicator_code = ind.get("indicator_code") or ind.get("dataset")
@@ -50,10 +57,12 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
             geo_level=ind.get("geo_level", "country"),
             unit_fallback=ind.get("units"),
         )
-    
+
+    # ==========================
+    # World Bank
+    # ==========================
     if source in {"world_bank", "world_bank_group", "worldbank", "wb"}:
         start_year, end_year = compute_time_window(time_cfg)
-
         indicator_id = ind.get("indicator_id") or ind.get("indicator_code") or ind.get("dataset")
         if not indicator_id:
             raise ValueError("World Bank indicator missing indicator_id (or indicator_code/dataset)")
@@ -68,16 +77,43 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
             unit_fallback=ind.get("units"),
         )
 
-        # Normaliza geo a ISO2 para que todo el pipeline sea consistente
+        # normalize geo to ISO2 for the whole pipeline
         df["geo"] = df["geo"].apply(to_iso2)
         return df
+
+    # ==========================
+    # UN Tourism (ZIP -> XLSX -> parse)
+    # ==========================
+    if source in {"un_tourism_zip", "un-tourism-zip"}:
+        start_year, end_year = compute_time_window(time_cfg)
+
+        zip_path = ind.get("zip_path")
+        zip_url = ind.get("zip_url")
+
+        if not zip_path and not zip_url:
+            raise ValueError("un_tourism_zip indicator requires 'zip_path' (local) or 'zip_url' (remote) in YAML")
+
+        return fetch_un_tourism_zip(
+            zip_path=zip_path,
+            zip_url=zip_url,
+            xlsx_glob=ind.get("xlsx_glob", "*.xlsx"),
+            sheet=ind.get("sheet"),
+            series_code=ind.get("series_code"),
+            geo_iso2=geo,
+            indicator_name=ind["name"],
+            start_year=start_year,
+            end_year=end_year,
+            geo_level=ind.get("geo_level", "country"),
+            unit_fallback=ind.get("units"),
+            cache_dir=ind.get("cache_dir", "data/un_tourism_cache"),
+        )
 
     raise ValueError(f"fetch_indicator_for_geo does not support source: {source}")
 
 
 def fetch_indicator_for_geos(ind: dict, geos: List[str]) -> pd.DataFrame:
     """
-    Multi-geo fetcher (many countries per call). Ideal for OECD monthly series.
+    Multi-geo fetcher (many countries per call). Ideal for OECD.
     Returns ONE dataframe with all requested geos.
     """
     source = (ind.get("source") or "").lower()
