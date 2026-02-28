@@ -212,57 +212,79 @@ def run_engine(
     if enable_ai and not flags.get("debug_no_files", False):
         prompts = load_prompts(prompts_path)
 
-        # Demographics
-        try:
-            demo_prompt = prompts["demographics_executive_narrative"]["prompt"]
-            ai_out_dir = out_dir / "demographics_executive_briefings"
-            ai_out_dir.mkdir(exist_ok=True, parents=True)
+        def _get_prompt(key: str) -> str | None:
+            obj = prompts.get(key)
+            if isinstance(obj, dict):
+                p = obj.get("prompt")
+                return p if isinstance(p, str) and p.strip() else None
+            return None
 
-            df_demo = results_by_framework.get("demographics")
-            if df_demo is None or df_demo.empty:
-                print("⚠️ Demographics AI skipped (no demographics data).")
+        # Only generate AI for frameworks that exist in results
+        frameworks_ran = set(results_by_framework.keys())
+
+        # Demographics
+        if "demographics" in frameworks_ran:
+            demo_prompt = _get_prompt("demographics_executive_narrative")
+            if not demo_prompt:
+                print("ℹ️ Demographics AI skipped (prompt not found in this profile).")
             else:
-                for geo in geos:
-                    briefing = generate_demographics_briefing(df_demo, geo, demo_prompt)
-                    (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
-                print("✅ Generated demographics AI executive briefings")
-        except Exception as e:
-            print(f"⚠️ Demographics AI generation failed: {type(e).__name__}: {e}")
+                try:
+                    ai_out_dir = out_dir / "demographics_executive_briefings"
+                    ai_out_dir.mkdir(exist_ok=True, parents=True)
+
+                    df_demo = results_by_framework.get("demographics")
+                    if df_demo is None or df_demo.empty:
+                        print("ℹ️ Demographics AI skipped (no demographics data).")
+                    else:
+                        for geo in geos:
+                            briefing = generate_demographics_briefing(df_demo, geo, demo_prompt)
+                            (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
+                        print("✅ Generated demographics AI executive briefings")
+                except Exception as e:
+                    print(f"⚠️ Demographics AI generation failed: {type(e).__name__}: {e}")
 
         # Tourism
-        try:
-            tour_prompt = prompts["tourism_executive_narrative"]["prompt"]
-            ai_out_dir = out_dir / "tourism_executive_briefings"
-            ai_out_dir.mkdir(exist_ok=True, parents=True)
-
-            df_tour = results_by_framework.get("tourism")
-            if df_tour is None or df_tour.empty:
-                print("⚠️ Tourism AI skipped (no tourism data).")
+        if "tourism" in frameworks_ran:
+            tour_prompt = _get_prompt("tourism_executive_narrative")
+            if not tour_prompt:
+                print("ℹ️ Tourism AI skipped (prompt not found in this profile).")
             else:
-                seasonality_df = seasonality_by_framework.get("tourism")
-                for geo in geos:
-                    briefing = generate_tourism_briefing(df_tour, geo, tour_prompt, seasonality_df=seasonality_df)
-                    (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
-                print("✅ Generated tourism AI executive briefings")
-        except Exception as e:
-            print(f"⚠️ Tourism AI generation failed: {type(e).__name__}: {e}")
+                try:
+                    ai_out_dir = out_dir / "tourism_executive_briefings"
+                    ai_out_dir.mkdir(exist_ok=True, parents=True)
+
+                    df_tour = results_by_framework.get("tourism")
+                    if df_tour is None or df_tour.empty:
+                        print("ℹ️ Tourism AI skipped (no tourism data).")
+                    else:
+                        seasonality_df = seasonality_by_framework.get("tourism")
+                        for geo in geos:
+                            briefing = generate_tourism_briefing(df_tour, geo, tour_prompt, seasonality_df=seasonality_df)
+                            (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
+                        print("✅ Generated tourism AI executive briefings")
+                except Exception as e:
+                    print(f"⚠️ Tourism AI generation failed: {type(e).__name__}: {e}")
 
         # Economics
-        try:
-            eco_prompt = prompts["economics_executive_narrative"]["prompt"]
-            ai_out_dir = out_dir / "economics_executive_briefings"
-            ai_out_dir.mkdir(exist_ok=True, parents=True)
-
-            df_eco = results_by_framework.get("economics")
-            if df_eco is None or df_eco.empty:
-                print("⚠️ Economics AI skipped (no economics data).")
+        if "economics" in frameworks_ran:
+            eco_prompt = _get_prompt("economics_executive_narrative")
+            if not eco_prompt:
+                print("ℹ️ Economics AI skipped (prompt not found in this profile).")
             else:
-                for geo in geos:
-                    briefing = generate_economics_briefing(df_eco, geo, eco_prompt)
-                    (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
-                print("✅ Generated economics AI executive briefings")
-        except Exception as e:
-            print(f"⚠️ Economics AI generation failed: {type(e).__name__}: {e}")
+                try:
+                    ai_out_dir = out_dir / "economics_executive_briefings"
+                    ai_out_dir.mkdir(exist_ok=True, parents=True)
+
+                    df_eco = results_by_framework.get("economics")
+                    if df_eco is None or df_eco.empty:
+                        print("ℹ️ Economics AI skipped (no economics data).")
+                    else:
+                        for geo in geos:
+                            briefing = generate_economics_briefing(df_eco, geo, eco_prompt)
+                            (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
+                        print("✅ Generated economics AI executive briefings")
+                except Exception as e:
+                    print(f"⚠️ Economics AI generation failed: {type(e).__name__}: {e}")
 
     # ==========================
     # Single-sheet workbook
