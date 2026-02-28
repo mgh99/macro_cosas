@@ -1,0 +1,12 @@
+version: 1
+profiles:
+  europe:
+    title: "Europe (Eurostat-centric)"
+    frameworks_path: "config/profiles/europe/frameworks.yaml"
+    prompts_path: "config/profiles/europe/prompts.yaml"
+    aliases_path: "config/profiles/europe/country_aliases.yaml"
+  world:
+    title: "World (multi-source)"
+    frameworks_path: "config/profiles/world/frameworks.yaml"
+    prompts_path: "config/profiles/world/prompts.yaml"
+    aliases_path: "config/profiles/world/country_aliases.yaml"

@@ -9,6 +9,19 @@ from core.config_loader import load_config
 from core.country_resolver import load_country_aliases, resolve_country_to_iso2
 
 
+def choose_profile(profiles: Dict) -> str:
+    keys = list(profiles.keys())
+    print("\n🧭 Choose profile:")
+    for i, k in enumerate(keys, start=1):
+        print(f"  {i}) {k} — {profiles[k].get('title','')}")
+    raw = input("Select option (1..n): ").strip()
+    if not raw or not raw.isdigit():
+        return keys[0]
+    idx = int(raw)
+    if 1 <= idx <= len(keys):
+        return keys[idx - 1]
+    return keys[0]
+
 def ask_yes_no(prompt: str, default: bool = True) -> bool:
     suffix = " [Y/n] " if default else " [y/N] "
     while True:
@@ -49,7 +62,7 @@ def choose_output_dir() -> Path:
 def choose_frameworks(frameworks: Dict) -> List[str]:
     keys = list(frameworks.keys())
     if not keys:
-        raise ValueError("No frameworks found in config/frameworks.yaml")
+        raise ValueError("No frameworks found in selected profile frameworks file.")
 
     print("\n🧱 Available frameworks:")
     for i, k in enumerate(keys, start=1):
@@ -134,10 +147,16 @@ def main() -> None:
     print("\n⚠️ IMPORTANT: Close any generated Excel files before running.")
     input("Press ENTER to continue...")
 
-    cfg = load_config("config/frameworks.yaml")
-    frameworks = cfg.get("frameworks", {}) or {}
+    profiles_cfg = load_config("config/profiles.yaml")
+    profiles = profiles_cfg.get("profiles", {}) or {}
+    profile_key = choose_profile(profiles)
+    profile = profiles[profile_key]
 
-    aliases = load_country_aliases()
+    frameworks_cfg = load_config(profile["frameworks_path"])
+    frameworks = frameworks_cfg.get("frameworks", {}) or {}
+
+    # aliases por perfil (o común)
+    aliases = load_country_aliases(profile.get("aliases_path", "config/country_aliases.yaml"))
 
     # Countries
     while True:
@@ -188,6 +207,8 @@ def main() -> None:
         output_dir=out_dir,
         enable_ai=enable_ai,
         output_flags=output_flags,
+        frameworks_path=profile["frameworks_path"],
+        prompts_path=profile["prompts_path"],
     )
 
     print("\n✅ Done! 🎉")

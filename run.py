@@ -17,9 +17,6 @@ from core.prompt_loader import load_prompts
 from core.seasonality import calculate_seasonality
 from core.top_origins import top_origins
 
-# (cuando lo hagas) from ai.economics_analyzer import generate_economics_briefing
-
-
 
 def run_engine(
     geos: List[str],
@@ -28,15 +25,21 @@ def run_engine(
     enable_ai: bool = True,
     output_flags: Optional[Dict[str, bool]] = None,
     debug_describe_eurostat: bool = False,
+    frameworks_path: str = "config/frameworks.yaml",
+    prompts_path: str = "config/prompts.yaml",
 ) -> Dict[str, pd.DataFrame]:
     """
     Main macro engine callable from CLI.
+
     - geos: ISO2 list like ["ES","FR","DE"]
     - selected_frameworks: subset of frameworks keys (or None = all)
     - output_dir: where to write CSV/XLSX/AI
     - enable_ai: whether to generate AI briefings
     - output_flags: {"csv": bool, "excel_by_indicator": bool, "single_sheet": bool, "debug_no_files": bool}
     - debug_describe_eurostat: prints dataset dimensions (slow-ish)
+    - frameworks_path: which frameworks YAML to load (profile-specific)
+    - prompts_path: which prompts YAML to load (profile-specific)
+
     Returns: results_by_framework dict
     """
     out_dir = Path(output_dir)
@@ -49,12 +52,14 @@ def run_engine(
         "debug_no_files": False,
     }
 
-    cfg = load_config("config/frameworks.yaml")
+    # ✅ load frameworks from profile path
+    cfg = load_config(frameworks_path)
     frameworks_all = cfg.get("frameworks", {}) or {}
 
     # Filter frameworks if user selected subset
     if selected_frameworks:
-        frameworks = {k: v for k, v in frameworks_all.items() if k in set(selected_frameworks)}
+        wanted = set(selected_frameworks)
+        frameworks = {k: v for k, v in frameworks_all.items() if k in wanted}
     else:
         frameworks = frameworks_all
 
@@ -205,7 +210,7 @@ def run_engine(
     # AI generation (optional)
     # ==========================
     if enable_ai and not flags.get("debug_no_files", False):
-        prompts = load_prompts()
+        prompts = load_prompts(prompts_path)
 
         # Demographics
         try:
@@ -242,12 +247,12 @@ def run_engine(
         except Exception as e:
             print(f"⚠️ Tourism AI generation failed: {type(e).__name__}: {e}")
 
-        # Economics (cuando lo añadas)
+        # Economics
         try:
             eco_prompt = prompts["economics_executive_narrative"]["prompt"]
             ai_out_dir = out_dir / "economics_executive_briefings"
             ai_out_dir.mkdir(exist_ok=True, parents=True)
-        
+
             df_eco = results_by_framework.get("economics")
             if df_eco is None or df_eco.empty:
                 print("⚠️ Economics AI skipped (no economics data).")
@@ -273,10 +278,17 @@ def run_engine(
 def main() -> None:
     """
     Non-interactive default run (kept for dev use).
-    For Ana-friendly usage: run `python cli_menu.py`.
+    For interactive usage: run `python cli_menu.py`.
     """
     geos = ["ES", "FR", "DE"]
-    run_engine(geos=geos, selected_frameworks=None, output_dir=Path("outputs"), enable_ai=True)
+    run_engine(
+        geos=geos,
+        selected_frameworks=None,
+        output_dir=Path("outputs"),
+        enable_ai=True,
+        frameworks_path="config/frameworks.yaml",
+        prompts_path="config/prompts.yaml",
+    )
 
 
 if __name__ == "__main__":

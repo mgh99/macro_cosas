@@ -1,3 +1,5 @@
+# config/prompts.yaml
+
 demographics_executive_narrative:
   description: "Executive demographic structural analysis for leadership"
   max_words: 450
