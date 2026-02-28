@@ -1,0 +1,41 @@
+# config/profiles/world/frameworks.yaml
+version: 1
+
+frameworks:
+  economics:
+    title: "ECONOMICS FRAMEWORK"
+    indicators:
+
+      # 1) Unemployment rate (IMF Datamapper)
+      - id: "E1"
+        name: unemployment_rate
+        source: imf_datamapper
+        enabled: true
+
+        indicator_code: "LUR"
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 5
+
+        units: "percent"
+        reference: "https://www.imf.org/external/datamapper/LUR@WEO/ADVEC/WEOWORLD"
+
+      # 2) GDP current prices (IMF Datamapper)
+      - id: "E2"
+        name: gdp_current_prices
+        source: imf_datamapper
+        enabled: true
+
+        indicator_code: "NGDPD"
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "billions_of_dollars"
+        reference: "https://www.imf.org/external/datamapper/NGDPD@WEO/ADVEC/WEOWORLD"

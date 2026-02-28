@@ -185,12 +185,15 @@ def main() -> None:
 
     # Output folder
     out_dir = choose_output_dir()
+    out_dir = out_dir / profile_key
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     # Summary
     print("\n🧾 Summary")
     print(f"  Countries: {geos}")
     print(f"  Frameworks: {selected_frameworks}")
     print(f"  AI enabled: {enable_ai}")
+    print(f"  Profile: {profile_key}")
     print(f"  Output dir: {out_dir.resolve()}")
     print(f"  Outputs: {output_flags}")
 
