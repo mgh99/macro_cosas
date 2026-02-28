@@ -8,7 +8,8 @@ import pandas as pd
 from connectors.eurostat import fetch_indicator as fetch_eurostat
 from connectors.imf_datamapper import fetch_indicator as fetch_imf
 from connectors.oecd import fetch_indicator as fetch_oecd
-from core.geo_mapper import to_imf_geo, to_oecd_geo
+from connectors.worldbank import fetch_indicator as fetch_worldbank
+from core.geo_mapper import to_imf_geo, to_iso2, to_oecd_geo, to_wb_geo
 from core.time_utils import (compute_time_window, compute_years_list,
                              current_year)
 
@@ -49,6 +50,27 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
             geo_level=ind.get("geo_level", "country"),
             unit_fallback=ind.get("units"),
         )
+    
+    if source in {"world_bank", "world_bank_group", "worldbank", "wb"}:
+        start_year, end_year = compute_time_window(time_cfg)
+
+        indicator_id = ind.get("indicator_id") or ind.get("indicator_code") or ind.get("dataset")
+        if not indicator_id:
+            raise ValueError("World Bank indicator missing indicator_id (or indicator_code/dataset)")
+
+        df = fetch_worldbank(
+            indicator_id=indicator_id,
+            geo_wb3=to_wb_geo(geo),
+            start_year=start_year,
+            end_year=end_year,
+            indicator_name=ind["name"],
+            geo_level=ind.get("geo_level", "country"),
+            unit_fallback=ind.get("units"),
+        )
+
+        # Normaliza geo a ISO2 para que todo el pipeline sea consistente
+        df["geo"] = df["geo"].apply(to_iso2)
+        return df
 
     raise ValueError(f"fetch_indicator_for_geo does not support source: {source}")
 

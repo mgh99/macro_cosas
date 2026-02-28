@@ -1,0 +1,48 @@
+# config/profiles/world/country_aliases.yaml
+
+# Spain
+sp: ES
+esp: ES
+spa: ES
+spain: ES
+españa: ES
+espana: ES
+
+# United States
+usa: US
+us: US
+united states: US
+unitedstates: US
+eeuu: US
+euu: US
+
+# Denmark
+denmark: DK
+dinamark: DK
+dinamarca: DK
+danmark: DK
+
+# United Kingdom (pycountry a veces lía UK/GB)
+uk: GB
+u k: GB
+u.k: GB
+u.k.: GB
+united kingdom: GB
+great britain: GB
+britain: GB
+england: GB
+
+# Switzerland (si la usas)
+switzerland: CH
+suisse: CH
+schweiz: CH
+svizzera: CH
+
+# Common “gotchas” / language variants
+south korea: KR
+korea: KR
+north korea: KP
+russia: RU
+czech republic: CZ
+czechia: CZ
+taiwan: TW

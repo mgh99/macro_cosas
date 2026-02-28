@@ -14,6 +14,22 @@ EUROSTAT2_TO_IMF3 = {
 
 IMF3_TO_EUROSTAT2 = {v: k for k, v in EUROSTAT2_TO_IMF3.items()}
 
+def to_wb_geo(geo: str) -> str:
+    """
+    ISO2 -> ISO3 (World Bank)
+    Si ya viene ISO3, lo devuelve.
+    """
+    g = (geo or "").upper()
+    if len(g) == 3 and g.isalpha():
+        return g
+    if len(g) == 2 and g.isalpha():
+        c = pycountry.countries.get(alpha_2=g)
+        if c:
+            return c.alpha_3
+
+    # fallback: usa tu mapping existente si aplica
+    return EUROSTAT2_TO_IMF3.get(g, g)
+
 def to_imf_geo(geo: str) -> str:
     """
     ISO2 -> ISO3 for IMF DataMapper.

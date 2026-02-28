@@ -1,3 +1,4 @@
+# core/country_resolver.py
 from __future__ import annotations
 
 import unicodedata
@@ -6,6 +7,13 @@ from typing import Dict, Optional
 
 import pycountry
 import yaml
+
+
+def _is_valid_iso2(code: str) -> bool:
+    code = (code or "").strip().upper()
+    if len(code) != 2:
+        return False
+    return pycountry.countries.get(alpha_2=code) is not None
 
 
 def _strip_accents(s: str) -> str:
@@ -48,7 +56,6 @@ def load_country_aliases(path: str = "config/country_aliases.yaml") -> Dict[str,
             continue
         nk = _normalize_token(k)
         nv = _normalize_token(v)
-        # value should be ISO2 ideally
         out[nk] = nv
     return out
 
@@ -62,7 +69,7 @@ def resolve_country_to_iso2(
 
     Priority:
     1) YAML aliases override
-    2) Already ISO2
+    2) Already ISO2 (VALIDATED)
     3) ISO3 -> ISO2 via pycountry
     4) exact name lookup
     5) fuzzy lookup
@@ -73,18 +80,22 @@ def resolve_country_to_iso2(
 
     # 1) aliases override
     if aliases and tok in aliases:
-        iso2 = aliases[tok]
-        if len(iso2) == 2 and iso2.isalpha():
-            return iso2
-        # allow iso3 in alias values
-        if len(iso2) == 3 and iso2.isalpha():
-            c = pycountry.countries.get(alpha_3=iso2)
+        code = aliases[tok]
+
+        # alias value as ISO2
+        if _is_valid_iso2(code):
+            return code
+
+        # allow ISO3 in alias values
+        if len(code) == 3 and code.isalpha():
+            c = pycountry.countries.get(alpha_3=code)
             if c:
                 return c.alpha_2
+
         raise ValueError(f"Alias mapped to unsupported code: {user_input} -> {aliases[tok]}")
 
-    # 2) ISO2
-    if len(tok) == 2 and tok.isalpha():
+    # 2) ISO2 (must be real ISO2)
+    if _is_valid_iso2(tok):
         return tok
 
     # 3) ISO3
@@ -93,11 +104,9 @@ def resolve_country_to_iso2(
         if c:
             return c.alpha_2
 
-    # 4) exact name (try common variants)
-    # pycountry expects title-case names
+    # 4) exact name (lookup is already flexible)
     try:
         c = pycountry.countries.lookup(tok.title())
-        # lookup() is flexible, but can throw LookupError
         return c.alpha_2
     except LookupError:
         pass

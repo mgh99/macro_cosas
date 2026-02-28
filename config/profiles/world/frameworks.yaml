@@ -93,3 +93,72 @@ frameworks:
 
         units: "percent"
         reference: "https://www.imf.org/external/datamapper/PCPIEPCH@WEO/ADVEC/WEOWORLD"
+
+      # 6) Consumer Confidence Index (OECD, monthly)
+      - id: "E6"
+        name: consumer_confidence_index
+        source: oecd
+        enabled: true
+
+        dataset_id: "OECD.SDD.STES,DSD_STES@DF_CLI,"
+        selection_template: "{geo}.M.CCICP...AA...H"
+
+        frequency: M
+        time:
+          mode: past_years
+          years: 5
+
+        units: "index"
+        geo_level: country
+        reference: "https://www.oecd.org/en/data/indicators/consumer-confidence-index-cci.html"
+
+      # 7) Income share held by highest 10% (World Bank, %)
+      - id: "E7"
+        name: income_share_held_by_highest_10_percent
+        source: world_bank_group
+        enabled: true
+
+        indicator_id: "SI.DST.10TH.10"
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "percent"
+        reference: "https://data.worldbank.org/indicator/SI.DST.10TH.10"
+
+      # 8) Income share held by lowest 10% (World Bank, %)
+      - id: "E8"
+        name: income_share_held_by_lowest_10_percent
+        source: world_bank_group
+        enabled: true
+
+        indicator_id: "SI.DST.FRST.10"
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "percent"
+        reference: "https://data.worldbank.org/indicator/SI.DST.FRST.10"
+
+      # 9) Youth unemployment, ages 15-24 (% of total labor force) (modeled ILO estimate) — World Bank
+      - id: "E9"
+        name: unemployment_youth_total_15_24_percent
+        source: world_bank_group
+        enabled: true
+
+        indicator_id: "SL.UEM.1524.ZS"
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "percent"
+        reference: "https://data.worldbank.org/indicator/SL.UEM.1524.ZS"
