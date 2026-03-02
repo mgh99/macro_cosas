@@ -399,3 +399,30 @@ frameworks:
           years: 10
 
         units: "thousand_overnights"
+
+  demographics:
+    title: "DEMOGRAPHICS FRAMEWORK"
+    indicators:
+      - id: "D1"
+        name: household_size_and_composition_2022
+        source: united_nations_xlsx
+        enabled: true
+
+        xlsx_url: "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2022_hh-size-composition.xlsx"
+        xlsx_cache_path: "data/united_nations_xlsx/undesa_pd_2022_hh-size-composition.xlsx"
+        sheet: "HH size and composition 2022"
+
+        allowed_data_source_categories:
+          - "DHS"
+          - "DYB"
+          - "IPOMS"
+          - "LFS"
+          - "MICS"
+
+        geo_level: country
+        frequency: A
+        time:
+          mode: last_available_year
+        units: "persons"
+
+        #debug: true

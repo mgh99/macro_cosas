@@ -10,6 +10,8 @@ from connectors.imf_datamapper import fetch_indicator as fetch_imf
 from connectors.oecd import fetch_indicator as fetch_oecd
 from connectors.un_tourism_xlsx import fetch_indicator as fetch_un_tourism_xlsx
 from connectors.un_tourism_zip import fetch_indicator as fetch_un_tourism_zip
+from connectors.united_nations_xlsx import \
+    fetch_indicator as fetch_united_nations
 from connectors.worldbank import fetch_indicator as fetch_worldbank
 from core.geo_mapper import to_imf_geo, to_iso2, to_oecd_geo, to_wb_geo
 from core.time_utils import (compute_time_window, compute_years_list,
@@ -133,6 +135,22 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
             sub_indicator_field=ind.get("sub_indicator_field"),
             partner_area_labels=ind.get("partner_area_labels"),
             debug=ind.get("debug", False), # PARA DEBUG, no afecta la lógica principal
+        )
+    
+    # ==========================
+    # UNITED NATIONS (XLSX -> parse)
+    # ==========================
+    if source in {"united_nations", "united_nations_xlsx", "united-nations-xlsx", "undesa"}:
+        return fetch_united_nations(
+            xlsx_url=ind["xlsx_url"],
+            xlsx_cache_path=ind.get("xlsx_cache_path") or f"data/united_nations_xlsx/{ind['name']}.xlsx",
+            geo_iso2=geo,
+            indicator_name=ind["name"],
+            sheet=ind.get("sheet", "HH size and composition 2022"),
+            allowed_data_source_categories=ind.get("allowed_data_source_categories"),
+            geo_level=ind.get("geo_level", "country"),
+            unit_fallback=ind.get("units"),
+            debug=ind.get("debug", False),
         )
 
     raise ValueError(f"fetch_indicator_for_geo does not support source: {source}")
