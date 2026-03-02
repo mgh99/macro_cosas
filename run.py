@@ -106,6 +106,10 @@ def run_engine(
                 for geo in geos:
                     df = fetch_indicator_for_geo(ind, geo)
                     all_parts.append(df)
+                    
+        df = fetch_indicator_for_geo(ind, geo)
+        print(f"DEBUG fetched: fw={fw_name} id={ind.get('id')} name={ind.get('name')} geo={geo} rows={len(df)}")
+        all_parts.append(df)
 
         if not all_parts:
             print(f"⚠️ No data fetched for framework: {fw_name}")
@@ -181,6 +185,7 @@ def run_engine(
             xlsx_path = out_dir / f"{fw_name}_views_by_indicator.xlsx"
             with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
                 df_out.to_excel(writer, sheet_name="raw_long", index=False)
+                used_sheet_names = {"raw_long"}
 
                 for ind_name in sorted(df_out["indicator"].dropna().unique()):
                     sub = df_out[df_out["indicator"] == ind_name].copy()
@@ -218,7 +223,15 @@ def run_engine(
                             .reset_index()
                         )
 
-                    table.to_excel(writer, sheet_name=ind_name[:31], index=False)
+                    base_sheet = str(ind_name)[:31]
+                    sheet_name = base_sheet
+                    i = 2
+                    while sheet_name in used_sheet_names:
+                        suffix = f"_{i}"
+                        sheet_name = f"{base_sheet[:31-len(suffix)]}{suffix}"
+                        i += 1
+                    used_sheet_names.add(sheet_name)
+                    table.to_excel(writer, sheet_name=sheet_name, index=False)
 
             print(f"✅ Wrote {xlsx_path}")
 

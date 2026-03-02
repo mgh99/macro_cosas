@@ -191,6 +191,8 @@ frameworks:
         source: un_tourism_xlsx
         enabled: true
 
+        #debug: true
+
         xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_inbound_arrivals_by_region_12_2025.xlsx"
         xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_inbound_arrivals_by_region_12_2025.xlsx"
         sheet: "Data"
@@ -229,13 +231,12 @@ frameworks:
 
         reporter_area_code_field: "reporter_area_code"
 
-        # nuevo (genérico): dónde vive el “purpose” para sub_indicator_short
-        sub_indicator_field: "purpose_label"   # EJEMPLO
-
-        # nuevo: filtrar solo las 2 series deseadas
         indicator_code_equals:
-          - "INBD_TRIP_PURP_BUSN_TOUR"         # EJEMPLO
-          - "INBD_TRIP_PURP_PERS_TOUR"         # EJEMPLO
+          - "INBD_TRIP_PRPS_BNSS_TOUR"
+          - "INBD_TRIP_PRPS_PERS_TOUR"
+
+        # Para que sub_indicator_short sea el purpose (y no "World")
+        sub_indicator_field: "indicator_code"
 
         geo_level: country
         frequency: A
@@ -244,3 +245,31 @@ frameworks:
           years: 10
 
         units: "thousand_trips"
+
+      - id: "T4"
+        name: UN_Tourism_inbound_arrivals_by_transport_12_2025
+        source: un_tourism_xlsx
+        enabled: true
+
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_inbound_arrivals_by_transport_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_inbound_arrivals_by_transport_12_2025.xlsx"
+        sheet: "Data"
+
+        reporter_area_code_field: "reporter_area_code"
+
+        indicator_label_equals:
+          - "inbound - trips - transport - air - overnight visitors (tourists)"
+          - "inbound - trips - transport - by land - overnight visitors (tourists)"
+          - "inbound - trips - transport - water - overnight visitors (tourists)"
+
+        # Para que sub_indicator_short sea AIR/LAND/WATER (bonito y legible)
+        sub_indicator_field: "indicator_label"
+
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 10
+
+        units: "thousand_trips"
+        debug: true

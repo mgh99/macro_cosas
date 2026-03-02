@@ -126,9 +126,13 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
             geo_level=ind.get("geo_level", "country"),
             unit_fallback=ind.get("units"),
             indicator_code_prefix=ind.get("indicator_code_prefix"),
+            indicator_code_equals=ind.get("indicator_code_equals"),
+            indicator_label_equals=ind.get("indicator_label_equals"),
             reporter_area_code_field=ind.get("reporter_area_code_field", "reporter_area_code"),
             partner_area_label_field=ind.get("partner_area_label_field", "partner_area_label"),
+            sub_indicator_field=ind.get("sub_indicator_field"),
             partner_area_labels=ind.get("partner_area_labels"),
+            debug=ind.get("debug", False), # PARA DEBUG, no afecta la lógica principal
         )
 
     raise ValueError(f"fetch_indicator_for_geo does not support source: {source}")
