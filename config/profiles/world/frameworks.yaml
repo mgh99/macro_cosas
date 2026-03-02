@@ -324,3 +324,78 @@ frameworks:
           years: 10
 
         units: "million_US_dollars"
+
+      - id: "T7"
+        name: UN_Tourism_accommodation_hotels_12_2025
+        source: un_tourism_xlsx
+        enabled: true
+
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_accommodation_hotels_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_accommodation_hotels_12_2025.xlsx"
+        sheet: "Data"
+
+        reporter_area_code_field: "reporter_area_code"
+
+        # Filtro por indicator_label
+        indicator_label_equals:
+          - "capacity - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - length of stay - average"
+
+        # Solo hay una serie → no necesitamos sub-indicador complejo
+        sub_indicator_field: null
+
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 10
+
+        units: "overnights"
+
+      - id: "T8"
+        name: UN_Tourism_domestic_trips_12_2025
+        source: un_tourism_xlsx
+        enabled: true
+
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_domestic_trips_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_domestic_trips_12_2025.xlsx"
+        sheet: "Data"
+
+        reporter_area_code_field: "reporter_area_code"
+
+        # Filtro por indicator_label
+        indicator_label_equals:
+          - "domestic - trips - total - total - visitors"
+
+        # Solo hay una serie → no necesitamos sub-indicador
+        sub_indicator_field: null
+
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 10
+
+        units: "thousand_trips"
+
+      - id: "T9"
+        name: UN_Tourism_domestic_accommodation_12_2025
+        source: un_tourism_xlsx
+        enabled: true
+
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_domestic_accommodation_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_domestic_accommodation_12_2025.xlsx"
+        sheet: "Data"
+
+        reporter_area_code_field: "reporter_area_code"
+
+        # Filtro por indicator_label
+        indicator_label_equals:
+          - "domestic - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - overnights"
+
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 10
+
+        units: "thousand_overnights"

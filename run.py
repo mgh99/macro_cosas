@@ -106,10 +106,6 @@ def run_engine(
                 for geo in geos:
                     df = fetch_indicator_for_geo(ind, geo)
                     all_parts.append(df)
-                    
-        df = fetch_indicator_for_geo(ind, geo)
-        print(f"DEBUG fetched: fw={fw_name} id={ind.get('id')} name={ind.get('name')} geo={geo} rows={len(df)}")
-        all_parts.append(df)
 
         if not all_parts:
             print(f"⚠️ No data fetched for framework: {fw_name}")

@@ -60,3 +60,66 @@ economics_executive_narrative:
     Limit total output to approximately 300–350 words.
     Deliver exactly three clearly separated paragraphs.
     Do not introduce any data not provided.
+
+tourism_executive_narrative:
+  description: "Executive tourism narrative (WORLD profile)"
+  max_words: 350
+  prompt: |
+    TOURISM PROMPT – EXECUTIVE NARRATIVE
+
+    You are a senior tourism economist and luxury retail strategy advisor preparing a high-level strategic tourism assessment for a corporate leadership team in the apparel and luxury sector. Base your analysis strictly and exclusively on the structured UN Tourism data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., CAGR, expenditure per arrival). Your objective is not to describe the data, but to assess the strategic implications of the tourism structure for luxury retail positioning, demand resilience, and revenue quality. Write exactly three clearly separated analytical paragraphs. Maintain a formal, executive, decision-oriented tone.
+
+    DATA PROVIDED:
+
+        1. Tourism direct GDP as % of total GDP (annual, past 10 years)
+        2. Inbound arrivals (total, annual, past 10 years)
+        3. Inbound arrivals by partner region (annual, past 10 years)
+        4. Inbound arrivals by purpose (business vs personal, annual, past 10 years)
+        5. Inbound arrivals by transport mode (air, land, water; annual, past 10 years)
+        6. Inbound tourism expenditure (total, million USD, annual, past 10 years)
+        7. Inbound accommodation overnights (hotels and similar, annual, past 10 years)
+        8. Average length of stay (annual, past 10 years)
+        9. Domestic trips (annual, past 10 years)
+        10. Domestic accommodation overnights (annual, past 10 years)
+        
+    You may calculate:
+    Total inbound arrivals
+    CAGR (5-year or 10-year where relevant)
+    Expenditure per arrival (total inbound expenditure ÷ inbound arrivals)
+
+    STRUCTURE YOUR RESPONSE AS FOLLOWS:
+    1. Structural Attractiveness & Exposure Profile (Indicators 1, 2, 3, 9)
+    Assess the structural scale, trajectory, and macroeconomic weight of tourism.
+    Evaluate whether growth is structurally embedded or cyclical recovery-driven.
+    Determine geographic diversification versus concentration risk across partner regions.
+    Compare inbound and domestic demand to assess external exposure.
+    Conclude on the country’s tourism exposure profile: Diversified global hub / Regionally dependent growth market / Tourism-heavy and externally exposed / Domestically buffered mixed model.
+    Explicitly state implications for volatility sensitivity and long-term retail expansion confidence.
+
+    2. Demand Architecture & Operational Reliability (Indicators 5, 7, 8, 10)
+    Assess the structural composition of tourism flows rather than their absolute size.
+    Interpret transport mix as a proxy for premium accessibility and long-haul penetration.
+    Evaluate length of stay and hotel overnights as indicators of retail interaction time.
+    Assess domestic accommodation as a stabilizer of demand cycles.
+    Determine whether the tourism architecture supports predictable retail throughput.
+    Conclude whether the market offers: High operational visibility / Air-exposed luxury inflow potential / Short-stay transactional tourism / Structurally volatile demand.
+    Translate findings into implications for store productivity, staffing stability, and network planning.
+
+    3. Value Intensity & Luxury Monetization Potential (Indicators 4, 6, 2, 8)
+    Prioritize value dynamics over volume metrics.
+    Analyze expenditure per arrival and compare expenditure growth versus arrival growth to assess monetization intensity.
+    Evaluate business versus personal mix as an indicator of premium positioning potential.
+    Interpret average length of stay in relation to discretionary spending opportunity.
+    Determine whether the tourism model is value-accretive or volume-driven.
+    Conclude whether tourism structurally supports: High-margin luxury capture / Stable aspirational consumption / Transactional mid-market retail / Limited monetization upside.
+    State the strategic relevance of tourism for long-term apparel and luxury retail positioning.
+
+    ADDITIONAL ANALYTICAL REQUIREMENTS:
+    Focus on structural interpretation rather than descriptive reporting.
+    Distinguish secular trends from short-term shocks.
+    Highlight concentration and accessibility risks.
+    Translate all tourism metrics into strategic retail implications.
+    Maintain a C-level, decision-support tone.
+    Limit total output to approximately 300–350 words.
+    Deliver exactly three clearly separated paragraphs.
+    Do not introduce any data not provided.
