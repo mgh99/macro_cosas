@@ -272,4 +272,55 @@ frameworks:
           years: 10
 
         units: "thousand_trips"
-        debug: true
+        #debug: true
+
+      - id: "T5"
+        name: UN_Tourism_inbound_accommodation_12_2025
+        source: un_tourism_xlsx
+        enabled: true
+
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_inbound_accommodation_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_inbound_accommodation_12_2025.xlsx"
+        sheet: "Data"
+
+        reporter_area_code_field: "reporter_area_code"
+
+        indicator_label_equals:
+          - "inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+
+        # para que el sub_indicator_short sea ese label (o lo que tú quieras)
+        sub_indicator_field: "indicator_label"
+
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 10
+
+        units: "thousand_overnights"
+
+      - id: "T6"
+        name: UN_Tourism_inbound_expenditure_12_2025
+        source: un_tourism_xlsx
+        enabled: true
+
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_inbound_expenditure_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_inbound_expenditure_12_2025.xlsx"
+        sheet: "Data"
+
+        reporter_area_code_field: "reporter_area_code"
+
+        # Filtro por indicator_label
+        indicator_label_equals:
+          - "inbound - expenditure - balance of payments - total - visitors"
+
+        # Para que el sub_indicator_short sea limpio
+        sub_indicator_field: "indicator_label"
+
+        geo_level: country
+        frequency: A
+        time:
+          mode: past_years
+          years: 10
+
+        units: "million_US_dollars"
