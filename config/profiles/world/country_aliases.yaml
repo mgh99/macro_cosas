@@ -38,6 +38,29 @@ suisse: CH
 schweiz: CH
 svizzera: CH
 
+# Germany
+germany: DE
+alemania: DE
+alemán: DE
+alemana: DE
+deutschland: DE
+deutsch: DE
+alemao: DE
+
+# Russia
+russia: RU
+russian federation: RU
+russian fed: RU
+russian fed.: RU
+russian: RU
+ruso: RU
+rusa: RU
+rusia: RU
+
+# argelia
+algeria: DZ
+argelia: DZ
+
 # Common “gotchas” / language variants
 south korea: KR
 korea: KR

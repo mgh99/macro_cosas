@@ -8,6 +8,7 @@ import pandas as pd
 from connectors.eurostat import fetch_indicator as fetch_eurostat
 from connectors.imf_datamapper import fetch_indicator as fetch_imf
 from connectors.oecd import fetch_indicator as fetch_oecd
+from connectors.un_tourism_xlsx import fetch_indicator as fetch_un_tourism_xlsx
 from connectors.un_tourism_zip import fetch_indicator as fetch_un_tourism_zip
 from connectors.worldbank import fetch_indicator as fetch_worldbank
 from core.geo_mapper import to_imf_geo, to_iso2, to_oecd_geo, to_wb_geo
@@ -106,6 +107,28 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
             geo_level=ind.get("geo_level", "country"),
             unit_fallback=ind.get("units"),
             cache_dir=ind.get("cache_dir", "data/un_tourism_cache"),
+        )
+    
+    # ==========================
+    # UN Tourism (XLSX -> parse)
+    # ==========================
+    if source in {"un_tourism_xlsx", "un-tourism-xlsx"}:
+        start_year, end_year = compute_time_window(time_cfg)
+
+        return fetch_un_tourism_xlsx(
+            xlsx_url=ind["xlsx_url"],
+            xlsx_cache_path=ind.get("xlsx_cache_path") or f"data/un_tourism_xlsx/{ind['name']}.xlsx",
+            geo_iso2=geo,
+            indicator_name=ind["name"],
+            sheet=ind.get("sheet", "Data"),
+            start_year=start_year,
+            end_year=end_year,
+            geo_level=ind.get("geo_level", "country"),
+            unit_fallback=ind.get("units"),
+            indicator_code_prefix=ind.get("indicator_code_prefix"),
+            reporter_area_code_field=ind.get("reporter_area_code_field", "reporter_area_code"),
+            partner_area_label_field=ind.get("partner_area_label_field", "partner_area_label"),
+            partner_area_labels=ind.get("partner_area_labels"),
         )
 
     raise ValueError(f"fetch_indicator_for_geo does not support source: {source}")
