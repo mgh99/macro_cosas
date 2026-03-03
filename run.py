@@ -1,11 +1,13 @@
 # run.py
 from __future__ import annotations
 
+import time
 from pathlib import Path
 from typing import Dict, List, Optional
 
 import pandas as pd
 
+from ai.concentrated_overview_analyzer import generate_concentrated_overview
 from ai.demographics_analyzer import generate_demographics_briefing
 from ai.economics_analyzer import generate_economics_briefing
 from ai.tourism_analyzer import generate_tourism_briefing
@@ -17,6 +19,20 @@ from core.prompt_loader import load_prompts
 from core.seasonality import calculate_seasonality
 from core.top_origins import top_origins
 
+
+def _run_with_backoff(fn, max_tries: int = 6):
+    delay = 2
+    for _attempt in range(max_tries):
+        try:
+            return fn()
+        except Exception as e:
+            msg = str(e)
+            if "429" in msg or "rate limit" in msg.lower():
+                time.sleep(delay)
+                delay = min(delay * 2, 60)
+                continue
+            raise
+    raise RuntimeError("Rate limit persists after retries.")
 
 def run_engine(
     geos: List[str],
@@ -305,11 +321,48 @@ def run_engine(
                         print("ℹ️ Economics AI skipped (no economics data).")
                     else:
                         for geo in geos:
-                            briefing = generate_economics_briefing(df_eco, geo, eco_prompt)
-                            (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
+                            briefing = _run_with_backoff(
+                                lambda: generate_economics_briefing(df_eco, geo, eco_prompt)
+                            )
+                            (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(
+                                briefing, encoding="utf-8"
+                            )
                         print("✅ Generated economics AI executive briefings")
                 except Exception as e:
                     print(f"⚠️ Economics AI generation failed: {type(e).__name__}: {e}")
+
+        # Concentrated Overview (requires economics + tourism + demographics)
+        if {"economics", "tourism", "demographics"}.issubset(frameworks_ran):
+            one_slide_prompt = _get_prompt("concentrated_overview_executive_narrative")
+            if not one_slide_prompt:
+                print("ℹ️ Concentrated overview AI skipped (prompt not found in this profile).")
+            else:
+                try:
+                    ai_out_dir = out_dir / "concentrated_overview_briefings"
+                    ai_out_dir.mkdir(exist_ok=True, parents=True)
+
+                    df_eco = results_by_framework.get("economics")
+                    df_tour = results_by_framework.get("tourism")
+                    df_demo = results_by_framework.get("demographics")
+
+                    if any(df is None or df.empty for df in [df_eco, df_tour, df_demo]):
+                        print("ℹ️ Concentrated overview skipped (missing framework data).")
+                    else:
+                        for geo in geos:
+                            briefing = generate_concentrated_overview(
+                                df_econ=df_eco,
+                                df_tour=df_tour,
+                                df_demo=df_demo,
+                                geo=geo,
+                                base_prompt=one_slide_prompt,
+                            )
+                            (ai_out_dir / f"{geo}_one_slide.txt").write_text(
+                                briefing,
+                                encoding="utf-8",
+                            )
+                        print("✅ Generated concentrated overview one-slide briefings")
+                except Exception as e:
+                    print(f"⚠️ Concentrated overview AI generation failed: {type(e).__name__}: {e}")
 
     # ==========================
     # Single-sheet workbook

@@ -1,0 +1,631 @@
+geo,indicator,date,month,value,unit,sub_indicator_short
+ES,UN_Tourism_8_9_1_TDGDP_04_2025,2016,,6.5,percent,
+ES,UN_Tourism_8_9_1_TDGDP_04_2025,2017,,6.6,percent,
+ES,UN_Tourism_8_9_1_TDGDP_04_2025,2018,,6.7,percent,
+ES,UN_Tourism_8_9_1_TDGDP_04_2025,2019,,6.8,percent,
+ES,UN_Tourism_8_9_1_TDGDP_04_2025,2020,,5.0574,percent,
+ES,UN_Tourism_8_9_1_TDGDP_04_2025,2021,,5.50139,percent,
+FR,UN_Tourism_8_9_1_TDGDP_04_2025,2019,,3.90442,percent,
+FR,UN_Tourism_8_9_1_TDGDP_04_2025,2020,,2.83936,percent,
+FR,UN_Tourism_8_9_1_TDGDP_04_2025,2021,,3.02301,percent,
+FR,UN_Tourism_8_9_1_TDGDP_04_2025,2022,,3.5561,percent,
+IT,UN_Tourism_8_9_1_TDGDP_04_2025,2017,,5.49858,percent,
+IT,UN_Tourism_8_9_1_TDGDP_04_2025,2019,,5.7128,percent,
+PT,UN_Tourism_8_9_1_TDGDP_04_2025,2016,,6.9,percent,
+PT,UN_Tourism_8_9_1_TDGDP_04_2025,2017,,7.7,percent,
+PT,UN_Tourism_8_9_1_TDGDP_04_2025,2018,,8.0,percent,
+PT,UN_Tourism_8_9_1_TDGDP_04_2025,2019,,8.1,percent,
+PT,UN_Tourism_8_9_1_TDGDP_04_2025,2020,,4.4,percent,
+PT,UN_Tourism_8_9_1_TDGDP_04_2025,2021,,5.7,percent,
+PT,UN_Tourism_8_9_1_TDGDP_04_2025,2022,,8.6,percent,
+PT,UN_Tourism_8_9_1_TDGDP_04_2025,2023,,9.1,percent,
+CA,UN_Tourism_8_9_1_TDGDP_04_2025,2016,,1.99315,percent,
+CA,UN_Tourism_8_9_1_TDGDP_04_2025,2017,,1.99379,percent,
+CA,UN_Tourism_8_9_1_TDGDP_04_2025,2018,,2.00237,percent,
+CA,UN_Tourism_8_9_1_TDGDP_04_2025,2019,,2.01469,percent,
+CA,UN_Tourism_8_9_1_TDGDP_04_2025,2020,,1.00336,percent,
+CA,UN_Tourism_8_9_1_TDGDP_04_2025,2021,,0.98237,percent,
+CA,UN_Tourism_8_9_1_TDGDP_04_2025,2022,,1.41368,percent,
+CA,UN_Tourism_8_9_1_TDGDP_04_2025,2023,,1.577,percent,
+SZ,UN_Tourism_8_9_1_TDGDP_04_2025,2016,,0.90679,percent,
+SZ,UN_Tourism_8_9_1_TDGDP_04_2025,2017,,1.25407,percent,
+SZ,UN_Tourism_8_9_1_TDGDP_04_2025,2018,,1.18346,percent,
+SZ,UN_Tourism_8_9_1_TDGDP_04_2025,2019,,1.18396,percent,
+SZ,UN_Tourism_8_9_1_TDGDP_04_2025,2020,,0.73489,percent,
+SZ,UN_Tourism_8_9_1_TDGDP_04_2025,2021,,0.69022,percent,
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,1243.0,thousand_trips,Africa (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,1314.3,thousand_trips,Africa (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,1235.9,thousand_trips,Africa (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,1340.0,thousand_trips,Africa (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,262.945,thousand_trips,Africa (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,250.284,thousand_trips,Africa (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,830.221,thousand_trips,Africa (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,1025.13128294283,thousand_trips,Africa (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,1297.90576947888,thousand_trips,Africa (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,4573.9,thousand_trips,Americas (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,5866.0,thousand_trips,Americas (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,6370.5,thousand_trips,Americas (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,7092.1,thousand_trips,Americas (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,1320.48,thousand_trips,Americas (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,1867.265,thousand_trips,Americas (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,6359.413,thousand_trips,Americas (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,8470.62400001076,thousand_trips,Americas (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,9428.97090470807,thousand_trips,Americas (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,1904.7,thousand_trips,East Asia and the Pacific (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,2299.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,2560.7,thousand_trips,East Asia and the Pacific (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,2977.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,562.403,thousand_trips,East Asia and the Pacific (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,230.302,thousand_trips,East Asia and the Pacific (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,1086.684,thousand_trips,East Asia and the Pacific (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,2360.18863897558,thousand_trips,East Asia and the Pacific (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,2817.03795662791,thousand_trips,East Asia and the Pacific (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,67047.4,thousand_trips,Europe (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,71695.9,thousand_trips,Europe (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,71903.9,thousand_trips,Europe (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,71377.8,thousand_trips,Europe (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,16676.276,thousand_trips,Europe (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,28505.919,thousand_trips,Europe (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,62765.346,thousand_trips,Europe (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,72386.9099346476,thousand_trips,Europe (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,79114.7553007873,thousand_trips,Europe (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,386.7,thousand_trips,Middle East (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,466.4,thousand_trips,Middle East (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,416.3,thousand_trips,Middle East (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,424.7,thousand_trips,Middle East (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,76.344,thousand_trips,Middle East (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,281.162,thousand_trips,Middle East (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,416.759,thousand_trips,Middle East (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,617.95432944935,thousand_trips,Middle East (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,765.914310277042,thousand_trips,Middle East (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,159.3,thousand_trips,South Asia (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,227.0,thousand_trips,South Asia (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,321.0,thousand_trips,South Asia (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,297.5,thousand_trips,South Asia (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,34.655,thousand_trips,South Asia (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,45.87,thousand_trips,South Asia (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,200.859,thousand_trips,South Asia (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,308.24178665693,thousand_trips,South Asia (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,334.712612593961,thousand_trips,South Asia (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,2926.7,thousand_trips,Africa (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,2799.2,thousand_trips,Africa (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,2919.9,thousand_trips,Africa (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,3249.1,thousand_trips,Africa (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,649.819,thousand_trips,Africa (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,750.0,thousand_trips,Africa (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,8131.4,thousand_trips,Americas (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,8631.6,thousand_trips,Americas (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,8956.0,thousand_trips,Americas (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,8269.0,thousand_trips,Americas (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,1653.79,thousand_trips,Americas (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,1920.0,thousand_trips,Americas (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,5640.9,thousand_trips,East Asia and the Pacific (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,5683.2,thousand_trips,East Asia and the Pacific (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,6041.6,thousand_trips,East Asia and the Pacific (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,5282.8,thousand_trips,East Asia and the Pacific (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,1056.565,thousand_trips,East Asia and the Pacific (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,1230.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,64727.9,thousand_trips,Europe (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,68292.8,thousand_trips,Europe (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,69955.0,thousand_trips,Europe (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,72766.5,thousand_trips,Europe (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,38054.506,thousand_trips,Europe (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,44185.21,thousand_trips,Europe (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,1255.2,thousand_trips,Middle East (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,1351.3,thousand_trips,Middle East (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,1449.4,thousand_trips,Middle East (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,1346.6,thousand_trips,Middle East (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,269.32,thousand_trips,Middle East (UNWTO total)
+FR,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,310.0,thousand_trips,Middle East (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,161.78,thousand_trips,Africa (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,190.1,thousand_trips,Africa (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,199.5,thousand_trips,Africa (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,208.3,thousand_trips,Africa (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,56.139,thousand_trips,Africa (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,67.938,thousand_trips,Africa (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,178.942,thousand_trips,Africa (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,228.694,thousand_trips,Africa (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,262.061,thousand_trips,Africa (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,1626.0,thousand_trips,Americas (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,2271.4,thousand_trips,Americas (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,2674.2,thousand_trips,Americas (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,3146.4,thousand_trips,Americas (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,517.141,thousand_trips,Americas (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,706.879,thousand_trips,Americas (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,3127.869,thousand_trips,Americas (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,4150.08,thousand_trips,Americas (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,4497.83,thousand_trips,Americas (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,824.6,thousand_trips,East Asia and the Pacific (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,1074.5,thousand_trips,East Asia and the Pacific (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,1177.4,thousand_trips,East Asia and the Pacific (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,1082.2,thousand_trips,East Asia and the Pacific (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,176.413,thousand_trips,East Asia and the Pacific (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,61.189,thousand_trips,East Asia and the Pacific (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,329.742,thousand_trips,East Asia and the Pacific (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,801.278,thousand_trips,East Asia and the Pacific (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,1021.154,thousand_trips,East Asia and the Pacific (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,10746.4,thousand_trips,Europe (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,11896.3,thousand_trips,Europe (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,12134.9,thousand_trips,Europe (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,12669.3,thousand_trips,Europe (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,3418.532,thousand_trips,Europe (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,5453.122,thousand_trips,Europe (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,12503.383,thousand_trips,Europe (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,13935.607,thousand_trips,Europe (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,14469.045,thousand_trips,Europe (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,54.0,thousand_trips,Middle East (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,9.914,thousand_trips,Middle East (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,19.922,thousand_trips,Middle East (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,49.472,thousand_trips,Middle East (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,65.881,thousand_trips,Middle East (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,80.127,thousand_trips,Middle East (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,100.0,thousand_trips,South Asia (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,26.608,thousand_trips,South Asia (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,27.829,thousand_trips,South Asia (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,96.981,thousand_trips,South Asia (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,135.145,thousand_trips,South Asia (UNWTO total)
+PT,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,147.694,thousand_trips,South Asia (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,124.1,thousand_trips,Africa (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,132.5,thousand_trips,Africa (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,143.4,thousand_trips,Africa (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,165.5,thousand_trips,Africa (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,30.0,thousand_trips,Africa (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,39.0,thousand_trips,Africa (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,112.0,thousand_trips,Africa (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,216.0,thousand_trips,Africa (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,235.0,thousand_trips,Africa (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,14587.7,thousand_trips,Americas (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,15150.0,thousand_trips,Americas (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,15405.4,thousand_trips,Americas (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,16085.0,thousand_trips,Americas (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,2130.0,thousand_trips,Americas (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,2280.0,thousand_trips,Americas (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,9776.0,thousand_trips,Americas (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,13859.0,thousand_trips,Americas (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,15051.0,thousand_trips,Americas (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,1994.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,2182.5,thousand_trips,East Asia and the Pacific (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,2149.3,thousand_trips,East Asia and the Pacific (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,2176.2,thousand_trips,East Asia and the Pacific (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,299.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,129.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,567.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,1154.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,1358.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,2875.8,thousand_trips,Europe (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,2974.9,thousand_trips,Europe (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,2943.9,thousand_trips,Europe (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,3150.3,thousand_trips,Europe (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,392.0,thousand_trips,Europe (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,460.0,thousand_trips,Europe (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,1998.0,thousand_trips,Europe (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,2503.0,thousand_trips,Europe (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,2624.0,thousand_trips,Europe (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,115.5,thousand_trips,Middle East (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,116.1,thousand_trips,Middle East (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,110.1,thousand_trips,Middle East (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,121.0,thousand_trips,Middle East (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,26.0,thousand_trips,Middle East (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,40.0,thousand_trips,Middle East (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,76.0,thousand_trips,Middle East (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,111.0,thousand_trips,Middle East (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,121.0,thousand_trips,Middle East (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,274.2,thousand_trips,South Asia (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,327.1,thousand_trips,South Asia (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,380.6,thousand_trips,South Asia (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,446.8,thousand_trips,South Asia (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,84.0,thousand_trips,South Asia (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,114.0,thousand_trips,South Asia (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,295.0,thousand_trips,South Asia (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2023,,502.0,thousand_trips,South Asia (UNWTO total)
+CA,UN_Tourism_inbound_arrivals_by_region_12_2025,2024,,523.0,thousand_trips,South Asia (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,1111.0,thousand_trips,Africa (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,1156.3,thousand_trips,Africa (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,1116.3,thousand_trips,Africa (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,1087.7,thousand_trips,Africa (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,315.2,thousand_trips,Africa (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,196.8,thousand_trips,Africa (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,447.7,thousand_trips,Africa (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,24.2,thousand_trips,Americas (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,25.6,thousand_trips,Americas (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,22.8,thousand_trips,Americas (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,21.1,thousand_trips,Americas (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,4.2,thousand_trips,Americas (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,2.2,thousand_trips,Americas (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,8.3,thousand_trips,Americas (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,14.7,thousand_trips,East Asia and the Pacific (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,14.4,thousand_trips,East Asia and the Pacific (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,13.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,12.6,thousand_trips,East Asia and the Pacific (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,3.0,thousand_trips,East Asia and the Pacific (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,2.3,thousand_trips,East Asia and the Pacific (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,5.8,thousand_trips,East Asia and the Pacific (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,114.2,thousand_trips,Europe (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,131.1,thousand_trips,Europe (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,112.6,thousand_trips,Europe (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,91.5,thousand_trips,Europe (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,18.7,thousand_trips,Europe (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,5.4,thousand_trips,Europe (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,32.0,thousand_trips,Europe (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,0.3,thousand_trips,Middle East (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,0.4,thousand_trips,Middle East (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,0.4,thousand_trips,Middle East (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,0.3,thousand_trips,Middle East (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,0.1,thousand_trips,Middle East (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,0.1,thousand_trips,Middle East (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,0.148,thousand_trips,Middle East (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2016,,14.4,thousand_trips,South Asia (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2017,,15.2,thousand_trips,South Asia (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2018,,12.3,thousand_trips,South Asia (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2019,,12.3,thousand_trips,South Asia (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2020,,4.1,thousand_trips,South Asia (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2021,,3.9,thousand_trips,South Asia (UNWTO total)
+SZ,UN_Tourism_inbound_arrivals_by_region_12_2025,2022,,8.6,thousand_trips,South Asia (UNWTO total)
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2016,,5703.7,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2017,,5706.7,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2018,,5636.8,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2019,,6112.7,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2020,,1565.465,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2021,,2270.304,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2022,,4952.511,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2023,,4973.06749958168,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2024,,5253.19541783694,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2016,,69611.3,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2017,,76161.7,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2018,,77171.6,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2019,,77396.5,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2020,,17367.6,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2021,,28910.5,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2022,,66706.8,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2023,,80195.9824731177,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2024,,88506.1014367087,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+FR,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2016,,11663.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+FR,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2017,,11842.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+FR,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2018,,11064.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+FR,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2019,,11261.2,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+FR,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2016,,71020.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+FR,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2017,,74916.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+FR,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2018,,78258.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+FR,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2019,,79652.78,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2016,,14649.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2017,,14537.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2018,,14377.6,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2019,,14875.2,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2020,,6766.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2021,,8326.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2022,,10259.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2023,,11321.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2024,,11247.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2016,,70275.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2017,,75394.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2018,,78850.9,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2019,,80523.5,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2020,,18423.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2021,,18562.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2022,,39552.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2023,,45929.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+IT,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2024,,46478.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+CA,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2016,,16210.1,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+CA,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2017,,16793.1,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+CA,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2018,,17439.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+CA,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2019,,18260.8,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+CA,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2023,,16429.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+CA,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2024,,17963.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2016,,181.5,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2017,,190.5,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2018,,179.6,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2019,,185.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2020,,49.4,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2021,,71.0,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2022,,85.4,thousand_trips,INBD_TRIP_PRPS_BNSS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2016,,1097.2,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2017,,1152.1,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2018,,1097.6,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2019,,1040.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2020,,296.0,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2021,,139.7,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+SZ,UN_Tourism_inbound_arrivals_by_purpose_12_2025,2022,,417.1,thousand_trips,INBD_TRIP_PRPS_PERS_TOUR
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,60343.7,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,66639.5,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,67545.7,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,68691.9,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2020,,13657.664,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2021,,24431.89,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2022,,59307.849,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2023,,69564.2314075292,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2024,,77119.7871470598,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,13335.9,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,13263.4,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,13250.6,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,13096.5,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2020,,5052.128,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2021,,6521.955,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2022,,11199.208,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2023,,13745.4613453271,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2024,,14535.4190698515,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,1635.4,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,1965.7,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,2012.1,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,1720.8,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2020,,223.311,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2021,,226.957,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2022,,1152.225,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2023,,1859.35721985221,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+ES,UN_Tourism_inbound_arrivals_by_transport_12_2025,2024,,2104.09063755124,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,26350.3,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,27508.9,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,28880.3,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,29395.1,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,51237.6,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,53434.9,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,54667.0,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,55641.4,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,5094.3,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,5814.4,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,5774.6,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+FR,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,5877.5,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,30483.8,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,34116.5,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,37229.5,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,39396.2,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2020,,9277.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2021,,10600.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2022,,29042.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2023,,35814.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2024,,38587.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,1701.5,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,1633.7,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,1701.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,1727.9,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2020,,348.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2021,,472.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2022,,703.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2023,,885.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+IT,UN_Tourism_inbound_arrivals_by_transport_12_2025,2024,,1275.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,9802.4,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,10576.8,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,10372.1,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,10999.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2020,,1664.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2021,,1595.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2022,,6669.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2023,,9364.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2024,,10269.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,9373.4,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,9458.5,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,9802.3,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,10032.9,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2020,,1294.0,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2021,,1461.0,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2022,,5767.0,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2023,,8449.0,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2024,,9142.0,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,795.5,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,847.9,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,959.5,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,1113.5,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2020,,2.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2021,,6.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2022,,388.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2023,,531.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+CA,UN_Tourism_inbound_arrivals_by_transport_12_2025,2024,,502.0,thousand_trips,inbound - trips - transport - water - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,20.4,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,20.1,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,19.5,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,19.0,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2020,,11.4,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2021,,11.6,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2022,,37.2,thousand_trips,inbound - trips - transport - air - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2016,,1258.2,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2017,,1322.5,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2018,,1257.7,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2019,,1206.5,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2020,,334.0,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2021,,199.1,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+SZ,UN_Tourism_inbound_arrivals_by_transport_12_2025,2022,,465.4,thousand_trips,inbound - trips - transport - by land - overnight visitors (tourists)
+ES,UN_Tourism_inbound_accommodation_12_2025,2016,,50297.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+ES,UN_Tourism_inbound_accommodation_12_2025,2017,,53334.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+ES,UN_Tourism_inbound_accommodation_12_2025,2018,,54146.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+ES,UN_Tourism_inbound_accommodation_12_2025,2019,,55982.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+ES,UN_Tourism_inbound_accommodation_12_2025,2020,,10894.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+ES,UN_Tourism_inbound_accommodation_12_2025,2021,,20451.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+ES,UN_Tourism_inbound_accommodation_12_2025,2022,,49568.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+ES,UN_Tourism_inbound_accommodation_12_2025,2023,,68632.25,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+ES,UN_Tourism_inbound_accommodation_12_2025,2024,,73766.842,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+FR,UN_Tourism_inbound_accommodation_12_2025,2016,,32492.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+FR,UN_Tourism_inbound_accommodation_12_2025,2017,,35568.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+FR,UN_Tourism_inbound_accommodation_12_2025,2018,,38096.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+FR,UN_Tourism_inbound_accommodation_12_2025,2019,,37376.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+FR,UN_Tourism_inbound_accommodation_12_2025,2020,,11856.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+FR,UN_Tourism_inbound_accommodation_12_2025,2021,,15454.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+FR,UN_Tourism_inbound_accommodation_12_2025,2022,,32886.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+FR,UN_Tourism_inbound_accommodation_12_2025,2023,,37427.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+FR,UN_Tourism_inbound_accommodation_12_2025,2024,,37845.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+IT,UN_Tourism_inbound_accommodation_12_2025,2016,,43405.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+IT,UN_Tourism_inbound_accommodation_12_2025,2017,,45365.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+IT,UN_Tourism_inbound_accommodation_12_2025,2018,,46825.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+IT,UN_Tourism_inbound_accommodation_12_2025,2019,,47377.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+IT,UN_Tourism_inbound_accommodation_12_2025,2020,,14387.445,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+IT,UN_Tourism_inbound_accommodation_12_2025,2021,,22915.817,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+IT,UN_Tourism_inbound_accommodation_12_2025,2022,,49193.898,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+IT,UN_Tourism_inbound_accommodation_12_2025,2023,,61506.242,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+IT,UN_Tourism_inbound_accommodation_12_2025,2024,,67311.566,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+PT,UN_Tourism_inbound_accommodation_12_2025,2016,,10931.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+PT,UN_Tourism_inbound_accommodation_12_2025,2017,,12324.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+PT,UN_Tourism_inbound_accommodation_12_2025,2018,,12598.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+PT,UN_Tourism_inbound_accommodation_12_2025,2019,,13259.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+PT,UN_Tourism_inbound_accommodation_12_2025,2020,,3163.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+PT,UN_Tourism_inbound_accommodation_12_2025,2021,,4714.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+PT,UN_Tourism_inbound_accommodation_12_2025,2022,,12297.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+PT,UN_Tourism_inbound_accommodation_12_2025,2023,,14564.2710000014,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+PT,UN_Tourism_inbound_accommodation_12_2025,2024,,15454.7620000015,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+CA,UN_Tourism_inbound_accommodation_12_2025,2023,,7087.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+CA,UN_Tourism_inbound_accommodation_12_2025,2024,,6612.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+SZ,UN_Tourism_inbound_accommodation_12_2025,2016,,308.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+SZ,UN_Tourism_inbound_accommodation_12_2025,2017,,323.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+SZ,UN_Tourism_inbound_accommodation_12_2025,2018,,276.5,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+SZ,UN_Tourism_inbound_accommodation_12_2025,2019,,244.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+SZ,UN_Tourism_inbound_accommodation_12_2025,2020,,71.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+SZ,UN_Tourism_inbound_accommodation_12_2025,2021,,34.0,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+SZ,UN_Tourism_inbound_accommodation_12_2025,2022,,88.6,thousand_overnights,"inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
+ES,UN_Tourism_inbound_expenditure_12_2025,2020,,18380.4147013811,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+ES,UN_Tourism_inbound_expenditure_12_2025,2021,,34176.1559870135,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+ES,UN_Tourism_inbound_expenditure_12_2025,2022,,72083.3294863503,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+ES,UN_Tourism_inbound_expenditure_12_2025,2023,,92144.2801105462,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+ES,UN_Tourism_inbound_expenditure_12_2025,2024,,106656.535197297,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+FR,UN_Tourism_inbound_expenditure_12_2025,2016,,63557.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+FR,UN_Tourism_inbound_expenditure_12_2025,2017,,67717.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+FR,UN_Tourism_inbound_expenditure_12_2025,2018,,72518.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+FR,UN_Tourism_inbound_expenditure_12_2025,2019,,70786.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+FR,UN_Tourism_inbound_expenditure_12_2025,2020,,35826.3235656593,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+FR,UN_Tourism_inbound_expenditure_12_2025,2021,,44430.2698336295,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+FR,UN_Tourism_inbound_expenditure_12_2025,2022,,66781.1814155116,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+FR,UN_Tourism_inbound_expenditure_12_2025,2023,,80268.9592165082,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+FR,UN_Tourism_inbound_expenditure_12_2025,2024,,85939.6111204944,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+IT,UN_Tourism_inbound_expenditure_12_2025,2016,,42423.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+IT,UN_Tourism_inbound_expenditure_12_2025,2017,,46719.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+IT,UN_Tourism_inbound_expenditure_12_2025,2018,,51602.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+IT,UN_Tourism_inbound_expenditure_12_2025,2019,,51910.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+IT,UN_Tourism_inbound_expenditure_12_2025,2020,,20316.7578071358,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+IT,UN_Tourism_inbound_expenditure_12_2025,2021,,25354.9279185429,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+IT,UN_Tourism_inbound_expenditure_12_2025,2022,,47100.4319500271,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+IT,UN_Tourism_inbound_expenditure_12_2025,2023,,57919.6252057293,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+IT,UN_Tourism_inbound_expenditure_12_2025,2024,,61433.937023306,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+PT,UN_Tourism_inbound_expenditure_12_2025,2016,,17347.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+PT,UN_Tourism_inbound_expenditure_12_2025,2017,,21586.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+PT,UN_Tourism_inbound_expenditure_12_2025,2018,,24365.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+PT,UN_Tourism_inbound_expenditure_12_2025,2019,,24592.0,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+PT,UN_Tourism_inbound_expenditure_12_2025,2020,,10589.2484576249,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+PT,UN_Tourism_inbound_expenditure_12_2025,2021,,13904.1494561328,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+PT,UN_Tourism_inbound_expenditure_12_2025,2022,,26391.124973052,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+PT,UN_Tourism_inbound_expenditure_12_2025,2023,,32981.5880359064,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+PT,UN_Tourism_inbound_expenditure_12_2025,2024,,35357.2384201307,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+CA,UN_Tourism_inbound_expenditure_12_2025,2020,,13899.963252617,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+CA,UN_Tourism_inbound_expenditure_12_2025,2021,,15360.7697581997,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+CA,UN_Tourism_inbound_expenditure_12_2025,2022,,31816.9121593968,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+CA,UN_Tourism_inbound_expenditure_12_2025,2023,,45409.9218533883,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+CA,UN_Tourism_inbound_expenditure_12_2025,2024,,49886.0324452887,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+SZ,UN_Tourism_inbound_expenditure_12_2025,2016,,13.2,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+SZ,UN_Tourism_inbound_expenditure_12_2025,2017,,13.2,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+SZ,UN_Tourism_inbound_expenditure_12_2025,2018,,16.4,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+SZ,UN_Tourism_inbound_expenditure_12_2025,2019,,14.3,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+SZ,UN_Tourism_inbound_expenditure_12_2025,2020,,7.04344049804999,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+SZ,UN_Tourism_inbound_expenditure_12_2025,2021,,7.77891337369999,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+SZ,UN_Tourism_inbound_expenditure_12_2025,2022,,12.2320369122372,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+SZ,UN_Tourism_inbound_expenditure_12_2025,2023,,22.6134434387548,million_US_dollars,inbound - expenditure - balance of payments - total - visitors
+ES,UN_Tourism_accommodation_hotels_12_2025,2016,,3.32,overnights,
+ES,UN_Tourism_accommodation_hotels_12_2025,2017,,3.28,overnights,
+ES,UN_Tourism_accommodation_hotels_12_2025,2018,,3.23,overnights,
+ES,UN_Tourism_accommodation_hotels_12_2025,2019,,3.15,overnights,
+ES,UN_Tourism_accommodation_hotels_12_2025,2020,,2.66625227673538,overnights,
+ES,UN_Tourism_accommodation_hotels_12_2025,2021,,2.84577761675779,overnights,
+ES,UN_Tourism_accommodation_hotels_12_2025,2022,,3.11392663439669,overnights,
+ES,UN_Tourism_accommodation_hotels_12_2025,2023,,3.24824041907784,overnights,
+ES,UN_Tourism_accommodation_hotels_12_2025,2024,,3.27010231370084,overnights,
+IT,UN_Tourism_accommodation_hotels_12_2025,2016,,2.97,overnights,
+IT,UN_Tourism_accommodation_hotels_12_2025,2017,,2.93,overnights,
+IT,UN_Tourism_accommodation_hotels_12_2025,2018,,2.89,overnights,
+IT,UN_Tourism_accommodation_hotels_12_2025,2019,,2.87,overnights,
+IT,UN_Tourism_accommodation_hotels_12_2025,2020,,3.45228609609603,overnights,
+IT,UN_Tourism_accommodation_hotels_12_2025,2021,,3.35264008707713,overnights,
+IT,UN_Tourism_accommodation_hotels_12_2025,2022,,3.20647164739067,overnights,
+IT,UN_Tourism_accommodation_hotels_12_2025,2023,,3.09966237435253,overnights,
+IT,UN_Tourism_accommodation_hotels_12_2025,2024,,3.10310213990152,overnights,
+PT,UN_Tourism_accommodation_hotels_12_2025,2016,,2.86,overnights,
+PT,UN_Tourism_accommodation_hotels_12_2025,2017,,3.2,overnights,
+PT,UN_Tourism_accommodation_hotels_12_2025,2018,,3.27,overnights,
+PT,UN_Tourism_accommodation_hotels_12_2025,2019,,2.99,overnights,
+PT,UN_Tourism_accommodation_hotels_12_2025,2020,,2.52582669563119,overnights,
+PT,UN_Tourism_accommodation_hotels_12_2025,2021,,2.64241946778711,overnights,
+PT,UN_Tourism_accommodation_hotels_12_2025,2022,,2.70046235138705,overnights,
+PT,UN_Tourism_accommodation_hotels_12_2025,2023,,2.6385049987207,overnights,
+PT,UN_Tourism_accommodation_hotels_12_2025,2024,,2.60242279683295,overnights,
+CA,UN_Tourism_accommodation_hotels_12_2025,2023,,2.16295899222728,overnights,
+CA,UN_Tourism_accommodation_hotels_12_2025,2024,,2.11612934692484,overnights,
+SZ,UN_Tourism_accommodation_hotels_12_2025,2016,,0.94,overnights,
+SZ,UN_Tourism_accommodation_hotels_12_2025,2017,,1.07,overnights,
+SZ,UN_Tourism_accommodation_hotels_12_2025,2018,,0.96,overnights,
+SZ,UN_Tourism_accommodation_hotels_12_2025,2019,,1.09,overnights,
+SZ,UN_Tourism_accommodation_hotels_12_2025,2020,,1.37,overnights,
+SZ,UN_Tourism_accommodation_hotels_12_2025,2021,,1.66,overnights,
+SZ,UN_Tourism_accommodation_hotels_12_2025,2022,,1.48,overnights,
+ES,UN_Tourism_domestic_trips_12_2025,2016,,397134.0,thousand_trips,
+ES,UN_Tourism_domestic_trips_12_2025,2017,,448305.0,thousand_trips,
+ES,UN_Tourism_domestic_trips_12_2025,2018,,446479.0,thousand_trips,
+ES,UN_Tourism_domestic_trips_12_2025,2019,,423572.0,thousand_trips,
+ES,UN_Tourism_domestic_trips_12_2025,2020,,250469.0,thousand_trips,
+ES,UN_Tourism_domestic_trips_12_2025,2021,,341053.0,thousand_trips,
+ES,UN_Tourism_domestic_trips_12_2025,2022,,353920.0,thousand_trips,
+ES,UN_Tourism_domestic_trips_12_2025,2023,,370764.0,thousand_trips,
+ES,UN_Tourism_domestic_trips_12_2025,2024,,352441.0,thousand_trips,
+FR,UN_Tourism_domestic_trips_12_2025,2016,,255498.0,thousand_trips,
+FR,UN_Tourism_domestic_trips_12_2025,2017,,276537.0,thousand_trips,
+FR,UN_Tourism_domestic_trips_12_2025,2018,,268152.0,thousand_trips,
+FR,UN_Tourism_domestic_trips_12_2025,2019,,260522.0,thousand_trips,
+FR,UN_Tourism_domestic_trips_12_2025,2020,,212071.0,thousand_trips,
+FR,UN_Tourism_domestic_trips_12_2025,2021,,251666.0,thousand_trips,
+FR,UN_Tourism_domestic_trips_12_2025,2022,,274644.0,thousand_trips,
+FR,UN_Tourism_domestic_trips_12_2025,2023,,282992.0,thousand_trips,
+FR,UN_Tourism_domestic_trips_12_2025,2024,,277344.0,thousand_trips,
+IT,UN_Tourism_domestic_trips_12_2025,2020,,74654.0,thousand_trips,
+IT,UN_Tourism_domestic_trips_12_2025,2021,,73024.0,thousand_trips,
+IT,UN_Tourism_domestic_trips_12_2025,2022,,90260.0,thousand_trips,
+IT,UN_Tourism_domestic_trips_12_2025,2023,,83138.0,thousand_trips,
+IT,UN_Tourism_domestic_trips_12_2025,2024,,77359.0,thousand_trips,
+PT,UN_Tourism_domestic_trips_12_2025,2020,,63059.0,thousand_trips,
+PT,UN_Tourism_domestic_trips_12_2025,2021,,70853.0,thousand_trips,
+PT,UN_Tourism_domestic_trips_12_2025,2022,,97163.0,thousand_trips,
+PT,UN_Tourism_domestic_trips_12_2025,2023,,103891.0,thousand_trips,
+PT,UN_Tourism_domestic_trips_12_2025,2024,,102259.0,thousand_trips,
+CA,UN_Tourism_domestic_trips_12_2025,2016,,319315.0,thousand_trips,
+CA,UN_Tourism_domestic_trips_12_2025,2017,,325808.2,thousand_trips,
+CA,UN_Tourism_domestic_trips_12_2025,2018,,278060.0,thousand_trips,
+CA,UN_Tourism_domestic_trips_12_2025,2019,,275418.0,thousand_trips,
+CA,UN_Tourism_domestic_trips_12_2025,2020,,188372.0,thousand_trips,
+CA,UN_Tourism_domestic_trips_12_2025,2021,,244142.0,thousand_trips,
+CA,UN_Tourism_domestic_trips_12_2025,2022,,313708.0,thousand_trips,
+CA,UN_Tourism_domestic_trips_12_2025,2023,,339757.0,thousand_trips,
+CA,UN_Tourism_domestic_trips_12_2025,2024,,335689.0,thousand_trips,
+SZ,UN_Tourism_domestic_trips_12_2025,2016,,251.0,thousand_trips,
+SZ,UN_Tourism_domestic_trips_12_2025,2017,,249.0,thousand_trips,
+SZ,UN_Tourism_domestic_trips_12_2025,2018,,237.0,thousand_trips,
+SZ,UN_Tourism_domestic_trips_12_2025,2019,,253.0,thousand_trips,
+SZ,UN_Tourism_domestic_trips_12_2025,2020,,123.0,thousand_trips,
+SZ,UN_Tourism_domestic_trips_12_2025,2021,,141.0,thousand_trips,
+SZ,UN_Tourism_domestic_trips_12_2025,2022,,219.0,thousand_trips,
+ES,UN_Tourism_domestic_accommodation_12_2025,2016,,114239.0,thousand_overnights,
+ES,UN_Tourism_domestic_accommodation_12_2025,2017,,115822.0,thousand_overnights,
+ES,UN_Tourism_domestic_accommodation_12_2025,2018,,116500.0,thousand_overnights,
+ES,UN_Tourism_domestic_accommodation_12_2025,2019,,119609.0,thousand_overnights,
+ES,UN_Tourism_domestic_accommodation_12_2025,2020,,51151.0,thousand_overnights,
+ES,UN_Tourism_domestic_accommodation_12_2025,2021,,90700.0,thousand_overnights,
+ES,UN_Tourism_domestic_accommodation_12_2025,2022,,120038.0,thousand_overnights,
+ES,UN_Tourism_domestic_accommodation_12_2025,2023,,157251.063,thousand_overnights,
+ES,UN_Tourism_domestic_accommodation_12_2025,2024,,156540.899,thousand_overnights,
+FR,UN_Tourism_domestic_accommodation_12_2025,2016,,132191.0,thousand_overnights,
+FR,UN_Tourism_domestic_accommodation_12_2025,2017,,135570.0,thousand_overnights,
+FR,UN_Tourism_domestic_accommodation_12_2025,2018,,134674.0,thousand_overnights,
+FR,UN_Tourism_domestic_accommodation_12_2025,2019,,138214.0,thousand_overnights,
+FR,UN_Tourism_domestic_accommodation_12_2025,2020,,139515.0,thousand_overnights,
+FR,UN_Tourism_domestic_accommodation_12_2025,2021,,174647.0,thousand_overnights,
+FR,UN_Tourism_domestic_accommodation_12_2025,2022,,142505.0,thousand_overnights,
+FR,UN_Tourism_domestic_accommodation_12_2025,2023,,140405.0,thousand_overnights,
+FR,UN_Tourism_domestic_accommodation_12_2025,2024,,137433.0,thousand_overnights,
+IT,UN_Tourism_domestic_accommodation_12_2025,2016,,135687.0,thousand_overnights,
+IT,UN_Tourism_domestic_accommodation_12_2025,2017,,139019.0,thousand_overnights,
+IT,UN_Tourism_domestic_accommodation_12_2025,2018,,140194.0,thousand_overnights,
+IT,UN_Tourism_domestic_accommodation_12_2025,2019,,140377.0,thousand_overnights,
+IT,UN_Tourism_domestic_accommodation_12_2025,2020,,117871.576,thousand_overnights,
+IT,UN_Tourism_domestic_accommodation_12_2025,2021,,152823.005,thousand_overnights,
+IT,UN_Tourism_domestic_accommodation_12_2025,2022,,178791.948,thousand_overnights,
+IT,UN_Tourism_domestic_accommodation_12_2025,2023,,181414.268,thousand_overnights,
+IT,UN_Tourism_domestic_accommodation_12_2025,2024,,181441.13,thousand_overnights,
+PT,UN_Tourism_domestic_accommodation_12_2025,2016,,14230.0,thousand_overnights,
+PT,UN_Tourism_domestic_accommodation_12_2025,2017,,15000.0,thousand_overnights,
+PT,UN_Tourism_domestic_accommodation_12_2025,2018,,16047.0,thousand_overnights,
+PT,UN_Tourism_domestic_accommodation_12_2025,2019,,16815.0,thousand_overnights,
+PT,UN_Tourism_domestic_accommodation_12_2025,2020,,10751.0,thousand_overnights,
+PT,UN_Tourism_domestic_accommodation_12_2025,2021,,14867.0,thousand_overnights,
+PT,UN_Tourism_domestic_accommodation_12_2025,2022,,18329.0,thousand_overnights,
+PT,UN_Tourism_domestic_accommodation_12_2025,2023,,18399.778,thousand_overnights,
+PT,UN_Tourism_domestic_accommodation_12_2025,2024,,18793.989,thousand_overnights,

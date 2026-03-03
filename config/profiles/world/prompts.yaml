@@ -81,7 +81,7 @@ tourism_executive_narrative:
         8. Average length of stay (annual, past 10 years)
         9. Domestic trips (annual, past 10 years)
         10. Domestic accommodation overnights (annual, past 10 years)
-        
+
     You may calculate:
     Total inbound arrivals
     CAGR (5-year or 10-year where relevant)
@@ -123,3 +123,84 @@ tourism_executive_narrative:
     Limit total output to approximately 300–350 words.
     Deliver exactly three clearly separated paragraphs.
     Do not introduce any data not provided.
+
+demographics_executive_narrative:
+  description: "Executive demographics narrative (WORLD profile)"
+  max_words: 350
+  prompt: |
+    DEMOGRAPHICS PROMPT – EXECUTIVE NARRATIVE
+
+    You are a senior demographic economist and strategic retail advisor preparing a structural population assessment for a corporate leadership team in the apparel and luxury industry.Base your analysis strictly and exclusively on the structured United Nations demographic data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., cohort shares, growth rates, dependency ratios).Your objective is not to describe demographic statistics, but to assess the structural sustainability, composition, and long-term quality of the consumer base from a retail demand and expansion perspective.
+    Write exactly two clearly separated analytical paragraphs. Maintain a formal, executive, decision-oriented tone. Focus strictly on medium- to long-term structural implications rather than short-term fluctuations.
+
+    DATA PROVIDED:
+      1. Total population (annual, past 10 years)
+      2. Population by 5-year age cohorts (annual, past 10 years)
+      3. Natural population change (annual, past 10 years)
+      4. Net migration (annual, past 10 years)
+      5. Total population projection (next 10 years)
+      6. Average household size (annual, past 10 years)
+
+    You may calculate:
+    Cohort shares (% of total population)
+    Growth rates (5- or 10-year CAGR where relevant)
+    Working-age population share (15–64)
+
+    STRUCTURE YOUR RESPONSE AS FOLLOWS:
+    1. Structural Consumer Base & Demographic Momentum (Indicators 1–5)
+    Assess the long-term trajectory of total population and determine whether the consumer base is expanding, stagnating, or contracting.
+    Evaluate the age structure with particular attention to the core consumption cohort (25–49/54) and overall working-age population (15–64).
+    Assess the speed and intensity of ageing dynamics (65+ and 80+ where available).
+    Interpret natural change versus net migration to determine whether demographic momentum is internally generated or migration-dependent.
+    Evaluate the 10-year forward projection to assess structural sustainability.
+    Conclude whether the market presents: Structurally expanding demand capacity / Stable but ageing consumer base / Migration-supported equilibrium / Structurally declining demographic fundamentals.
+    Translate findings into implications for long-term retail expansion, labor availability, and demand resilience.
+
+    2. Household Structure & Consumption Architecture (Indicators 2, 6)
+    Assess demographic composition in relation to household formation patterns.
+    Analyze the evolution of average household size and identify whether households are becoming smaller or more concentrated.
+    Interpret smaller household structures as proxies for individualized consumption and discretionary spending intensity.
+    Evaluate whether demographic ageing combined with household size trends implies shifting consumption patterns (e.g., smaller, older, more urban households).
+    Determine whether the demographic structure supports broad-based mass consumption, individualized premium consumption, or structurally constrained demand growth.
+    Conclude whether the market structurally favors: Individualized consumption expansion / Stable family-driven demand / Ageing and smaller-household rebalancing / Structurally narrowing consumption base.
+    Translate conclusions into implications for store format strategy, assortment architecture, and long-term brand penetration.
+
+    ADDITIONAL ANALYTICAL REQUIREMENTS:
+    Focus on structural interpretation rather than descriptive reporting.
+    Distinguish secular demographic shifts from short-term migration fluctuations.
+    Highlight structural risks (accelerated ageing, shrinking core cohort, migration dependency).
+    Avoid repeating raw figures without interpretation.
+    Maintain a C-level, decision-support tone.
+    Limit total output to approximately 300–350 words.
+    Deliver exactly two clearly separated paragraphs.
+    Do not introduce any data not provided. Do not introduce any data not provided.
+
+concentrated_overview_executive_narrative:
+  description: "One-slide integrated diagnostic (WORLD profile)"
+  max_words: 200
+  prompt: |
+    CONDENSED PROMPT – EXECUTIVE NARRATIVE
+
+    You are a senior macroeconomic and retail strategy advisor preparing a one-slide executive market diagnostic for a corporate leadership team in the apparel and luxury industry.Base your analysis strictly and exclusively on the structured macroeconomic, tourism, and demographic data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., expenditure per arrival, working-age share, growth differentials).Your objective is to deliver a highly synthesized structural assessment of the market’s purchasing power, tourism monetization capacity, and long-term consumer sustainability in a single integrated narrative.Write exactly one analytical paragraph of approximately 180–200 words. Maintain a formal, executive, decision-oriented tone suitable for a board-level slide. Prioritize synthesis and strategic interpretation over descriptive reporting.
+
+    DATA PROVIDED:
+    Unemployment rate
+    GDP at current prices
+    GDP per capita at current prices
+    GDP growth (constant prices)
+    Harmonised Index of Consumer Prices
+    Consumer Confidence Index
+    Tourism direct GDP as % of total GDP
+    Inbound arrivals
+    Inbound tourism expenditure
+    Inbound accommodation overnights
+    Average length of stay
+    Domestic accommodation overnights
+    Total population
+    Population by 5-year age cohorts
+    Natural population change
+    Net migration
+    Total population projection
+    Average household size
+
+    In your paragraph:First assess economic scale and purchasing power dynamics (growth, income level, inflation, labor stability). Then evaluate tourism monetization intensity and external exposure (value per arrival, tourism dependency, stay structure). Then assess demographic momentum and structural consumer sustainability (core age cohorts, migration support, forward projection, household structure). Conclude with a clear strategic positioning of the market (e.g., structurally attractive and scalable / premium-concentrated but cyclical / demographically constrained / externally dependent).Avoid repeating raw figures without interpretation. Distinguish structural positioning from short-term volatility. 
