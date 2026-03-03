@@ -10,6 +10,8 @@ from connectors.imf_datamapper import fetch_indicator as fetch_imf
 from connectors.oecd import fetch_indicator as fetch_oecd
 from connectors.un_tourism_xlsx import fetch_indicator as fetch_un_tourism_xlsx
 from connectors.un_tourism_zip import fetch_indicator as fetch_un_tourism_zip
+from connectors.united_nations_wpp_age_excel import \
+    fetch_indicator as fetch_united_nations_wpp_age_excel
 from connectors.united_nations_wpp_csv import \
     fetch_indicator as fetch_united_nations_wpp_csv
 from connectors.united_nations_xlsx import \
@@ -143,6 +145,19 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
     # UNITED NATIONS (XLSX -> parse)
     # ==========================
     if source in {"united_nations", "united_nations_xlsx", "united-nations-xlsx", "undesa"}:
+        
+        if ind.get("excel_url"):
+            return fetch_united_nations_wpp_age_excel(
+                excel_url=ind["excel_url"],
+                excel_cache_path=ind.get("excel_cache_path"),
+                geo_iso2=geo,
+                indicator_name=ind["name"],
+                sheet=ind.get("sheet", "Estimates"),
+                time_cfg=time_cfg,
+                geo_level=ind.get("geo_level", "country"),
+                unit_fallback=ind.get("units"),
+                debug=ind.get("debug", False),
+            )
         
         # UNITED NATIONS (WPP CSV.GZ)
         if ind.get("csv_gz_url"):
