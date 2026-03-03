@@ -426,3 +426,98 @@ frameworks:
         units: "persons"
 
         #debug: true
+
+      - id: "D2"
+        name: TPopulation1Jan
+        source: united_nations
+        enabled: true
+
+        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
+
+        indicator_code: "TPopulation1Jan"
+        variant_equals: "Medium"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+        time:
+          mode: past_10_years_and_future_10_years
+
+        #debug: true
+
+      - id: "D3"
+        name: NatChange
+        source: united_nations
+        enabled: true
+
+        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
+
+        indicator_code: "NatChange"
+        variant_equals: "Medium"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+        time:
+          mode: past_years
+          years: 10
+
+        # debug: true
+
+      - id: "D4"
+        name: NetMigrations
+        source: united_nations
+        enabled: true
+
+        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
+
+        indicator_code: "NetMigrations"
+        variant_equals: "Medium"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+        time:
+          mode: past_years
+          years: 10
+
+        # debug: true
+
+      - id: "D5"
+        name: TPopulationMale1July
+        source: united_nations
+        enabled: true
+
+        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
+
+        indicator_code: "TPopulationMale1July"
+        variant_equals: "Medium"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+        time:
+          mode: past_years
+          years: 10
+
+      - id: "D6"
+        name: TPopulationFemale1July
+        source: united_nations
+        enabled: true
+
+        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
+
+        indicator_code: "TPopulationFemale1July"
+        variant_equals: "Medium"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+        time:
+          mode: past_years
+          years: 10

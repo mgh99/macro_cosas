@@ -10,6 +10,8 @@ from connectors.imf_datamapper import fetch_indicator as fetch_imf
 from connectors.oecd import fetch_indicator as fetch_oecd
 from connectors.un_tourism_xlsx import fetch_indicator as fetch_un_tourism_xlsx
 from connectors.un_tourism_zip import fetch_indicator as fetch_un_tourism_zip
+from connectors.united_nations_wpp_csv import \
+    fetch_indicator as fetch_united_nations_wpp_csv
 from connectors.united_nations_xlsx import \
     fetch_indicator as fetch_united_nations
 from connectors.worldbank import fetch_indicator as fetch_worldbank
@@ -141,6 +143,22 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
     # UNITED NATIONS (XLSX -> parse)
     # ==========================
     if source in {"united_nations", "united_nations_xlsx", "united-nations-xlsx", "undesa"}:
+        
+        # UNITED NATIONS (WPP CSV.GZ)
+        if ind.get("csv_gz_url"):
+            return fetch_united_nations_wpp_csv(
+                csv_gz_url=ind["csv_gz_url"],
+                csv_cache_path=ind.get("csv_cache_path") or f"data/united_nations_wpp/{ind['name']}.csv.gz",
+                geo_iso2=geo,
+                indicator_code=ind.get("indicator_code") or ind.get("name"),
+                indicator_name=ind["name"],
+                time_cfg=time_cfg,
+                geo_level=ind.get("geo_level", "country"),
+                unit_fallback=ind.get("units"),
+                debug=ind.get("debug", False),
+            )
+
+        # UNITED NATIONS (XLSX)
         return fetch_united_nations(
             xlsx_url=ind["xlsx_url"],
             xlsx_cache_path=ind.get("xlsx_cache_path") or f"data/united_nations_xlsx/{ind['name']}.xlsx",
