@@ -109,7 +109,7 @@ def run_engine(
     for fw_name, fw in frameworks.items():
         all_parts: List[pd.DataFrame] = []
 
-        for ind in fw.get("indicators", []):
+        for order_idx, ind in enumerate(fw.get("indicators", []), start=1):
             if not ind.get("enabled", True):
                 continue
 
@@ -117,17 +117,19 @@ def run_engine(
 
             if source == "oecd":
                 df = fetch_indicator_for_geos(ind, geos)
+                df["indicator_order"] = order_idx
                 all_parts.append(df)
             else:
                 for geo in geos:
                     df = fetch_indicator_for_geo(ind, geo)
+                    df["indicator_order"] = order_idx
                     all_parts.append(df)
 
         if not all_parts:
             print(f"⚠️ No data fetched for framework: {fw_name}")
             continue
 
-        wanted_cols = ["geo", "indicator", "date", "month", "value", "unit", "sub_indicator_short"]
+        wanted_cols = ["geo", "indicator", "date", "month", "value", "unit", "sub_indicator_short", "indicator_order"]
         df_long = pd.concat(all_parts, ignore_index=True)
         df_out = df_long[[c for c in wanted_cols if c in df_long.columns]].copy()
 

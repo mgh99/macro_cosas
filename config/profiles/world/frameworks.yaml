@@ -6,22 +6,23 @@ frameworks:
     title: "ECONOMICS FRAMEWORK"
     indicators:
 
-      # 1) Unemployment rate (IMF Datamapper)
+      # 1) Consumer Confidence Index (OECD, monthly)
       - id: "E1"
-        name: unemployment_rate
-        source: imf_datamapper
+        name: consumer_confidence_index
+        source: oecd
         enabled: true
 
-        indicator_code: "LUR"
-        geo_level: country
-        frequency: A
+        dataset_id: "OECD.SDD.STES,DSD_STES@DF_CLI,"
+        selection_template: "{geo}.M.CCICP...AA...H"
 
+        frequency: M
         time:
           mode: past_years
           years: 5
 
-        units: "percent"
-        reference: "https://www.imf.org/external/datamapper/LUR@WEO/ADVEC/WEOWORLD"
+        units: "index"
+        geo_level: country
+        reference: "https://www.oecd.org/en/data/indicators/consumer-confidence-index-cci.html"
 
       # 2) GDP current prices (IMF Datamapper)
       - id: "E2"
@@ -34,8 +35,9 @@ frameworks:
         frequency: A
 
         time:
-          mode: past_years
-          years: 10
+          mode: past_and_future_years
+          past_years: 9
+          future_years: 1
 
         units: "billions_of_dollars"
         reference: "https://www.imf.org/external/datamapper/NGDPD@WEO/ADVEC/WEOWORLD"
@@ -58,8 +60,78 @@ frameworks:
         units: "dollars_per_capita"
         reference: "https://www.imf.org/external/datamapper/NGDPDPC@WEO/ADVEC/WEOWORLD"
 
-      # 4) Real GDP growth (% change, constant prices)
+      # 4) Harmonised index of consumer prices / Inflation (WEO)
       - id: "E4"
+        name: harmonised_index_of_consumer_prices
+        source: imf_datamapper
+        enabled: true
+
+        indicator_code: "PCPIEPCH"
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_and_future_years
+          past_years: 5
+          future_years: 5
+
+        units: "percent"
+        reference: "https://data.imf.org/en/Data-Explorer?datasetUrn=IMF.RES:WEO(9.0.0)&INDICATOR=PCPIEPCH"
+
+      # 5) Income share held by highest 10% (World Bank, %)
+      - id: "E5"
+        name: income_share_held_by_highest_10_percent
+        source: world_bank_group
+        enabled: true
+
+        indicator_id: "SI.DST.10TH.10"
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "percent"
+        reference: "https://data.worldbank.org/indicator/SI.DST.10TH.10"
+
+      # 6) Income share held by lowest 10% (World Bank, %)
+      - id: "E6"
+        name: income_share_held_by_lowest_10_percent
+        source: world_bank_group
+        enabled: true
+
+        indicator_id: "SI.DST.FRST.10"
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "percent"
+        reference: "https://data.worldbank.org/indicator/SI.DST.FRST.10"
+
+      # 7) Population (IMF WEO, millions of people)
+      - id: "E7"
+        name: population
+        source: imf_datamapper
+        enabled: true
+
+        indicator_code: "LP"
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_and_future_years
+          past_years: 4
+          future_years: 4
+
+        units: "millions_of_people"
+        reference: "https://www.imf.org/external/datamapper/LP@WEO/OEMDC/ADVEC/WEOWORLD"
+
+      # 8) Real GDP growth (% change, constant prices)
+      - id: "E8"
         name: real_gdp_growth_percent
         source: imf_datamapper
         enabled: true
@@ -76,78 +148,26 @@ frameworks:
         units: "percent"
         reference: "https://www.imf.org/external/datamapper/NGDP_RPCH@WEO/ADVEC/WEOWORLD"
 
-      # 5) Inflation – average consumer prices (% change)
-      - id: "E5"
-        name: inflation_average_consumer_prices
+      # 9) Unemployment rate (IMF Datamapper)
+      - id: "E9"
+        name: unemployment_rate
         source: imf_datamapper
         enabled: true
 
-        indicator_code: "PCPIEPCH"
+        indicator_code: "LUR"
         geo_level: country
         frequency: A
 
         time:
           mode: past_and_future_years
-          past_years: 5
-          future_years: 5
+          past_years: 4
+          future_years: 1
 
         units: "percent"
-        reference: "https://www.imf.org/external/datamapper/PCPIEPCH@WEO/ADVEC/WEOWORLD"
+        reference: "https://www.imf.org/external/datamapper/LUR@WEO/ADVEC/WEOWORLD"
 
-      # 6) Consumer Confidence Index (OECD, monthly)
-      - id: "E6"
-        name: consumer_confidence_index
-        source: oecd
-        enabled: true
-
-        dataset_id: "OECD.SDD.STES,DSD_STES@DF_CLI,"
-        selection_template: "{geo}.M.CCICP...AA...H"
-
-        frequency: M
-        time:
-          mode: past_years
-          years: 5
-
-        units: "index"
-        geo_level: country
-        reference: "https://www.oecd.org/en/data/indicators/consumer-confidence-index-cci.html"
-
-      # 7) Income share held by highest 10% (World Bank, %)
-      - id: "E7"
-        name: income_share_held_by_highest_10_percent
-        source: world_bank_group
-        enabled: true
-
-        indicator_id: "SI.DST.10TH.10"
-        geo_level: country
-        frequency: A
-
-        time:
-          mode: past_years
-          years: 10
-
-        units: "percent"
-        reference: "https://data.worldbank.org/indicator/SI.DST.10TH.10"
-
-      # 8) Income share held by lowest 10% (World Bank, %)
-      - id: "E8"
-        name: income_share_held_by_lowest_10_percent
-        source: world_bank_group
-        enabled: true
-
-        indicator_id: "SI.DST.FRST.10"
-        geo_level: country
-        frequency: A
-
-        time:
-          mode: past_years
-          years: 10
-
-        units: "percent"
-        reference: "https://data.worldbank.org/indicator/SI.DST.FRST.10"
-
-      # 9) Youth unemployment, ages 15-24 (% of total labor force) (modeled ILO estimate) — World Bank
-      - id: "E9"
+      # 10) Youth unemployment, ages 15-24 (% of total labor force) (modeled ILO estimate) — World Bank
+      - id: "E10"
         name: unemployment_youth_total_15_24_percent
         source: world_bank_group
         enabled: true
@@ -187,40 +207,110 @@ frameworks:
         units: "percent"
 
       - id: "T2"
-        name: UN_Tourism_inbound_arrivals_by_region_12_2025
+        name: UN_Tourism_accommodation_hotels_12_2025
         source: un_tourism_xlsx
         enabled: true
 
-        #debug: true
-
-        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_inbound_arrivals_by_region_12_2025.xlsx"
-        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_inbound_arrivals_by_region_12_2025.xlsx"
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_accommodation_hotels_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_accommodation_hotels_12_2025.xlsx"
         sheet: "Data"
 
-        # este dataset ya trae "reporter_area_code" (M49) y "partner_area_label" (región)
         reporter_area_code_field: "reporter_area_code"
-        partner_area_label_field: "partner_area_label"
 
-        # el “filter” tuyo en realidad es indicator_code prefix
-        indicator_code_prefix: "INBD_TRIP_REGN_TOUR"
+        # Filtro por indicator_label
+        indicator_label_equals:
+          - "capacity - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - length of stay - average"
+
+        # Solo hay una serie → no necesitamos sub-indicador complejo
+        sub_indicator_field: null
 
         geo_level: country
         frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "overnights"
+
+      - id: "T3"
+        name: UN_Tourism_domestic_accommodation_12_2025
+        source: un_tourism_xlsx
+        enabled: true
+
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_domestic_accommodation_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_domestic_accommodation_12_2025.xlsx"
+        sheet: "Data"
+
+        reporter_area_code_field: "reporter_area_code"
+
+        # Filtro por indicator_label
+        indicator_label_equals:
+          - "domestic - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - overnights"
+
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "thousand_overnights"
+
+      - id: "T4"
+        name: UN_Tourism_domestic_trips_12_2025
+        source: un_tourism_xlsx
+        enabled: true
+
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_domestic_trips_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_domestic_trips_12_2025.xlsx"
+        sheet: "Data"
+
+        reporter_area_code_field: "reporter_area_code"
+
+        # Filtro por indicator_label
+        indicator_label_equals:
+          - "domestic - trips - total - total - visitors"
+
+        # Solo hay una serie → no necesitamos sub-indicador
+        sub_indicator_field: null
+
+        geo_level: country
+        frequency: A
+
         time:
           mode: past_years
           years: 10
 
         units: "thousand_trips"
 
-        partner_area_labels:
-          - "Africa (UNWTO total)"
-          - "Americas (UNWTO total)"
-          - "East Asia and the Pacific (UNWTO total)"
-          - "Europe (UNWTO total)"
-          - "Middle East (UNWTO total)"
-          - "South Asia (UNWTO total)"
+      - id: "T5"
+        name: UN_Tourism_inbound_accommodation_12_2025
+        source: un_tourism_xlsx
+        enabled: true
 
-      - id: "T3"
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_inbound_accommodation_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_inbound_accommodation_12_2025.xlsx"
+        sheet: "Data"
+
+        reporter_area_code_field: "reporter_area_code"
+
+        indicator_label_equals:
+          - "inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - overnights"
+
+        # para que el sub_indicator_short sea ese label (o lo que tú quieras)
+        sub_indicator_field: "indicator_label"
+
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "thousand_overnights"
+
+      - id: "T6"
         name: UN_Tourism_inbound_arrivals_by_purpose_12_2025
         source: un_tourism_xlsx
         enabled: true
@@ -240,13 +330,49 @@ frameworks:
 
         geo_level: country
         frequency: A
+
         time:
           mode: past_years
           years: 10
 
         units: "thousand_trips"
 
-      - id: "T4"
+      - id: "T7"
+        name: UN_Tourism_inbound_arrivals_by_region_12_2025
+        source: un_tourism_xlsx
+        enabled: true
+
+        #debug: true
+
+        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_inbound_arrivals_by_region_12_2025.xlsx"
+        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_inbound_arrivals_by_region_12_2025.xlsx"
+        sheet: "Data"
+
+        # este dataset ya trae "reporter_area_code" (M49) y "partner_area_label" (región)
+        reporter_area_code_field: "reporter_area_code"
+        partner_area_label_field: "partner_area_label"
+
+        # el “filter” tuyo en realidad es indicator_code prefix
+        indicator_code_prefix: "INBD_TRIP_REGN_TOUR"
+
+        geo_level: country
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "thousand_trips"
+
+        partner_area_labels:
+          - "Africa (UNWTO total)"
+          - "Americas (UNWTO total)"
+          - "East Asia and the Pacific (UNWTO total)"
+          - "Europe (UNWTO total)"
+          - "Middle East (UNWTO total)"
+          - "South Asia (UNWTO total)"
+
+      - id: "T8"
         name: UN_Tourism_inbound_arrivals_by_transport_12_2025
         source: un_tourism_xlsx
         enabled: true
@@ -267,6 +393,7 @@ frameworks:
 
         geo_level: country
         frequency: A
+
         time:
           mode: past_years
           years: 10
@@ -274,32 +401,7 @@ frameworks:
         units: "thousand_trips"
         #debug: true
 
-      - id: "T5"
-        name: UN_Tourism_inbound_accommodation_12_2025
-        source: un_tourism_xlsx
-        enabled: true
-
-        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_inbound_accommodation_12_2025.xlsx"
-        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_inbound_accommodation_12_2025.xlsx"
-        sheet: "Data"
-
-        reporter_area_code_field: "reporter_area_code"
-
-        indicator_label_equals:
-          - "inbound - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - guests"
-
-        # para que el sub_indicator_short sea ese label (o lo que tú quieras)
-        sub_indicator_field: "indicator_label"
-
-        geo_level: country
-        frequency: A
-        time:
-          mode: past_years
-          years: 10
-
-        units: "thousand_overnights"
-
-      - id: "T6"
+      - id: "T9"
         name: UN_Tourism_inbound_expenditure_12_2025
         source: un_tourism_xlsx
         enabled: true
@@ -319,91 +421,138 @@ frameworks:
 
         geo_level: country
         frequency: A
+
         time:
           mode: past_years
           years: 10
 
         units: "million_US_dollars"
 
-      - id: "T7"
-        name: UN_Tourism_accommodation_hotels_12_2025
-        source: un_tourism_xlsx
-        enabled: true
-
-        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_accommodation_hotels_12_2025.xlsx"
-        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_accommodation_hotels_12_2025.xlsx"
-        sheet: "Data"
-
-        reporter_area_code_field: "reporter_area_code"
-
-        # Filtro por indicator_label
-        indicator_label_equals:
-          - "capacity - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - length of stay - average"
-
-        # Solo hay una serie → no necesitamos sub-indicador complejo
-        sub_indicator_field: null
-
-        geo_level: country
-        frequency: A
-        time:
-          mode: past_years
-          years: 10
-
-        units: "overnights"
-
-      - id: "T8"
-        name: UN_Tourism_domestic_trips_12_2025
-        source: un_tourism_xlsx
-        enabled: true
-
-        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_domestic_trips_12_2025.xlsx"
-        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_domestic_trips_12_2025.xlsx"
-        sheet: "Data"
-
-        reporter_area_code_field: "reporter_area_code"
-
-        # Filtro por indicator_label
-        indicator_label_equals:
-          - "domestic - trips - total - total - visitors"
-
-        # Solo hay una serie → no necesitamos sub-indicador
-        sub_indicator_field: null
-
-        geo_level: country
-        frequency: A
-        time:
-          mode: past_years
-          years: 10
-
-        units: "thousand_trips"
-
-      - id: "T9"
-        name: UN_Tourism_domestic_accommodation_12_2025
-        source: un_tourism_xlsx
-        enabled: true
-
-        xlsx_url: "https://pre-webunwto.s3.amazonaws.com/s3fs-public/2025-12/UN_Tourism_domestic_accommodation_12_2025.xlsx"
-        xlsx_cache_path: "data/un_tourism_xlsx/UN_Tourism_domestic_accommodation_12_2025.xlsx"
-        sheet: "Data"
-
-        reporter_area_code_field: "reporter_area_code"
-
-        # Filtro por indicator_label
-        indicator_label_equals:
-          - "domestic - accommodation - short-term accommodation, hotels and similar (ISIC 5510) - overnights"
-
-        geo_level: country
-        frequency: A
-        time:
-          mode: past_years
-          years: 10
-
-        units: "thousand_overnights"
-
   demographics:
     title: "DEMOGRAPHICS FRAMEWORK"
     indicators:
+
       - id: "D1"
+        name: NatChange
+        source: united_nations
+        enabled: true
+
+        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
+
+        indicator_code: "NatChange"
+        variant_equals: "Medium"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+
+        time:
+          mode: past_years
+          years: 10
+
+        # debug: true
+
+      - id: "D2"
+        name: NetMigrations
+        source: united_nations
+        enabled: true
+
+        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
+
+        indicator_code: "NetMigrations"
+        variant_equals: "Medium"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+
+        time:
+          mode: past_and_future_years
+          past_years: 9
+          future_years: 1
+
+        # debug: true
+
+      - id: "D3"
+        name: TPopulation1Jan
+        source: united_nations
+        enabled: true
+
+        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
+
+        indicator_code: "TPopulation1Jan"
+        variant_equals: "Medium"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+        time:
+          mode: past_10_years_and_future_10_years
+
+        #debug: true
+
+      - id: "D4"
+        name: TPopulationFemale1July
+        source: united_nations
+        enabled: true
+
+        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
+
+        indicator_code: "TPopulationFemale1July"
+        variant_equals: "Medium"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+
+        time:
+          mode: past_and_future_years
+          past_years: 9
+          future_years: 1
+
+      - id: "D5"
+        name: TPopulationMale1July
+        source: united_nations
+        enabled: true
+
+        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
+
+        indicator_code: "TPopulationMale1July"
+        variant_equals: "Medium"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+
+        time:
+          mode: past_and_future_years
+          past_years: 9
+          future_years: 1
+
+      - id: "D6"
+        name: population_by_Five_year_Age_Groups_Both_Sexes
+        source: united_nations
+        enabled: true
+
+        excel_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/EXCEL_FILES/2_Population/WPP2024_POP_F01_1_POPULATION_SINGLE_AGE_BOTH_SEXES.xlsx"
+        excel_cache_path: "data/united_nations_wpp/WPP2024_POP_F01_1_POPULATION_SINGLE_AGE_BOTH_SEXES.xlsx"
+        sheet: "Estimates"
+
+        units: "thousands"
+        frequency: A
+        geo_level: country
+
+        time:
+          mode: past_and_future_years
+          past_years: 4
+          future_years: 1
+
+      - id: "D7"
         name: household_size_and_composition_2022
         source: united_nations_xlsx
         enabled: true
@@ -426,115 +575,3 @@ frameworks:
         units: "persons"
 
         #debug: true
-
-      - id: "D2"
-        name: TPopulation1Jan
-        source: united_nations
-        enabled: true
-
-        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
-        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
-
-        indicator_code: "TPopulation1Jan"
-        variant_equals: "Medium"
-
-        units: "thousands"
-        frequency: A
-        geo_level: country
-        time:
-          mode: past_10_years_and_future_10_years
-
-        #debug: true
-
-      - id: "D3"
-        name: NatChange
-        source: united_nations
-        enabled: true
-
-        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
-        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
-
-        indicator_code: "NatChange"
-        variant_equals: "Medium"
-
-        units: "thousands"
-        frequency: A
-        geo_level: country
-        time:
-          mode: past_years
-          years: 10
-
-        # debug: true
-
-      - id: "D4"
-        name: NetMigrations
-        source: united_nations
-        enabled: true
-
-        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
-        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
-
-        indicator_code: "NetMigrations"
-        variant_equals: "Medium"
-
-        units: "thousands"
-        frequency: A
-        geo_level: country
-        time:
-          mode: past_years
-          years: 10
-
-        # debug: true
-
-      - id: "D5"
-        name: TPopulationMale1July
-        source: united_nations
-        enabled: true
-
-        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
-        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
-
-        indicator_code: "TPopulationMale1July"
-        variant_equals: "Medium"
-
-        units: "thousands"
-        frequency: A
-        geo_level: country
-        time:
-          mode: past_years
-          years: 10
-
-      - id: "D6"
-        name: TPopulationFemale1July
-        source: united_nations
-        enabled: true
-
-        csv_gz_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
-        csv_cache_path: "data/united_nations_wpp/WPP2024_Demographic_Indicators_Medium.csv.gz"
-
-        indicator_code: "TPopulationFemale1July"
-        variant_equals: "Medium"
-
-        units: "thousands"
-        frequency: A
-        geo_level: country
-        time:
-          mode: past_years
-          years: 10
-
-      - id: "D7"
-        name: population_by_Five_year_Age_Groups_Both_Sexes
-        source: united_nations
-        enabled: true
-
-        excel_url: "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20%28Standard%29/EXCEL_FILES/2_Population/WPP2024_POP_F01_1_POPULATION_SINGLE_AGE_BOTH_SEXES.xlsx"
-        excel_cache_path: "data/united_nations_wpp/WPP2024_POP_F01_1_POPULATION_SINGLE_AGE_BOTH_SEXES.xlsx"
-        sheet: "Estimates"
-
-        units: "thousands"
-        frequency: A
-        geo_level: country
-
-        time:
-          mode: past_years
-          years: 5

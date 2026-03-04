@@ -22,7 +22,17 @@ def _write_single_sheet(
     ws_row = 0
     wrote_any = False
 
-    for ind_name in sorted(df_out["indicator"].dropna().unique()):
+    if "indicator_order" in df_out.columns and df_out["indicator_order"].notna().any():
+        indicator_names = (
+            df_out[["indicator", "indicator_order"]]
+            .dropna()
+            .drop_duplicates()
+            .sort_values("indicator_order")
+        )["indicator"].tolist()
+    else:
+        indicator_names = sorted(df_out["indicator"].dropna().unique())
+
+    for ind_name in indicator_names:
         sub = df_out[df_out["indicator"] == ind_name].copy()
         if sub.empty:
             continue
