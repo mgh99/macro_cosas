@@ -264,6 +264,7 @@ def fetch_indicator(
     # Si no hay multi, fetch directo
     if not multi_filters:
         js = eurostat_get(dataset, params=params, lang="EN")
+
         df_raw = jsonstat_to_dataframe(js)
         df_raw = add_geo_name(df_raw, js)
 

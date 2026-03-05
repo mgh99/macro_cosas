@@ -1,6 +1,24 @@
 # run.py
 from __future__ import annotations
 
+"""
+Macro Strategy Engine (runner)
+
+This module is the "orchestrator":
+- Loads the selected profile frameworks (YAML)
+- Fetches data indicator-by-indicator (Eurostat / OECD / IMF / etc.)
+- Exports results (CSV / Excel / single-sheet workbook)
+- Optionally runs AI narratives using the prepared prompts
+
+Non-technical usage:
+- Usually you run this via: python cli_menu.py
+- The only thing most users should edit is the YAML in config/profiles/*
+
+Common gotchas:
+- Excel sheet names are limited to 31 characters, so long indicator names get truncated.
+- The "nuts3" framework ONLY runs if nuts3_geos are provided (e.g. ES300).
+"""
+
 import time
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -21,6 +39,10 @@ from core.top_origins import top_origins
 
 
 def _run_with_backoff(fn, max_tries: int = 6):
+    """
+    Retry helper for rate limits (mainly used for AI calls).
+    If the provider returns 429 / rate limit, we retry with exponential backoff.
+    """
     delay = 2
     for _attempt in range(max_tries):
         try:
@@ -34,6 +56,7 @@ def _run_with_backoff(fn, max_tries: int = 6):
             raise
     raise RuntimeError("Rate limit persists after retries.")
 
+
 def run_engine(
     geos: List[str],
     nuts3_geos: Optional[List[str]] = None,
@@ -44,21 +67,27 @@ def run_engine(
     debug_describe_eurostat: bool = False,
     frameworks_path: str = "config/frameworks.yaml",
     prompts_path: str = "config/prompts.yaml",
-    #debug_describe_eurostat=True, # para el debug de eurostat y saber las dimennsiones del dataset antes de lanzarlo del todo
 ) -> Dict[str, pd.DataFrame]:
     """
-    Main macro engine callable from CLI.
+    Main engine callable from CLI.
 
-    - geos: ISO2 list like ["ES","FR","DE"]
-    - selected_frameworks: subset of frameworks keys (or None = all)
-    - output_dir: where to write CSV/XLSX/AI
-    - enable_ai: whether to generate AI briefings
-    - output_flags: {"csv": bool, "excel_by_indicator": bool, "single_sheet": bool, "debug_no_files": bool}
-    - debug_describe_eurostat: prints dataset dimensions (slow-ish)
-    - frameworks_path: which frameworks YAML to load (profile-specific)
-    - prompts_path: which prompts YAML to load (profile-specific)
+    Inputs
+    - geos: list of ISO2 country codes, e.g. ["ES","FR"]
+    - nuts3_geos: list of NUTS3 region codes, e.g. ["ES300"]
+    - selected_frameworks: subset of framework keys to run (None = run all)
+    - output_dir: output folder
+    - enable_ai: whether to generate AI executive narratives
+    - output_flags:
+        csv: write long CSV per framework
+        excel_by_indicator: write an Excel with 1 tab per indicator
+        single_sheet: write 1 combined workbook (nice for human reading)
+        debug_no_files: do not write files (console run only)
+    - debug_describe_eurostat: print Eurostat dataset dimension codes (for debugging filters)
+    - frameworks_path / prompts_path: which profile files to load
 
-    Returns: results_by_framework dict
+    Returns
+    - results_by_framework: dict {framework_name: df_long}
+      Each df is in "long format": geo | indicator | date | value | ...
     """
     out_dir = Path(output_dir)
     out_dir.mkdir(exist_ok=True, parents=True)
@@ -70,11 +99,13 @@ def run_engine(
         "debug_no_files": False,
     }
 
-    # ✅ load frameworks from profile path
+    # --------------------------
+    # Load profile frameworks (YAML)
+    # --------------------------
     cfg = load_config(frameworks_path)
     frameworks_all = cfg.get("frameworks", {}) or {}
 
-    # Filter frameworks if user selected subset
+    # If the user selected a subset of frameworks, keep only those
     if selected_frameworks:
         wanted = set(selected_frameworks)
         frameworks = {k: v for k, v in frameworks_all.items() if k in wanted}
@@ -84,18 +115,18 @@ def run_engine(
     if not frameworks:
         raise ValueError("No frameworks selected / found.")
 
-    # ==========================
-    # Optional: describe Eurostat datasets (debug)
-    # ==========================
+    # --------------------------
+    # Optional: print Eurostat dimension codes (debug)
+    # --------------------------
     if debug_describe_eurostat:
         seen = set()
 
         for fw_name, fw in frameworks.items():
-            # 🔹 sample_geo correcto según el framework
+            # For nuts3 datasets, we must use a NUTS3 geo code as sample_geo (e.g. ES300)
             if fw_name == "nuts3":
                 sample_geo = (nuts3_geos[0] if nuts3_geos else None)
                 if not sample_geo:
-                    print("⚠️ debug_describe_eurostat: nuts3 selected but no nuts3_geos provided (cannot describe nuts3 datasets).")
+                    print("⚠️ Eurostat debug skipped for nuts3: no nuts3_geos provided.")
                     continue
             else:
                 sample_geo = (geos[0] if geos else "ES")
@@ -114,95 +145,98 @@ def run_engine(
                 describe_dataset(ds, sample_geo=sample_geo, overrides=ind.get("describe_overrides"))
                 seen.add(ds)
 
-    # ==========================
-    # Run each framework
-    # ==========================
+    # --------------------------
+    # Run frameworks
+    # --------------------------
     results_by_framework: Dict[str, pd.DataFrame] = {}
     seasonality_by_framework: Dict[str, pd.DataFrame] = {}
 
     for fw_name, fw in frameworks.items():
         all_parts: List[pd.DataFrame] = []
 
-        # elige target geos según framework
+        # Decide which geos apply for this framework
         if fw_name == "nuts3":
             target_geos = nuts3_geos or []
             if not target_geos:
-                print("⚠️ NUTS3 framework selected but no NUTS3 geos provided. Skipping nuts3.")
+                print("⚠️ NUTS3 selected, but no NUTS3 regions were provided. Skipping nuts3 framework.")
                 continue
         else:
             target_geos = geos
 
+        # Fetch each indicator in this framework
         for order_idx, ind in enumerate(fw.get("indicators", []), start=1):
             if not ind.get("enabled", True):
                 continue
 
             source = (ind.get("source") or "eurostat").lower()
+            ind_name = ind.get("name", "(unnamed_indicator)")
+            ind_debug = bool(ind.get("debug", False))
 
+            # OECD connectors usually support multi-geo fetch in one go
             if source == "oecd":
                 df = fetch_indicator_for_geos(ind, target_geos)
                 df["indicator_order"] = order_idx
                 all_parts.append(df)
+
+                if ind_debug:
+                    print(f"🧪 DEBUG {fw_name}/{ind_name}: rows={len(df)} geos={target_geos}")
+
             else:
+                # Most sources fetch geo-by-geo
                 for geo in target_geos:
                     df = fetch_indicator_for_geo(ind, geo)
                     df["indicator_order"] = order_idx
                     all_parts.append(df)
 
+                    if ind_debug:
+                        print(f"🧪 DEBUG {fw_name}/{ind_name}/{geo}: rows={len(df)}")
+
         if not all_parts:
             print(f"⚠️ No data fetched for framework: {fw_name}")
             continue
 
+        # Standardize columns we keep for output + AI
         wanted_cols = ["geo", "indicator", "date", "month", "value", "unit", "sub_indicator_short", "indicator_order"]
         df_long = pd.concat(all_parts, ignore_index=True)
         df_out = df_long[[c for c in wanted_cols if c in df_long.columns]].copy()
 
+        # Add human labels for NUTS3 codes (ES300 -> Madrid)
         if fw_name == "nuts3":
             from core.nuts3_resolver import nuts3_code_to_label_map
-            m = nuts3_code_to_label_map()  # usa demo_r_d3area por defecto
+            m = nuts3_code_to_label_map()
             df_out["geo_name"] = df_out["geo"].map(m)
 
-        # check debug
-        #print(f"DEBUG {fw_name}: df_out rows={len(df_out)} cols={list(df_out.columns)}")
-        #print(df_out.head(10))
-        #print(df_out["indicator"].value_counts(dropna=False).head(20))
-
-        # IMPORTANT: store results for AI + single-sheet
+        # Keep for later AI + combined single-sheet workbook
         results_by_framework[fw_name] = df_out
 
-        # ==========================
-        # Tourism extras
-        # ==========================
+        # --------------------------
+        # Tourism extras (only for tourism framework)
+        # --------------------------
+        if fw_name == "tourism":
+            # Top origins (requires indicator 1b)
+            if any(i.get("name") == "arrivals_by_origin_hotels_number" for i in fw.get("indicators", [])):
+                ind_1b = "arrivals_by_origin_hotels_number"
+                df_1b = df_out[df_out["indicator"] == ind_1b].copy()
 
-        # Tourism extras: Top origins (only if indicator exists)
-        if fw_name == "tourism" and any(
-            i.get("name") == "arrivals_by_origin_hotels_number"
-            for i in fw.get("indicators", [])
-        ):
-            ind_1b = "arrivals_by_origin_hotels_number"
-            df_1b = df_out[df_out["indicator"] == ind_1b].copy()
+                if df_1b.empty or "sub_indicator_short" not in df_1b.columns:
+                    print("⚠️ Top origins skipped: missing sub_indicator_short.")
+                else:
+                    exclude = {"TOTAL", "EU27_2020", "EA20", "EA19", "EU28"}
+                    df_1b = df_1b[~df_1b["sub_indicator_short"].isin(exclude)]
 
-            if df_1b.empty or "sub_indicator_short" not in df_1b.columns:
-                print("⚠️ Top origins skipped: sub_indicator_short missing (did you preserve c_resid?)")
-            else:
-                exclude = {"TOTAL", "EU27_2020", "EA20", "EA19", "EU28"}
-                df_1b = df_1b[~df_1b["sub_indicator_short"].isin(exclude)]
+                    top10 = top_origins(df_1b, top_n=10)
+                    outp = out_dir / "tourism_arrivals_top10_origins.csv"
+                    if not flags.get("debug_no_files", False) and flags.get("csv", True):
+                        top10.to_csv(outp, index=False)
+                        print(f"✅ Wrote {outp}")
 
-                top10 = top_origins(df_1b, top_n=10)
-                outp = out_dir / "tourism_arrivals_top10_origins.csv"
-                if not flags.get("debug_no_files", False) and flags.get("csv", True):
-                    top10.to_csv(outp, index=False)
-                    print(f"✅ Wrote {outp}")
-
-            # Tourism extras: Seasonality (only if monthly indicator exists)
-            if fw_name == "tourism" and any(
-                i.get("name") == "nights_spent_monthly_hotels"
-                for i in fw.get("indicators", [])
-            ):
+            # Seasonality (requires monthly nights)
+            if any(i.get("name") == "nights_spent_monthly_hotels" for i in fw.get("indicators", [])):
                 monthly_indicator_name = "nights_spent_monthly_hotels"
                 monthly = df_out[df_out["indicator"] == monthly_indicator_name].copy()
 
                 if monthly.empty:
-                    print("⚠️ Seasonality skipped (monthly indicator not found).")
+                    print("⚠️ Seasonality skipped: monthly indicator not found in output.")
                 else:
                     seasonality_df = calculate_seasonality(monthly)
                     seasonality_by_framework["tourism"] = seasonality_df
@@ -212,9 +246,9 @@ def run_engine(
                         seasonality_df.to_csv(seasonality_path, index=False)
                         print(f"✅ Wrote {seasonality_path}")
 
-        # ==========================
-        # CSV export
-        # ==========================
+        # --------------------------
+        # CSV export (long format)
+        # --------------------------
         if not flags.get("debug_no_files", False) and flags.get("csv", True):
             csv_path = out_dir / f"{fw_name}_macro_long.csv"
 
@@ -227,18 +261,19 @@ def run_engine(
             df_to_write.to_csv(csv_path, index=False)
             print(f"✅ Wrote {csv_path}")
 
-        # ==========================
-        # XLSX export (by indicator)
-        # ==========================
+        # --------------------------
+        # Excel export (one file per framework)
+        # --------------------------
         if not flags.get("debug_no_files", False) and flags.get("excel_by_indicator", True):
             xlsx_path = out_dir / f"{fw_name}_views_by_indicator.xlsx"
             with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
+                # Raw long tab (always)
                 df_out.to_excel(writer, sheet_name="raw_long", index=False)
                 used_sheet_names = {"raw_long"}
 
+                # Each indicator gets its own tab (Excel tab names are max 31 chars)
                 for ind_name in sorted(df_out["indicator"].dropna().unique()):
                     sub = df_out[df_out["indicator"] == ind_name].copy()
-
                     if sub.empty:
                         continue
 
@@ -277,7 +312,7 @@ def run_engine(
                             .reset_index()
                         )
 
-                    base_sheet = str(ind_name)[:31]
+                    base_sheet = str(ind_name)[:31]  # Excel limit
                     sheet_name = base_sheet
                     i = 2
                     while sheet_name in used_sheet_names:
@@ -285,13 +320,14 @@ def run_engine(
                         sheet_name = f"{base_sheet[:31-len(suffix)]}{suffix}"
                         i += 1
                     used_sheet_names.add(sheet_name)
+
                     table.to_excel(writer, sheet_name=sheet_name, index=False)
 
             print(f"✅ Wrote {xlsx_path}")
 
-    # ==========================
+    # --------------------------
     # AI generation (optional)
-    # ==========================
+    # --------------------------
     if enable_ai and not flags.get("debug_no_files", False):
         prompts = load_prompts(prompts_path)
 
@@ -302,14 +338,13 @@ def run_engine(
                 return p if isinstance(p, str) and p.strip() else None
             return None
 
-        # Only generate AI for frameworks that exist in results
         frameworks_ran = set(results_by_framework.keys())
 
         # Demographics
         if "demographics" in frameworks_ran:
             demo_prompt = _get_prompt("demographics_executive_narrative")
             if not demo_prompt:
-                print("ℹ️ Demographics AI skipped (prompt not found in this profile).")
+                print("ℹ️ Demographics AI skipped (prompt not found).")
             else:
                 try:
                     ai_out_dir = out_dir / "demographics_executive_briefings"
@@ -317,7 +352,7 @@ def run_engine(
 
                     df_demo = results_by_framework.get("demographics")
                     if df_demo is None or df_demo.empty:
-                        print("ℹ️ Demographics AI skipped (no demographics data).")
+                        print("ℹ️ Demographics AI skipped (no data).")
                     else:
                         for geo in geos:
                             briefing = generate_demographics_briefing(df_demo, geo, demo_prompt)
@@ -330,7 +365,7 @@ def run_engine(
         if "tourism" in frameworks_ran:
             tour_prompt = _get_prompt("tourism_executive_narrative")
             if not tour_prompt:
-                print("ℹ️ Tourism AI skipped (prompt not found in this profile).")
+                print("ℹ️ Tourism AI skipped (prompt not found).")
             else:
                 try:
                     ai_out_dir = out_dir / "tourism_executive_briefings"
@@ -338,7 +373,7 @@ def run_engine(
 
                     df_tour = results_by_framework.get("tourism")
                     if df_tour is None or df_tour.empty:
-                        print("ℹ️ Tourism AI skipped (no tourism data).")
+                        print("ℹ️ Tourism AI skipped (no data).")
                     else:
                         seasonality_df = seasonality_by_framework.get("tourism")
                         for geo in geos:
@@ -352,7 +387,7 @@ def run_engine(
         if "economics" in frameworks_ran:
             eco_prompt = _get_prompt("economics_executive_narrative")
             if not eco_prompt:
-                print("ℹ️ Economics AI skipped (prompt not found in this profile).")
+                print("ℹ️ Economics AI skipped (prompt not found).")
             else:
                 try:
                     ai_out_dir = out_dir / "economics_executive_briefings"
@@ -360,24 +395,20 @@ def run_engine(
 
                     df_eco = results_by_framework.get("economics")
                     if df_eco is None or df_eco.empty:
-                        print("ℹ️ Economics AI skipped (no economics data).")
+                        print("ℹ️ Economics AI skipped (no data).")
                     else:
                         for geo in geos:
-                            briefing = _run_with_backoff(
-                                lambda: generate_economics_briefing(df_eco, geo, eco_prompt)
-                            )
-                            (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(
-                                briefing, encoding="utf-8"
-                            )
+                            briefing = _run_with_backoff(lambda: generate_economics_briefing(df_eco, geo, eco_prompt))
+                            (ai_out_dir / f"{geo}_executive_briefing.txt").write_text(briefing, encoding="utf-8")
                         print("✅ Generated economics AI executive briefings")
                 except Exception as e:
                     print(f"⚠️ Economics AI generation failed: {type(e).__name__}: {e}")
 
-        # Concentrated Overview (requires economics + tourism + demographics)
+        # One-slide overview (needs all 3)
         if {"economics", "tourism", "demographics"}.issubset(frameworks_ran):
             one_slide_prompt = _get_prompt("concentrated_overview_executive_narrative")
             if not one_slide_prompt:
-                print("ℹ️ Concentrated overview AI skipped (prompt not found in this profile).")
+                print("ℹ️ Concentrated overview AI skipped (prompt not found).")
             else:
                 try:
                     ai_out_dir = out_dir / "concentrated_overview_briefings"
@@ -388,7 +419,7 @@ def run_engine(
                     df_demo = results_by_framework.get("demographics")
 
                     if any(df is None or df.empty for df in [df_eco, df_tour, df_demo]):
-                        print("ℹ️ Concentrated overview skipped (missing framework data).")
+                        print("ℹ️ Concentrated overview skipped (missing data).")
                     else:
                         for geo in geos:
                             briefing = generate_concentrated_overview(
@@ -398,17 +429,14 @@ def run_engine(
                                 geo=geo,
                                 base_prompt=one_slide_prompt,
                             )
-                            (ai_out_dir / f"{geo}_one_slide.txt").write_text(
-                                briefing,
-                                encoding="utf-8",
-                            )
+                            (ai_out_dir / f"{geo}_one_slide.txt").write_text(briefing, encoding="utf-8")
                         print("✅ Generated concentrated overview one-slide briefings")
                 except Exception as e:
                     print(f"⚠️ Concentrated overview AI generation failed: {type(e).__name__}: {e}")
 
-    # ==========================
-    # Single-sheet workbook
-    # ==========================
+    # --------------------------
+    # Single-sheet workbook (one nice Excel with all frameworks)
+    # --------------------------
     if not flags.get("debug_no_files", False) and flags.get("single_sheet", True):
         single_path = out_dir / "views_single_sheet.xlsx"
         build_views_single_sheet_workbook(results_by_framework, single_path, space_rows=3)
@@ -416,7 +444,7 @@ def run_engine(
 
     return results_by_framework
 
-# Ejemplo para debug de countries de eurostat (y luego para debug general)
+# Default non-interactive run (kept for dev use)
 #def main() -> None:
 #    """
 #    Non-interactive default run (kept for dev use).
@@ -432,12 +460,11 @@ def run_engine(
 #        prompts_path="config/prompts.yaml",
 #    )
 
-# ejemplo para debug de NUTS3 geos y labels
+# Dev quick test (kept small on purpose)
 def main() -> None:
-    # DEV quick test
     run_engine(
-        geos=["ES"],
-        nuts3_geos=["ES300"],   # Madrid area (ejemplo)
+        geos=["ES"], # España
+        nuts3_geos=["ES300"], # Madrid NUTS3 code for testing (only if you have the nuts3 framework configured)
         selected_frameworks=["nuts3"],
         output_dir=Path("outputs"),
         enable_ai=False,
