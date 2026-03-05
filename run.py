@@ -416,7 +416,7 @@ def run_engine(
 
     return results_by_framework
 
-
+# Ejemplo para debug de countries de eurostat (y luego para debug general)
 #def main() -> None:
 #    """
 #    Non-interactive default run (kept for dev use).
@@ -432,6 +432,7 @@ def run_engine(
 #        prompts_path="config/prompts.yaml",
 #    )
 
+# ejemplo para debug de NUTS3 geos y labels
 def main() -> None:
     # DEV quick test
     run_engine(
@@ -441,8 +442,8 @@ def main() -> None:
         output_dir=Path("outputs"),
         enable_ai=False,
         debug_describe_eurostat=True,
-        frameworks_path="config/frameworks.yaml",
-        prompts_path="config/prompts.yaml",
+        frameworks_path="config/profiles/world/frameworks.yaml",
+        prompts_path="config/profiles/world/prompts.yaml",
         output_flags={"csv": False, "excel_by_indicator": False, "single_sheet": False, "debug_no_files": True},
     )
 

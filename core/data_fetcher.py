@@ -92,6 +92,11 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
     if source == "eurostat":
         freq = ind.get("frequency", "A")
         filters = ind.get("filters", {}) or {}
+        unit_fallback = ind.get("units")
+
+        # Si ya viene unit en filters, NO uses unit_fallback
+        if "unit" in filters:
+            unit_fallback = None
 
         mode = (time_cfg.get("mode") or "").lower()
 

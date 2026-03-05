@@ -584,6 +584,7 @@ frameworks:
         name: area_by_NUTS_3_region
         source: eurostat
         enabled: true
+        #debug: true
 
         dataset: "demo_r_d3area"
         geo_level: city
@@ -595,10 +596,17 @@ frameworks:
 
         units: "square_kilometre"
 
+        filters:
+          unit: "KM2"
+          landuse: "TOTAL"   # o "L0008" si quieres solo land area
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/demo_r_d3area/default/table?lang=en&category=reg.reg_dem.reg_dempoar"
+
       - id: "N2"
         name: gross_domestic_product_GDP_at_current_market_prices_by_NUTS_3_region
         source: eurostat
         enabled: true
+        #debug: true
 
         dataset: "nama_10r_3gdp"
         geo_level: city
@@ -607,3 +615,106 @@ frameworks:
         time:
           mode: last_available_years
           years: 10
+
+        multi_filters:
+          unit: ["MIO_EUR", "EUR_HAB"]
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/nama_10r_3gdp/default/table?lang=en&category=reg.reg_eco10.reg_eco10gdp"
+
+      - id: "N3"
+        name: population_on_1_january_by_broad_age_group_sex_and_NUTS_3_region
+        source: eurostat
+        enabled: true
+        #debug: true
+
+        dataset: "demo_r_pjanaggr3"
+        geo_level: city
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "number"
+
+        filters:
+          unit: "NR"
+          age: "TOTAL"
+
+        multi_filters:
+          sex: ["T", "M", "F"]
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/demo_r_pjanaggr3/default/table?lang=en&category=reg.reg_dem.reg_dempoar"
+
+      - id: "N4"
+        name: population_on_1_january_by_broad_age_group_sex_and_NUTS_3_region__by_age_class
+        source: eurostat
+        enabled: true
+        #debug: true
+
+        dataset: "demo_r_pjanaggr3"
+        geo_level: city
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "number"
+
+        filters:
+          unit: "NR"
+          sex: "T"
+
+        multi_filters:
+          age: ["TOTAL", "Y_LT15", "Y15-64", "Y_GE65"]
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/demo_r_pjanaggr3/default/table?lang=en&category=reg.reg_dem.reg_dempoar"
+
+      - id: "N5"
+        name: employment_thousand_persons_by_NUTS_3_region
+        source: eurostat
+        enabled: true
+        #debug: true
+
+        dataset: "nama_10r_3empers"
+        geo_level: city
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 10
+
+        units: "thousand"
+
+        filters:
+          unit: "THS"
+          wstatus: "EMP"
+          nace_r2: "TOTAL"
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/nama_10r_3empers/default/table?lang=en&category=reg.reg_eco10.reg_eco10brch"
+
+      - id: "N6"
+        name: nights_spent_at_tourist_accommodation_establishments_by_NUTS_3_region_from_2020_onwards
+        source: eurostat
+        enabled: true
+        #debug: true
+
+        dataset: "tour_occ_nin3"
+        geo_level: city
+        frequency: A
+
+        time:
+          mode: past_years
+          years: 5
+
+        # filtros fijos
+        filters:
+          unit: "NR"        # Number
+          nace_r2: "I551"   # Hotels and similar accommodation
+
+        # variamos residencia (domestic / foreign / total)
+        multi_filters:
+          c_resid: ["DOM", "FOR", "TOTAL"]
+
+        reference: "https://ec.europa.eu/eurostat/databrowser/view/tour_occ_nin3/default/table?lang=en&category=reg.reg_tour.reg_tour_occ"
