@@ -1,12 +1,70 @@
+# ============================================================
+# PROFILE REGISTRY
+# ============================================================
+#
+# Este archivo define los perfiles disponibles en el sistema.
+#
+# Un perfil indica:
+# - qué indicadores se usan (frameworks)
+# - qué prompts de IA se utilizan
+# - qué alias de países están permitidos
+#
+# Ejemplo:
+#
+# europe
+#   → usa principalmente Eurostat
+#
+# world
+#   → usa IMF, World Bank, OECD, UN, etc.
+#
+# El menú interactivo (cli_menu.py) lee este archivo
+# para mostrar las opciones disponibles al usuario.
+#
+# ============================================================
+
 version: 1
+
 profiles:
+
+  # ----------------------------------------------------------
+  # EUROPE PROFILE
+  # ----------------------------------------------------------
+  # Perfil centrado en datos europeos (principalmente Eurostat)
+  # Ideal para análisis de países de la UE o regiones NUTS.
+  # ----------------------------------------------------------
+
   europe:
     title: "Europe (Eurostat-centric)"
+
+    # Indicadores disponibles para este perfil
     frameworks_path: "config/profiles/europe/frameworks.yaml"
+
+    # Prompts usados para generar análisis con IA
     prompts_path: "config/profiles/europe/prompts.yaml"
+
+    # Alias de países (ej: España → ES)
     aliases_path: "config/profiles/europe/country_aliases.yaml"
+
+
+  # ----------------------------------------------------------
+  # WORLD PROFILE
+  # ----------------------------------------------------------
+  # Perfil global con múltiples fuentes:
+  #
+  # IMF
+  # World Bank
+  # OECD
+  # United Nations
+  # UN Tourism
+  #
+  # Ideal para análisis macroeconómico internacional.
+  # ----------------------------------------------------------
+
   world:
     title: "World (multi-source)"
+
     frameworks_path: "config/profiles/world/frameworks.yaml"
+
     prompts_path: "config/profiles/world/prompts.yaml"
+
     aliases_path: "config/profiles/world/country_aliases.yaml"

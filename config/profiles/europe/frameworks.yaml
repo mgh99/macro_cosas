@@ -1,4 +1,89 @@
-# config/profiles/europe/frameworks.yaml
+# ============================================================
+# MACRO STRATEGY ENGINE — FRAMEWORK CONFIGURATION
+# ============================================================
+#
+# Este archivo define QUÉ indicadores se descargan
+# y de QUÉ fuentes de datos (Eurostat, IMF, OECD, etc).
+#
+# El sistema usa este archivo para generar:
+# - CSV con los datos
+# - Excel con visualizaciones
+# - Informes automáticos con AI
+#
+# Cada "framework" es un grupo de indicadores relacionados.
+#
+# Ejemplo:
+# demographics → indicadores de población
+# tourism → indicadores de turismo
+# economics → indicadores económicos
+#
+# ------------------------------------------------------------
+# ⚠️ IMPORTANTE
+# ------------------------------------------------------------
+# - No borrar los ":" ni cambiar el formato
+# - Cada indicador empieza con "- id:"
+# - La indentación (espacios) es importante en YAML
+#
+# Si algo deja de funcionar normalmente es por:
+# - quitar espacios
+# - borrar ":" accidentalmente
+#
+# ------------------------------------------------------------
+# CAMPOS PRINCIPALES DE UN INDICADOR
+# ------------------------------------------------------------
+#
+# id:
+#   Identificador interno del indicador
+#
+# name:
+#   Nombre interno usado en los archivos generados
+#
+# source:
+#   Fuente de datos (eurostat / imf_datamapper / oecd)
+#
+# dataset:
+#   Código del dataset en la fuente de datos
+#
+# frequency:
+#   A = Annual (anual)
+#   M = Monthly (mensual)
+#
+# time:
+#   Cuántos años de datos queremos descargar
+#
+# filters:
+#   Filtros fijos del dataset
+#
+# multi_filters:
+#   Varias series dentro del mismo indicador
+#
+# units:
+#   Unidad del indicador (solo informativo)
+#
+# reference:
+#   Link al dataset original
+#
+# ------------------------------------------------------------
+# CÓMO AÑADIR UN NUEVO INDICADOR
+# ------------------------------------------------------------
+#
+# Copiar uno existente y cambiar:
+#
+# - id
+# - name
+# - dataset
+# - reference
+#
+# Ejemplo mínimo:
+#
+# - id: "NEW1"
+#   name: example_indicator
+#   source: eurostat
+#   dataset: dataset_code
+#   geo_level: country
+#   frequency: A
+#
+# ------------------------------------------------------------
 version: 1
 
 frameworks:

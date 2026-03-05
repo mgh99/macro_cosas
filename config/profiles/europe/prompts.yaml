@@ -1,4 +1,24 @@
-# config/profiles/europe/prompts.yaml
+# ============================================================
+# PROMPTS CONFIG (AI briefings)
+# ============================================================
+#
+# Qué es esto:
+# - Este archivo contiene los textos ("prompts") que se envían al modelo de IA
+#   para generar briefings ejecutivos a partir de los datos descargados.
+#
+# Qué se puede cambiar sin riesgo:
+# - description: descripción humana del prompt
+# - max_words: límite objetivo (guía; el modelo intentará respetarlo)
+# - prompt: el texto del prompt (recomendado: tocar solo si quieres cambiar estilo/estructura)
+#
+# Qué NO conviene cambiar (a menos que sepas lo que haces):
+# - Las reglas de estructura ("exactly two paragraphs", etc.) porque el parser/uso
+#   en reports asume esa estructura (sobre todo para presentación).
+#
+# Consejo:
+# - Si cambias estructura (nº de párrafos), hazlo igual en todos los prompts
+#   o revisa cómo se consumen luego los outputs.
+# ============================================================
 
 demographics_executive_narrative:
   description: "Executive demographic structural analysis for leadership"

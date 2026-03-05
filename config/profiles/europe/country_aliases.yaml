@@ -1,32 +1,96 @@
-# config/profiles/europe/country_aliases.yaml
-# Keys should be written as "normalized tokens":
-# - UPPERCASE
-# - no accents
-# - no extra spaces
-# - you can include common shortcuts, typos, local names
+# -------------------------------------------------------------------
+# COUNTRY ALIASES
+# -------------------------------------------------------------------
+# Este archivo sirve para reconocer diferentes formas de escribir
+# un país y convertirlas al código estándar ISO2.
+#
+# Ejemplo:
+# Si el usuario escribe:
+#   "España", "ESP", "Spain"
+#
+# el sistema lo convertirá automáticamente a:
+#   ES
+#
+# Esto permite que el usuario escriba países de forma flexible
+# sin preocuparse por el formato exacto.
+#
+# -------------------------------------------------------------------
+# CÓMO AÑADIR UN NUEVO PAÍS
+# -------------------------------------------------------------------
+# 1. Añadir todas las variantes posibles del nombre del país.
+# 2. A la derecha poner el código ISO2 del país.
+#
+# Ejemplo:
+#
+# ITALIA: IT
+# ITALY: IT
+# ITA: IT
+# IT: IT
+#
+# IMPORTANTE:
+# - Las claves deben escribirse en MAYÚSCULAS
+# - Sin acentos si es posible (aunque el sistema suele normalizar)
+# - Sin espacios extra
+#
+# -------------------------------------------------------------------
+# FORMATO
+# -------------------------------------------------------------------
+# NOMBRE_VARIANTE: CODIGO_ISO2
+#
+# Ejemplo:
+# SPAIN: ES
+# -------------------------------------------------------------------
 
+
+# =========================
 # Spain
+# =========================
 ESPANA: ES
-ESPAÑA: ES   # (aunque luego lo normalizamos, lo dejo por claridad)
+ESPAÑA: ES   # Se deja también con acento por claridad
 SPAIN: ES
 ESP: ES
 ES: ES
 
+
+# =========================
 # France
+# =========================
 FRANCIA: FR
 FRANCE: FR
 FRA: FR
 FR: FR
 
+
+# =========================
 # Germany
+# =========================
 ALEMANIA: DE
 GERMANY: DE
 DEUTSCHLAND: DE
 DEU: DE
 DE: DE
 
-# UK examples (si quieres forzar)
+
+# =========================
+# United Kingdom
+# =========================
 UK: GB
 U.K.: GB
 UNITED KINGDOM: GB
 GREAT BRITAIN: GB
+
+# =========================
+# Russia
+# =========================
+RUSIA: RU
+RUSSIA: RU
+RUS: RU
+RU: RU
+
+# =========================
+# Switzerland
+# =========================
+SUIZA: CH
+SWITZERLAND: CH
+CHE: CH
+CH: CH

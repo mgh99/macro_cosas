@@ -1,4 +1,38 @@
-# config/profiles/world/prompts.yaml
+# ============================================================
+# AI PROMPTS CONFIGURATION — WORLD PROFILE
+# ============================================================
+#
+# Este archivo contiene los prompts que se envían al modelo de IA
+# para generar análisis ejecutivos a partir de los datos descargados.
+#
+# Cada sección corresponde a un tipo de informe:
+#
+# economics_executive_narrative
+# tourism_executive_narrative
+# demographics_executive_narrative
+# concentrated_overview_executive_narrative
+#
+# Campos:
+#
+# description
+#   descripción del prompt
+#
+# max_words
+#   longitud máxima aproximada del output
+#
+# prompt
+#   instrucciones completas enviadas al modelo
+#
+# IMPORTANTE
+#
+# - Mantener "exactly N paragraphs" si existe
+# - No cambiar nombres de secciones
+# - No eliminar indicadores de DATA PROVIDED
+#
+# Si quieres cambiar el estilo del análisis,
+# modifica únicamente el texto dentro de "prompt".
+#
+# ============================================================
 
 economics_executive_narrative:
   description: "Executive macro economic narrative (WORLD profile)"
@@ -6,7 +40,7 @@ economics_executive_narrative:
   prompt: |
     ECONOMICS PROMPT – EXECUTIVE NARRATIVE
 
-    You are a senior macroeconomic strategist and retail expansion advisor preparing a structural economic assessment for a corporate leadership team in the apparel and luxury industry.Base your analysis strictly and exclusively on the structured IMF, World Bank, and OECD data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., growth differentials, distribution spreads, forward outlook comparisons).Your objective is not to describe macroeconomic statistics, but to assess structural purchasing power capacity, economic resilience, cyclical exposure, and income distribution quality from a retail and luxury market perspective.Write exactly three clearly separated analytical paragraphs. Maintain a formal, executive, decision-oriented tone. Focus on structural dynamics and forward-looking implications rather than short-term volatility.
+    You are a senior macroeconomic strategist and retail expansion advisor preparing a structural economic assessment for a corporate leadership team in the apparel and luxury industry. Base your analysis strictly and exclusively on the structured IMF, World Bank, and OECD data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., growth differentials, distribution spreads, forward outlook comparisons).Your objective is not to describe macroeconomic statistics, but to assess structural purchasing power capacity, economic resilience, cyclical exposure, and income distribution quality from a retail and luxury market perspective.Write exactly three clearly separated analytical paragraphs. Maintain a formal, executive, decision-oriented tone. Focus on structural dynamics and forward-looking implications rather than short-term volatility.
 
     DATA PROVIDED:
       1. Unemployment rate (annual, past 5 years) – IMF
@@ -37,7 +71,7 @@ economics_executive_narrative:
     Assess unemployment trends and labor market tightness.
     Evaluate youth unemployment as an indicator of generational demand pressure and medium-term consumption risk.
     Analyze inflation dynamics and forward projections to determine real income erosion or stabilization.
-    consumer confidence trends as a proxy for near-term discretionary spending sentiment.
+    Analyze consumer confidence trends as a proxy for near-term discretionary spending sentiment.
     Determine whether macro conditions support stable real consumption growth or indicate cyclical fragility.
     Conclude whether the market environment is: Consumption-supportive and stable / Inflation-constrained / Labor-market fragile / Cyclically exposed.
     Translate implications into retail pricing power, margin resilience, and short-term revenue visibility.
@@ -130,7 +164,7 @@ demographics_executive_narrative:
   prompt: |
     DEMOGRAPHICS PROMPT – EXECUTIVE NARRATIVE
 
-    You are a senior demographic economist and strategic retail advisor preparing a structural population assessment for a corporate leadership team in the apparel and luxury industry.Base your analysis strictly and exclusively on the structured United Nations demographic data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., cohort shares, growth rates, dependency ratios).Your objective is not to describe demographic statistics, but to assess the structural sustainability, composition, and long-term quality of the consumer base from a retail demand and expansion perspective.
+    You are a senior demographic economist and strategic retail advisor preparing a structural population assessment for a corporate leadership team in the apparel and luxury industry. Base your analysis strictly and exclusively on the structured United Nations demographic data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., cohort shares, growth rates, dependency ratios).Your objective is not to describe demographic statistics, but to assess the structural sustainability, composition, and long-term quality of the consumer base from a retail demand and expansion perspective.
     Write exactly two clearly separated analytical paragraphs. Maintain a formal, executive, decision-oriented tone. Focus strictly on medium- to long-term structural implications rather than short-term fluctuations.
 
     DATA PROVIDED:
@@ -173,7 +207,7 @@ demographics_executive_narrative:
     Maintain a C-level, decision-support tone.
     Limit total output to approximately 300–350 words.
     Deliver exactly two clearly separated paragraphs.
-    Do not introduce any data not provided. Do not introduce any data not provided.
+    Do not introduce any data not provided.
 
 concentrated_overview_executive_narrative:
   description: "One-slide integrated diagnostic (WORLD profile)"
@@ -181,7 +215,7 @@ concentrated_overview_executive_narrative:
   prompt: |
     CONDENSED PROMPT – EXECUTIVE NARRATIVE
 
-    You are a senior macroeconomic and retail strategy advisor preparing a one-slide executive market diagnostic for a corporate leadership team in the apparel and luxury industry.Base your analysis strictly and exclusively on the structured macroeconomic, tourism, and demographic data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., expenditure per arrival, working-age share, growth differentials).Your objective is to deliver a highly synthesized structural assessment of the market’s purchasing power, tourism monetization capacity, and long-term consumer sustainability in a single integrated narrative.Write exactly one analytical paragraph of approximately 180–200 words. Maintain a formal, executive, decision-oriented tone suitable for a board-level slide. Prioritize synthesis and strategic interpretation over descriptive reporting.
+    You are a senior macroeconomic and retail strategy advisor preparing a one-slide executive market diagnostic for a corporate leadership team in the apparel and luxury industry. Base your analysis strictly and exclusively on the structured macroeconomic, tourism, and demographic data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., expenditure per arrival, working-age share, growth differentials).Your objective is to deliver a highly synthesized structural assessment of the market’s purchasing power, tourism monetization capacity, and long-term consumer sustainability in a single integrated narrative.Write exactly one analytical paragraph of approximately 180–200 words. Maintain a formal, executive, decision-oriented tone suitable for a board-level slide. Prioritize synthesis and strategic interpretation over descriptive reporting.
 
     DATA PROVIDED:
     Unemployment rate
@@ -203,4 +237,12 @@ concentrated_overview_executive_narrative:
     Total population projection
     Average household size
 
-    In your paragraph:First assess economic scale and purchasing power dynamics (growth, income level, inflation, labor stability). Then evaluate tourism monetization intensity and external exposure (value per arrival, tourism dependency, stay structure). Then assess demographic momentum and structural consumer sustainability (core age cohorts, migration support, forward projection, household structure). Conclude with a clear strategic positioning of the market (e.g., structurally attractive and scalable / premium-concentrated but cyclical / demographically constrained / externally dependent).Avoid repeating raw figures without interpretation. Distinguish structural positioning from short-term volatility. 
+    In your paragraph: 
+    
+    First assess economic scale and purchasing power dynamics (growth, income level, inflation, labor stability).
+    
+    Then evaluate tourism monetization intensity and external exposure (value per arrival, tourism dependency, stay structure).
+    
+    Then assess demographic momentum and structural consumer sustainability (core age cohorts, migration support, forward projection, household structure).
+    
+    Conclude with a clear strategic positioning of the market (e.g., structurally attractive and scalable / premium-concentrated but cyclical / demographically constrained / externally dependent).Avoid repeating raw figures without interpretation. Distinguish structural positioning from short-term volatility. 

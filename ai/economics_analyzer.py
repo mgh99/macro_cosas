@@ -1,6 +1,31 @@
 # ai/economics_analyzer.py
 from __future__ import annotations
 
+"""
+ECONOMICS ANALYZER
+
+Este módulo genera el prompt final para el briefing económico (IA) a partir de
+un DataFrame "long" del framework economics.
+
+Qué hace:
+- Filtra los datos por país (geo ISO2: "ES", "FR", etc.)
+- Calcula un pequeño bloque de métricas resumen (latest, tendencia, CAGR…)
+- Añade un bloque de series temporales truncadas (últimos N puntos)
+- Monta el prompt final y llama al LLM (generate_text)
+
+Columnas esperadas en el DataFrame de entrada (df):
+- geo: str (ISO2)
+- indicator: str (nombre interno del indicador)
+- date: int o str convertible (año)
+- month: int opcional (si serie mensual)
+- value: numérico o convertible a numérico
+- sub_indicator_short: opcional (no se usa aquí, pero puede existir)
+
+Nota para Ana:
+- Si quieres que el texto del briefing cambie, edita el "base_prompt" en YAML.
+- Si quieres cambiar cuántos años/meses se pasan al modelo, cambia SeriesConfig.
+"""
+
 from dataclasses import dataclass
 from typing import Dict, Optional, Tuple
 
@@ -11,14 +36,24 @@ from ai.mistral_client import generate_text
 
 @dataclass
 class SeriesConfig:
-    # Cuántos puntos máximos por indicador (para no reventar el prompt)
+    """
+    Configuración de "cuánto contexto" damos al modelo.
+    Se recortan las series para que el prompt no explote en tokens.
+    """
     max_points_monthly: int = 24   # últimos 24 meses
     max_points_annual: int = 12    # últimos 12 años
-    # redondeo
-    round_decimals: int = 3
+    round_decimals: int = 3        # redondeo de valores numéricos
+
+
+# --- Helpers de formato y cálculos simples ---
+
+
+def _is_monthly(sub: pd.DataFrame) -> bool:
+    return "month" in sub.columns and sub["month"].notna().any()
 
 
 def _period_str(row: pd.Series) -> str:
+    """Devuelve 'YYYY' o 'YYYY-MM'."""
     y = int(row["date"])
     m = row.get("month", pd.NA)
     if pd.notna(m):
@@ -27,20 +62,40 @@ def _period_str(row: pd.Series) -> str:
 
 
 def _safe_numeric_series(df_ind: pd.DataFrame) -> pd.Series:
+    """
+    Convierte 'value' a numérico y elimina valores no convertibles.
+    """
     s = pd.to_numeric(df_ind["value"], errors="coerce")
     return s.dropna()
 
 
-def _cagr(first: float, last: float, years: int) -> Optional[float]:
-    if years <= 0:
+def _last_numeric_row(sub: pd.DataFrame) -> Optional[pd.Series]:
+    """
+    Devuelve la última fila con value numérico (no solo 'no-NaN').
+    Evita petadas si llega algún string raro en 'value'.
+    """
+    tmp = sub.copy()
+    tmp["_value_num"] = pd.to_numeric(tmp["value"], errors="coerce")
+    tmp = tmp.dropna(subset=["_value_num"])
+    if tmp.empty:
         return None
-    if first <= 0 or last <= 0:
+    return tmp.iloc[-1]
+
+
+def _cagr(first: float, last: float, years: int) -> Optional[float]:
+    """
+    CAGR estándar. Solo aplica si first y last > 0.
+    """
+    if years <= 0 or first <= 0 or last <= 0:
         return None
     return (last / first) ** (1 / years) - 1
 
 
 def _trend_direction(s: pd.Series, window: int = 6) -> str:
-    # tendencia simple: compara media de últimas N vs N anteriores
+    """
+    Tendencia simple: compara media de las últimas 'window' observaciones
+    vs la media de las 'window' anteriores.
+    """
     if len(s) < window * 2:
         return "insufficient_data"
     recent = s.iloc[-window:].mean()
@@ -54,17 +109,23 @@ def _trend_direction(s: pd.Series, window: int = 6) -> str:
     return "flat"
 
 
+# --- Bloques de prompt ---
+
+
 def build_summary_block(df_country: pd.DataFrame, cfg: SeriesConfig) -> str:
     """
-    Produce un bloque compacto con métricas útiles:
-    - latest value (y periodo)
-    - trend (para series mensuales)
-    - CAGR (si aplica y hay años suficientes)
-    - spread top10-bottom10 si están ambos
+    Bloque compacto con métricas derivadas EXCLUSIVAMENTE de los datos:
+    - latest value (con periodo)
+    - tendencia 6M si mensual
+    - CAGR aproximado si anual y hay histórico suficiente
+    - spread (Top10 - Bottom10) si ambos indicadores existen
     """
+    if df_country is None or df_country.empty:
+        return "SUMMARY METRICS:\n- NO DATA."
+
     lines = ["SUMMARY METRICS (computed only from provided data):"]
 
-    # helpers
+    # guardamos últimos valores por indicador para cálculos cruzados
     latest_by_indicator: Dict[str, Tuple[str, float]] = {}
 
     for indicator in sorted(df_country["indicator"].dropna().unique()):
@@ -72,44 +133,53 @@ def build_summary_block(df_country: pd.DataFrame, cfg: SeriesConfig) -> str:
         if sub.empty:
             continue
 
-        sort_cols = ["date", "month"] if "month" in sub.columns else ["date"]
+        # ordenar (YYYY o YYYY-MM)
+        sort_cols = ["date", "month"] if _is_monthly(sub) else ["date"]
         sub = sub.sort_values(sort_cols)
 
         s = _safe_numeric_series(sub)
         if s.empty:
             continue
 
-        last_row = sub.dropna(subset=["value"]).iloc[-1]
+        last_row = _last_numeric_row(sub)
+        if last_row is None:
+            continue
+
         p_last = _period_str(last_row)
-        v_last = float(last_row["value"])
+        v_last = float(pd.to_numeric(last_row["value"], errors="coerce"))
         v_last_rounded = round(v_last, cfg.round_decimals)
 
         latest_by_indicator[indicator] = (p_last, v_last)
 
-        # trend only meaningful for monthly
-        if "month" in sub.columns and sub["month"].notna().any():
+        if _is_monthly(sub):
             td = _trend_direction(s, window=6)
             lines.append(f"- {indicator}: latest {v_last_rounded} ({p_last}); 6M trend={td}")
         else:
-            # annual: try CAGR on last 5y / 10y depending on data
-            years = sub["date"].dropna().astype(int).tolist()
-            if len(years) >= 6:
-                # last 5-year span within available points
-                first_row = sub.dropna(subset=["value"]).iloc[-6]
+            # anual: intentamos un CAGR "span" usando 6 puntos recientes (si existen)
+            tmp = sub.copy()
+            tmp["_value_num"] = pd.to_numeric(tmp["value"], errors="coerce")
+            tmp = tmp.dropna(subset=["_value_num"])
+
+            if len(tmp) >= 6:
+                first_row = tmp.iloc[-6]
                 y_first = int(first_row["date"])
                 y_last = int(last_row["date"])
                 span = max(1, y_last - y_first)
-                c = _cagr(float(first_row["value"]), float(last_row["value"]), span)
+
+                c = _cagr(float(first_row["_value_num"]), float(last_row["_value_num"]), span)
                 if c is not None:
-                    lines.append(f"- {indicator}: latest {v_last_rounded} ({p_last}); approx CAGR({span}y)={round(c*100,2)}%")
+                    lines.append(
+                        f"- {indicator}: latest {v_last_rounded} ({p_last}); approx CAGR({span}y)={round(c*100,2)}%"
+                    )
                 else:
                     lines.append(f"- {indicator}: latest {v_last_rounded} ({p_last})")
             else:
                 lines.append(f"- {indicator}: latest {v_last_rounded} ({p_last})")
 
-    # inequality spread if present
-    top_key = "income_share_held_by_highest_10%"
-    bot_key = "income_share_held_by_lowest_10%"
+    # ✅ FIX: estos nombres deben coincidir con tus YAML (world/frameworks.yaml)
+    top_key = "income_share_held_by_highest_10_percent"
+    bot_key = "income_share_held_by_lowest_10_percent"
+
     if top_key in latest_by_indicator and bot_key in latest_by_indicator:
         _, top_v = latest_by_indicator[top_key]
         _, bot_v = latest_by_indicator[bot_key]
@@ -121,9 +191,13 @@ def build_summary_block(df_country: pd.DataFrame, cfg: SeriesConfig) -> str:
 
 def build_structured_series_block(df_country: pd.DataFrame, cfg: SeriesConfig) -> str:
     """
-    Bloque de series "recortadas": últimas N observaciones por indicador,
-    para que el modelo tenga contexto temporal sin explotar tokens.
+    Bloque de series temporales recortadas:
+    - Mensual: últimos cfg.max_points_monthly
+    - Anual: últimos cfg.max_points_annual
     """
+    if df_country is None or df_country.empty:
+        return "STRUCTURED SERIES:\n- NO DATA."
+
     lines = ["STRUCTURED SERIES (truncated):"]
 
     for indicator in sorted(df_country["indicator"].dropna().unique()):
@@ -131,22 +205,24 @@ def build_structured_series_block(df_country: pd.DataFrame, cfg: SeriesConfig) -
         if sub.empty:
             continue
 
-        sort_cols = ["date", "month"] if "month" in sub.columns else ["date"]
+        monthly = _is_monthly(sub)
+        sort_cols = ["date", "month"] if monthly else ["date"]
         sub = sub.sort_values(sort_cols)
 
-        # truncate
-        is_monthly = "month" in sub.columns and sub["month"].notna().any()
-        max_points = cfg.max_points_monthly if is_monthly else cfg.max_points_annual
+        max_points = cfg.max_points_monthly if monthly else cfg.max_points_annual
 
-        sub = sub.dropna(subset=["value"]).tail(max_points)
+        # dejamos solo valores numéricos
+        sub["_value_num"] = pd.to_numeric(sub["value"], errors="coerce")
+        sub = sub.dropna(subset=["_value_num"]).tail(max_points)
+
+        if sub.empty:
+            continue
 
         lines.append(f"\nIndicator: {indicator}")
         for _, row in sub.iterrows():
             period = _period_str(row)
-            val = row["value"]
-            if pd.isna(val):
-                continue
-            lines.append(f"{period} | {round(float(val), cfg.round_decimals)}")
+            val = float(row["_value_num"])
+            lines.append(f"{period} | {round(val, cfg.round_decimals)}")
 
     return "\n".join(lines)
 
@@ -157,6 +233,18 @@ def generate_economics_briefing(
     base_prompt: str,
     cfg: Optional[SeriesConfig] = None,
 ) -> str:
+    """
+    Función principal: construye el prompt final y llama al modelo.
+
+    Args:
+        df: DataFrame largo (varios países)
+        geo: ISO2 del país
+        base_prompt: prompt base del YAML
+        cfg: configuración de truncado/decimales
+
+    Returns:
+        Texto generado por el modelo.
+    """
     cfg = cfg or SeriesConfig()
 
     df_country = df[df["geo"] == geo].copy()
@@ -166,10 +254,5 @@ def generate_economics_briefing(
     summary_block = build_summary_block(df_country, cfg)
     series_block = build_structured_series_block(df_country, cfg)
 
-    full_prompt = (
-        f"{base_prompt}\n\n"
-        f"{summary_block}\n\n"
-        f"{series_block}\n"
-    )
-
+    full_prompt = f"{base_prompt}\n\n{summary_block}\n\n{series_block}\n"
     return generate_text(full_prompt)

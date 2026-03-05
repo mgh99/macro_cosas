@@ -1,6 +1,50 @@
-# config/profiles/world/country_aliases.yaml
+# ============================================================
+# COUNTRY ALIASES — WORLD PROFILE
+# ============================================================
+#
+# Este archivo sirve para convertir nombres de países escritos
+# por el usuario en códigos ISO2 (ES, FR, US, etc.).
+#
+# Ejemplo:
+#
+# Usuario escribe:
+#   "Spain, usa, deutschland"
+#
+# El sistema lo convierte a:
+#   ES, US, DE
+#
+# ------------------------------------------------------------
+# REGLAS IMPORTANTES
+# ------------------------------------------------------------
+#
+# - Las claves deben escribirse en minúsculas
+# - Sin acentos preferiblemente
+# - Pueden incluir errores comunes o abreviaciones
+#
+# Ejemplo:
+#
+#   spain: ES
+#   espana: ES
+#   españa: ES
+#
+# ------------------------------------------------------------
+# QUÉ SE PUEDE AÑADIR
+# ------------------------------------------------------------
+#
+# Si un país no se reconoce, puedes añadir una nueva línea:
+#
+#   nombre_que_escribe_el_usuario: ISO2
+#
+# Ejemplo:
+#
+#   italia: IT
+#
+# ------------------------------------------------------------
 
+
+# =========================
 # Spain
+# =========================
 sp: ES
 esp: ES
 spa: ES
@@ -8,7 +52,10 @@ spain: ES
 españa: ES
 espana: ES
 
+
+# =========================
 # United States
+# =========================
 usa: US
 us: US
 united states: US
@@ -16,13 +63,20 @@ unitedstates: US
 eeuu: US
 euu: US
 
+
+# =========================
 # Denmark
+# =========================
 denmark: DK
 dinamark: DK
 dinamarca: DK
 danmark: DK
 
-# United Kingdom (pycountry a veces lía UK/GB)
+
+# =========================
+# United Kingdom
+# (pycountry a veces usa GB)
+# =========================
 uk: GB
 u k: GB
 u.k: GB
@@ -32,40 +86,53 @@ great britain: GB
 britain: GB
 england: GB
 
-# Switzerland (si la usas)
+
+# =========================
+# Switzerland
+# =========================
 switzerland: CH
 suisse: CH
 schweiz: CH
 svizzera: CH
 
+
+# =========================
 # Germany
+# =========================
 germany: DE
 alemania: DE
-alemán: DE
-alemana: DE
 deutschland: DE
 deutsch: DE
 alemao: DE
 
+
+# =========================
 # Russia
+# =========================
 russia: RU
 russian federation: RU
 russian fed: RU
 russian fed.: RU
-russian: RU
+rusia: RU
 ruso: RU
 rusa: RU
-rusia: RU
 
-# argelia
+
+# =========================
+# Algeria
+# =========================
 algeria: DZ
 argelia: DZ
 
-# Common “gotchas” / language variants
+
+# =========================
+# Other common cases
+# =========================
 south korea: KR
 korea: KR
 north korea: KP
-russia: RU
+
 czech republic: CZ
 czechia: CZ
+
 taiwan: TW
