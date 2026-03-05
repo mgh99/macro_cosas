@@ -575,3 +575,35 @@ frameworks:
         units: "persons"
 
         #debug: true
+        
+  nuts3:
+    title: "NUTS 3 FRAMEWORK"
+    indicators:
+
+      - id: "N1"
+        name: area_by_NUTS_3_region
+        source: eurostat
+        enabled: true
+
+        dataset: "demo_r_d3area"
+        geo_level: city
+        frequency: A
+
+        time:
+          mode: last_available_years
+          years: 10
+
+        units: "square_kilometre"
+
+      - id: "N2"
+        name: gross_domestic_product_GDP_at_current_market_prices_by_NUTS_3_region
+        source: eurostat
+        enabled: true
+
+        dataset: "nama_10r_3gdp"
+        geo_level: city
+        frequency: A
+
+        time:
+          mode: last_available_years
+          years: 10

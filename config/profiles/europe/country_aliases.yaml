@@ -1,4 +1,4 @@
-# config/country_aliases.yaml
+# config/profiles/europe/country_aliases.yaml
 # Keys should be written as "normalized tokens":
 # - UPPERCASE
 # - no accents

@@ -36,6 +36,7 @@ def _run_with_backoff(fn, max_tries: int = 6):
 
 def run_engine(
     geos: List[str],
+    nuts3_geos: Optional[List[str]] = None,
     selected_frameworks: Optional[List[str]] = None,
     output_dir: Path | str = Path("outputs"),
     enable_ai: bool = True,
@@ -43,6 +44,7 @@ def run_engine(
     debug_describe_eurostat: bool = False,
     frameworks_path: str = "config/frameworks.yaml",
     prompts_path: str = "config/prompts.yaml",
+    #debug_describe_eurostat=True, # para el debug de eurostat y saber las dimennsiones del dataset antes de lanzarlo del todo
 ) -> Dict[str, pd.DataFrame]:
     """
     Main macro engine callable from CLI.
@@ -87,17 +89,29 @@ def run_engine(
     # ==========================
     if debug_describe_eurostat:
         seen = set()
-        for fw in frameworks.values():
+
+        for fw_name, fw in frameworks.items():
+            # 🔹 sample_geo correcto según el framework
+            if fw_name == "nuts3":
+                sample_geo = (nuts3_geos[0] if nuts3_geos else None)
+                if not sample_geo:
+                    print("⚠️ debug_describe_eurostat: nuts3 selected but no nuts3_geos provided (cannot describe nuts3 datasets).")
+                    continue
+            else:
+                sample_geo = (geos[0] if geos else "ES")
+
             for ind in fw.get("indicators", []):
                 if not ind.get("enabled", True):
                     continue
                 source = (ind.get("source") or "eurostat").lower()
                 if source != "eurostat":
                     continue
+
                 ds = ind.get("dataset")
                 if not ds or ds in seen:
                     continue
-                describe_dataset(ds, sample_geo=geos[0], overrides=ind.get("describe_overrides"))
+
+                describe_dataset(ds, sample_geo=sample_geo, overrides=ind.get("describe_overrides"))
                 seen.add(ds)
 
     # ==========================
@@ -109,6 +123,15 @@ def run_engine(
     for fw_name, fw in frameworks.items():
         all_parts: List[pd.DataFrame] = []
 
+        # elige target geos según framework
+        if fw_name == "nuts3":
+            target_geos = nuts3_geos or []
+            if not target_geos:
+                print("⚠️ NUTS3 framework selected but no NUTS3 geos provided. Skipping nuts3.")
+                continue
+        else:
+            target_geos = geos
+
         for order_idx, ind in enumerate(fw.get("indicators", []), start=1):
             if not ind.get("enabled", True):
                 continue
@@ -116,11 +139,11 @@ def run_engine(
             source = (ind.get("source") or "eurostat").lower()
 
             if source == "oecd":
-                df = fetch_indicator_for_geos(ind, geos)
+                df = fetch_indicator_for_geos(ind, target_geos)
                 df["indicator_order"] = order_idx
                 all_parts.append(df)
             else:
-                for geo in geos:
+                for geo in target_geos:
                     df = fetch_indicator_for_geo(ind, geo)
                     df["indicator_order"] = order_idx
                     all_parts.append(df)
@@ -132,6 +155,11 @@ def run_engine(
         wanted_cols = ["geo", "indicator", "date", "month", "value", "unit", "sub_indicator_short", "indicator_order"]
         df_long = pd.concat(all_parts, ignore_index=True)
         df_out = df_long[[c for c in wanted_cols if c in df_long.columns]].copy()
+
+        if fw_name == "nuts3":
+            from core.nuts3_resolver import nuts3_code_to_label_map
+            m = nuts3_code_to_label_map()  # usa demo_r_d3area por defecto
+            df_out["geo_name"] = df_out["geo"].map(m)
 
         # check debug
         #print(f"DEBUG {fw_name}: df_out rows={len(df_out)} cols={list(df_out.columns)}")
@@ -189,7 +217,14 @@ def run_engine(
         # ==========================
         if not flags.get("debug_no_files", False) and flags.get("csv", True):
             csv_path = out_dir / f"{fw_name}_macro_long.csv"
-            df_out.to_csv(csv_path, index=False)
+
+            df_to_write = df_out
+            if fw_name == "nuts3" and "geo_name" in df_out.columns:
+                df_to_write = df_out.copy()
+                df_to_write["geo_code"] = df_to_write["geo"]
+                df_to_write["geo"] = df_to_write["geo_name"].fillna(df_to_write["geo"])
+
+            df_to_write.to_csv(csv_path, index=False)
             print(f"✅ Wrote {csv_path}")
 
         # ==========================
@@ -203,8 +238,13 @@ def run_engine(
 
                 for ind_name in sorted(df_out["indicator"].dropna().unique()):
                     sub = df_out[df_out["indicator"] == ind_name].copy()
+
                     if sub.empty:
                         continue
+
+                    idx_geo = "geo"
+                    if fw_name == "nuts3" and "geo_name" in sub.columns and sub["geo_name"].notna().any():
+                        idx_geo = "geo_name"
 
                     if "month" in sub.columns and sub["month"].notna().any():
                         sub["period"] = (
@@ -219,7 +259,7 @@ def run_engine(
                     if "sub_indicator_short" in sub.columns and sub["sub_indicator_short"].notna().any():
                         table = (
                             sub.pivot_table(
-                                index=["geo", "sub_indicator_short"],
+                                index=[idx_geo, "sub_indicator_short"],
                                 columns=col_field,
                                 values="value",
                                 aggfunc="first",
@@ -229,7 +269,7 @@ def run_engine(
                     else:
                         table = (
                             sub.pivot_table(
-                                index=["geo"],
+                                index=[idx_geo],
                                 columns=col_field,
                                 values="value",
                                 aggfunc="first",
@@ -377,19 +417,33 @@ def run_engine(
     return results_by_framework
 
 
+#def main() -> None:
+#    """
+#    Non-interactive default run (kept for dev use).
+#    For interactive usage: run `python cli_menu.py`.
+#    """
+#    geos = ["ES", "FR", "DE"]
+#    run_engine(
+#        geos=geos,
+#        selected_frameworks=None,
+#        output_dir=Path("outputs"),
+#        enable_ai=True,
+#        frameworks_path="config/frameworks.yaml",
+#        prompts_path="config/prompts.yaml",
+#    )
+
 def main() -> None:
-    """
-    Non-interactive default run (kept for dev use).
-    For interactive usage: run `python cli_menu.py`.
-    """
-    geos = ["ES", "FR", "DE"]
+    # DEV quick test
     run_engine(
-        geos=geos,
-        selected_frameworks=None,
+        geos=["ES"],
+        nuts3_geos=["ES300"],   # Madrid area (ejemplo)
+        selected_frameworks=["nuts3"],
         output_dir=Path("outputs"),
-        enable_ai=True,
+        enable_ai=False,
+        debug_describe_eurostat=True,
         frameworks_path="config/frameworks.yaml",
         prompts_path="config/prompts.yaml",
+        output_flags={"csv": False, "excel_by_indicator": False, "single_sheet": False, "debug_no_files": True},
     )
 
 

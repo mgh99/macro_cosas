@@ -7,6 +7,7 @@ from typing import Dict, List
 
 from core.config_loader import load_config
 from core.country_resolver import load_country_aliases, resolve_country_to_iso2
+from core.nuts3_resolver import resolve_nuts3_inputs
 
 
 def choose_profile(profiles: Dict) -> str:
@@ -168,6 +169,7 @@ def main() -> None:
             print(f"❌ {e}")
 
     print(f"✅ Normalized countries (ISO2): {geos}")
+    nuts3_geos: List[str] = []
 
     # Frameworks
     while True:
@@ -176,6 +178,27 @@ def main() -> None:
             break
         except Exception as e:
             print(f"❌ {e}")
+
+    # NUTS3 (solo si el user lo pidió)
+    if "nuts3" in selected_frameworks:
+        while True:
+            try:
+                nuts_inp = input(
+                    "\n🏙️  Enter NUTS3 regions/cities (comma separated, e.g. Madrid, Barcelona, ES300) or press ENTER to skip: "
+                ).strip()
+
+                if nuts_inp:
+                    nuts3_geos = resolve_nuts3_inputs(nuts_inp)
+                    print(f"✅ Normalized NUTS3 geos: {nuts3_geos}")
+                else:
+                    print("ℹ️ NUTS3 skipped (no input).")
+                    nuts3_geos = []
+                break
+            except Exception as e:
+                print(f"❌ NUTS3 input error: {e}")
+                # reintenta hasta que lo haga bien o ENTER para saltar
+    else:
+        nuts3_geos = []
 
     # AI
     enable_ai = ask_yes_no("\n🤖 Enable AI executive briefings?", default=True)
@@ -191,6 +214,10 @@ def main() -> None:
     # Summary
     print("\n🧾 Summary")
     print(f"  Countries: {geos}")
+
+    if nuts3_geos:
+        print(f"  NUTS3 geos: {nuts3_geos}")
+
     print(f"  Frameworks: {selected_frameworks}")
     print(f"  AI enabled: {enable_ai}")
     print(f"  Profile: {profile_key}")
@@ -206,6 +233,7 @@ def main() -> None:
 
     run_engine(
         geos=geos,
+        nuts3_geos=nuts3_geos,
         selected_frameworks=selected_frameworks,
         output_dir=out_dir,
         enable_ai=enable_ai,

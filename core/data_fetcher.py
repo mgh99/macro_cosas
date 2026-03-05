@@ -5,6 +5,7 @@ from typing import List
 
 import pandas as pd
 
+from connectors.eurostat import eurostat_get
 from connectors.eurostat import fetch_indicator as fetch_eurostat
 from connectors.imf_datamapper import fetch_indicator as fetch_imf
 from connectors.oecd import fetch_indicator as fetch_oecd
@@ -22,6 +23,62 @@ from core.time_utils import (compute_time_window, compute_years_list,
                              current_year)
 
 
+def _extract_years_from_eurostat_payload(js: dict) -> list[int]:
+    """
+    Eurostat JSON-stat: dimension['time']['category']['index'] contiene keys tipo:
+      "2015" o "2015-01"
+    """
+    idx = (
+        js.get("dimension", {})
+          .get("time", {})
+          .get("category", {})
+          .get("index", {})
+    )
+    years: list[int] = []
+    if isinstance(idx, dict):
+        for k in idx.keys():
+            s = str(k)
+            try:
+                years.append(int(s[:4]))
+            except Exception:
+                continue
+    return years
+
+
+def _get_last_available_year_eurostat(
+    dataset: str,
+    geo: str,
+    freq: str,
+    filters: dict,
+) -> int:
+    """
+    Llama a Eurostat con lastTimePeriod=1 para descubrir el último año real disponible
+    (para ese geo + filtros). Si falla por alguna dim, hace fallback con params más simples.
+    """
+    filters = filters or {}
+
+    probe_candidates = [
+        {"geo": geo, "freq": freq, "lastTimePeriod": 1, **filters},  # intento “completo”
+        {"geo": geo, "lastTimePeriod": 1, **filters},                # sin freq
+        {"geo": geo, "freq": freq, "lastTimePeriod": 1},             # sin filters
+        {"geo": geo, "lastTimePeriod": 1},                           # mínimo
+    ]
+
+    last_err: Exception | None = None
+    for params in probe_candidates:
+        try:
+            js = eurostat_get(dataset, params=params, lang="EN")
+            years = _extract_years_from_eurostat_payload(js)
+            if years:
+                return max(years)
+        except Exception as e:
+            last_err = e
+            continue
+
+    if last_err:
+        raise last_err
+    raise ValueError(f"Cannot detect last available year for dataset={dataset}, geo={geo}")
+
 def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
     """
     Per-geo fetcher (1 country per call). Ideal for Eurostat + IMF + World Bank + UN Tourism ZIP.
@@ -33,17 +90,34 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
     # Eurostat
     # ==========================
     if source == "eurostat":
-        start_year, end_year = compute_time_window(time_cfg)
+        freq = ind.get("frequency", "A")
+        filters = ind.get("filters", {}) or {}
+
+        mode = (time_cfg.get("mode") or "").lower()
+
+        if mode == "last_available_years":
+            years_n = int(time_cfg.get("years", 10))
+            last_y = _get_last_available_year_eurostat(
+                dataset=ind["dataset"],
+                geo=geo,
+                freq=freq,
+                filters=filters,
+            )
+            start_year = last_y - years_n + 1
+            end_year = last_y
+        else:
+            start_year, end_year = compute_time_window(time_cfg)
+
         return fetch_eurostat(
             dataset=ind["dataset"],
             geo=geo,
             start_year=start_year,
             end_year=end_year,
-            freq=ind.get("frequency", "A"),
+            freq=freq,
             unit_fallback=ind.get("units"),
             geo_level=ind.get("geo_level", "country"),
             indicator_name=ind["name"],
-            filters=ind.get("filters", {}) or {},
+            filters=filters,
             multi_filters=ind.get("multi_filters"),
         )
 
@@ -223,3 +297,5 @@ def fetch_indicator_for_geos(ind: dict, geos: List[str]) -> pd.DataFrame:
         geo_level=ind.get("geo_level", "country"),
         unit_fallback=ind.get("units"),
     )
+
+

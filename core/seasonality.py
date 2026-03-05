@@ -14,6 +14,8 @@ def calculate_seasonality(df: pd.DataFrame) -> pd.DataFrame:
 
     df = df.copy()
     df["year"] = df["date"].astype(int)
+    
+    df = df[df["month"].notna()]
     df["month"] = df["month"].astype(int)
     
     results = []
