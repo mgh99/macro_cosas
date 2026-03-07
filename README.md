@@ -2,21 +2,29 @@
 
 An interactive macroeconomic analytics engine designed to support strategic decision-making for corporate leadership in the apparel and luxury industry.
 
-This tool collects structured macro, demographic, and tourism data (Eurostat + OECD), transforms it into analytical views (CSV & Excel), and optionally generates executive-level AI briefings.
+Fetches structured macro, demographic, and tourism data from multiple public APIs, transforms it into analytical views (CSV & Excel), and optionally generates executive-level AI briefings using Mistral.
 
 ## 🚀 What This Project Does
 
 The engine:
 
+- Profiles_
+   - Europe
+   - World
+
 - 📥 Fetches structured data from:
-   - Eurostat
-   - OECD (SDMX API)
-   - IMF
+   - Eurostat -> (Europe and World)
+   - OECD -> (SDMX API) (Europe and World)
+   - IMF -> (Europe and World)
+   - Un Tourism -> (World)
+   - United Nations -> (World)
+   - WorldBank -> (World)
 
 - 🧱 Organizes data into analytical frameworks:
    - Economics
    - Demographics
    - Tourism
+   - Nuts (only World)
 
 - 📊 Generates:
    - Clean long-format CSV datasets
@@ -32,8 +40,8 @@ The engine:
 1️. Clone the repository
 
 ```bash
-git clone <https://github.com/mgh99/macro_cosas>
-cd <macro_cosas>
+git clone https://github.com/mgh99/macro_cosas
+cd macro_cosas
 ```
 
 2️. Create virtual environment
@@ -121,7 +129,7 @@ The engine automatically:
 - Removes duplicates
 - Applies YAML-defined aliases (config/country_aliases.yaml)
 
-**3. Framework Selection 🧱**
+**3a. Framework Selection Europe🧱**
 
 Choose:
 
@@ -130,6 +138,21 @@ Choose:
 - Tourism
 - ALL frameworks
 - Or a custom combination (e.g. 1,3)
+
+**3b. Framework Selection World🧱**
+
+Choose:
+
+- Economics
+- Demographics
+- Tourism
+- Nuts3
+- ALL frameworks
+- Or a custom combination (e.g. 1,3)
+
+Note: If you select the option: Nuts3 or All frameworks the next question is:
+
+🏙️  Enter NUTS3 regions/cities (comma separated, e.g. Madrid, Barcelona, ES300) or press ENTER to skip:
 
 **4. AI Briefings 🤖**
 
@@ -167,7 +190,7 @@ Folders are automatically created if missing.
 
 ## ⚙️ Configuration Files
 
-Located in `/config`:
+Located in `/config/profiles`:
 
 - `frameworks.yaml` → Define/edit indicators
 - `prompts.yaml` → AI narrative prompts
