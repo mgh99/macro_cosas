@@ -8,7 +8,7 @@ Fetches structured macro, demographic, and tourism data from multiple public API
 
 The engine:
 
-- Profiles_
+- Profiles
    - Europe
    - World
 
