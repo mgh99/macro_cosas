@@ -147,27 +147,23 @@ frameworks:
         units: "percent"
         reference: "https://data.worldbank.org/indicator/SL.UEM.1524.ZS"
 
-      # 9) Harmonised Index of Consumer Prices — HICP (IMF CPI dataset, IMF Statistics Dept.)
-      #    Cobertura: países UE/EEA + Turquía | Solo datos históricos (no proyecciones)
-      #    API: https://api.imf.org/external/sdmx/2.1/data/IMF.STA,CPI,5.0.0/
-      #    Key: {COUNTRY}.{index_type}.{coicop}.{transformation}.{frequency}
+      # 9) Inflation, average consumer prices (% change) — IMF Datamapper / WEO
       - id: "E9"
         name: harmonised_index_of_consumer_prices
-        source: imf_cpi
+        source: imf_datamapper
         enabled: true
 
-        index_type: "HICP"         # Harmonised Index of Consumer Prices
-        coicop: "_T"               # All items
-        transformation: "YOY_PCH_PA_PT"  # Year-over-year, period average, % change
+        indicator_code: "PCPIPCH"
         geo_level: country
         frequency: A
 
         time:
-          mode: past_years
-          years: 10
+          mode: past_and_future_years
+          past_years: 5
+          future_years: 5
 
         units: "percent"
-        reference: "https://data.imf.org/en/datasets/IMF.STA:CPI"
+        reference: "https://www.imf.org/external/datamapper/PCPIPCH@WEO/OEMDC/ADVEC/WEOWORLD"
 
       # 10) Population (IMF WEO, millions of people)
       - id: "E10"

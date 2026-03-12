@@ -27,6 +27,13 @@ def compute_time_window(time_cfg: Dict, current: int | None = None) -> tuple[int
         end_y = current + (years - 1)
         return start_y, end_y
 
+    if mode == "past_and_future_years":
+        past = int((time_cfg or {}).get("past_years", 5))
+        fut = int((time_cfg or {}).get("future_years", 5))
+        start_y = current - past
+        end_y = current + fut - 1
+        return start_y, end_y
+
     raise ValueError(f"Unsupported time mode for window-based source: {mode}")
 
 
