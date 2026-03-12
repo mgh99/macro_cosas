@@ -136,3 +136,16 @@ czech republic: CZ
 czechia: CZ
 
 taiwan: TW
+
+
+# =========================
+# Aggregate geographies
+# (only available for indicators with allow_aggregates: true)
+# =========================
+world: WEOWORLD
+mundo: WEOWORLD
+advanced economies: ADVEC
+economias avanzadas: ADVEC
+economías avanzadas: ADVEC
+europe: EU
+europa: EU

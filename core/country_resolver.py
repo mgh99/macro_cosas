@@ -9,6 +9,11 @@ import pycountry
 import yaml
 
 
+# Aggregate geographic codes that are not ISO2 countries but are valid geo inputs
+# for specific indicators (those with allow_aggregates: true in the YAML).
+AGGREGATE_GEO_CODES = frozenset({"WEOWORLD", "ADVEC", "EU"})
+
+
 def _is_valid_iso2(code: str) -> bool:
     code = (code or "").strip().upper()
     if len(code) != 2:
@@ -91,6 +96,10 @@ def resolve_country_to_iso2(
             c = pycountry.countries.get(alpha_3=code)
             if c:
                 return c.alpha_2
+
+        # allow aggregate geo codes (WEOWORLD, ADVEC, EU, ...)
+        if code in AGGREGATE_GEO_CODES:
+            return code
 
         raise ValueError(f"Alias mapped to unsupported code: {user_input} -> {aliases[tok]}")
 

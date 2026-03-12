@@ -31,6 +31,7 @@ from ai.economics_analyzer import generate_economics_briefing
 from ai.tourism_analyzer import generate_tourism_briefing
 from connectors.eurostat import describe_dataset
 from core.config_loader import load_config
+from core.country_resolver import AGGREGATE_GEO_CODES
 from core.data_fetcher import fetch_indicator_for_geo, fetch_indicator_for_geos
 from core.excel_single_sheet import build_views_single_sheet_workbook
 from core.prompt_loader import load_prompts
@@ -172,18 +173,25 @@ def run_engine(
             ind_name = ind.get("name", "(unnamed_indicator)")
             ind_debug = bool(ind.get("debug", False))
 
+            allow_agg = bool(ind.get("allow_aggregates", False))
+
             # OECD connectors usually support multi-geo fetch in one go
             if source == "oecd":
-                df = fetch_indicator_for_geos(ind, target_geos)
+                oecd_geos = target_geos if allow_agg else [g for g in target_geos if g not in AGGREGATE_GEO_CODES]
+                if not oecd_geos:
+                    continue
+                df = fetch_indicator_for_geos(ind, oecd_geos)
                 df["indicator_order"] = order_idx
                 all_parts.append(df)
 
                 if ind_debug:
-                    print(f"🧪 DEBUG {fw_name}/{ind_name}: rows={len(df)} geos={target_geos}")
+                    print(f"🧪 DEBUG {fw_name}/{ind_name}: rows={len(df)} geos={oecd_geos}")
 
             else:
                 # Most sources fetch geo-by-geo
                 for geo in target_geos:
+                    if geo in AGGREGATE_GEO_CODES and not allow_agg:
+                        continue
                     df = fetch_indicator_for_geo(ind, geo)
                     df["indicator_order"] = order_idx
                     all_parts.append(df)

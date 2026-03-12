@@ -94,3 +94,16 @@ SUIZA: CH
 SWITZERLAND: CH
 CHE: CH
 CH: CH
+
+
+# =========================
+# Aggregate geographies
+# (only available for indicators with allow_aggregates: true)
+# =========================
+WORLD: WEOWORLD
+MUNDO: WEOWORLD
+ADVANCED ECONOMIES: ADVEC
+ECONOMIAS AVANZADAS: ADVEC
+ECONOMÍAS AVANZADAS: ADVEC
+EUROPE: EU
+EUROPA: EU

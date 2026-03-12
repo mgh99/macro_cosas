@@ -40,6 +40,7 @@ frameworks:
           future_years: 1
 
         units: "billions_of_dollars"
+        allow_aggregates: true
         reference: "https://www.imf.org/external/datamapper/NGDPD@WEO/ADVEC/WEOWORLD"
 
       # 3) GDP per capita current prices (IMF Datamapper)
@@ -58,6 +59,7 @@ frameworks:
           future_years: 5
 
         units: "dollars_per_capita"
+        allow_aggregates: true
         reference: "https://www.imf.org/external/datamapper/NGDPDPC@WEO/ADVEC/WEOWORLD"
 
       # 4) Income share held by highest 10% (World Bank, %)
@@ -163,6 +165,7 @@ frameworks:
           future_years: 5
 
         units: "percent"
+        allow_aggregates: true
         reference: "https://www.imf.org/external/datamapper/PCPIPCH@WEO/OEMDC/ADVEC/WEOWORLD"
 
       # 10) Population (IMF WEO, millions of people)
@@ -181,6 +184,7 @@ frameworks:
           future_years: 4
 
         units: "millions_of_people"
+        allow_aggregates: true
         reference: "https://www.imf.org/external/datamapper/LP@WEO/OEMDC/ADVEC/WEOWORLD"
 
   tourism:

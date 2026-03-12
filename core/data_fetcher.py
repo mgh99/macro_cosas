@@ -19,7 +19,12 @@ from connectors.united_nations_wpp_csv import \
 from connectors.united_nations_xlsx import \
     fetch_indicator as fetch_united_nations
 from connectors.worldbank import fetch_indicator as fetch_worldbank
+from core.country_resolver import AGGREGATE_GEO_CODES
 from core.geo_mapper import to_imf_geo, to_iso2, to_oecd_geo, to_wb_geo
+
+# Eurostat uses different codes for aggregates; WEOWORLD/ADVEC have no eurostat equivalent
+_EUROSTAT_AGGREGATE_MAP = {"EU": "EU27_2020"}
+_EMPTY_DF_COLS = ["geo", "geo_level", "indicator", "date", "month", "value", "unit", "source"]
 from core.time_utils import (compute_time_window, compute_years_list,
                              current_year)
 
@@ -91,6 +96,12 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
     # Eurostat
     # ==========================
     if source == "eurostat":
+        # Aggregate geos without a Eurostat equivalent → return empty
+        if geo in AGGREGATE_GEO_CODES and geo not in _EUROSTAT_AGGREGATE_MAP:
+            return pd.DataFrame(columns=_EMPTY_DF_COLS)
+        # Map aggregate codes to Eurostat's own codes (EU → EU27_2020)
+        geo = _EUROSTAT_AGGREGATE_MAP.get(geo, geo)
+
         freq = ind.get("frequency", "A")
         filters = ind.get("filters", {}) or {}
         unit_fallback = ind.get("units")

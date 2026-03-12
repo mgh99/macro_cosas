@@ -439,6 +439,7 @@ frameworks:
           mode: past_years
           years: 5
         units: "percent"
+        allow_aggregates: true
         reference: "https://www.imf.org/external/datamapper/LUR@WEO/ADVEC/WEOWORLD"
 
       - id: "E3"
@@ -452,6 +453,7 @@ frameworks:
           mode: past_years
           years: 10
         units: "billions_of_dollars"
+        allow_aggregates: true
         reference: "https://www.imf.org/external/datamapper/NGDPD@WEO/ADVEC/WEOWORLD"
 
       - id: "E4"
@@ -549,6 +551,7 @@ frameworks:
           unit: "PC_ACT"
 
         units: "percent_of_labour_force"
+        allow_aggregates: true
         reference: "https://ec.europa.eu/eurostat/databrowser/view/teilm021/default/table?lang=en"
 
       - id: "E10"
@@ -570,4 +573,5 @@ frameworks:
           unit: "PC_ACT"
 
         units: "percent_of_labour_force"
+        allow_aggregates: true
         reference: "https://ec.europa.eu/eurostat/databrowser/view/teilm022/default/table?lang=en"
