@@ -7,6 +7,7 @@ import pandas as pd
 
 from connectors.eurostat import eurostat_get
 from connectors.eurostat import fetch_indicator as fetch_eurostat
+from connectors.imf_cpi import fetch_indicator as fetch_imf_cpi
 from connectors.imf_datamapper import fetch_indicator as fetch_imf
 from connectors.oecd import fetch_indicator as fetch_oecd
 from connectors.un_tourism_xlsx import fetch_indicator as fetch_un_tourism_xlsx
@@ -264,6 +265,27 @@ def fetch_indicator_for_geo(ind: dict, geo: str) -> pd.DataFrame:
             unit_fallback=ind.get("units"),
             debug=ind.get("debug", False),
         )
+
+    # ==========================
+    # IMF CPI (SDMX XML — api.imf.org)
+    # ==========================
+    if source in {"imf_cpi", "imf-cpi"}:
+        start_year, end_year = compute_time_window(time_cfg)
+
+        df = fetch_imf_cpi(
+            geo_iso3=to_imf_geo(geo),   # ISO2 → ISO3
+            index_type=ind.get("index_type", "HICP"),
+            coicop=ind.get("coicop", "_T"),
+            transformation=ind.get("transformation", "YOY_PCH_PA_PT"),
+            frequency=ind.get("frequency", "A"),
+            start_year=start_year,
+            end_year=end_year,
+            indicator_name=ind["name"],
+            geo_level=ind.get("geo_level", "country"),
+            unit_fallback=ind.get("units"),
+        )
+        df["geo"] = df["geo"].apply(to_iso2)
+        return df
 
     raise ValueError(f"fetch_indicator_for_geo does not support source: {source}")
 
