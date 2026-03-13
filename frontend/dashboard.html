@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Macro Strategy Engine</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .step-card { transition: all 0.2s ease; }
@@ -29,6 +31,57 @@
 </head>
 <body class="bg-slate-50 min-h-screen font-sans text-slate-800">
 
+<!-- ── Settings Modal ── -->
+<div id="settings-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center">
+  <div class="absolute inset-0 bg-black/40" onclick="closeSettings()"></div>
+  <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-md mx-4 p-6">
+    <div class="flex items-center justify-between mb-5">
+      <h2 class="font-bold text-base">Settings</h2>
+      <button onclick="closeSettings()" class="text-slate-400 hover:text-slate-600">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mistral API Key -->
+    <div class="space-y-3">
+      <div>
+        <label class="block text-sm font-medium mb-1">Mistral API Key</label>
+        <p class="text-xs text-slate-500 mb-2">Required only for AI executive briefings. Never leaves this browser session.</p>
+        <div class="flex gap-2">
+          <input id="mistral-key-input" type="password" placeholder="Paste your key here…"
+                 class="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+          <button onclick="toggleKeyVisibility()" id="eye-btn"
+                  class="px-2 text-slate-400 hover:text-slate-600 border border-slate-300 rounded-lg">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </button>
+        </div>
+        <div id="key-status" class="mt-2 text-xs"></div>
+      </div>
+
+      <div class="flex gap-2 pt-1">
+        <button onclick="saveKey()" class="btn-primary flex-1">Save Key</button>
+        <button onclick="clearKey()" class="btn-secondary">Clear</button>
+      </div>
+    </div>
+
+    <div class="mt-5 pt-4 border-t border-slate-100">
+      <div class="flex items-center justify-between text-xs text-slate-400">
+        <span>API URL</span>
+        <input id="api-url-input" type="text" value="http://localhost:8000"
+               class="border border-slate-200 rounded px-2 py-1 w-48 text-slate-600 text-xs"
+               placeholder="API URL" onchange="setApiBase(this.value)" />
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── Header ── -->
 <header class="bg-white border-b border-slate-200 px-6 py-4 flex items-center gap-3">
   <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
@@ -43,9 +96,15 @@
   </div>
   <div class="ml-auto flex items-center gap-2">
     <span id="api-status" class="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-500">Connecting…</span>
-    <input id="api-url-input" type="text" value="http://localhost:8000"
-           class="text-xs border border-slate-200 rounded px-2 py-1 w-48 text-slate-600"
-           placeholder="API URL" onchange="setApiBase(this.value)" />
+    <span id="ai-key-badge" class="hidden text-xs px-2 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">AI key not set</span>
+    <button onclick="openSettings()"
+            class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-700 transition-colors" title="Settings">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+      </svg>
+    </button>
   </div>
 </header>
 
@@ -57,30 +116,9 @@
     <!-- Injected by JS -->
   </div>
 
-  <!-- ── STEP 1: Profile ── -->
-  <div id="step-1" class="step-card bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-    <h2 class="font-semibold text-base mb-1">1 — Select Profile</h2>
-    <p class="text-sm text-slate-500 mb-4">Choose the data profile: Europe (Eurostat-centric) or World (multi-source).</p>
-    <div class="flex gap-4">
-      <button onclick="selectProfile('europe')" id="btn-europe"
-              class="profile-btn flex-1 border-2 rounded-xl p-4 text-left transition-all hover:border-indigo-400">
-        <div class="font-semibold text-sm mb-1">🇪🇺 Europe</div>
-        <div class="text-xs text-slate-500">Eurostat · Demographics · Tourism · Economics</div>
-      </button>
-      <button onclick="selectProfile('world')" id="btn-world"
-              class="profile-btn flex-1 border-2 rounded-xl p-4 text-left transition-all hover:border-indigo-400">
-        <div class="font-semibold text-sm mb-1">🌍 World</div>
-        <div class="text-xs text-slate-500">IMF · OECD · World Bank · UN · Eurostat</div>
-      </button>
-    </div>
-    <div class="mt-4 flex justify-end">
-      <button onclick="goStep(2)" class="btn-primary" id="next-1" disabled>Next →</button>
-    </div>
-  </div>
-
   <!-- ── STEP 2: Countries ── -->
-  <div id="step-2" class="step-card bg-white rounded-xl border border-slate-200 p-6 shadow-sm opacity-50 pointer-events-none">
-    <h2 class="font-semibold text-base mb-1">2 — Add Countries</h2>
+  <div id="step-2" class="step-card bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+    <h2 class="font-semibold text-base mb-1">1 — Add Countries</h2>
     <p class="text-sm text-slate-500 mb-4">Type country names or codes separated by commas. We'll resolve them to ISO2.</p>
     <div class="flex gap-2">
       <input id="countries-input" type="text" placeholder="e.g. Spain, France, DEU, Italia…"
@@ -91,14 +129,13 @@
     <!-- Resolved tags -->
     <div id="country-tags" class="mt-3 flex flex-wrap gap-2 min-h-6"></div>
     <div class="mt-4 flex justify-between">
-      <button onclick="goStep(1)" class="btn-secondary">← Back</button>
       <button onclick="goStep(3)" class="btn-primary" id="next-2" disabled>Next →</button>
     </div>
   </div>
 
   <!-- ── STEP 3: Frameworks ── -->
   <div id="step-3" class="step-card bg-white rounded-xl border border-slate-200 p-6 shadow-sm opacity-50 pointer-events-none">
-    <h2 class="font-semibold text-base mb-1">3 — Select Frameworks</h2>
+    <h2 class="font-semibold text-base mb-1">2 — Select Frameworks</h2>
     <p class="text-sm text-slate-500 mb-4">Pick one or more analytical frameworks to run.</p>
     <div id="framework-grid" class="grid grid-cols-2 gap-3"></div>
     <!-- Nuts3 sub-input -->
@@ -116,7 +153,7 @@
 
   <!-- ── STEP 4: Options ── -->
   <div id="step-4" class="step-card bg-white rounded-xl border border-slate-200 p-6 shadow-sm opacity-50 pointer-events-none">
-    <h2 class="font-semibold text-base mb-1">4 — Output Options</h2>
+    <h2 class="font-semibold text-base mb-1">3 — Output Options</h2>
     <p class="text-sm text-slate-500 mb-4">Configure AI briefings and output file formats.</p>
 
     <!-- AI Toggle -->
@@ -168,7 +205,7 @@
 
   <!-- ── STEP 5: Summary + Submit ── -->
   <div id="step-5" class="step-card bg-white rounded-xl border border-slate-200 p-6 shadow-sm opacity-50 pointer-events-none">
-    <h2 class="font-semibold text-base mb-4">5 — Review &amp; Run</h2>
+    <h2 class="font-semibold text-base mb-4">4 — Review &amp; Run</h2>
     <div id="summary" class="space-y-3 mb-6"></div>
     <div class="flex justify-between">
       <button onclick="goStep(4)" class="btn-secondary">← Back</button>
@@ -184,7 +221,7 @@
 
   <!-- ── STEP 6: Job Status + Downloads ── -->
   <div id="step-6" class="step-card bg-white rounded-xl border border-slate-200 p-6 shadow-sm opacity-50 pointer-events-none">
-    <h2 class="font-semibold text-base mb-4">6 — Results</h2>
+    <h2 class="font-semibold text-base mb-4">5 — Results</h2>
 
     <!-- Status bar -->
     <div id="job-status-block" class="mb-6">
@@ -240,7 +277,7 @@ function setApiBase(url) { API_BASE = url.replace(/\/$/, ''); checkHealth(); }
 // ─── State ─────────────────────────────────────────────────────────────
 const state = {
   currentStep: 1,
-  profile: null,
+  profile: 'world',
   availableFrameworks: [],
   resolvedCountries: [],   // [{input, iso2, error}]
   selectedFrameworks: [],
@@ -252,11 +289,85 @@ const state = {
 };
 
 // ─── Init ───────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
-  renderStepper();
+window.addEventListener('DOMContentLoaded', async () => {
+  // World is the only profile — initialise silently
+  state.profile = 'world';
+  try {
+    const r = await fetch(`${API_BASE}/api/profiles/world/frameworks`);
+    state.availableFrameworks = await r.json();
+  } catch { state.availableFrameworks = []; }
+  renderFrameworks();
+  goStep(2);          // skip the profile step
   checkHealth();
   recoverLastJob();
+  loadKeyStatus();
 });
+
+async function loadKeyStatus() {
+  try {
+    const r = await fetch(`${API_BASE}/api/settings`);
+    const data = await r.json();
+    updateKeyStatus(data.mistral_key_set);
+  } catch { /* offline, ignore */ }
+}
+
+// ─── Settings modal ──────────────────────────────────────────────────────
+async function openSettings() {
+  document.getElementById('settings-modal').classList.remove('hidden');
+  // Load current status from server
+  try {
+    const r = await fetch(`${API_BASE}/api/settings`);
+    const data = await r.json();
+    updateKeyStatus(data.mistral_key_set);
+  } catch { /* offline */ }
+}
+
+function closeSettings() {
+  document.getElementById('settings-modal').classList.add('hidden');
+  document.getElementById('mistral-key-input').value = '';
+}
+
+function toggleKeyVisibility() {
+  const input = document.getElementById('mistral-key-input');
+  input.type = input.type === 'password' ? 'text' : 'password';
+}
+
+async function saveKey() {
+  const key = document.getElementById('mistral-key-input').value.trim();
+  if (!key) return;
+  try {
+    const r = await fetch(`${API_BASE}/api/settings/mistral-key`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ api_key: key }),
+    });
+    const data = await r.json();
+    if (data.ok) {
+      updateKeyStatus(true);
+      document.getElementById('mistral-key-input').value = '';
+    }
+  } catch (e) {
+    document.getElementById('key-status').textContent = 'Error: ' + e.message;
+  }
+}
+
+async function clearKey() {
+  await fetch(`${API_BASE}/api/settings/mistral-key`, { method: 'DELETE' });
+  updateKeyStatus(false);
+  document.getElementById('mistral-key-input').value = '';
+}
+
+function updateKeyStatus(isSet) {
+  const el = document.getElementById('key-status');
+  const badge = document.getElementById('ai-key-badge');
+  if (isSet) {
+    el.innerHTML = '<span class="text-green-600 font-medium">✓ Key saved for this session</span>';
+    badge.classList.add('hidden');
+  } else {
+    el.innerHTML = '<span class="text-slate-400">No key saved — AI briefings will be disabled</span>';
+    badge.classList.remove('hidden');
+  }
+}
 
 // ─── Health check ───────────────────────────────────────────────────────
 async function checkHealth() {
@@ -274,17 +385,21 @@ async function checkHealth() {
 }
 
 // ─── Stepper ────────────────────────────────────────────────────────────
-const STEP_LABELS = ['Profile','Countries','Frameworks','Options','Review','Results'];
+// Step 1 (Profile) is hidden — world is always selected
+const STEP_LABELS = ['Countries','Frameworks','Options','Review','Results'];
+const STEP_IDS    = [2, 3, 4, 5, 6];  // real DOM step numbers
+
 function renderStepper() {
   const el = document.getElementById('stepper');
   el.innerHTML = STEP_LABELS.map((label, i) => {
-    const n = i + 1;
-    const cls = n < state.currentStep ? 'done' : n === state.currentStep ? 'active' : 'pending';
+    const domN = STEP_IDS[i];
+    const cls = domN < state.currentStep ? 'done' : domN === state.currentStep ? 'active' : 'pending';
+    const display = domN < state.currentStep ? '✓' : i + 1;
     return `
       ${i > 0 ? '<div class="flex-1 h-px bg-slate-200 mt-4"></div>' : ''}
       <div class="flex flex-col items-center gap-1">
-        <div class="step-number ${cls}">${n < state.currentStep ? '✓' : n}</div>
-        <span class="text-xs ${n <= state.currentStep ? 'text-indigo-600 font-medium' : 'text-slate-400'}">${label}</span>
+        <div class="step-number ${cls}">${display}</div>
+        <span class="text-xs ${domN <= state.currentStep ? 'text-indigo-600 font-medium' : 'text-slate-400'}">${label}</span>
       </div>`;
   }).join('');
 }
@@ -649,7 +764,7 @@ function resetAll() {
   clearInterval(state.pollingTimer);
   sessionStorage.removeItem('lastJobId');
   Object.assign(state, {
-    currentStep: 1, profile: null, availableFrameworks: [],
+    currentStep: 2, profile: 'world', availableFrameworks: state.availableFrameworks,
     resolvedCountries: [], selectedFrameworks: [], nuts3Codes: [],
     enableAi: false, outputFlags: { csv: false, excel_by_indicator: false, single_sheet: true },
     jobId: null, pollingTimer: null,
@@ -663,7 +778,6 @@ function resetAll() {
   document.getElementById('out-excel-ind').checked = false;
   document.getElementById('files-block').classList.add('hidden');
   document.getElementById('error-block').classList.add('hidden');
-  document.getElementById('next-1').disabled = true;
   document.getElementById('next-2').disabled = true;
   document.getElementById('next-3').disabled = true;
   document.getElementById('run-btn').disabled = false;
@@ -673,11 +787,8 @@ function resetAll() {
             d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
     </svg>Run Analysis`;
-  document.querySelectorAll('.profile-btn').forEach(b => {
-    b.classList.remove('border-indigo-600', 'bg-indigo-50');
-    b.classList.add('border-slate-200');
-  });
-  goStep(1);
+  renderFrameworks();
+  goStep(2);
 }
 </script>
 </body>

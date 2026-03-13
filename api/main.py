@@ -22,7 +22,7 @@ if str(_REPO_ROOT) not in sys.path:
 
 load_dotenv(_REPO_ROOT / ".env")
 
-from api.routers import countries, jobs, profiles  # noqa: E402
+from api.routers import countries, jobs, profiles, settings  # noqa: E402
 
 app = FastAPI(
     title="Macro Strategy Engine API",
@@ -40,6 +40,7 @@ app.add_middleware(
 app.include_router(profiles.router, prefix="/api")
 app.include_router(jobs.router, prefix="/api")
 app.include_router(countries.router, prefix="/api")
+app.include_router(settings.router, prefix="/api")
 
 
 @app.get("/api/health", tags=["health"])
@@ -47,11 +48,24 @@ def health():
     return {"status": "ok"}
 
 
-# ── Serve frontend dashboard ──
+# ── Serve frontend ──
 _FRONTEND = _REPO_ROOT / "frontend"
-app.mount("/static", StaticFiles(directory=str(_FRONTEND)), name="static")
 
-
+# These routes must be declared BEFORE app.mount() so they take precedence
 @app.get("/", include_in_schema=False)
 def dashboard():
     return FileResponse(str(_FRONTEND / "dashboard.html"))
+
+
+@app.get("/v2", include_in_schema=False)
+def dashboard_v2():
+    return FileResponse(str(_FRONTEND / "dashboard_v2.html"))
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    return FileResponse(str(_FRONTEND / "favicon.ico"), media_type="image/x-icon")
+
+
+# Static mount last — serves /static/* (js, css, other assets)
+app.mount("/static", StaticFiles(directory=str(_FRONTEND)), name="static")

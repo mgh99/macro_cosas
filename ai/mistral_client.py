@@ -42,20 +42,7 @@ from mistralai import Mistral
 
 load_dotenv()
 
-MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
 MISTRAL_MODEL = os.getenv("MISTRAL_MODEL", "mistral-large-latest")
-
-
-if not MISTRAL_API_KEY:
-    raise ValueError("Missing MISTRAL_API_KEY in .env")
-
-
-# ------------------------------------------------------------
-# Client initialization
-# ------------------------------------------------------------
-
-client = Mistral(api_key=MISTRAL_API_KEY)
-
 
 # ------------------------------------------------------------
 # Config
@@ -63,6 +50,22 @@ client = Mistral(api_key=MISTRAL_API_KEY)
 
 MAX_RETRIES = 4
 TEMPERATURE = 0.2
+
+# Client is created lazily so the key can be injected at runtime
+# (e.g. via the API settings endpoint) without requiring a restart.
+_client: "Mistral | None" = None
+
+
+def _get_client() -> "Mistral":
+    global _client
+    key = os.getenv("MISTRAL_API_KEY")
+    if not key:
+        raise ValueError("Missing MISTRAL_API_KEY — set it in .env or via the API settings endpoint.")
+    # Re-create client if the key changed
+    if _client is None or getattr(_client, "_api_key", None) != key:
+        _client = Mistral(api_key=key)
+        _client._api_key = key  # store for comparison
+    return _client
 
 
 # ------------------------------------------------------------
@@ -91,7 +94,7 @@ def generate_text(prompt: str) -> str:
     # 0s → ~1s → ~2s → ~4s (+ jitter)
     for attempt in range(MAX_RETRIES):
         try:
-            response = client.chat.complete(
+            response = _get_client().chat.complete(
                 model=MISTRAL_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=TEMPERATURE,
