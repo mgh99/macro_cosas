@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macro Strategy Engine</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --accent: #10b981;
+      --accent-dim: #059669;
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface2: #1f2937;
+      --border: #1f2937;
+      --border2: #374151;
+      --text: #f9fafb;
+      --muted: #6b7280;
+    }
+    * { box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; }
+
+    /* Sidebar */
+    .sidebar { background: var(--surface); border-right: 1px solid var(--border2); }
+    .nav-step { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 10px;
+                cursor: default; transition: background 0.15s; }
+    .nav-step.clickable { cursor: pointer; }
+    .nav-step.clickable:hover { background: var(--surface2); }
+    .nav-step.active .step-dot { background: var(--accent); box-shadow: 0 0 0 3px rgba(16,185,129,0.25); }
+    .nav-step.done   .step-dot { background: var(--accent); }
+    .nav-step.pending .step-dot { background: var(--border2); }
+    .step-dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center;
+                justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; transition: all 0.2s; }
+    .nav-step.active  .step-label { color: var(--accent); font-weight: 600; }
+    .nav-step.done    .step-label { color: #d1fae5; }
+    .nav-step.pending .step-label { color: var(--muted); }
+    .step-connector { width: 1px; height: 20px; background: var(--border2); margin: 2px 0 2px 27px; }
+
+    /* Cards */
+    .card { background: var(--surface); border: 1px solid var(--border2); border-radius: 16px; padding: 28px; }
+    .card-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .card-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+
+    /* Profile buttons */
+    .profile-btn { border: 1px solid var(--border2); background: var(--surface2); border-radius: 12px;
+                   padding: 16px; cursor: pointer; transition: all 0.15s; text-align: left; }
+    .profile-btn:hover { border-color: var(--accent); }
+    .profile-btn.selected { border-color: var(--accent); background: rgba(16,185,129,0.08); }
+
+    /* Framework cards */
+    .fw-card { border: 1px solid var(--border2); background: var(--surface2); border-radius: 12px;
+               padding: 16px; cursor: pointer; transition: all 0.15s; user-select: none; }
+    .fw-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .fw-card.selected { border-color: var(--accent); background: rgba(16,185,129,0.08); }
+
+    /* Inputs */
+    .input { background: var(--surface2); border: 1px solid var(--border2); border-radius: 10px;
+             padding: 9px 14px; font-size: 13px; color: var(--text); width: 100%;
+             transition: border-color 0.15s; outline: none; }
+    .input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(16,185,129,0.15); }
+    .input::placeholder { color: var(--muted); }
+
+    /* Buttons */
+    .btn-primary { background: var(--accent); color: #fff; border-radius: 10px;
+                   padding: 9px 18px; font-size: 13px; font-weight: 600; cursor: pointer;
+                   border: none; transition: background 0.15s; }
+    .btn-primary:hover:not(:disabled) { background: var(--accent-dim); }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border2);
+                 border-radius: 10px; padding: 9px 18px; font-size: 13px; font-weight: 500;
+                 cursor: pointer; transition: all 0.15s; }
+    .btn-ghost:hover { color: var(--text); border-color: var(--border2); background: var(--surface2); }
+    .btn-run { background: var(--accent); color: #fff; border-radius: 10px; padding: 11px 24px;
+               font-size: 14px; font-weight: 700; cursor: pointer; border: none;
+               transition: background 0.15s; display: flex; align-items: center; gap: 8px; }
+    .btn-run:hover:not(:disabled) { background: var(--accent-dim); }
+    .btn-run:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* Badges */
+    .badge-ok  { background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3);
+                 font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
+    .badge-err { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3);
+                 font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
+
+    /* Checkboxes & toggles */
+    input[type=checkbox] { accent-color: var(--accent); width: 15px; height: 15px; }
+
+    /* Toggle switch */
+    .toggle-wrap { position: relative; display: inline-flex; align-items: center; cursor: pointer; }
+    .toggle-wrap input { position: absolute; opacity: 0; width: 0; }
+    .toggle-track { width: 42px; height: 24px; background: var(--border2); border-radius: 12px; transition: background 0.2s; }
+    .toggle-wrap input:checked + .toggle-track { background: var(--accent); }
+    .toggle-thumb { position: absolute; left: 3px; width: 18px; height: 18px; background: white;
+                    border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+    .toggle-wrap input:checked ~ .toggle-thumb { transform: translateX(18px); }
+
+    /* Progress bar */
+    .progress-track { background: var(--surface2); border-radius: 99px; height: 6px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 99px; transition: width 0.6s ease, background 0.3s; }
+
+    /* Spinner */
+    .spin { animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Step panels */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--surface); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+    /* File row */
+    .file-row { background: var(--surface2); border: 1px solid var(--border2); border-radius: 10px;
+                padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .file-row:hover .dl-btn { opacity: 1; }
+    .dl-btn { opacity: 0.6; transition: opacity 0.15s; background: rgba(16,185,129,0.15);
+              color: #6ee7b7; border: none; border-radius: 8px; padding: 5px 12px;
+              font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+    .dl-btn:hover { background: rgba(16,185,129,0.25); opacity: 1; }
+
+    /* Summary rows */
+    .summary-row { display: flex; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--border2); font-size: 13px; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-label { color: var(--muted); width: 120px; flex-shrink: 0; }
+
+    /* Settings modal */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 50;
+                     display: flex; align-items: center; justify-content: center; }
+    .modal-box { background: var(--surface); border: 1px solid var(--border2); border-radius: 20px;
+                 padding: 28px; width: 100%; max-width: 420px; margin: 0 16px; }
+  </style>
+</head>
+<body>
+
+<!-- ── Settings Modal ── -->
+<div id="settings-modal" class="modal-overlay" style="display:none;">
+  <div class="modal-box">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <span style="font-weight:700;font-size:15px;">⚙ Settings</span>
+      <button onclick="closeSettings()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;line-height:1;">×</button>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Mistral API Key</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Required for AI executive briefings. Stored in session only.</div>
+      <div style="display:flex;gap:8px;">
+        <input id="mistral-key-input" type="password" placeholder="Paste your key…" class="input" style="font-family:monospace;font-size:12px;" />
+        <button onclick="toggleKeyVisibility()" style="background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:0 10px;cursor:pointer;color:var(--muted);">
+          <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          </svg>
+        </button>
+      </div>
+      <div id="key-status" style="margin-top:8px;font-size:12px;"></div>
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <button onclick="saveKey()" class="btn-primary" style="flex:1;">Save Key</button>
+        <button onclick="clearKey()" class="btn-ghost">Clear</button>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--border2);padding-top:16px;">
+      <div style="font-size:12px;color:var(--muted);margin-bottom:6px;">API URL</div>
+      <input id="api-url-input" type="text" value="http://localhost:8000" class="input"
+             style="font-size:12px;" placeholder="http://localhost:8000" onchange="setApiBase(this.value)" />
+    </div>
+  </div>
+</div>
+
+<!-- ── App Shell ── -->
+<div style="display:flex;height:100vh;overflow:hidden;">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" style="width:220px;flex-shrink:0;display:flex;flex-direction:column;padding:20px 12px;">
+    <!-- Logo -->
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 8px 24px;">
+      <div style="width:34px;height:34px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg style="width:18px;height:18px;color:white;" fill="none" stroke="white" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+        </svg>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;line-height:1.2;">Macro Engine</div>
+        <div style="font-size:10px;color:var(--muted);">Strategy Platform</div>
+      </div>
+    </div>
+
+    <!-- Nav steps -->
+    <nav id="sidebar-nav" style="flex:1;"></nav>
+
+    <!-- Bottom bar -->
+    <div style="padding-top:16px;border-top:1px solid var(--border2);">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <span id="api-status" style="font-size:11px;padding:3px 8px;border-radius:20px;background:var(--surface2);color:var(--muted);">Connecting…</span>
+        <button onclick="openSettings()" style="background:none;border:none;cursor:pointer;color:var(--muted);padding:4px;" title="Settings">
+          <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </button>
+      </div>
+      <div id="ai-key-badge" style="display:none;font-size:11px;color:#fbbf24;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.2);border-radius:8px;padding:5px 8px;text-align:center;">
+        ⚠ AI key not set
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main style="flex:1;overflow-y:auto;padding:32px 40px;">
+
+    <!-- ── STEP 1: Profile ── -->
+    <div id="step-1" class="step-panel">
+      <div style="margin-bottom:28px;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:4px;">Select a profile</div>
+        <div style="font-size:13px;color:var(--muted);">Choose the data coverage for your analysis.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:560px;">
+        <button onclick="selectProfile('europe')" id="btn-europe" class="profile-btn">
+          <div style="font-size:28px;margin-bottom:8px;">🇪🇺</div>
+          <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Europe</div>
+          <div style="font-size:12px;color:var(--muted);">Eurostat · Demographics · Tourism · Economics</div>
+        </button>
+        <button onclick="selectProfile('world')" id="btn-world" class="profile-btn">
+          <div style="font-size:28px;margin-bottom:8px;">🌍</div>
+          <div style="font-weight:700;font-size:14px;margin-bottom:4px;">World</div>
+          <div style="font-size:12px;color:var(--muted);">IMF · OECD · World Bank · UN · Eurostat</div>
+        </button>
+      </div>
+      <div style="margin-top:24px;">
+        <button onclick="goStep(2)" class="btn-primary" id="next-1" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: Countries ── -->
+    <div id="step-2" class="step-panel">
+      <div style="margin-bottom:28px;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:4px;">Add countries</div>
+        <div style="font-size:13px;color:var(--muted);">Enter names or codes separated by commas. We resolve them to ISO2 automatically.</div>
+      </div>
+      <div style="max-width:560px;">
+        <div style="display:flex;gap:8px;margin-bottom:12px;">
+          <input id="countries-input" type="text" class="input"
+                 placeholder="e.g. Spain, France, DEU, Italia…"
+                 onkeydown="if(event.key==='Enter') validateCountries()" />
+          <button onclick="validateCountries()" class="btn-primary" id="validate-btn" style="white-space:nowrap;">Validate</button>
+        </div>
+        <div id="country-tags" style="display:flex;flex-wrap:wrap;gap:8px;min-height:24px;"></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:24px;">
+        <button onclick="goStep(3)" class="btn-primary" id="next-2" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: Frameworks ── -->
+    <div id="step-3" class="step-panel">
+      <div style="margin-bottom:28px;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:4px;">Select frameworks</div>
+        <div style="font-size:13px;color:var(--muted);">Pick one or more analytical frameworks to include in the run.</div>
+      </div>
+      <div id="framework-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px;"></div>
+      <div id="nuts3-input-block" style="display:none;margin-top:16px;max-width:560px;background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:12px;padding:16px;">
+        <div style="font-size:13px;font-weight:600;color:#fbbf24;margin-bottom:4px;">NUTS3 Region Codes</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Enter specific EU region codes e.g. ES300, FR101</div>
+        <input id="nuts3-input" type="text" class="input" placeholder="ES300, FR101…" />
+      </div>
+      <div style="display:flex;gap:8px;margin-top:24px;">
+        <button onclick="goStep(2)" class="btn-ghost">← Back</button>
+        <button onclick="goStep(4)" class="btn-primary" id="next-3" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 4: Options ── -->
+    <div id="step-4" class="step-panel">
+      <div style="margin-bottom:28px;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:4px;">Output options</div>
+        <div style="font-size:13px;color:var(--muted);">Configure AI briefings and output file formats.</div>
+      </div>
+      <div style="max-width:560px;display:flex;flex-direction:column;gap:12px;">
+
+        <!-- AI toggle -->
+        <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+          <div>
+            <div style="font-size:13px;font-weight:600;margin-bottom:2px;">AI Executive Briefings</div>
+            <div style="font-size:12px;color:var(--muted);">Mistral LLM narratives per country/framework. Requires API key.</div>
+          </div>
+          <label class="toggle-wrap">
+            <input type="checkbox" id="ai-toggle" onchange="state.enableAi=this.checked" />
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </label>
+        </div>
+
+        <!-- Output formats -->
+        <div class="card">
+          <div style="font-size:13px;font-weight:600;margin-bottom:14px;">Output Files</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+              <input type="checkbox" id="out-single-sheet" checked onchange="state.outputFlags.single_sheet=this.checked" style="margin-top:2px;" />
+              <div>
+                <div style="font-size:13px;font-weight:500;">Single-sheet Excel workbook
+                  <span style="font-size:11px;color:var(--accent);font-weight:400;margin-left:6px;">recommended</span>
+                </div>
+                <div style="font-size:12px;color:var(--muted);">All frameworks in one .xlsx, nicely formatted for humans.</div>
+              </div>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+              <input type="checkbox" id="out-csv" onchange="state.outputFlags.csv=this.checked" style="margin-top:2px;" />
+              <div>
+                <div style="font-size:13px;font-weight:500;">Long-format CSV per framework</div>
+                <div style="font-size:12px;color:var(--muted);">Raw data: geo, indicator, date, value, unit. Great for further analysis.</div>
+              </div>
+            </label>
+            <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+              <input type="checkbox" id="out-excel-ind" onchange="state.outputFlags.excel_by_indicator=this.checked" style="margin-top:2px;" />
+              <div>
+                <div style="font-size:13px;font-weight:500;">Excel by indicator (one sheet each)</div>
+                <div style="font-size:12px;color:var(--muted);">One .xlsx per framework with a tab per indicator. Slower.</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:24px;">
+        <button onclick="goStep(3)" class="btn-ghost">← Back</button>
+        <button onclick="goStep(5)" class="btn-primary">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 5: Review ── -->
+    <div id="step-5" class="step-panel">
+      <div style="margin-bottom:28px;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:4px;">Review & run</div>
+        <div style="font-size:13px;color:var(--muted);">Confirm your configuration before launching the analysis.</div>
+      </div>
+      <div class="card" style="max-width:560px;margin-bottom:20px;">
+        <div id="summary"></div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button onclick="goStep(4)" class="btn-ghost">← Back</button>
+        <button onclick="submitJob()" class="btn-run" id="run-btn">
+          <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          Run Analysis
+        </button>
+        <span id="submit-error" style="font-size:12px;color:#f87171;"></span>
+      </div>
+    </div>
+
+    <!-- ── STEP 6: Results ── -->
+    <div id="step-6" class="step-panel">
+      <div style="margin-bottom:28px;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:4px;">Results</div>
+        <div id="job-id-display" style="font-size:11px;color:var(--muted);font-family:monospace;"></div>
+      </div>
+
+      <!-- Status card -->
+      <div class="card" style="max-width:600px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+          <div id="status-icon"></div>
+          <div>
+            <div id="status-label" style="font-size:14px;font-weight:700;"></div>
+            <div id="status-sub" style="font-size:12px;color:var(--muted);"></div>
+          </div>
+        </div>
+        <div class="progress-track">
+          <div id="progress-bar" class="progress-fill" style="width:0%;background:var(--accent);"></div>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div id="error-block" style="display:none;max-width:600px;margin-bottom:16px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:12px;padding:16px;">
+        <div id="error-title" style="font-size:13px;font-weight:600;color:#f87171;margin-bottom:8px;">Error details</div>
+        <pre id="error-text" style="font-size:11px;color:#fca5a5;white-space:pre-wrap;overflow:auto;max-height:200px;"></pre>
+      </div>
+
+      <!-- Files -->
+      <div id="files-block" style="display:none;max-width:600px;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;">Generated Files</div>
+        <div id="file-list" style="display:flex;flex-direction:column;gap:8px;"></div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <button onclick="resetAll()" class="btn-ghost">← New Analysis</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ─── Config ──────────────────────────────────────────────────────────────
+let API_BASE = 'http://localhost:8000';
+function setApiBase(url) { API_BASE = url.replace(/\/$/, ''); checkHealth(); }
+
+// ─── State ───────────────────────────────────────────────────────────────
+const state = {
+  currentStep: 1,
+  profile: 'world',
+  availableFrameworks: [],
+  resolvedCountries: [],
+  selectedFrameworks: [],
+  nuts3Codes: [],
+  enableAi: false,
+  outputFlags: { csv: false, excel_by_indicator: false, single_sheet: true },
+  jobId: null,
+  pollingTimer: null,
+};
+
+// Step 1 (Profile) is hidden — world is always selected
+const STEP_LABELS = ['Countries', 'Frameworks', 'Options', 'Review', 'Results'];
+const STEP_IDS    = [2, 3, 4, 5, 6];
+
+// ─── Init ────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', async () => {
+  // World is the only profile — initialise silently
+  state.profile = 'world';
+  try {
+    const r = await fetch(`${API_BASE}/api/profiles/world/frameworks`);
+    state.availableFrameworks = await r.json();
+  } catch { state.availableFrameworks = []; }
+  renderFrameworks();
+  renderNav();
+  showStep(2);        // skip the profile step
+  checkHealth();
+  recoverLastJob();
+  loadKeyStatus();
+});
+
+// ─── Sidebar nav ─────────────────────────────────────────────────────────
+function renderNav() {
+  const nav = document.getElementById('sidebar-nav');
+  nav.innerHTML = STEP_LABELS.map((label, i) => {
+    const domN = STEP_IDS[i];
+    const cls = domN < state.currentStep ? 'done' : domN === state.currentStep ? 'active' : 'pending';
+    const icon = domN < state.currentStep ? '✓' : i + 1;
+    const canClick = domN < state.currentStep && state.currentStep < 6;
+    return `
+      ${i > 0 ? '<div class="step-connector"></div>' : ''}
+      <div class="nav-step ${cls} ${canClick ? 'clickable' : ''}" ${canClick ? `onclick="goStep(${domN})"` : ''}>
+        <div class="step-dot" style="${cls==='active'||cls==='done'?'color:white;':'color:var(--muted);'}">${icon}</div>
+        <span class="step-label" style="font-size:13px;">${label}</span>
+      </div>`;
+  }).join('');
+}
+
+function showStep(n) {
+  STEP_IDS.forEach(domN => {
+    const el = document.getElementById(`step-${domN}`);
+    if (el) el.classList.toggle('active', domN === n);
+  });
+}
+
+function goStep(n) {
+  if (n === 3 && !state.resolvedCountries.some(c => c.iso2)) return;
+  if (n === 5) renderSummary();
+  state.currentStep = n;
+  renderNav();
+  showStep(n);
+  document.querySelector('main')?.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── Health check ────────────────────────────────────────────────────────
+async function checkHealth() {
+  const el = document.getElementById('api-status');
+  try {
+    const r = await fetch(`${API_BASE}/api/health`);
+    if (r.ok) {
+      el.textContent = '● Online';
+      el.style.cssText = 'font-size:11px;padding:3px 8px;border-radius:20px;background:rgba(16,185,129,0.15);color:#6ee7b7;';
+    } else throw new Error();
+  } catch {
+    el.textContent = '● Offline';
+    el.style.cssText = 'font-size:11px;padding:3px 8px;border-radius:20px;background:rgba(239,68,68,0.15);color:#f87171;';
+  }
+}
+
+// ─── Settings modal ───────────────────────────────────────────────────────
+async function openSettings() {
+  document.getElementById('settings-modal').style.display = 'flex';
+  try {
+    const r = await fetch(`${API_BASE}/api/settings`);
+    updateKeyStatus((await r.json()).mistral_key_set);
+  } catch {}
+}
+
+function closeSettings() {
+  document.getElementById('settings-modal').style.display = 'none';
+  document.getElementById('mistral-key-input').value = '';
+}
+
+function toggleKeyVisibility() {
+  const i = document.getElementById('mistral-key-input');
+  i.type = i.type === 'password' ? 'text' : 'password';
+}
+
+async function saveKey() {
+  const key = document.getElementById('mistral-key-input').value.trim();
+  if (!key) return;
+  const r = await fetch(`${API_BASE}/api/settings/mistral-key`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ api_key: key }),
+  });
+  if ((await r.json()).ok) { updateKeyStatus(true); document.getElementById('mistral-key-input').value = ''; }
+}
+
+async function clearKey() {
+  await fetch(`${API_BASE}/api/settings/mistral-key`, { method: 'DELETE' });
+  updateKeyStatus(false);
+  document.getElementById('mistral-key-input').value = '';
+}
+
+function updateKeyStatus(isSet) {
+  const el = document.getElementById('key-status');
+  const badge = document.getElementById('ai-key-badge');
+  el.innerHTML = isSet
+    ? '<span style="color:#6ee7b7;">✓ Key saved for this session</span>'
+    : '<span style="color:var(--muted);">No key saved — AI briefings will be disabled</span>';
+  badge.style.display = isSet ? 'none' : 'block';
+}
+
+async function loadKeyStatus() {
+  try { updateKeyStatus((await (await fetch(`${API_BASE}/api/settings`)).json()).mistral_key_set); } catch {}
+}
+
+// ─── Step 1: Profile ─────────────────────────────────────────────────────
+async function selectProfile(p) {
+  state.profile = p;
+  state.selectedFrameworks = [];
+  ['europe','world'].forEach(id => {
+    const b = document.getElementById(`btn-${id}`);
+    b.classList.toggle('selected', id === p);
+  });
+  document.getElementById('next-1').disabled = false;
+  try {
+    const r = await fetch(`${API_BASE}/api/profiles/${p}/frameworks`);
+    state.availableFrameworks = await r.json();
+  } catch { state.availableFrameworks = []; }
+  renderFrameworks();
+}
+
+// ─── Step 2: Countries ───────────────────────────────────────────────────
+async function validateCountries() {
+  const raw = document.getElementById('countries-input').value;
+  if (!raw.trim()) return;
+  const countries = raw.split(',').map(s => s.trim()).filter(Boolean);
+  const btn = document.getElementById('validate-btn');
+  btn.textContent = '…'; btn.disabled = true;
+  try {
+    const r = await fetch(`${API_BASE}/api/resolve-countries`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ profile: state.profile, countries }),
+    });
+    const data = await r.json();
+    state.resolvedCountries = countries.map(c => ({
+      input: c, iso2: data.resolved[c] || null, error: data.errors[c] || null,
+    }));
+  } catch {
+    state.resolvedCountries = countries.map(c => ({ input: c, iso2: null, error: 'API error' }));
+  }
+  btn.textContent = 'Validate'; btn.disabled = false;
+  renderCountryTags();
+  document.getElementById('next-2').disabled = !state.resolvedCountries.some(c => c.iso2);
+}
+
+function renderCountryTags() {
+  document.getElementById('country-tags').innerHTML = state.resolvedCountries.map(c =>
+    c.iso2
+      ? `<span class="badge-ok">${c.input} → ${c.iso2}</span>`
+      : `<span class="badge-err" title="${c.error}">${c.input} ✗</span>`
+  ).join('');
+}
+
+// ─── Step 3: Frameworks ──────────────────────────────────────────────────
+const FW_META = {
+  economics:    { icon: '📈', desc: 'GDP, CPI, Consumer Confidence, Unemployment' },
+  demographics: { icon: '👥', desc: 'Population, Age Structure, Fertility, Life Expectancy' },
+  tourism:      { icon: '✈️', desc: 'International Arrivals, Nights Spent, Top Origins' },
+  nuts3:        { icon: '🗺️', desc: 'Sub-national EU regional data (needs NUTS3 codes)' },
+};
+
+function renderFrameworks() {
+  const grid = document.getElementById('framework-grid');
+  if (!state.availableFrameworks.length) { grid.innerHTML = ''; return; }
+  const allSel = state.selectedFrameworks.length === state.availableFrameworks.length;
+  grid.innerHTML =
+    `<div class="fw-card ${allSel ? 'selected' : ''}" style="grid-column:span 2;" onclick="toggleAllFrameworks()">
+       <div style="display:flex;align-items:center;justify-content:space-between;">
+         <div style="display:flex;align-items:center;gap:10px;">
+           <span style="font-size:20px;">⚡</span>
+           <div><div style="font-size:13px;font-weight:700;">All Frameworks</div>
+                <div style="font-size:11px;color:var(--muted);">Run everything available</div></div>
+         </div>
+         <div>${allSel ? checkmark() : ''}</div>
+       </div>
+     </div>` +
+    state.availableFrameworks.map(fw => {
+      const m = FW_META[fw.key] || { icon: '📊', desc: '' };
+      const sel = state.selectedFrameworks.includes(fw.key);
+      return `<div class="fw-card ${sel ? 'selected' : ''}" onclick="toggleFramework('${fw.key}')">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+          <span style="font-size:22px;">${m.icon}</span>
+          <div>${sel ? checkmark() : ''}</div>
+        </div>
+        <div style="font-size:13px;font-weight:700;text-transform:capitalize;margin-bottom:4px;">${fw.key}</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">${m.desc}</div>
+        <div style="font-size:11px;color:var(--accent);">${fw.indicator_count} indicators</div>
+      </div>`;
+    }).join('');
+}
+
+function checkmark() {
+  return `<svg style="width:16px;height:16px;color:var(--accent);" fill="currentColor" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+  </svg>`;
+}
+
+function toggleFramework(key) {
+  state.selectedFrameworks = state.selectedFrameworks.includes(key)
+    ? state.selectedFrameworks.filter(k => k !== key)
+    : [...state.selectedFrameworks, key];
+  document.getElementById('next-3').disabled = state.selectedFrameworks.length === 0;
+  document.getElementById('nuts3-input-block').style.display =
+    state.selectedFrameworks.includes('nuts3') ? 'block' : 'none';
+  renderFrameworks();
+}
+
+function toggleAllFrameworks() {
+  state.selectedFrameworks = state.selectedFrameworks.length === state.availableFrameworks.length
+    ? [] : state.availableFrameworks.map(f => f.key);
+  document.getElementById('next-3').disabled = state.selectedFrameworks.length === 0;
+  document.getElementById('nuts3-input-block').style.display =
+    state.selectedFrameworks.includes('nuts3') ? 'block' : 'none';
+  renderFrameworks();
+}
+
+// ─── Step 5: Summary ─────────────────────────────────────────────────────
+function renderSummary() {
+  if (state.selectedFrameworks.includes('nuts3')) {
+    state.nuts3Codes = document.getElementById('nuts3-input').value.split(',').map(s => s.trim()).filter(Boolean);
+  }
+  const countries = state.resolvedCountries.filter(c => c.iso2);
+  const formats = [
+    state.outputFlags.single_sheet && 'Single-sheet Excel',
+    state.outputFlags.csv && 'CSV per framework',
+    state.outputFlags.excel_by_indicator && 'Excel by indicator',
+  ].filter(Boolean);
+
+  const row = (label, val) =>
+    `<div class="summary-row"><span class="summary-label">${label}</span><span>${val}</span></div>`;
+
+  document.getElementById('summary').innerHTML =
+    row('Profile', `<span style="text-transform:capitalize;font-weight:600;">${state.profile}</span>`) +
+    row('Countries', countries.map(c => `<span class="badge-ok">${c.input} → ${c.iso2}</span>`).join(' ')) +
+    row('Frameworks', state.selectedFrameworks.map(f =>
+      `<span style="background:rgba(16,185,129,0.12);color:#6ee7b7;font-size:11px;padding:2px 8px;border-radius:20px;text-transform:capitalize;">${f}</span>`).join(' ')) +
+    (state.nuts3Codes.length ? row('NUTS3', state.nuts3Codes.join(', ')) : '') +
+    row('AI Briefings', state.enableAi
+      ? '<span style="color:#6ee7b7;font-weight:600;">Enabled</span>'
+      : '<span style="color:var(--muted);">Disabled</span>') +
+    row('Output', formats.length ? formats.join(', ') : '<span style="color:#fbbf24;">None selected</span>');
+}
+
+// ─── Job submission ───────────────────────────────────────────────────────
+async function submitJob() {
+  const btn = document.getElementById('run-btn');
+  const errEl = document.getElementById('submit-error');
+  btn.disabled = true;
+  btn.innerHTML = `<svg class="spin" style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.2"/><path d="M12 2a10 10 0 0110 10" stroke-linecap="round"/></svg> Submitting…`;
+  errEl.textContent = '';
+
+  let jobId = null;
+  try {
+    const r = await fetch(`${API_BASE}/api/jobs`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        profile: state.profile,
+        geos: state.resolvedCountries.filter(c => c.iso2).map(c => c.iso2),
+        nuts3_geos: state.nuts3Codes.length ? state.nuts3Codes : null,
+        frameworks: state.selectedFrameworks,
+        enable_ai: state.enableAi,
+        output_flags: state.outputFlags,
+      }),
+    });
+    if (!r.ok) { const e = await r.json(); throw new Error(JSON.stringify(e.detail || e)); }
+    jobId = (await r.json()).job_id;
+  } catch (e) {
+    btn.disabled = false;
+    btn.innerHTML = `<svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Run Analysis`;
+    errEl.textContent = 'Error: ' + e.message;
+    return;
+  }
+
+  state.jobId = jobId;
+  sessionStorage.setItem('lastJobId', jobId);
+  goStep(6);
+  document.getElementById('job-id-display').textContent = `Job ID: ${jobId}`;
+  startPolling();
+}
+
+// ─── Polling ─────────────────────────────────────────────────────────────
+async function recoverLastJob() {
+  const savedId = sessionStorage.getItem('lastJobId');
+  if (!savedId) return;
+  try {
+    const r = await fetch(`${API_BASE}/api/jobs/${savedId}`);
+    if (!r.ok) { sessionStorage.removeItem('lastJobId'); return; }
+    const job = await r.json();
+    if (['pending','running','completed','failed'].includes(job.status)) {
+      state.jobId = savedId;
+      goStep(6);
+      document.getElementById('job-id-display').textContent = `Job ID: ${savedId} (recovered)`;
+      updateJobUI(job);
+      if (job.status === 'completed' || job.status === 'failed') loadFiles();
+      else startPolling();
+    }
+  } catch {}
+}
+
+function startPolling() {
+  updateJobUI({ status: 'pending' });
+  state.pollingTimer = setInterval(pollJob, 3000);
+}
+
+async function pollJob() {
+  if (!state.jobId) return;
+  try {
+    const r = await fetch(`${API_BASE}/api/jobs/${state.jobId}`);
+    if (!r.ok) { console.warn('Poll', r.status); return; }
+    const job = await r.json();
+    try { updateJobUI(job); } catch(e) { console.error('updateJobUI:', e); }
+    if (job.status === 'completed' || job.status === 'failed') {
+      clearInterval(state.pollingTimer);
+      loadFiles();
+    }
+  } catch(e) { console.warn('Poll fetch:', e.message); }
+}
+
+function updateJobUI(job) {
+  const cfg = {
+    pending:   { pct: '8%',   color: 'var(--muted)',   label: 'Queued',      sub: 'Waiting to start…' },
+    running:   { pct: '55%',  color: 'var(--accent)',  label: 'Running',     sub: 'Fetching data from APIs — this may take a few minutes.' },
+    completed: { pct: '100%', color: '#10b981',        label: 'Completed ✓', sub: 'All done! Your files are ready.' },
+    failed:    { pct: '100%', color: '#ef4444',        label: 'Failed ✗',   sub: 'An error occurred. Check details below.' },
+  }[job.status] || { pct: '8%', color: 'var(--muted)', label: 'Queued', sub: '' };
+
+  document.getElementById('progress-bar').style.cssText = `width:${cfg.pct};background:${cfg.color};`;
+  document.getElementById('status-label').textContent = cfg.label;
+  document.getElementById('status-sub').textContent = cfg.sub;
+
+  const spinSVG = `<svg class="spin" style="width:22px;height:22px;color:var(--accent);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.15"/><path d="M12 2a10 10 0 0110 10" stroke-linecap="round"/></svg>`;
+  const okSVG   = `<svg style="width:22px;height:22px;color:#10b981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>`;
+  const errSVG  = `<svg style="width:22px;height:22px;color:#ef4444;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>`;
+  document.getElementById('status-icon').innerHTML =
+    job.status === 'completed' ? okSVG : job.status === 'failed' ? errSVG : spinSVG;
+
+  if (job.error) {
+    const eb = document.getElementById('error-block');
+    eb.style.display = 'block';
+    document.getElementById('error-title').textContent =
+      'Error — any files written before the crash are still available below';
+    document.getElementById('error-text').textContent = job.error;
+  }
+}
+
+async function loadFiles() {
+  const r = await fetch(`${API_BASE}/api/jobs/${state.jobId}/files`);
+  const files = await r.json();
+  const block = document.getElementById('files-block');
+  const list  = document.getElementById('file-list');
+  if (!files.length) return;
+  const icon = f => f.endsWith('.xlsx') ? '📊' : f.endsWith('.csv') ? '📋' : f.endsWith('.txt') ? '📄' : '📁';
+  list.innerHTML = files.map(f => {
+    const urlPath = f.split('/').map(encodeURIComponent).join('/');
+    return `<div class="file-row">
+      <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+        <span style="font-size:18px;">${icon(f)}</span>
+        <span style="font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f}</span>
+      </div>
+      <button class="dl-btn" onclick="downloadFile('${urlPath}','${f.split('/').pop()}')">
+        <svg style="width:13px;height:13px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+        </svg>Download
+      </button>
+    </div>`;
+  }).join('');
+  block.style.display = 'block';
+}
+
+async function downloadFile(urlPath, filename) {
+  try {
+    const r = await fetch(`${API_BASE}/api/jobs/${state.jobId}/files/${urlPath}`);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const blob = await r.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch(e) { alert('Download failed: ' + e.message); }
+}
+
+// ─── Reset ───────────────────────────────────────────────────────────────
+function resetAll() {
+  clearInterval(state.pollingTimer);
+  sessionStorage.removeItem('lastJobId');
+  Object.assign(state, {
+    currentStep: 2, profile: 'world', availableFrameworks: state.availableFrameworks,
+    resolvedCountries: [], selectedFrameworks: [], nuts3Codes: [],
+    enableAi: false, outputFlags: { csv: false, excel_by_indicator: false, single_sheet: true },
+    jobId: null, pollingTimer: null,
+  });
+  document.getElementById('countries-input').value = '';
+  document.getElementById('country-tags').innerHTML = '';
+  document.getElementById('nuts3-input').value = '';
+  document.getElementById('ai-toggle').checked = false;
+  document.getElementById('out-single-sheet').checked = true;
+  document.getElementById('out-csv').checked = false;
+  document.getElementById('out-excel-ind').checked = false;
+  document.getElementById('files-block').style.display = 'none';
+  document.getElementById('error-block').style.display = 'none';
+  document.getElementById('file-list').innerHTML = '';
+  document.getElementById('run-btn').disabled = false;
+  document.getElementById('run-btn').innerHTML = `<svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Run Analysis`;
+  document.getElementById('next-2').disabled = true;
+  document.getElementById('next-3').disabled = true;
+  document.getElementById('nuts3-input-block').style.display = 'none';
+  renderFrameworks();
+  goStep(2);
+}
+</script>
+</body>
+</html>
