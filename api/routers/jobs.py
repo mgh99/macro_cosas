@@ -38,6 +38,36 @@ def _resolve_geos(geos: list[str], profile: str) -> list[str]:
     return resolved
 
 
+def _extra_aggregate_geos(profile: str, framework_names: list[str] | None) -> list[str]:
+    """
+    Return aggregate geo codes (WEOWORLD, ADVEC, EU) if any indicator in the
+    selected frameworks has allow_aggregates: true.  The engine already skips
+    these codes for indicators that don't support them.
+    """
+    import yaml
+    from core.country_resolver import AGGREGATE_GEO_CODES
+
+    frameworks_path = _REPO_ROOT / "config" / "profiles" / profile / "frameworks.yaml"
+    if not frameworks_path.exists():
+        return []
+
+    with open(frameworks_path, encoding="utf-8") as fh:
+        cfg = yaml.safe_load(fh) or {}
+
+    # YAML structure: {"frameworks": {"economics": {...}, "demographics": {...}, ...}}
+    frameworks_raw = cfg.get("frameworks", {}) or {}
+    fw_set = set(framework_names) if framework_names else set(frameworks_raw.keys())
+
+    for fw_key, fw in frameworks_raw.items():
+        if fw_key not in fw_set:
+            continue
+        for ind in (fw.get("indicators") or []):
+            if ind.get("allow_aggregates") and ind.get("enabled", True):
+                return list(AGGREGATE_GEO_CODES)  # at least one found — add all three
+
+    return []
+
+
 @router.post("", response_model=JobSubmitted, status_code=202)
 def submit_job(req: JobRequest, background_tasks: BackgroundTasks):
     """
@@ -45,9 +75,17 @@ def submit_job(req: JobRequest, background_tasks: BackgroundTasks):
     Countries are resolved immediately; the engine runs in the background.
     Returns a job_id to poll for status.
     """
+    import json
     from api.runner import execute_job
 
+    print(f"[submit_job] received: {json.dumps(req.model_dump(), default=str)}")
     resolved_geos = _resolve_geos(req.geos, req.profile.value)
+
+    # Automatically add aggregate geo codes (WEOWORLD, ADVEC, EU) when any
+    # selected framework contains indicators that require them (allow_aggregates: true).
+    for ag in _extra_aggregate_geos(req.profile.value, req.frameworks):
+        if ag not in resolved_geos:
+            resolved_geos.append(ag)
 
     params = {
         "profile": req.profile.value,

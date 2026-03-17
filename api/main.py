@@ -10,9 +10,10 @@ import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 # Ensure repo root is importable (connectors, core, run, ai, ...)
@@ -36,6 +37,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.exception_handler(RequestValidationError)
+async def validation_error_handler(request: Request, exc: RequestValidationError):
+    import json
+    body = None
+    try:
+        body = await request.json()
+    except Exception:
+        pass
+    print(f"[422 ValidationError] path={request.url.path} body={json.dumps(body, default=str)} errors={exc.errors()}")
+    return JSONResponse(status_code=422, content={"detail": exc.errors()})
+
 
 app.include_router(profiles.router, prefix="/api")
 app.include_router(jobs.router, prefix="/api")
