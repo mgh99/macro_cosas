@@ -605,7 +605,14 @@ const FW_META = {
 
 function renderFrameworks() {
   const grid = document.getElementById('framework-grid');
-  if (!state.availableFrameworks.length) { grid.innerHTML = ''; return; }
+  if (!state.availableFrameworks || !state.availableFrameworks.length) {
+    grid.innerHTML = `<div style="grid-column:span 2;padding:16px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:12px;">
+      <div style="font-size:13px;color:#f87171;font-weight:600;margin-bottom:4px;">Could not load frameworks</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">The backend may be starting up (cold start ~30s). Try again.</div>
+      <button onclick="retryLoadFrameworks()" class="btn-primary" style="font-size:12px;padding:7px 14px;">Retry</button>
+    </div>`;
+    return;
+  }
   const allSel = state.selectedFrameworks.length === state.availableFrameworks.length;
   grid.innerHTML =
     `<div class="fw-card ${allSel ? 'selected' : ''}" style="grid-column:span 2;" onclick="toggleAllFrameworks()">
@@ -631,6 +638,17 @@ function renderFrameworks() {
         <div style="font-size:11px;color:var(--accent);">${fw.indicator_count} indicators</div>
       </div>`;
     }).join('');
+}
+
+async function retryLoadFrameworks() {
+  const grid = document.getElementById('framework-grid');
+  grid.innerHTML = `<div style="grid-column:span 2;color:var(--muted);font-size:13px;padding:12px 0;">Loading frameworks…</div>`;
+  try {
+    const r = await fetch(`${API_BASE}/api/profiles/world/frameworks`);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    state.availableFrameworks = await r.json();
+  } catch { state.availableFrameworks = []; }
+  renderFrameworks();
 }
 
 function checkmark() {

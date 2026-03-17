@@ -67,12 +67,12 @@ _FRONTEND = _REPO_ROOT / "frontend"
 # These routes must be declared BEFORE app.mount() so they take precedence
 @app.get("/", include_in_schema=False)
 def dashboard():
-    return FileResponse(str(_FRONTEND / "dashboard.html"))
-
-
-@app.get("/v2", include_in_schema=False)
-def dashboard_v2():
     return FileResponse(str(_FRONTEND / "dashboard_v2.html"))
+
+
+@app.get("/v1", include_in_schema=False)
+def dashboard_v1():
+    return FileResponse(str(_FRONTEND / "dashboard.html"))
 
 
 @app.get("/favicon.ico", include_in_schema=False)

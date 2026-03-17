@@ -74,7 +74,7 @@
     <div class="mt-5 pt-4 border-t border-slate-100">
       <div class="flex items-center justify-between text-xs text-slate-400">
         <span>API URL</span>
-        <input id="api-url-input" type="text" value="http://localhost:8000"
+        <input id="api-url-input" type="text" value="https://macro-cosas.onrender.com"
                class="border border-slate-200 rounded px-2 py-1 w-48 text-slate-600 text-xs"
                placeholder="API URL" onchange="setApiBase(this.value)" />
       </div>
@@ -271,7 +271,7 @@
 
 <script>
 // ─── Config ────────────────────────────────────────────────────────────
-let API_BASE = 'http://localhost:8000';
+let API_BASE = 'https://macro-cosas.onrender.com';
 function setApiBase(url) { API_BASE = url.replace(/\/$/, ''); checkHealth(); }
 
 // ─── State ─────────────────────────────────────────────────────────────
@@ -404,11 +404,21 @@ function renderStepper() {
   }).join('');
 }
 
-function goStep(n) {
+async function goStep(n) {
   if (n === 3 && state.resolvedCountries.filter(c => c.iso2).length === 0) return;
+  if (n === 3 && (!state.availableFrameworks || !state.availableFrameworks.length)) {
+    const grid = document.getElementById('framework-grid');
+    grid.innerHTML = '<div class="col-span-2 text-sm text-slate-400 py-2">Loading frameworks…</div>';
+    try {
+      const r = await fetch(`${API_BASE}/api/profiles/world/frameworks`);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      state.availableFrameworks = await r.json();
+    } catch { state.availableFrameworks = []; }
+  }
   if (n === 5) renderSummary();
   state.currentStep = n;
   renderStepper();
+  if (n === 3) renderFrameworks();
   // Only select the numbered step divs (step-1 … step-6), NOT id="stepper"
   [1,2,3,4,5,6].forEach(sn => {
     const el = document.getElementById(`step-${sn}`);
@@ -485,7 +495,14 @@ const FW_META = {
 
 function renderFrameworks() {
   const grid = document.getElementById('framework-grid');
-  if (!state.availableFrameworks.length) { grid.innerHTML = '<p class="text-sm text-slate-400">Select a profile first.</p>'; return; }
+  if (!state.availableFrameworks || !state.availableFrameworks.length) {
+    grid.innerHTML = `<div class="col-span-2 p-4 bg-red-50 border border-red-200 rounded-lg">
+      <div class="text-sm font-medium text-red-800 mb-1">Could not load frameworks</div>
+      <div class="text-xs text-red-600 mb-3">The backend may be starting up (cold start ~30s). Please try again.</div>
+      <button onclick="retryLoadFrameworks()" class="btn-primary" style="font-size:0.75rem;padding:0.375rem 0.75rem;">Retry</button>
+    </div>`;
+    return;
+  }
 
   // "All" card
   const allSelected = state.selectedFrameworks.length === state.availableFrameworks.length;
@@ -512,6 +529,17 @@ function renderFrameworks() {
         <div class="text-xs text-indigo-500 mt-1">${fw.indicator_count} indicators</div>
       </div>`;
   }).join('');
+}
+
+async function retryLoadFrameworks() {
+  const grid = document.getElementById('framework-grid');
+  grid.innerHTML = '<div class="col-span-2 text-sm text-slate-400 py-2">Loading frameworks…</div>';
+  try {
+    const r = await fetch(`${API_BASE}/api/profiles/world/frameworks`);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    state.availableFrameworks = await r.json();
+  } catch { state.availableFrameworks = []; }
+  renderFrameworks();
 }
 
 function checkmark() { return '<svg class="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>'; }
