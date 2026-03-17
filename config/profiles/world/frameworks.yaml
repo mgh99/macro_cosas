@@ -36,8 +36,8 @@ frameworks:
 
         time:
           mode: past_and_future_years
-          past_years: 9
-          future_years: 1
+          past_years: 10
+          future_years: 5
 
         units: "billions_of_dollars"
         allow_aggregates: true

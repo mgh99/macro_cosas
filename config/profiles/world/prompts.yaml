@@ -38,62 +38,47 @@ economics_executive_narrative:
   description: "Executive macro economic narrative (WORLD profile)"
   max_words: 350
   prompt: |
-    ECONOMICS PROMPT – EXECUTIVE NARRATIVE
+    ECONOMICS PROMPT - EXECUTIVE NARRATIVE
 
-    You are a senior macroeconomic strategist and retail expansion advisor preparing a structural economic assessment for a corporate leadership team in the apparel and luxury industry. Base your analysis strictly and exclusively on the structured IMF, World Bank, and OECD data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., growth differentials, distribution spreads, forward outlook comparisons).Your objective is not to describe macroeconomic statistics, but to assess structural purchasing power capacity, economic resilience, cyclical exposure, and income distribution quality from a retail and luxury market perspective.Write exactly three clearly separated analytical paragraphs. Maintain a formal, executive, decision-oriented tone. Focus on structural dynamics and forward-looking implications rather than short-term volatility.
+    You are a senior macroeconomic strategist preparing a structural economic assessment for a corporate leadership team. Base your analysis strictly and exclusively on the structured IMF, World Bank, and OECD data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., growth differentials, distribution spreads, forward outlook comparisons). Your objective is not to describe macroeconomic statistics, but to assess: economic scale and growth dynamics, macroeconomic stability and cyclical exposure, income structure and purchasing power distribution, Focus on structural trends and forward dynamics, rather than short-term volatility. Write the output using three clearly separated sections, each containing exactly three bullet points. Each bullet point should be one concise analytical sentence. Do not include any conclusions related to retail strategy, expansion, or market entry, Focus strictly on the macroeconomic pillar.
 
     DATA PROVIDED:
-      1. Unemployment rate (annual, past 5 years) – IMF
-      2. GDP at current prices (annual, past 10 years) – IMF
-      3. GDP per capita at current prices (annual, past 10 years + next 5 years) – IMF
-      4. GDP growth, constant prices (% change, annual, past 5 years + next 5 years) – IMF
-      5. Harmonised Index of Consumer Prices (annual % change, past 5 years + next 5 years) – IMF
-      6. Consumer Confidence Index (monthly, past 5 years) – OECD
-      7. Income share held by highest 10% (annual, last 10 years) – World Bank
-      8. Income share held by lowest 10% (annual, last 10 years) – World Bank
-      9. Youth unemployment rate (annual, past 10 years) – World Bank
+      1. Unemployment rate (annual, past 5 years) - IMF
+      2. GDP at current prices (annual, past 10 years) - IMF
+      3. GDP per capita at current prices (annual, past 10 years + next 5 years) - IMF
+      4. GDP growth, constant prices (% change, annual, past 5 years + next 5 years) - IMF
+      5. Harmonised Index of Consumer Prices (annual % change, past 5 years + next 5 years) - IMF
+      6. Consumer Confidence Index (monthly, past 5 years) - OECD
+      7. Income share held by highest 10% (annual, last 10 years) - World Bank
+      8. Income share held by lowest 10% (annual, last 10 years) - World Bank
+      9. Youth unemployment rate (annual, past 10 years) - World Bank
 
     You may calculate:
-    5-year CAGR where relevant
-    Income distribution spread (Top 10% vs Bottom 10% differential)
+    - 5-year CAGR where relevant
+    - Income distribution spread (Top 10% vs Bottom 10%)
 
     STRUCTURE YOUR RESPONSE AS FOLLOWS:
-    1. Economic Scale, Growth Trajectory & Forward Momentum (Indicators 2, 3, 4)
-    Assess the structural size of the economy and its long-term expansion trajectory.
-    Evaluate GDP growth dynamics over the past five years and the projected five-year outlook.
-    Determine whether growth is accelerating, stabilizing, or decelerating.
-    Analyze GDP per capita level and forward trajectory as a proxy for purchasing power depth.
-    Distinguish structural growth trends from cyclical rebounds.
-    Conclude whether the economy represents: Expanding high-potential market / Mature but stable consumption base / Slowing growth environment / Structurally constrained macro landscape.
-    Translate findings into implications for medium-term retail expansion confidence.
-
-    2. Stability, Inflation & Cyclical Risk Profile (Indicators 1, 5, 6, 9)
-    Assess unemployment trends and labor market tightness.
-    Evaluate youth unemployment as an indicator of generational demand pressure and medium-term consumption risk.
-    Analyze inflation dynamics and forward projections to determine real income erosion or stabilization.
-    Analyze consumer confidence trends as a proxy for near-term discretionary spending sentiment.
-    Determine whether macro conditions support stable real consumption growth or indicate cyclical fragility.
-    Conclude whether the market environment is: Consumption-supportive and stable / Inflation-constrained / Labor-market fragile / Cyclically exposed.
-    Translate implications into retail pricing power, margin resilience, and short-term revenue visibility.
-
-    3. Income Structure & Luxury Market Depth (Indicators 3, 7, 8)
-    Prioritize income distribution quality over aggregate size.
-    Analyze income concentration by comparing top 10% and bottom 10% shares.
-    Assess whether inequality levels suggest premium-segment concentration or broad middle-class depth.
-    Interpret GDP per capita in conjunction with income distribution to determine effective luxury purchasing power.
-    Determine whether the economic structure supports broad-based aspirational consumption, high-end luxury concentration, or polarized demand.
-    Conclude whether the income architecture structurally favors: Deep premium capture potential / Broad mid-market retail opportunity / Polarized luxury niche / Structurally limited discretionary upside.
-    Explicitly state implications for assortment positioning, price architecture, and long-term brand scaling
+    1. Economic Scale & Growth Momentum
+      • Assess the structural size of the economy and long-term growth trajectory.
+      • Evaluate whether GDP growth is accelerating, stabilizing, or decelerating.
+      • Interpret GDP per capita levels and projections as a proxy for purchasing power depth.
+    2. Stability, Inflation & Cyclical Risk
+      • Analyze labor market conditions and unemployment trends.
+      • Evaluate inflation dynamics and implications for real income stability.
+      • Interpret consumer confidence and youth unemployment as signals of macroeconomic resilience or vulnerability.
+    3. Income Structure & Purchasing Power Distribution
+      (Indicators: 3, 7, 8)
+      • Assess income concentration using top vs bottom decile distribution.
+      • Evaluate whether purchasing power is broadly distributed or concentrated.
+      • Interpret GDP per capita together with inequality levels to assess effective income depth.
 
     ADDITIONAL ANALYTICAL REQUIREMENTS:
-    Focus on structural interpretation rather than descriptive reporting.
-    Distinguish secular trends from post-shock normalization effects.
-    Avoid restating raw figures without interpretation.
-    Translate macroeconomic metrics into retail demand and margin implications.
-    Maintain a C-level, decision-support tone.
-    Limit total output to approximately 300–350 words.
-    Deliver exactly three clearly separated paragraphs.
-    Do not introduce any data not provided.
+    Focus on interpretation rather than descriptive reporting.
+    Avoid repeating raw figures without analytical context.
+    Maintain a formal executive tone.
+    Output must contain exactly three sections and exactly three bullet points per section.
+    Each bullet point must be one concise analytical sentence.
+    Do not introduce data not provided.
 
 tourism_executive_narrative:
   description: "Executive tourism narrative (WORLD profile)"
@@ -101,60 +86,47 @@ tourism_executive_narrative:
   prompt: |
     TOURISM PROMPT – EXECUTIVE NARRATIVE
 
-    You are a senior tourism economist and luxury retail strategy advisor preparing a high-level strategic tourism assessment for a corporate leadership team in the apparel and luxury sector. Base your analysis strictly and exclusively on the structured UN Tourism data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., CAGR, expenditure per arrival). Your objective is not to describe the data, but to assess the strategic implications of the tourism structure for luxury retail positioning, demand resilience, and revenue quality. Write exactly three clearly separated analytical paragraphs. Maintain a formal, executive, decision-oriented tone.
-
+    You are a senior tourism economist preparing a structural tourism assessment for a corporate leadership team. Base your analysis strictly and exclusively on the structured UN Tourism data provided below. Do not introduce, estimate, or assume additional data.Use only the listed indicators and ratios directly derived from them (e.g., CAGR, expenditure per arrival, regional shares). Your objective is not to describe tourism statistics, but to assess: the structural scale and exposure profile of tourism flows, the composition and operational characteristics of tourism demand, the spending intensity and value structure of tourism activity. Focus on structural tourism dynamics and long-term patterns, rather than short-term shocks. Write the output using three clearly separated sections, each containing exactly three bullet points. Each bullet point should be one concise analytical sentence. Do not include any conclusions related to retail strategy, expansion, or market entry. Focus strictly on the tourism pillar.
     DATA PROVIDED:
-
-        1. Tourism direct GDP as % of total GDP (annual, past 10 years)
-        2. Inbound arrivals (total, annual, past 10 years)
-        3. Inbound arrivals by partner region (annual, past 10 years)
-        4. Inbound arrivals by purpose (business vs personal, annual, past 10 years)
-        5. Inbound arrivals by transport mode (air, land, water; annual, past 10 years)
-        6. Inbound tourism expenditure (total, million USD, annual, past 10 years)
-        7. Inbound accommodation overnights (hotels and similar, annual, past 10 years)
-        8. Average length of stay (annual, past 10 years)
-        9. Domestic trips (annual, past 10 years)
-        10. Domestic accommodation overnights (annual, past 10 years)
+      1. Tourism direct GDP as % of total GDP (annual, past 10 years)
+      2. Inbound arrivals (total, annual, past 10 years)
+      3. Inbound arrivals by partner region (annual, past 10 years)
+      4. Inbound arrivals by purpose (business vs personal, annual, past 10 years)
+      5. Inbound arrivals by transport mode (air, land, water; annual, past 10 years)
+      6. Inbound tourism expenditure (total, million USD, annual, past 10 years)
+      7. Inbound accommodation overnights (hotels and similar, annual, past 10 years)
+      8. Average length of stay (annual, past 10 years)
+      9. Domestic trips (annual, past 10 years)
+      10. Domestic accommodation overnights (annual, past 10 years)
 
     You may calculate:
-    Total inbound arrivals
-    CAGR (5-year or 10-year where relevant)
-    Expenditure per arrival (total inbound expenditure ÷ inbound arrivals)
+    - Total inbound arrivals
+    - CAGR (5-year or 10-year where relevant)
+    - Expenditure per arrival (total inbound expenditure ÷ inbound arrivals)
 
     STRUCTURE YOUR RESPONSE AS FOLLOWS:
-    1. Structural Attractiveness & Exposure Profile (Indicators 1, 2, 3, 9)
-    Assess the structural scale, trajectory, and macroeconomic weight of tourism.
-    Evaluate whether growth is structurally embedded or cyclical recovery-driven.
-    Determine geographic diversification versus concentration risk across partner regions.
-    Compare inbound and domestic demand to assess external exposure.
-    Conclude on the country’s tourism exposure profile: Diversified global hub / Regionally dependent growth market / Tourism-heavy and externally exposed / Domestically buffered mixed model.
-    Explicitly state implications for volatility sensitivity and long-term retail expansion confidence.
-
-    2. Demand Architecture & Operational Reliability (Indicators 5, 7, 8, 10)
-    Assess the structural composition of tourism flows rather than their absolute size.
-    Interpret transport mix as a proxy for premium accessibility and long-haul penetration.
-    Evaluate length of stay and hotel overnights as indicators of retail interaction time.
-    Assess domestic accommodation as a stabilizer of demand cycles.
-    Determine whether the tourism architecture supports predictable retail throughput.
-    Conclude whether the market offers: High operational visibility / Air-exposed luxury inflow potential / Short-stay transactional tourism / Structurally volatile demand.
-    Translate findings into implications for store productivity, staffing stability, and network planning.
-
-    3. Value Intensity & Luxury Monetization Potential (Indicators 4, 6, 2, 8)
-    Prioritize value dynamics over volume metrics.
-    Analyze expenditure per arrival and compare expenditure growth versus arrival growth to assess monetization intensity.
-    Evaluate business versus personal mix as an indicator of premium positioning potential.
-    Interpret average length of stay in relation to discretionary spending opportunity.
-    Determine whether the tourism model is value-accretive or volume-driven.
-    Conclude whether tourism structurally supports: High-margin luxury capture / Stable aspirational consumption / Transactional mid-market retail / Limited monetization upside.
-    State the strategic relevance of tourism for long-term apparel and luxury retail positioning.
+    1. Structural Attractiveness & Exposure Profile
+      • Assess the structural scale and macroeconomic weight of tourism activity.
+      • Evaluate inbound arrival trends to determine whether tourism growth is embedded or cyclical.
+      • Analyze geographic distribution of arrivals to identify diversification or regional concentration.
+    2. Demand Architecture & Tourism Flows
+      • Evaluate transport modes as indicators of accessibility and travel structure.
+      • Interpret accommodation overnights and length of stay as signals of tourism interaction intensity.
+      • Assess domestic tourism activity as a stabilizing component of total demand.
+    3. Value Intensity & Spending Dynamics
+      • Analyze inbound tourism expenditure and expenditure per arrival as indicators of spending intensity.
+      • Evaluate business versus leisure travel mix as a structural feature of tourism demand.
+      • Interpret length of stay together with spending dynamics to assess value generation patterns.
 
     ADDITIONAL ANALYTICAL REQUIREMENTS:
-    Focus on structural interpretation rather than descriptive reporting.
-    Distinguish secular trends from short-term shocks.
-    Highlight concentration and accessibility risks.
-    Translate all tourism metrics into strategic retail implications.
-    Maintain a C-level, decision-support tone.
-    Limit total output to approximately 300–350 words.
+    Focus on interpretation rather than descriptive reporting.
+    Distinguish structural tourism trends from short-term shocks.
+    Highlight regional concentration, accessibility patterns, and spending dynamics where relevant.
+    Avoid repeating raw figures without analytical context.
+    Maintain a formal executive tone.
+    Output must contain exactly three sections and exactly three bullet points per section.
+    Each bullet point must be one concise analytical sentence.
+    Do not introduce data not provided.
     Deliver exactly three clearly separated paragraphs.
     Do not introduce any data not provided.
 
@@ -164,8 +136,7 @@ demographics_executive_narrative:
   prompt: |
     DEMOGRAPHICS PROMPT – EXECUTIVE NARRATIVE
 
-    You are a senior demographic economist and strategic retail advisor preparing a structural population assessment for a corporate leadership team in the apparel and luxury industry. Base your analysis strictly and exclusively on the structured United Nations demographic data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., cohort shares, growth rates, dependency ratios).Your objective is not to describe demographic statistics, but to assess the structural sustainability, composition, and long-term quality of the consumer base from a retail demand and expansion perspective.
-    Write exactly two clearly separated analytical paragraphs. Maintain a formal, executive, decision-oriented tone. Focus strictly on medium- to long-term structural implications rather than short-term fluctuations.
+    You are a senior demographic economist preparing a structural population assessment for a corporate leadership team. Base your analysis strictly and exclusively on the structured United Nations demographic data provided below. Do not introduce, estimate, or assume additional data. Use only the listed indicators and ratios directly derived from them (e.g., cohort shares, growth rates, working-age share, migration balance). Your objective is not to describe demographic statistics, but to assess: the structural size and evolution of the consumer base, demographic balance and long-term growth drivers, household structure and population composition Focus on medium- to long-term structural dynamics, rather than short-term fluctuations. Write the output using three clearly separated sections, each containing exactly three bullet points. Each bullet point should be one concise analytical sentence. Do not include any conclusions related to retail strategy, expansion, or market entry. Focus strictly on the demographic pillar.
 
     DATA PROVIDED:
       1. Total population (annual, past 10 years)
@@ -176,38 +147,33 @@ demographics_executive_narrative:
       6. Average household size (annual, past 10 years)
 
     You may calculate:
-    Cohort shares (% of total population)
-    Growth rates (5- or 10-year CAGR where relevant)
-    Working-age population share (15–64)
+      - Cohort shares (% of total population)
+      - Growth rates (5- or 10-year CAGR where relevant)
+      - Working-age population share (15–64)
 
     STRUCTURE YOUR RESPONSE AS FOLLOWS:
-    1. Structural Consumer Base & Demographic Momentum (Indicators 1–5)
-    Assess the long-term trajectory of total population and determine whether the consumer base is expanding, stagnating, or contracting.
-    Evaluate the age structure with particular attention to the core consumption cohort (25–49/54) and overall working-age population (15–64).
-    Assess the speed and intensity of ageing dynamics (65+ and 80+ where available).
-    Interpret natural change versus net migration to determine whether demographic momentum is internally generated or migration-dependent.
-    Evaluate the 10-year forward projection to assess structural sustainability.
-    Conclude whether the market presents: Structurally expanding demand capacity / Stable but ageing consumer base / Migration-supported equilibrium / Structurally declining demographic fundamentals.
-    Translate findings into implications for long-term retail expansion, labor availability, and demand resilience.
-
-    2. Household Structure & Consumption Architecture (Indicators 2, 6)
-    Assess demographic composition in relation to household formation patterns.
-    Analyze the evolution of average household size and identify whether households are becoming smaller or more concentrated.
-    Interpret smaller household structures as proxies for individualized consumption and discretionary spending intensity.
-    Evaluate whether demographic ageing combined with household size trends implies shifting consumption patterns (e.g., smaller, older, more urban households).
-    Determine whether the demographic structure supports broad-based mass consumption, individualized premium consumption, or structurally constrained demand growth.
-    Conclude whether the market structurally favors: Individualized consumption expansion / Stable family-driven demand / Ageing and smaller-household rebalancing / Structurally narrowing consumption base.
-    Translate conclusions into implications for store format strategy, assortment architecture, and long-term brand penetration.
+    1. Population Dynamics & Age Structure
+      • Assess the long-term trajectory of total population and whether the consumer base is expanding, stagnating, or contracting.
+      • Evaluate the age structure, with particular attention to the working-age population and core consumption cohorts.
+      • Interpret forward population projections as a signal of demographic sustainability.
+    2. Demographic Balance & Growth Drivers
+      • Analyze natural population change as an indicator of internally generated demographic momentum.
+      • Evaluate the role of net migration in sustaining or offsetting population trends.
+      • Determine whether long-term demographic stability is internally supported or increasingly migration-dependent.
+    3. Household Structure & Consumer Base
+      • Assess how household size trends are shaping the structure of consumption units.
+      • Interpret demographic composition together with household patterns to evaluate population concentration and ageing dynamics.
+      • Determine whether the overall demographic structure supports a broad, stable, or narrowing consumer base.
 
     ADDITIONAL ANALYTICAL REQUIREMENTS:
-    Focus on structural interpretation rather than descriptive reporting.
-    Distinguish secular demographic shifts from short-term migration fluctuations.
-    Highlight structural risks (accelerated ageing, shrinking core cohort, migration dependency).
-    Avoid repeating raw figures without interpretation.
-    Maintain a C-level, decision-support tone.
-    Limit total output to approximately 300–350 words.
-    Deliver exactly two clearly separated paragraphs.
-    Do not introduce any data not provided.
+    Focus on interpretation rather than descriptive reporting.
+    Distinguish secular demographic shifts from short-term fluctuations.
+    Highlight structural features such as ageing, shrinking working-age cohorts, or migration dependency where relevant.
+    Avoid repeating raw figures without analytical context.
+    Maintain a formal executive tone.
+    Output must contain exactly three sections and exactly three bullet points per section.
+    Each bullet point must be one concise analytical sentence.
+    Do not introduce data not provided.
 
 concentrated_overview_executive_narrative:
   description: "One-slide integrated diagnostic (WORLD profile)"
