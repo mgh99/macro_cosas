@@ -465,12 +465,22 @@ function showStep(n) {
   });
 }
 
-function goStep(n) {
+async function goStep(n) {
   if (n === 3 && !state.resolvedCountries.some(c => c.iso2)) return;
+  if (n === 3 && !state.availableFrameworks.length) {
+    // Frameworks didn't load on init (Render cold start) — retry now
+    const grid = document.getElementById('framework-grid');
+    grid.innerHTML = `<div style="grid-column:span 2;color:var(--muted);font-size:13px;padding:12px 0;">Loading frameworks…</div>`;
+    try {
+      const r = await fetch(`${API_BASE}/api/profiles/world/frameworks`);
+      state.availableFrameworks = await r.json();
+    } catch { state.availableFrameworks = []; }
+  }
   if (n === 5) renderSummary();
   state.currentStep = n;
   renderNav();
   showStep(n);
+  if (n === 3) renderFrameworks();
   document.querySelector('main')?.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
