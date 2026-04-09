@@ -155,6 +155,8 @@ def run_engine(
     for fw_name, fw in frameworks.items():
         all_parts: List[pd.DataFrame] = []
 
+        print(f"\n=== Framework: {fw_name} ===")
+
         # Decide which geos apply for this framework
         if fw_name == "nuts3":
             target_geos = nuts3_geos or []
@@ -165,15 +167,16 @@ def run_engine(
             target_geos = geos
 
         # Fetch each indicator in this framework
-        for order_idx, ind in enumerate(fw.get("indicators", []), start=1):
-            if not ind.get("enabled", True):
-                continue
-
+        indicators_enabled = [i for i in fw.get("indicators", []) if i.get("enabled", True)]
+        total_ind = len(indicators_enabled)
+        for order_idx, ind in enumerate(indicators_enabled, start=1):
             source = (ind.get("source") or "eurostat").lower()
             ind_name = ind.get("name", "(unnamed_indicator)")
             ind_debug = bool(ind.get("debug", False))
 
             allow_agg = bool(ind.get("allow_aggregates", False))
+
+            print(f"[{fw_name}] indicator {order_idx}/{total_ind}: {ind_name} ({source})")
 
             # OECD connectors usually support multi-geo fetch in one go
             if source == "oecd":
@@ -189,7 +192,7 @@ def run_engine(
 
             else:
                 # Most sources fetch geo-by-geo
-                for geo in target_geos:
+                for geo_idx, geo in enumerate(target_geos, start=1):
                     if geo in AGGREGATE_GEO_CODES and not allow_agg:
                         continue
                     try:
@@ -201,7 +204,7 @@ def run_engine(
                     all_parts.append(df)
 
                     if ind_debug:
-                        print(f"🧪 DEBUG {fw_name}/{ind_name}/{geo}: rows={len(df)}")
+                        print(f"🧪 DEBUG {fw_name}/{ind_name}/{geo} ({geo_idx}/{len(target_geos)}): rows={len(df)}")
 
         if not all_parts:
             print(f"⚠️ No data fetched for framework: {fw_name}")
