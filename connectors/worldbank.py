@@ -34,11 +34,11 @@ def wb_get(path: str, params: Optional[Dict[str, Any]] = None) -> Any:
     url = f"{BASE_URL}/{path.lstrip('/')}"
     # (connect timeout, read timeout)
     r = _SESSION.get(url, params=params or {}, timeout=(10, 120))
-    if r.status_code == 400:
-        # World Bank returns 400 when an indicator has no data for a given country.
-        # Treat as "no data" rather than a fatal error.
+    if not r.ok:
+        # World Bank returns 400 when an indicator has no data for a given country,
+        # and 502/503 when their API is temporarily unhealthy.
+        # Treat any HTTP error as "no data" rather than crashing the whole job.
         return None
-    r.raise_for_status()
     return r.json()
 
 

@@ -192,7 +192,11 @@ def run_engine(
                 for geo in target_geos:
                     if geo in AGGREGATE_GEO_CODES and not allow_agg:
                         continue
-                    df = fetch_indicator_for_geo(ind, geo)
+                    try:
+                        df = fetch_indicator_for_geo(ind, geo)
+                    except Exception as exc:
+                        print(f"⚠️ {fw_name}/{ind_name}/{geo}: fetch failed ({exc}), skipping")
+                        continue
                     df["indicator_order"] = order_idx
                     all_parts.append(df)
 
