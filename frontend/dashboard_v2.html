@@ -378,6 +378,13 @@
         </div>
       </div>
 
+      <!-- Live progress log -->
+      <div id="progress-block" style="display:none;max-width:600px;margin-bottom:16px;">
+        <div style="font-size:12px;font-weight:600;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em;">Progress</div>
+        <div id="progress-current" style="font-size:13px;font-weight:600;margin-bottom:10px;padding:10px 14px;background:var(--surface2);border-radius:10px;font-family:monospace;"></div>
+        <div id="progress-log" style="display:flex;flex-direction:column;gap:4px;max-height:200px;overflow-y:auto;"></div>
+      </div>
+
       <!-- Error -->
       <div id="error-block" style="display:none;max-width:600px;margin-bottom:16px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:12px;padding:16px;">
         <div id="error-title" style="font-size:13px;font-weight:600;color:#f87171;margin-bottom:8px;">Error details</div>
@@ -778,17 +785,65 @@ async function pollJob() {
   } catch(e) { console.warn('Poll fetch:', e.message); }
 }
 
-function updateJobUI(job) {
-  const cfg = {
-    pending:   { pct: '8%',   color: 'var(--muted)',   label: 'Queued',      sub: 'Waiting to start…' },
-    running:   { pct: '55%',  color: 'var(--accent)',  label: 'Running',     sub: 'Fetching data from APIs — this may take a few minutes.' },
-    completed: { pct: '100%', color: '#10b981',        label: 'Completed ✓', sub: 'All done! Your files are ready.' },
-    failed:    { pct: '100%', color: '#ef4444',        label: 'Failed ✗',   sub: 'An error occurred. Check details below.' },
-  }[job.status] || { pct: '8%', color: 'var(--muted)', label: 'Queued', sub: '' };
+let _progressLog = [];
+let _lastProgressKey = null;
 
-  document.getElementById('progress-bar').style.cssText = `width:${cfg.pct};background:${cfg.color};`;
+function updateJobUI(job) {
+  const p = job.progress;
+  let pct = '8%';
+  if (job.status === 'running' && p) {
+    // Compute overall % across all frameworks
+    const frameworks = job.params?.frameworks || [];
+    const fwCount = frameworks.length || 1;
+    const fwIdx = frameworks.indexOf(p.framework);
+    const fwDone = fwIdx >= 0 ? fwIdx : 0;
+    const withinFw = p.indicator_total > 0 ? (p.indicator_idx - 1) / p.indicator_total : 0;
+    const overall = (fwDone + withinFw) / fwCount;
+    pct = Math.max(5, Math.round(overall * 95)) + '%';
+  } else if (job.status === 'completed') {
+    pct = '100%';
+  } else if (job.status === 'failed') {
+    pct = '100%';
+  }
+
+  const cfg = {
+    pending:   { color: 'var(--muted)',   label: 'Queued',      sub: 'Waiting to start…' },
+    running:   { color: 'var(--accent)',  label: 'Running',     sub: p ? `${p.framework} — ${p.indicator_idx}/${p.indicator_total}` : 'Fetching data from APIs…' },
+    completed: { color: '#10b981',        label: 'Completed ✓', sub: 'All done! Your files are ready.' },
+    failed:    { color: '#ef4444',        label: 'Failed ✗',   sub: 'An error occurred. Check details below.' },
+  }[job.status] || { color: 'var(--muted)', label: 'Queued', sub: '' };
+
+  document.getElementById('progress-bar').style.cssText = `width:${pct};background:${cfg.color};`;
   document.getElementById('status-label').textContent = cfg.label;
   document.getElementById('status-sub').textContent = cfg.sub;
+
+  // Live progress log
+  const pb = document.getElementById('progress-block');
+  const pc = document.getElementById('progress-current');
+  const pl = document.getElementById('progress-log');
+  if (job.status === 'running' && p) {
+    pb.style.display = 'block';
+    const key = `${p.framework}/${p.indicator_idx}`;
+    if (key !== _lastProgressKey) {
+      // Add previous to log
+      if (_lastProgressKey) {
+        const prev = _progressLog[_progressLog.length - 1];
+        if (prev) {
+          const row = document.createElement('div');
+          row.style.cssText = 'font-size:11px;color:var(--muted);font-family:monospace;padding:3px 8px;';
+          row.textContent = `✓ [${prev.fw}] ${prev.idx}/${prev.total} — ${prev.name}`;
+          pl.appendChild(row);
+          pl.scrollTop = pl.scrollHeight;
+        }
+      }
+      _progressLog.push({ fw: p.framework, idx: p.indicator_idx, total: p.indicator_total, name: p.indicator_name });
+      _lastProgressKey = key;
+    }
+    pc.textContent = `▶ [${p.framework}] ${p.indicator_idx}/${p.indicator_total} — ${p.indicator_name}`;
+  } else if (job.status !== 'running') {
+    pb.style.display = _progressLog.length ? 'block' : 'none';
+    pc.style.display = 'none';
+  }
 
   const spinSVG = `<svg class="spin" style="width:22px;height:22px;color:var(--accent);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity="0.15"/><path d="M12 2a10 10 0 0110 10" stroke-linecap="round"/></svg>`;
   const okSVG   = `<svg style="width:22px;height:22px;color:#10b981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>`;
@@ -848,6 +903,11 @@ async function downloadFile(urlPath, filename) {
 function resetAll() {
   clearInterval(state.pollingTimer);
   sessionStorage.removeItem('lastJobId');
+  _progressLog = [];
+  _lastProgressKey = null;
+  document.getElementById('progress-block').style.display = 'none';
+  document.getElementById('progress-current').textContent = '';
+  document.getElementById('progress-log').innerHTML = '';
   Object.assign(state, {
     currentStep: 2, profile: 'world', availableFrameworks: state.availableFrameworks,
     resolvedCountries: [], selectedFrameworks: [], nuts3Codes: [],

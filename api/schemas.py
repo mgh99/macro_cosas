@@ -40,6 +40,14 @@ class JobSubmitted(BaseModel):
     created_at: datetime
 
 
+class JobProgress(BaseModel):
+    framework: str
+    indicator_idx: int
+    indicator_total: int
+    indicator_name: str
+    source: str
+
+
 class JobDetail(BaseModel):
     job_id: str
     status: JobStatus
@@ -49,6 +57,7 @@ class JobDetail(BaseModel):
     completed_at: Optional[datetime] = None
     error: Optional[str] = None
     output_files: List[str] = []
+    progress: Optional[JobProgress] = None
 
 
 class FrameworkInfo(BaseModel):

@@ -68,6 +68,7 @@ def run_engine(
     debug_describe_eurostat: bool = False,
     frameworks_path: str = "config/frameworks.yaml",
     prompts_path: str = "config/prompts.yaml",
+    progress_callback=None,
 ) -> Dict[str, pd.DataFrame]:
     """
     Main engine callable from CLI.
@@ -177,6 +178,8 @@ def run_engine(
             allow_agg = bool(ind.get("allow_aggregates", False))
 
             print(f"[{fw_name}] indicator {order_idx}/{total_ind}: {ind_name} ({source})")
+            if progress_callback:
+                progress_callback(fw_name, order_idx, total_ind, ind_name, source)
 
             # OECD connectors usually support multi-geo fetch in one go
             if source == "oecd":

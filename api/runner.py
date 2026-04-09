@@ -46,6 +46,15 @@ def execute_job(job_id: str) -> None:
             if f.is_file()
         ]
 
+    def _progress_callback(fw_name, idx, total, ind_name, source):
+        update_job(job_id, progress={
+            "framework": fw_name,
+            "indicator_idx": idx,
+            "indicator_total": total,
+            "indicator_name": ind_name,
+            "source": source,
+        })
+
     try:
         engine.run_engine(
             geos=params["geos"],
@@ -61,6 +70,7 @@ def execute_job(job_id: str) -> None:
             },
             frameworks_path=frameworks_path,
             prompts_path=prompts_path,
+            progress_callback=_progress_callback,
         )
 
         update_job(

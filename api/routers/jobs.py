@@ -164,6 +164,9 @@ def download_job_file(job_id: str, file_path: str):
 
 
 def _job_to_detail(job: dict) -> JobDetail:
+    from api.schemas import JobProgress
+    raw_prog = job.get("progress")
+    progress = JobProgress(**raw_prog) if raw_prog else None
     return JobDetail(
         job_id=job["job_id"],
         status=JobStatus(job["status"]),
@@ -173,4 +176,5 @@ def _job_to_detail(job: dict) -> JobDetail:
         completed_at=job.get("completed_at"),
         error=job.get("error"),
         output_files=job.get("output_files", []),
+        progress=progress,
     )
