@@ -34,6 +34,10 @@ def wb_get(path: str, params: Optional[Dict[str, Any]] = None) -> Any:
     url = f"{BASE_URL}/{path.lstrip('/')}"
     # (connect timeout, read timeout)
     r = _SESSION.get(url, params=params or {}, timeout=(10, 120))
+    if r.status_code == 400:
+        # World Bank returns 400 when an indicator has no data for a given country.
+        # Treat as "no data" rather than a fatal error.
+        return None
     r.raise_for_status()
     return r.json()
 
@@ -62,6 +66,10 @@ def fetch_indicator(
 
     while True:
         js = wb_get(f"country/{geo_wb3}/indicator/{indicator_id}", params=params)
+
+        # None means 400 → no data available for this country/indicator
+        if js is None:
+            break
 
         # Typical: [metadata, [ {...}, {...} ]]
         if not isinstance(js, list) or len(js) < 2 or not isinstance(js[1], list):
