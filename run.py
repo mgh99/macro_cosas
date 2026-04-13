@@ -152,6 +152,7 @@ def run_engine(
     # --------------------------
     results_by_framework: Dict[str, pd.DataFrame] = {}
     seasonality_by_framework: Dict[str, pd.DataFrame] = {}
+    fetch_errors: List[Dict] = []  # collects per-indicator fetch failures
 
     for fw_name, fw in frameworks.items():
         all_parts: List[pd.DataFrame] = []
@@ -186,9 +187,14 @@ def run_engine(
                 oecd_geos = target_geos if allow_agg else [g for g in target_geos if g not in AGGREGATE_GEO_CODES]
                 if not oecd_geos:
                     continue
-                df = fetch_indicator_for_geos(ind, oecd_geos)
-                df["indicator_order"] = order_idx
-                all_parts.append(df)
+                try:
+                    df = fetch_indicator_for_geos(ind, oecd_geos)
+                    df["indicator_order"] = order_idx
+                    all_parts.append(df)
+                except Exception as exc:
+                    print(f"⚠️ {fw_name}/{ind_name}: OECD fetch failed ({exc}), skipping")
+                    fetch_errors.append({"framework": fw_name, "indicator": ind_name, "source": source, "error": str(exc)})
+                    continue
 
                 if ind_debug:
                     print(f"🧪 DEBUG {fw_name}/{ind_name}: rows={len(df)} geos={oecd_geos}")
@@ -202,6 +208,7 @@ def run_engine(
                         df = fetch_indicator_for_geo(ind, geo)
                     except Exception as exc:
                         print(f"⚠️ {fw_name}/{ind_name}/{geo}: fetch failed ({exc}), skipping")
+                        fetch_errors.append({"framework": fw_name, "indicator": ind_name, "source": source, "geo": geo, "error": str(exc)})
                         continue
                     df["indicator_order"] = order_idx
                     all_parts.append(df)
@@ -459,6 +466,20 @@ def run_engine(
         single_path = out_dir / "views_single_sheet.xlsx"
         build_views_single_sheet_workbook(results_by_framework, single_path, space_rows=3)
         print(f"✅ Wrote {single_path}")
+
+    # --------------------------
+    # Fetch error summary
+    # --------------------------
+    if fetch_errors:
+        print("\n⚠️  FETCH ERRORS SUMMARY — the following indicators could not be retrieved and will NOT appear in the Excel:")
+        by_fw: Dict[str, List] = {}
+        for err in fetch_errors:
+            by_fw.setdefault(err["framework"], []).append(err)
+        for fw_name_err, errs in by_fw.items():
+            print(f"  [{fw_name_err}]")
+            for e in errs:
+                geo_info = f" / {e['geo']}" if "geo" in e else ""
+                print(f"    • {e['indicator']}{geo_info} ({e['source']}): {e['error']}")
 
     return results_by_framework
 
