@@ -58,6 +58,7 @@ class JobDetail(BaseModel):
     error: Optional[str] = None
     output_files: List[str] = []
     progress: Optional[JobProgress] = None
+    fetch_errors: List[Dict[str, Any]] = []
 
 
 class FrameworkInfo(BaseModel):

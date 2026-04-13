@@ -481,7 +481,7 @@ def run_engine(
                 geo_info = f" / {e['geo']}" if "geo" in e else ""
                 print(f"    • {e['indicator']}{geo_info} ({e['source']}): {e['error']}")
 
-    return results_by_framework
+    return results_by_framework, fetch_errors
 
 # Default non-interactive run (kept for dev use)
 #def main() -> None:

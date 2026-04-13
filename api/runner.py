@@ -56,7 +56,7 @@ def execute_job(job_id: str) -> None:
         })
 
     try:
-        engine.run_engine(
+        _results, fetch_errors = engine.run_engine(
             geos=params["geos"],
             nuts3_geos=params.get("nuts3_geos"),
             selected_frameworks=params.get("frameworks"),
@@ -78,6 +78,7 @@ def execute_job(job_id: str) -> None:
             status="completed",
             completed_at=datetime.utcnow(),
             output_files=_collect_files(),
+            fetch_errors=fetch_errors,
         )
 
     except Exception:

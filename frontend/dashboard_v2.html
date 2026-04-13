@@ -391,6 +391,12 @@
         <pre id="error-text" style="font-size:11px;color:#fca5a5;white-space:pre-wrap;overflow:auto;max-height:200px;"></pre>
       </div>
 
+      <!-- Fetch warnings (partial failures) -->
+      <div id="fetch-warnings-block" style="display:none;max-width:600px;margin-bottom:16px;background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.3);border-radius:12px;padding:16px;">
+        <div style="font-size:13px;font-weight:600;color:#fbbf24;margin-bottom:10px;">⚠ Some indicators could not be fetched — they will not appear in the Excel</div>
+        <div id="fetch-warnings-list" style="display:flex;flex-direction:column;gap:6px;"></div>
+      </div>
+
       <!-- Files -->
       <div id="files-block" style="display:none;max-width:600px;">
         <div style="font-size:13px;font-weight:600;margin-bottom:10px;">Generated Files</div>
@@ -858,6 +864,30 @@ function updateJobUI(job) {
       'Error — any files written before the crash are still available below';
     document.getElementById('error-text').textContent = job.error;
   }
+
+  const fetchErrors = job.fetch_errors || [];
+  const wb = document.getElementById('fetch-warnings-block');
+  const wl = document.getElementById('fetch-warnings-list');
+  if (fetchErrors.length && (job.status === 'completed' || job.status === 'failed')) {
+    // Group by framework
+    const byFw = {};
+    for (const e of fetchErrors) {
+      (byFw[e.framework] = byFw[e.framework] || []).push(e);
+    }
+    wl.innerHTML = Object.entries(byFw).map(([fw, errs]) =>
+      `<div>
+        <div style="font-size:11px;font-weight:600;color:#fbbf24;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;">${fw}</div>
+        ${errs.map(e => {
+          const geo = e.geo ? ` / ${e.geo}` : '';
+          const shortErr = e.error.length > 120 ? e.error.slice(0, 120) + '…' : e.error;
+          return `<div style="font-size:11px;color:#fde68a;font-family:monospace;padding:4px 8px;background:rgba(251,191,36,0.06);border-radius:6px;word-break:break-all;">• ${e.indicator}${geo} <span style="color:#d97706;">(${e.source})</span>: ${shortErr}</div>`;
+        }).join('')}
+      </div>`
+    ).join('');
+    wb.style.display = 'block';
+  } else {
+    wb.style.display = 'none';
+  }
 }
 
 async function loadFiles() {
@@ -923,6 +953,8 @@ function resetAll() {
   document.getElementById('out-excel-ind').checked = false;
   document.getElementById('files-block').style.display = 'none';
   document.getElementById('error-block').style.display = 'none';
+  document.getElementById('fetch-warnings-block').style.display = 'none';
+  document.getElementById('fetch-warnings-list').innerHTML = '';
   document.getElementById('file-list').innerHTML = '';
   document.getElementById('run-btn').disabled = false;
   document.getElementById('run-btn').innerHTML = `<svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Run Analysis`;
